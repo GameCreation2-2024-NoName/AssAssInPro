@@ -1,10 +1,10 @@
 using System;
 using System.Reflection;
 
-namespace PurpleFlowerCore.Utility
+namespace PurpleFlowerCore
 {
     /// <summary>
-    /// µ¥ÀýÄ£Ê½µÄ»ùÀà
+    /// ï¿½ï¿½ï¿½ï¿½Ä£Ê½ï¿½Ä»ï¿½ï¿½ï¿½
     /// </summary>
     public abstract class Singleton<T> where T : class, new()
     {
@@ -19,7 +19,7 @@ namespace PurpleFlowerCore.Utility
         
     }
     /// <summary>
-    /// µ¥ÀýÄ£Ê½µÄ»ùÀà£¬ÇëÏÔÊ¾ÊµÏÖ×ÓÀàµÄË½ÓÐ¹¹Ôìº¯Êý
+    /// ï¿½ï¿½ï¿½ï¿½Ä£Ê½ï¿½Ä»ï¿½ï¿½à£¬ï¿½ï¿½ï¿½ï¿½Ê¾Êµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ë½ï¿½Ð¹ï¿½ï¿½ìº¯ï¿½ï¿½
     /// </summary>
     public abstract class SafeSingleton<T> where T : class
     {
@@ -39,7 +39,7 @@ namespace PurpleFlowerCore.Utility
                         null, Type.EmptyTypes, null);
                     if (info is not null) _instance = info.Invoke(null) as T;
                     else
-                        PFCLog.Error("ÎÞ·¨µÃµ½×ÓÀàµÄË½ÓÐÎÞ²Î¹¹Ôìº¯Êý");
+                        PFCLog.Error("ï¿½Þ·ï¿½ï¿½Ãµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ë½ï¿½ï¿½ï¿½Þ²Î¹ï¿½ï¿½ìº¯ï¿½ï¿½");
                     return _instance;
                 }
             }
