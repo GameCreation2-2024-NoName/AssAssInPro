@@ -1,0 +1,16 @@
+{
+    "name": "PurpleFlowerCore",
+    "rootNamespace": "",
+    "references": [
+        "GUID:c41f5cfc12c782545b7fe97c8813e5ff"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
