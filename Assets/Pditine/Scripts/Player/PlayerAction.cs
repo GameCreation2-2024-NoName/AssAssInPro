@@ -73,18 +73,18 @@ namespace LJH.Scripts.Player
                     break;
                 case >= 45 and <= 135:
                     // Up
-                    if(_selectAssOrThorn)
-                        _thePlayer.LastAss();
-                    else
-                        _thePlayer.LastThorn();
+                    // if(_selectAssOrThorn)
+                    //     _thePlayer.LastAss();
+                    // else
+                    //     _thePlayer.LastThorn();
                     break;
                 case >= -135 and <= -45:
                     // Down
                     Debug.Log("down");
-                    if(_selectAssOrThorn)
-                        _thePlayer.NextAss();
-                    else
-                        _thePlayer.NextThorn();
+                    // if(_selectAssOrThorn)
+                    //     _thePlayer.NextAss();
+                    // else
+                    //     _thePlayer.NextThorn();
                     break;
                 default:
                     // Left

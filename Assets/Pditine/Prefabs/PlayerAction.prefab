@@ -136,7 +136,7 @@ MonoBehaviour:
     m_ActionName: Prepare/Confirm[/Keyboard/space]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
-  m_DefaultActionMap: Prepare
+  m_DefaultActionMap: PlayerInput
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
 --- !u!114 &7777671611351533346
@@ -152,3 +152,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canSelect: 1
+  _thePlayer: {fileID: 0}

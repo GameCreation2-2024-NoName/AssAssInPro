@@ -3,6 +3,7 @@ using Hmxs.Scripts;
 using LJH.Scripts.Map;
 using UnityEngine;
 using LJH.Scripts.Player;
+using Pditine.Scripts;
 using PurpleFlowerCore;
 using PurpleFlowerCore.Event;
 
@@ -94,7 +95,7 @@ namespace LJH.Scripts.Collide
             {
                 //CameraMoveUtility.MoveAndZoom(collider2.transform.position,0.03f,4);
                 var thePlayer = (collider2 as Ass).ThePlayer;
-                GameManager.Instance.PlayerDead(thePlayer.transform,thePlayer.ID);
+                ClassicGameManager.Instance.PlayerDead(thePlayer.transform,thePlayer.ID);
                 thePlayer.BeDestroy();
                 thePlayer.LoseFeedback();
                 EventSystem.EventTrigger("GameOver");
@@ -104,7 +105,7 @@ namespace LJH.Scripts.Collide
             {
                 //CameraMoveUtility.MoveAndZoom(collider2.transform.position,0.03f,4);
                 var thePlayer = (collider2 as Ass).ThePlayer;
-                GameManager.Instance.PlayerDead(thePlayer.transform,thePlayer.ID);
+                ClassicGameManager.Instance.PlayerDead(thePlayer.transform,thePlayer.ID);
                 thePlayer.BeDestroy();
                 thePlayer.LoseFeedback();
                 EventSystem.EventTrigger("GameOver");

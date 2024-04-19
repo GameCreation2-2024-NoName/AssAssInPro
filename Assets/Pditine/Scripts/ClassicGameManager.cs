@@ -1,27 +1,32 @@
 using Cinemachine;
+using LJH.Scripts.Player;
 using LJH.Scripts.Utility;
 using PurpleFlowerCore;
-using PurpleFlowerCore.Event;
 using PurpleFlowerCore.Utility;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-namespace LJH
+namespace Pditine.Scripts
 {
-    public class GameManager : SingletonMono<GameManager>
+    public class ClassicGameManager : SingletonMono<ClassicGameManager>
     {
         private bool _gameOver;
         [SerializeField] private Image blackCurtain;
-
         [SerializeField] private CinemachineVirtualCamera camera;
         [SerializeField] private TextMeshProUGUI playerDeadInfo;
+        [SerializeField] private PlayerController player1;
+        [SerializeField] private PlayerController player2;
+        
+        private void Start()
+        {
+            Init();
+        }
 
         private void OnEnable()
         {
             EventSystem.AddEventListener("GameOver", GameOver);
-            EventSystem.AddEventListener("GameStart", GameStart);
             FadeUtility.FadeOut(blackCurtain,80);
             Time.timeScale = 1;
             _gameOver = false;
@@ -30,9 +35,16 @@ namespace LJH
         private void OnDisable()
         {
             EventSystem.RemoveEventListener("GameOver", GameOver);
-            EventSystem.RemoveEventListener("GameStart", GameStart);
         }
 
+        private void Init()
+        {
+            //todo:获取InputHandler
+            
+            //生成玩家
+            
+        }
+        
         private void GameOver()
         {
             if (_gameOver) return;
@@ -42,19 +54,14 @@ namespace LJH
                 blackCurtain,
                 20,
                 () => { SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex); });
+            //todo:游戏结束逻辑
         }
-
-        private void GameStart()
-        {
-            
-        }
-
+        
         public void PlayerDead(Transform thePlayer,int playerIndex)
         {
             if(_gameOver)return;
+            //todo:换一种摄像机移动方式
             CameraMoveUtility.MoveAndZoomForever(camera,thePlayer.transform, 0.04f, 3);
-            //camera.Follow = thePlayer;
-            //camera.LookAt = thePlayer;
             FadeUtility.FadeInAndStay(playerDeadInfo,80);
             playerDeadInfo.text = $"Player{playerIndex} Died";
         }
