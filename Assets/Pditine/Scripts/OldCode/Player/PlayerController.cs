@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using System.Linq;
-using Hmxs.Toolkit.Flow.Timer;
 using LJH.Scripts.UI;
 using MoreMountains.Feedbacks;
 using PurpleFlowerCore;
@@ -81,7 +80,16 @@ namespace LJH.Scripts.Player
             if (!CanMove) return;
             if (!_isCharging) return;
             var tempInputDirection = _inputDirection;
-            _inputDirection = ctx.ReadValue<Vector2>().normalized;
+            //_inputDirection = (Camera.main.ScreenToWorldPoint(ctx.ReadValue<Vector2>())-transform.position).normalized;
+            
+            PFCLog.Info(TheInput.devices[1]);
+            if (TheInput.devices[1] is Mouse)
+                _inputDirection = (ctx.ReadValue<Vector2>() - new Vector2(Screen.width / 2, Screen.height / 2))
+                    .normalized;
+            else
+                _inputDirection = ctx.ReadValue<Vector2>().normalized;
+            PFCLog.Info(_inputDirection);
+            //_inputDirection += new Vector2(0.5f, 0.5f);
             if (_inputDirection.normalized == Vector2.zero)
                 _inputDirection = tempInputDirection;
             directionArrow.transform.right = _inputDirection;

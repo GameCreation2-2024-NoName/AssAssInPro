@@ -12,14 +12,15 @@ namespace LJH.Scripts.Player
         private bool _ready;
         public bool Ready => _ready;
         private bool _selectAssOrThorn;
-        private PlayerController _thePlayer;
+        [SerializeField]private PlayerController _thePlayer;
         public PlayerController ThePlayer => _thePlayer;
         private PlayerInput PlayerInput => GetComponent<PlayerInput>();
 
         private void Start()
         {
-            PlayerActionManager.Instance.AddPlayer(this);
-           // _playerInput.actions["Select"].performed += Select;
+            //PlayerActionManager.Instance.AddPlayer(this);
+            _thePlayer = FindObjectOfType<PlayerController>();
+            _thePlayer.TheInput = PlayerInput;
         }
 
         public void BindPlayer(PlayerController targetPlayer)
