@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace PurpleFlowerCore.Utility
+namespace PurpleFlowerCore
 {
 
     public abstract class SingletonMono<T> : MonoBehaviour where T : SingletonMono<T>
