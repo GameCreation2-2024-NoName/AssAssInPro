@@ -19,5 +19,8 @@ namespace Pditine.Scripts.Data.Ass
 
         [SerializeField] private GameObject prototype;
         public GameObject Prototype=>prototype;
+
+        [SerializeField] private Sprite portrait;
+        public Sprite Portrait => portrait;
     }
 }

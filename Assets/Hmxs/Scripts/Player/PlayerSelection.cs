@@ -10,8 +10,13 @@ namespace Hmxs.Scripts.Player
 
         [SerializeField] [ReadOnly] private bool isReady;
         [SerializeField] [ReadOnly] private bool canSelect = true;
+
+        [SerializeField] [ReadOnly] private int assId;
+        [SerializeField] [ReadOnly] private int thornId;
+
         private InputHandler InputHandler =>
             id == 1 ? PlayerManager.Instance.Handler1 : PlayerManager.Instance.Handler2;
+
 
         private void Update()
         {
