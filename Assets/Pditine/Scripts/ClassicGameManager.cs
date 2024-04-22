@@ -1,9 +1,13 @@
 using Cinemachine;
 using LJH.Scripts.Player;
 using LJH.Scripts.Utility;
+using Pditine.Scripts.Data;
+using Pditine.Scripts.Data.DatePassing;
+using Pditine.Scripts.Player;
 using PurpleFlowerCore;
 using PurpleFlowerCore.Utility;
 using TMPro;
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -13,11 +17,20 @@ namespace Pditine.Scripts
     public class ClassicGameManager : SingletonMono<ClassicGameManager>
     {
         private bool _gameOver;
-        [SerializeField] private Image blackCurtain;
+        [Header("相机")]
         [SerializeField] private CinemachineVirtualCamera camera;
+        [Header("UI控件")]
+        [SerializeField] private Image blackCurtain;
         [SerializeField] private TextMeshProUGUI playerDeadInfo;
+        [Header("玩家")]
         [SerializeField] private PlayerController player1;
         [SerializeField] private PlayerController player2;
+        // [Header("玩家出生点")]
+        // [SerializeField] private Transform player1BirthPoint;
+        // [SerializeField] private Transform player2BirthPoint;
+        [Header("数据引用")] 
+        [SerializeField] private PassingData passingData;
+        
         
         private void Start()
         {
@@ -43,6 +56,15 @@ namespace Pditine.Scripts
             
             //生成玩家
             
+        }
+
+        private GameObject CreatePlayer(int assID,int thornID,PlayerController thePlayer)
+        {
+            GameObject theAss = Instantiate(DataManager.Instance.GetAssData(assID).Prototype,
+                thePlayer.transform.position,quaternion.identity,thePlayer.transform);
+            GameObject theThorn = Instantiate(DataManager.Instance.GetThornData(assID).Prototype,
+                thePlayer.transform.position,quaternion.identity,thePlayer.transform);
+            return null;
         }
         
         private void GameOver()

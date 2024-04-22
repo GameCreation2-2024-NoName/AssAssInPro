@@ -2,6 +2,7 @@
 using Hmxs.Toolkit.Base.Singleton;
 using LJH.Scripts.Player;
 using MoreMountains.Feedbacks;
+using Pditine.Scripts.Player;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.InputSystem;

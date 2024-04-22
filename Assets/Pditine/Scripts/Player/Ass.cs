@@ -1,5 +1,6 @@
 ﻿using System;
 using LJH.Scripts.Collide;
+using Pditine.Scripts.Player;
 using UnityEngine;
 
 namespace LJH.Scripts.Player

@@ -1,5 +1,6 @@
 ﻿using System;
 using LJH.Scripts.Player;
+using Pditine.Scripts.Player;
 using UnityEngine;
 
 namespace LJH.Scripts.Utility

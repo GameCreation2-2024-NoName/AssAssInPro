@@ -1,4 +1,5 @@
 using HighlightPlus2D;
+using Pditine.Scripts.Player;
 using PurpleFlowerCore;
 using Sirenix.OdinInspector;
 using UnityEngine;
