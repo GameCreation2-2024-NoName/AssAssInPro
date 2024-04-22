@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Pditine.Scripts.Data.Ass;
+using Pditine.Scripts.Data.DatePassing;
 using Pditine.Scripts.Data.GameModule;
 using PurpleFlowerCore;
 using UnityEngine;
@@ -10,10 +11,13 @@ namespace Pditine.Scripts.Data
     {
         [SerializeField] private List<AssDataBase> asses = new();
         [SerializeField] private List<ThornDataBase> thorns = new();
-        [SerializeField] private List<GameModuleBase> gameModules = new();
+        [SerializeField] private List<GameModelBase> gameModules = new();
         public List<AssDataBase> Asses => asses;
         public List<ThornDataBase> Thorns => thorns;
-        public List<GameModuleBase> GameModules => gameModules;
+        public List<GameModelBase> GameModules => gameModules;
+
+        [SerializeField] private PassingData passingData;
+        public PassingData PassingData => passingData;
 
         public AssDataBase GetAssData(int assID)
         {
@@ -24,7 +28,7 @@ namespace Pditine.Scripts.Data
             return thorns[thornID];
         }
 
-        public GameModuleBase GetGameModule(int gameModuleID)
+        public GameModelBase GetGameModule(int gameModuleID)
         {
             if (gameModuleID >= gameModules.Count) return null;
             return gameModules[gameModuleID];

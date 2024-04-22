@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 namespace Pditine.Scripts.SelectGameModuleScene
 {
-    public class GameModuleImage : MonoBehaviour
+    public class GameModelImage : MonoBehaviour
     {
         public RectTransform target;
         [SerializeField]private Image theImage;

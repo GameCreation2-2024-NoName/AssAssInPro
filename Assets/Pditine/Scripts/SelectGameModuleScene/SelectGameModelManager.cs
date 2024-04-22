@@ -7,25 +7,25 @@ using UnityEngine.SceneManagement;
 
 namespace Pditine.Scripts.SelectGameModuleScene
 {
-    public class SelectGameModuleManager : MonoBehaviour
+    public class SelectGameModelManager : MonoBehaviour
     {
-        [SerializeField] private GameModuleImage leftImage;
-        [SerializeField] private GameModuleImage centreImage;
-        [SerializeField] private GameModuleImage rightImage;
+        [SerializeField] private GameModelImage leftImage;
+        [SerializeField] private GameModelImage centreImage;
+        [SerializeField] private GameModelImage rightImage;
         [SerializeField] private RectTransform leftPoint;
         [SerializeField] private RectTransform centrePoint;
         [SerializeField] private RectTransform rightPoint;
-        private int gameModuleIndex;
-        private GameModuleBase currentGameModule;
-        private List<GameModuleBase> _gameModules;
+        private int _gameModuleIndex;
+        private GameModelBase _currentGameModel;
+        private List<GameModelBase> _gameModels;
 
         [SerializeField]private TextMeshProUGUI gameModuleName;
         [SerializeField]private TextMeshProUGUI gameModuleIntroduction;
         
         private void Start()
         {
-            _gameModules = DataManager.Instance.GameModules;
-            currentGameModule = _gameModules[0];
+            _gameModels = DataManager.Instance.GameModules;
+            _currentGameModel = _gameModels[0];
             Init();
         }
 
@@ -34,16 +34,16 @@ namespace Pditine.Scripts.SelectGameModuleScene
             leftImage.target = leftPoint;
             centreImage.target = centrePoint;
             rightImage.target = rightPoint;
-            currentGameModule = _gameModules[gameModuleIndex];
-            centreImage.Sprite = currentGameModule.Preview;
-            gameModuleName.text = currentGameModule.ModuleName;
-            gameModuleIntroduction.text = currentGameModule.Introduction;
+            _currentGameModel = _gameModels[_gameModuleIndex];
+            centreImage.Sprite = _currentGameModel.Preview;
+            gameModuleName.text = _currentGameModel.ModuleName;
+            gameModuleIntroduction.text = _currentGameModel.Introduction;
         }
         
         public void TurnLeft()
         {
-            gameModuleIndex--;
-            if (gameModuleIndex < 0) gameModuleIndex = _gameModules.Count - 1;
+            _gameModuleIndex--;
+            if (_gameModuleIndex < 0) _gameModuleIndex = _gameModels.Count - 1;
             rightImage.Enable = false;
             leftImage.Enable = true;
             (leftImage, centreImage, rightImage) = (rightImage, leftImage, centreImage);
@@ -52,8 +52,8 @@ namespace Pditine.Scripts.SelectGameModuleScene
         
         public void TurnRight()
         {
-            gameModuleIndex++;
-            if (gameModuleIndex > _gameModules.Count - 1) gameModuleIndex = 0;
+            _gameModuleIndex++;
+            if (_gameModuleIndex > _gameModels.Count - 1) _gameModuleIndex = 0;
             rightImage.Enable = true;
             leftImage.Enable = false;
             (leftImage, centreImage, rightImage) = (centreImage, rightImage, leftImage);
@@ -62,7 +62,9 @@ namespace Pditine.Scripts.SelectGameModuleScene
 
         public void StartGame()
         {
-            SceneManager.LoadScene(currentGameModule.SceneID);
+            //todo:获取选择装备场景
+            SceneManager.LoadScene(0);
+            DataManager.Instance.PassingData.currentGameModel = _currentGameModel;
         }
     }
 }

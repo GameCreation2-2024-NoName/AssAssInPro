@@ -25,26 +25,22 @@ namespace Pditine.Scripts
         [Header("玩家")]
         [SerializeField] private PlayerController player1;
         [SerializeField] private PlayerController player2;
-        // [Header("玩家出生点")]
-        // [SerializeField] private Transform player1BirthPoint;
-        // [SerializeField] private Transform player2BirthPoint;
-        [Header("数据引用")] 
-        [SerializeField] private PassingData passingData;
-        
+
+        private PassingData _passingData;
         
         private void Start()
         {
+            _passingData = DataManager.Instance.PassingData;
             Init();
+            Time.timeScale = 1;
+            _gameOver = false;
+            FadeUtility.FadeOut(blackCurtain,80);
         }
 
         private void OnEnable()
         {
             EventSystem.AddEventListener("GameOver", GameOver);
-            FadeUtility.FadeOut(blackCurtain,80);
-            Time.timeScale = 1;
-            _gameOver = false;
         }
-
         private void OnDisable()
         {
             EventSystem.RemoveEventListener("GameOver", GameOver);
@@ -54,17 +50,19 @@ namespace Pditine.Scripts
         {
             //todo:获取InputHandler
             
-            //生成玩家
+            //组装玩家
+            CreatePlayer(_passingData.player1AssID,_passingData.player1ThornID,player1);
+            CreatePlayer(_passingData.player2AssID,_passingData.player2ThornID,player2);
             
         }
 
-        private GameObject CreatePlayer(int assID,int thornID,PlayerController thePlayer)
+        private void CreatePlayer(int assID,int thornID,PlayerController thePlayer)
         {
             GameObject theAss = Instantiate(DataManager.Instance.GetAssData(assID).Prototype,
                 thePlayer.transform.position,quaternion.identity,thePlayer.transform);
             GameObject theThorn = Instantiate(DataManager.Instance.GetThornData(assID).Prototype,
                 thePlayer.transform.position,quaternion.identity,thePlayer.transform);
-            return null;
+            thePlayer.Init(theThorn.GetComponent<Thorn>(),theAss.GetComponent<Ass>());
         }
         
         private void GameOver()

@@ -70,7 +70,8 @@ namespace Pditine.Scripts.Player
 
         public void Init(Thorn theThorn,Ass theAss)
         {
-            
+            _theAss = theAss;
+            _theThorn = theThorn;
         }
         
         public void ChangeDirection(InputAction.CallbackContext ctx)

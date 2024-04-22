@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Pditine.Scripts.Data.GameModule;
+using UnityEngine;
 
 namespace Pditine.Scripts.Data.DatePassing
 {
@@ -6,7 +7,10 @@ namespace Pditine.Scripts.Data.DatePassing
     //用于跨场景传递数据
     public class PassingData : ScriptableObject
     {
-        public int assID;
-        public int thornID;
+        public int player1AssID;
+        public int player2AssID;
+        public int player1ThornID;
+        public int player2ThornID;
+        public GameModelBase currentGameModel;
     }
 }

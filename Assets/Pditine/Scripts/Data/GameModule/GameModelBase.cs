@@ -2,8 +2,8 @@ using UnityEngine;
 
 namespace Pditine.Scripts.Data.GameModule
 {
-    [CreateAssetMenu(fileName = "GameModuleData",menuName = "AssAssIn/GameModuleData")]
-    public class GameModuleBase : ScriptableObject
+    [CreateAssetMenu(fileName = "GameModelData",menuName = "AssAssIn/GameModelData")]
+    public class GameModelBase : ScriptableObject
     {
         [SerializeField] private int id;
         public int ID => id;
