@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Pditine/Scripts/Data/GameModule.meta
 guid: fbc3eb544f114ce4aaaeddc631f6e916
+========
+guid: efb864b0722c36445bdc8c6fbff3e5e5
+>>>>>>>> main:Assets/Hmxs/Font.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}

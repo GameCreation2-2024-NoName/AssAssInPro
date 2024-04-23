@@ -1,7 +1,13 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Pditine/Scenes/SelectGameModule.unity.meta
 guid: 457c7af0f9de86d41a7b50a6ec74342d
 DefaultImporter:
+========
+guid: 7e0601444cdb415429842a214ccd0508
+NativeFormatImporter:
+>>>>>>>> main:Assets/Hmxs/Font/unifont SDF.asset.meta
   externalObjects: {}
+  mainObjectFileID: 11400000
   userData: 
   assetBundleName: 
   assetBundleVariant: 
