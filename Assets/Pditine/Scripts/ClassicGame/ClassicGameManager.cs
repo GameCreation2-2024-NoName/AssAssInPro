@@ -4,6 +4,8 @@ using LJH.Scripts.Utility;
 using Pditine.Scripts.Data;
 using Pditine.Scripts.Data.DatePassing;
 using Pditine.Scripts.Player;
+using Pditine.Scripts.Player.Ass;
+using Pditine.Scripts.Player.Thorn;
 using PurpleFlowerCore;
 using PurpleFlowerCore.Utility;
 using TMPro;
@@ -58,11 +60,11 @@ namespace Pditine.Scripts
 
         private void CreatePlayer(int assID,int thornID,PlayerController thePlayer)
         {
-            GameObject theAss = Instantiate(DataManager.Instance.GetAssData(assID).Prototype,
-                thePlayer.transform.position,quaternion.identity,thePlayer.transform);
-            GameObject theThorn = Instantiate(DataManager.Instance.GetThornData(assID).Prototype,
-                thePlayer.transform.position,quaternion.identity,thePlayer.transform);
-            thePlayer.Init(theThorn.GetComponent<Thorn>(),theAss.GetComponent<Ass>());
+            AssBase theAss = Instantiate(DataManager.Instance.GetAssData(assID).Prototype).GetComponent<AssBase>();
+            ThornBase theThorn = Instantiate(DataManager.Instance.GetThornData(assID).Prototype).GetComponent<ThornBase>();
+            theAss.Init(thePlayer);
+            theThorn.Init(thePlayer);
+            thePlayer.Init(theThorn,theAss);
         }
         
         private void GameOver()

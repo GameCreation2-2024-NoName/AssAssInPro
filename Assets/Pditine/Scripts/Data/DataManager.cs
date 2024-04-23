@@ -17,7 +17,10 @@ namespace Pditine.Scripts.Data
         public List<GameModelBase> GameModules => gameModules;
 
         [SerializeField] private PassingData passingData;
-        public PassingData PassingData => passingData;
+        /// <summary>
+        /// 用于跨场景数据传输
+        /// </summary>
+        public PassingData PassingData => passingData; 
 
         public AssDataBase GetAssData(int assID)
         {

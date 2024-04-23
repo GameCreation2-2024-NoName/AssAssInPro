@@ -2,11 +2,14 @@ using System.Linq;
 using LJH.Scripts.Player;
 using LJH.Scripts.UI;
 using MoreMountains.Feedbacks;
+using Pditine.Scripts.Player.Ass;
+using Pditine.Scripts.Player.Thorn;
 using PurpleFlowerCore;
 using PurpleFlowerCore.Utility;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Serialization;
 
 namespace Pditine.Scripts.Player
 {
@@ -16,23 +19,28 @@ namespace Pditine.Scripts.Player
         public int ID => id;
         
         private bool _isCharging;
+        private float InitialVelocity=>_theAss.Data.InitialVelocity;
+        private float Friction=>_theAss.Data.Friction+_theThorn.Data.Friction;
+        private float cd => _theThorn.Data.CD;
+        private float hp => _theAss.Data.HP;
+        private float atk => _theThorn.Data.ATK;
+        
         [HideInInspector]public float CurrentSpeed;
-        [SerializeField] private float maxSpeed;
-        [SerializeField] private float friction;
         [SerializeField] private float rotateSpeed;
         private Vector2 _inputDirection;
         [SerializeField] private GameObject directionArrow;
         [HideInInspector]public Vector2 Direction;
         private PlayerCD _cdUI;
-        
-        [SerializeField] private float cd;
+
         private float _currentCD;
 
         [HideInInspector]public PlayerInput TheInput;
-        private Thorn _theThorn;
-        public Thorn TheThorn => _theThorn;
-        private Ass _theAss;
-        public Ass TheAss => _theAss;
+        
+        
+        private ThornBase _theThorn;
+        public ThornBase TheThorn => _theThorn;
+        private AssBase _theAss;
+        public AssBase TheAss => _theAss;
 
         public bool CanMove;
 
@@ -68,7 +76,7 @@ namespace Pditine.Scripts.Player
             UpdateCD();
         }
 
-        public void Init(Thorn theThorn,Ass theAss)
+        public void Init(ThornBase theThorn,AssBase theAss)
         {
             _theAss = theAss;
             _theThorn = theThorn;
@@ -113,7 +121,7 @@ namespace Pditine.Scripts.Player
                 if (!_isCharging) return;
                 _isCharging = false;
                 Direction = _inputDirection;
-                CurrentSpeed = maxSpeed;
+                CurrentSpeed = InitialVelocity;
                 _currentCD = cd;
                 directionArrow.SetActive(false);
                 Debug.Log("结束蓄力");
@@ -122,7 +130,7 @@ namespace Pditine.Scripts.Player
 
         private void ReduceSpeed()
         {
-            CurrentSpeed -= friction*Time.deltaTime;
+            CurrentSpeed -= Friction*Time.deltaTime;
             if (CurrentSpeed <= 0) CurrentSpeed = 0;
         }
 
@@ -133,12 +141,7 @@ namespace Pditine.Scripts.Player
             if (_currentCD <= 0) _currentCD = 0;
             _cdUI.UpdateCD(_currentCD/cd);
         }
-
-        public void ChangeSpeed(float percentageDelta)
-        {
-            maxSpeed *= 1 + percentageDelta*0.01f;
-        }
-
+        
         public void BeDestroy()
         {
             CanMove = false;

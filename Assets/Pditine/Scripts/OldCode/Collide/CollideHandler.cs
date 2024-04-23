@@ -4,6 +4,8 @@ using LJH.Scripts.Map;
 using UnityEngine;
 using LJH.Scripts.Player;
 using Pditine.Scripts;
+using Pditine.Scripts.Player.Ass;
+using Pditine.Scripts.Player.Thorn;
 using PurpleFlowerCore;
 using PurpleFlowerCore.Event;
 
@@ -23,7 +25,7 @@ namespace LJH.Scripts.Collide
 
             if (tag1 == "Boundary" && tag2 == "Thorn")
             {
-                var thePlayer = (collider2 as Thorn).ThePlayer;
+                var thePlayer = (collider2 as ThornBase).ThePlayer;
                 var originDirection = thePlayer.Direction;
                 Vector2 Out_Direction = Vector2.Reflect(originDirection,((Boundary)collider1).NormalDirection);
                 thePlayer.Direction = Out_Direction;
@@ -34,7 +36,7 @@ namespace LJH.Scripts.Collide
             
             if (tag1 == "Boundary" && tag2 == "Ass")
             {
-                var thePlayer = (collider2 as Ass).ThePlayer;
+                var thePlayer = (collider2 as AssBase).ThePlayer;
                 var originDirection = thePlayer.Direction;
                 Vector2 Out_Direction = Vector2.Reflect(originDirection,((Boundary)collider1).NormalDirection);
 
@@ -44,8 +46,8 @@ namespace LJH.Scripts.Collide
             
             if (tag1 == "Thorn" && tag2 == "Thorn")
             {
-                var thePlayer1 = (collider1 as Thorn).ThePlayer;
-                var thePlayer2 = (collider2 as Thorn).ThePlayer;
+                var thePlayer1 = (collider1 as ThornBase).ThePlayer;
+                var thePlayer2 = (collider2 as ThornBase).ThePlayer;
                 (thePlayer1.Direction, thePlayer2.Direction) = (thePlayer2.Direction, thePlayer1.Direction);
                 (thePlayer1.CurrentSpeed, thePlayer2.CurrentSpeed) = (thePlayer2.CurrentSpeed, thePlayer1.CurrentSpeed);
                 thePlayer1.HitFeedback();
@@ -94,7 +96,7 @@ namespace LJH.Scripts.Collide
             if (tag1 == "Thorn" && tag2 == "Ass")
             {
                 //CameraMoveUtility.MoveAndZoom(collider2.transform.position,0.03f,4);
-                var thePlayer = (collider2 as Ass).ThePlayer;
+                var thePlayer = (collider2 as AssBase).ThePlayer;
                 ClassicGameManager.Instance.PlayerDead(thePlayer.transform,thePlayer.ID);
                 thePlayer.BeDestroy();
                 thePlayer.LoseFeedback();
@@ -104,7 +106,7 @@ namespace LJH.Scripts.Collide
             if (tag1 == "BarrierThorn" && tag2 == "Ass")
             {
                 //CameraMoveUtility.MoveAndZoom(collider2.transform.position,0.03f,4);
-                var thePlayer = (collider2 as Ass).ThePlayer;
+                var thePlayer = (collider2 as AssBase).ThePlayer;
                 ClassicGameManager.Instance.PlayerDead(thePlayer.transform,thePlayer.ID);
                 thePlayer.BeDestroy();
                 thePlayer.LoseFeedback();
@@ -113,7 +115,7 @@ namespace LJH.Scripts.Collide
 
             if (tag1 == "BarrierThorn" && tag2 == "Thorn")
             {
-                var thePlayer = (collider2 as Thorn).ThePlayer;
+                var thePlayer = (collider2 as ThornBase).ThePlayer;
                 var theBarrier = (collider1 as BarrierThorn).TheBarrier;
                 
                 (collider1 as BarrierThorn).TheBarrier.ThePedestal.AddCollider(collider2);
@@ -128,7 +130,7 @@ namespace LJH.Scripts.Collide
             
             if (tag1 == "BarrierPedestal" && tag2 == "Thorn")
             {
-                var thePlayer = (collider2 as Thorn).ThePlayer;
+                var thePlayer = (collider2 as ThornBase).ThePlayer;
                 var theBarrier = (collider1 as BarrierPedestal).TheBarrier; 
                 
                 (collider1 as BarrierPedestal).TheBarrier.TheThorn.AddCollider(collider2);
