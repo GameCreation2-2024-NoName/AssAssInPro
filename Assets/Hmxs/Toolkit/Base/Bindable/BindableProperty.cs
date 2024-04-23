@@ -1,4 +1,6 @@
 ﻿using System;
+using Sirenix.OdinInspector;
+using UnityEngine;
 using UnityEngine.Events;
 
 namespace Hmxs.Toolkit.Base.Bindable
@@ -6,24 +8,24 @@ namespace Hmxs.Toolkit.Base.Bindable
     [Serializable]
     public struct BindableProperty<T> where T : IEquatable<T>
     {
-        private T _value;
+        [SerializeField] [ReadOnly] private T value;
 
         public T Value
         {
-            get => _value;
+            get => value;
             set
             {
-                if(_value.Equals(value)) return;
-                _value = value;
-                onValueChanged?.Invoke(_value);
+                if (this.value.Equals(value)) return;
+                this.value = value;
+                onValueChanged?.Invoke(this.value);
             }
         }
 
-        public UnityEvent<T> onValueChanged;
+        public Action<T> onValueChanged;
 
-        public BindableProperty(T initValue = default, UnityEvent<T> valueChangedCallBack = default)
+        public BindableProperty(T initValue = default, Action<T> valueChangedCallBack = default)
         {
-            _value = initValue;
+            value = initValue;
             onValueChanged = valueChangedCallBack;
         }
     }

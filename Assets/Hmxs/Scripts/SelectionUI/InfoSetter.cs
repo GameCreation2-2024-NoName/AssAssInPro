@@ -1,4 +1,4 @@
-﻿using Pditine.Scripts.Data;
+﻿using Pditine.Scripts.Data.Ass;
 using Sirenix.OdinInspector;
 using TMPro;
 using UnityEngine;
@@ -15,6 +15,9 @@ namespace Hmxs.Scripts
         [SerializeField] private Slider assProperty2;
         [SerializeField] private Slider assProperty3;
         [SerializeField] private TMP_Text assIntroduction;
+        [SerializeField] [MinMaxSlider(0, 20, true)] private Vector2 assProperty1Range;
+        [SerializeField] [MinMaxSlider(0, 20, true)] private Vector2 assProperty2Range;
+        [SerializeField] [MinMaxSlider(0, 20, true)] private Vector2 assProperty3Range;
 
         [Title("Thorn Info")]
         [SerializeField] private Image thornImg;
@@ -23,17 +26,19 @@ namespace Hmxs.Scripts
         [SerializeField] private Slider thornProperty2;
         [SerializeField] private Slider thornProperty3;
         [SerializeField] private TMP_Text thornIntroduction;
+        [SerializeField] [MinMaxSlider(0, 20, true)] private Vector2 thornProperty1Range;
+        [SerializeField] [MinMaxSlider(0, 20, true)] private Vector2 thornProperty2Range;
+        [SerializeField] [MinMaxSlider(0, 20, true)] private Vector2 thornProperty3Range;
 
         private void SetAssImg(Sprite sprite)
         {
             assImg.sprite = sprite;
             assImg.SetNativeSize();
         }
-
         private void SetAssName(string nameOfAss) => assName.text = nameOfAss;
-        private void SetAssProperty1(float value) => assProperty1.value =  Mathf.Clamp(value, 0f, 1f);
-        private void SetAssProperty2(float value) => assProperty2.value =  Mathf.Clamp(value, 0f, 1f);
-        private void SetAssProperty3(float value) => assProperty3.value =  Mathf.Clamp(value, 0f, 1f);
+        private void SetAssProperty1(float value) => assProperty1.value = value;
+        private void SetAssProperty2(float value) => assProperty2.value = value;
+        private void SetAssProperty3(float value) => assProperty3.value = value;
         private void SetAssIntroduction(string introduction) => assIntroduction.text = introduction;
 
         private void SetThornImg(Sprite sprite)
@@ -42,47 +47,49 @@ namespace Hmxs.Scripts
             thornImg.SetNativeSize();
         }
         private void SetThornName(string nameOfThorn) => thornName.text = nameOfThorn;
-        private void SetThornProperty1(float value) => thornProperty1.value =  Mathf.Clamp(value, 0f, 1f);
-        private void SetThornProperty2(float value) => thornProperty2.value =  Mathf.Clamp(value, 0f, 1f);
-        private void SetThornProperty3(float value) => thornProperty3.value =  Mathf.Clamp(value, 0f, 1f);
+        private void SetThornProperty1(float value) => thornProperty1.value = value;
+        private void SetThornProperty2(float value) => thornProperty2.value = value;
+        private void SetThornProperty3(float value) => thornProperty3.value = value;
         private void SetThornIntroduction(string introduction) => thornIntroduction.text = introduction;
 
-        public void SetAssInfo(int assId)
+        private static float DataMapping(float value, Vector2 range)
         {
-            var assInfo = DataManager.Instance.GetAssData(assId);
+            value = Mathf.Clamp(value, range.x, range.y);
+            return (value - range.x) / (range.y - range.x);
+        }
+
+        public void SetAssInfo(AssDataBase assInfo)
+        {
             if (assInfo == null)
             {
-                Debug.LogError($"Cannot Find AssInfo At {assId}");
+                Debug.LogError($"Cannot Get AssInfo");
                 return;
             }
 
             SetAssImg(assInfo.Portrait);
             SetAssName(assInfo.AssName);
 
-            // todo: 需要进行数据映射
-            SetAssProperty1(assInfo.HP);
-            SetAssProperty2(assInfo.InitialVelocity);
-            SetAssProperty3(assInfo.Friction);
+            SetAssProperty1(DataMapping(assInfo.HP, assProperty1Range));
+            SetAssProperty2(DataMapping(assInfo.InitialVelocity, assProperty2Range));
+            SetAssProperty3(DataMapping(assInfo.Friction, assProperty3Range));
 
             SetAssIntroduction(assInfo.AssIntroduction);
         }
 
-        public void SetThornInfo(int thornId)
+        public void SetThornInfo(ThornDataBase thornInfo)
         {
-            var thornInfo = DataManager.Instance.GetThornData(thornId);
             if (thornInfo == null)
             {
-                Debug.LogError($"Cannot Find ThornInfo At {thornId}");
+                Debug.LogError($"Cannot Get ThornInfo");
                 return;
             }
 
             SetThornImg(thornInfo.Portrait);
             SetThornName(thornInfo.ThornName);
 
-            // todo: 需要进行数据映射
-            SetThornProperty1(thornInfo.ATK);
-            SetThornProperty2(thornInfo.CD);
-            SetThornProperty3(thornInfo.Friction);
+            SetThornProperty1(DataMapping(thornInfo.ATK, thornProperty1Range));
+            SetThornProperty2(DataMapping(thornInfo.CD, thornProperty2Range));
+            SetThornProperty3(DataMapping(thornInfo.Friction, thornProperty3Range));
 
             SetThornIntroduction(thornInfo.ThornIntroduction);
         }
