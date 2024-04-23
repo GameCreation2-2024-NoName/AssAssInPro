@@ -9,11 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 584cdf1776c24ea793a9ba1da7984191, type: 3}
-  m_Name: AssData 1
+  m_Script: {fileID: 11500000, guid: cbfff37673094b198ad9c96612ffd696, type: 3}
+  m_Name: DoublePeakThorn
   m_EditorClassIdentifier: 
   id: 1
-  hp: 80
-  initialVelocity: 7
+  atk: 30
+  cd: 0.7
   friction: 5
-  prototype: {fileID: 5879413710637086575, guid: 505578b467eec7e438c399d0bdaf2b43, type: 3}
+  prototype: {fileID: 3527323057261180279, guid: 53ee0a2ba3c4f5a449b21936215e3560, type: 3}

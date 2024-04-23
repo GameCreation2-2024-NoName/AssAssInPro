@@ -1,5 +1,4 @@
 using System.Linq;
-using LJH.Scripts.Player;
 using LJH.Scripts.UI;
 using MoreMountains.Feedbacks;
 using Pditine.Scripts.Player.Ass;
@@ -21,9 +20,9 @@ namespace Pditine.Scripts.Player
         private bool _isCharging;
         private float InitialVelocity=>_theAss.Data.InitialVelocity;
         private float Friction=>_theAss.Data.Friction+_theThorn.Data.Friction;
-        private float cd => _theThorn.Data.CD;
-        private float hp => _theAss.Data.HP;
-        private float atk => _theThorn.Data.ATK;
+        private float CD => _theThorn.Data.CD;
+        private float HP => _theAss.Data.HP;
+        private float ATK => _theThorn.Data.ATK;
         
         [HideInInspector]public float CurrentSpeed;
         [SerializeField] private float rotateSpeed;
@@ -35,7 +34,6 @@ namespace Pditine.Scripts.Player
         private float _currentCD;
 
         [HideInInspector]public PlayerInput TheInput;
-        
         
         private ThornBase _theThorn;
         public ThornBase TheThorn => _theThorn;
@@ -122,7 +120,7 @@ namespace Pditine.Scripts.Player
                 _isCharging = false;
                 Direction = _inputDirection;
                 CurrentSpeed = InitialVelocity;
-                _currentCD = cd;
+                _currentCD = CD;
                 directionArrow.SetActive(false);
                 Debug.Log("结束蓄力");
             }
@@ -139,7 +137,7 @@ namespace Pditine.Scripts.Player
             if(!_isCharging)
                 _currentCD -= Time.deltaTime;
             if (_currentCD <= 0) _currentCD = 0;
-            _cdUI.UpdateCD(_currentCD/cd);
+            _cdUI.UpdateCD(_currentCD/CD);
         }
         
         public void BeDestroy()

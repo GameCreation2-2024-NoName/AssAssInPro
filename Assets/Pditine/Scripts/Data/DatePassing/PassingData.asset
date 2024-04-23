@@ -12,5 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b35dfc3d55c4174b5a930258cef14f8, type: 3}
   m_Name: PassingData
   m_EditorClassIdentifier: 
-  assID: 0
-  thornID: 0
+  player1AssID: 0
+  player2AssID: 0
+  player1ThornID: 2
+  player2ThornID: 1
+  currentGameModel: {fileID: 0}

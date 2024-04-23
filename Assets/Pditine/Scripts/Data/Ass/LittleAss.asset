@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 584cdf1776c24ea793a9ba1da7984191, type: 3}
-  m_Name: AssData
+  m_Name: LittleAss
   m_EditorClassIdentifier: 
-  id: 0
-  hp: 100
-  initialVelocity: 5
+  id: 2
+  hp: 60
+  initialVelocity: 8
   friction: 5
-  prototype: {fileID: 5879413710637086575, guid: 3054868f3927c544b941dc102145c0bb, type: 3}
+  prototype: {fileID: 5879413710637086575, guid: da6437d2c84b5e0498f1afce66231f70, type: 3}

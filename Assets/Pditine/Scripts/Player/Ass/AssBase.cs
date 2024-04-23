@@ -1,5 +1,6 @@
 ﻿using LJH.Scripts.Collide;
 using Pditine.Scripts.Data.Ass;
+using UnityEngine;
 
 namespace Pditine.Scripts.Player.Ass
 {
@@ -8,7 +9,7 @@ namespace Pditine.Scripts.Player.Ass
         protected PlayerController thePlayer;
         public PlayerController ThePlayer => thePlayer;
 
-        protected AssDataBase data;
+        [SerializeField]protected AssDataBase data;
         public AssDataBase Data => data;
         
         public void Init(PlayerController parent)

@@ -10,11 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 6557738527718048427}
   - component: {fileID: 3606368539539999785}
-  - component: {fileID: 8863156868541419105}
   - component: {fileID: 5627853250223858464}
   - component: {fileID: 6958390011923699788}
+  - component: {fileID: 7802345454314844957}
   m_Layer: 0
-  m_Name: Ass
+  m_Name: LittleAss
   m_TagString: Ass
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -88,21 +88,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &8863156868541419105
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5879413710637086575}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 40c13b949a9d41d3b7b92ec84b551a9c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  thePlayer: {fileID: 0}
-  CurrentScale: 0
-  assMinScale: 0.5
 --- !u!114 &5627853250223858464
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -279,6 +264,19 @@ PolygonCollider2D:
       - {x: -0.56, y: -0.81}
       - {x: -0.59999996, y: -0.82}
   m_UseDelaunayMesh: 0
+--- !u!114 &7802345454314844957
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5879413710637086575}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d88e7cc635b540628f609e775f65ad19, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: {fileID: 11400000, guid: dbf40f02303c48742b813649c011df26, type: 2}
 --- !u!1 &8414274029101748047
 GameObject:
   m_ObjectHideFlags: 0

@@ -10,11 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 8308695071138469450}
   - component: {fileID: 1804932204932612281}
-  - component: {fileID: 1334920493639419848}
   - component: {fileID: 368425466127623579}
   - component: {fileID: 1818740128990125653}
+  - component: {fileID: 5897523508078181461}
   m_Layer: 0
-  m_Name: Thorn
+  m_Name: ClassicThorn
   m_TagString: Thorn
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -87,21 +87,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1334920493639419848
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3527323057261180279}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0e01f7eb8a5c4d99b5afeab560613cb3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  thePlayer: {fileID: 0}
-  CurrentScale: 0
-  thornMaxScale: 2
 --- !u!114 &368425466127623579
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -179,8 +164,8 @@ MonoBehaviour:
   aspectRatio: 1
   pivotPos: {x: 0, y: 0.5}
   rmsCount: 1
-  scaleBeforeZoom: {x: 1, y: 1, z: 1}
-  scaleAfterZoom: {x: 1, y: 1, z: 1}
+  scaleBeforeZoom: {x: 0.8, y: 0.8, z: 1}
+  scaleAfterZoom: {x: 0.8, y: 0.8, z: 1}
 --- !u!60 &1818740128990125653
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -241,3 +226,16 @@ PolygonCollider2D:
       - {x: 0.69, y: -0.59}
       - {x: 0.45999998, y: -0.45999998}
   m_UseDelaunayMesh: 0
+--- !u!114 &5897523508078181461
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3527323057261180279}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e18fd9764c92402894342bfc9de15b11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: {fileID: 11400000, guid: 338bb72e8a38afc42a1787569ac97d2e, type: 2}

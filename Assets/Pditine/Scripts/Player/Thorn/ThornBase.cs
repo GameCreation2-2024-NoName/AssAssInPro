@@ -1,5 +1,6 @@
 ﻿using LJH.Scripts.Collide;
 using Pditine.Scripts.Data.Ass;
+using UnityEngine;
 
 namespace Pditine.Scripts.Player.Thorn
 {
@@ -8,7 +9,7 @@ namespace Pditine.Scripts.Player.Thorn
         protected PlayerController thePlayer;
         public PlayerController ThePlayer => thePlayer;
 
-        protected ThornDataBase data;
+        [SerializeField]protected ThornDataBase data;
         public ThornDataBase Data => data;
 
         public void Init(PlayerController parent)

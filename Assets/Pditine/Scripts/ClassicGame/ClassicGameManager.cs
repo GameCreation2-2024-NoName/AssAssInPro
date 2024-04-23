@@ -61,7 +61,7 @@ namespace Pditine.Scripts
         private void CreatePlayer(int assID,int thornID,PlayerController thePlayer)
         {
             AssBase theAss = Instantiate(DataManager.Instance.GetAssData(assID).Prototype).GetComponent<AssBase>();
-            ThornBase theThorn = Instantiate(DataManager.Instance.GetThornData(assID).Prototype).GetComponent<ThornBase>();
+            ThornBase theThorn = Instantiate(DataManager.Instance.GetThornData(thornID).Prototype).GetComponent<ThornBase>();
             theAss.Init(thePlayer);
             theThorn.Init(thePlayer);
             thePlayer.Init(theThorn,theAss);
