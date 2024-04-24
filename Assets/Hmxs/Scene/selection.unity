@@ -2359,7 +2359,7 @@ RectTransform:
   m_GameObject: {fileID: 579093907}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: -1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 485719069}
@@ -3278,15 +3278,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   asses:
-  - {fileID: 11400000, guid: b2145a8d39ee73b43b88f04b7f1ccf1f, type: 2}
-  - {fileID: 11400000, guid: 4d9aef827f6d4ec4296f5465720b4e1f, type: 2}
-  - {fileID: 11400000, guid: dbf40f02303c48742b813649c011df26, type: 2}
+  - {fileID: 11400000, guid: 92034fcdd127378478e2ccb9886b5f03, type: 2}
+  - {fileID: 11400000, guid: 394955441ce77734087598396a1feed9, type: 2}
+  - {fileID: 11400000, guid: 968a14904b024b741b6ce1239b183656, type: 2}
   thorns:
-  - {fileID: 11400000, guid: 338bb72e8a38afc42a1787569ac97d2e, type: 2}
-  - {fileID: 11400000, guid: ddf7d0a9288489a4497077db793db7ef, type: 2}
-  - {fileID: 11400000, guid: fed8a2d5c094da941971f363ec36137f, type: 2}
+  - {fileID: 11400000, guid: e5a2edf19c406d247b82cf7e6d6dcd92, type: 2}
+  - {fileID: 11400000, guid: 3fa29b6e7cbcd8044befa4e573e793b0, type: 2}
+  - {fileID: 11400000, guid: 2e80b8ff546f86b4ca984ef3db8dfc62, type: 2}
   gameModules: []
-  passingData: {fileID: 0}
+  passingData: {fileID: 11400000, guid: 7418c051347f2e848add978cad8a72bf, type: 2}
 --- !u!4 &836383621
 Transform:
   m_ObjectHideFlags: 0
@@ -9245,7 +9245,7 @@ RectTransform:
   m_GameObject: {fileID: 1917650621}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: -1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 485719069}

@@ -34,6 +34,8 @@ namespace Hmxs.Scripts
                 infoSetter.SetThornInfo(DataManager.Instance.GetThornData(value));
             };
 
+            infoSetter.SetAssInfo(DataManager.Instance.GetAssData(assId.Value));
+            infoSetter.SetThornInfo(DataManager.Instance.GetThornData(thornId.Value));
             SetOutline();
         }
 
@@ -97,13 +99,17 @@ namespace Hmxs.Scripts
                 PreviousThorn();
         }
 
-        private void NextAss() => assId.Value = assId.Value >= DataManager.Instance.Asses.Count ? 0 : assId.Value++;
+        private void NextAss() =>
+            assId.Value = assId.Value >= DataManager.Instance.Asses.Count - 1 ? 0 : assId.Value + 1;
 
-        private void NextThorn() => thornId.Value = thornId.Value >= DataManager.Instance.Thorns.Count ? 0 : thornId.Value++;
+        private void NextThorn() =>
+            thornId.Value = thornId.Value >= DataManager.Instance.Thorns.Count - 1 ? 0 : thornId.Value + 1;
 
-        private void PreviousAss() => assId.Value = assId.Value <= 0 ? DataManager.Instance.Asses.Count - 1 : assId.Value--;
+        private void PreviousAss() =>
+            assId.Value = assId.Value <= 0 ? DataManager.Instance.Asses.Count - 1 : assId.Value - 1;
 
-        private void PreviousThorn() => thornId.Value = thornId.Value <= 0 ? DataManager.Instance.Thorns.Count - 1 : thornId.Value--;
+        private void PreviousThorn() =>
+            thornId.Value = thornId.Value <= 0 ? DataManager.Instance.Thorns.Count - 1 : thornId.Value - 1;
 
         private void SetOutline()
         {
