@@ -1,4 +1,5 @@
-﻿using Hmxs.Toolkit.Base.Bindable;
+﻿using System;
+using Hmxs.Toolkit.Base.Bindable;
 using Pditine.Scripts.Data;
 using Sirenix.OdinInspector;
 using UnityEngine;
@@ -20,6 +21,9 @@ namespace Hmxs.Scripts
         [SerializeField] [ReadOnly] private BindableProperty<int> thornId = new() { Value = 0 };
         [SerializeField] [ReadOnly] private bool isAssSelected = true;
 
+        public bool IsReady => isReady;
+        public Action onConfirm;
+
         private InputHandler InputHandler =>
             id == 1 ? PlayerManager.Instance.Handler1 : PlayerManager.Instance.Handler2;
 
@@ -37,6 +41,18 @@ namespace Hmxs.Scripts
             infoSetter.SetAssInfo(DataManager.Instance.GetAssData(assId.Value));
             infoSetter.SetThornInfo(DataManager.Instance.GetThornData(thornId.Value));
             SetOutline();
+        }
+
+        private void OnDestroy()
+        {
+            assId.onValueChanged -= value =>
+            {
+                infoSetter.SetAssInfo(DataManager.Instance.GetAssData(value));
+            };
+            thornId.onValueChanged -= value =>
+            {
+                infoSetter.SetThornInfo(DataManager.Instance.GetThornData(value));
+            };
         }
 
         private void Update()
@@ -58,21 +74,17 @@ namespace Hmxs.Scripts
             var angle = Mathf.Atan2(select.y, select.x) * Mathf.Rad2Deg;
             switch (angle)
             {
-                case >= 45 and <= 135:
-                    // Up
+                case >= 45 and <= 135:      // Up
                     Next();
                     break;
-                case >= -135 and <= -45:
-                    // Down
+                case >= -135 and <= -45:    // Down
                     Last();
                     break;
-                case >= -45 and <= 45:
-                    // Right
-                    SwitchSelection();
+                case >= -45 and <= 45:      // Right
+                    SetSelection(!isAssSelected);
                     break;
-                default:
-                    // Left
-                    SwitchSelection();
+                default:                    // Left
+                    SetSelection(!isAssSelected);
                     break;
             }
         }
@@ -81,6 +93,25 @@ namespace Hmxs.Scripts
         {
             Debug.Log("Confirm");
             isReady = !isReady;
+            if (isReady)
+            {
+                CloseOutline();
+                switch (id)
+                {
+                    case 1:
+                        DataManager.Instance.PassingData.player1AssID = assId.Value;
+                        DataManager.Instance.PassingData.player1ThornID = thornId.Value;
+                        break;
+                    case 2:
+                        DataManager.Instance.PassingData.player2AssID = assId.Value;
+                        DataManager.Instance.PassingData.player2ThornID = thornId.Value;
+                        break;
+                }
+
+                onConfirm?.Invoke();
+            }
+            else
+                SetOutline();
         }
 
         public void Next()
@@ -125,10 +156,10 @@ namespace Hmxs.Scripts
             }
         }
 
-        private void SwitchSelection()
+        private void CloseOutline()
         {
-            isAssSelected = !isAssSelected;
-            SetOutline();
+            assOutline.enabled = false;
+            thornOutline.enabled = false;
         }
 
         public void SetSelection(bool isAss)

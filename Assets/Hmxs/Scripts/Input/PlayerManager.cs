@@ -15,13 +15,12 @@ namespace Hmxs.Scripts
 
         private PlayerInputManager _playerInputManager;
 
-        private static PlayerManager _instance;
-        public static PlayerManager Instance => _instance;
+        public static PlayerManager Instance { get; private set; }
 
         private void Awake()
         {
-            if (_instance == null)
-                _instance = this;
+            if (Instance == null)
+                Instance = this;
             else
                 Destroy(this);
             DontDestroyOnLoad(gameObject);
