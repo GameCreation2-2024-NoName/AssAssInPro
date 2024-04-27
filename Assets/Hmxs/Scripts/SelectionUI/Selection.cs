@@ -1,4 +1,6 @@
 ﻿using System;
+using Pditine.Scripts.Data;
+using PurpleFlowerCore;
 using UnityEngine;
 
 namespace Hmxs.Scripts
@@ -35,7 +37,7 @@ namespace Hmxs.Scripts
 
         private void StartGame()
         {
-            Debug.Log("Start");
+            SceneSystem.LoadScene(DataManager.Instance.PassingData.currentGameModel.SceneID);
         }
     }
 }

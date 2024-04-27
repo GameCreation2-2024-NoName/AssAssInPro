@@ -11,8 +11,7 @@ namespace Hmxs.Scripts
         public Vector2 Select => _selectAction.ReadValue<Vector2>();
         public bool Dash => _dashAction.triggered;
         public Vector2 Direction => _directionAction.ReadValue<Vector2>();
-
-
+        
         private PlayerInput _playerInput;
         public PlayerInput PlayerInput => _playerInput;
         public ReadOnlyArray<InputDevice> Devices => _playerInput.devices;

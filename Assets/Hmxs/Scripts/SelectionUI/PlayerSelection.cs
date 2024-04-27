@@ -13,6 +13,7 @@ namespace Hmxs.Scripts
         [SerializeField] private InfoSetter infoSetter;
         [SerializeField] private Outline assOutline;
         [SerializeField] private Outline thornOutline;
+        [SerializeField] private Image readyUI;
 
         [SerializeField] [ReadOnly] private bool isReady;
         [SerializeField] [ReadOnly] private bool canSelect = true;
@@ -95,6 +96,7 @@ namespace Hmxs.Scripts
             isReady = !isReady;
             if (isReady)
             {
+                readyUI.color = Color.green;
                 CloseOutline();
                 switch (id)
                 {
@@ -111,7 +113,10 @@ namespace Hmxs.Scripts
                 onConfirm?.Invoke();
             }
             else
+            {
+                readyUI.color = Color.white;
                 SetOutline();
+            }
         }
 
         public void Next()

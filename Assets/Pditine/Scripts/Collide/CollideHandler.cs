@@ -1,23 +1,34 @@
-﻿using System.Collections.Generic;
-using Hmxs.Scripts;
-using LJH.Scripts.Map;
-using Pditine.Collide.CollideEvent;
-using Pditine.Player.Thorn;
-using Pditine.Scripts;
-using Pditine.Scripts.Player.Ass;
-using PurpleFlowerCore;
-using UnityEngine;
-
-namespace Pditine.Collide
+﻿namespace Pditine.Collide
 {
     public static class CollideHandler
     {
-        public static void ColliderHandle(List<CollidingEventBase> events,string tag1,string tag2, ColliderBase collider1,ColliderBase collider2)
+        public static void ColliderHandle(string tag1,string tag2, ColliderBase collider1,ColliderBase collider2)
         {
-            foreach (var theEvent in events)
-            {
-                if(theEvent.CompareTag(tag1,tag2))theEvent.Happen(collider1,collider2);
-            }
+            
+            if(collider1.Events is not null)
+                foreach (var theEvent in collider1.Events)
+                {
+                    if(theEvent.TryDo(tag1, tag2, collider1, collider2))
+                        return;
+                }
+            if(collider2.Events is not null)
+                foreach (var theEvent in collider2.Events)
+                {
+                    if(theEvent.TryDo(tag1, tag2, collider1, collider2))
+                        return;
+                }
+            // if(collider1.Events is not null)
+            //     foreach (var theEvent in collider1.Events.Where(theEvent => theEvent.CompareTag(tag1,tag2)))
+            //     {
+            //         theEvent.Happen(collider1, collider2);
+            //         return;
+            //     }
+            // if(collider2.Events is not null)
+            //     foreach (var theEvent in collider2.Events.Where(theEvent => theEvent.CompareTag(tag1,tag2)))
+            //     {
+            //         theEvent.Happen(collider1, collider2);
+            //         return;
+            //     }
         }
         // public static void ColliderHandle(string tag1, string tag2, ColliderBase collider1, ColliderBase collider2,bool canExchange=true)
         // //public static void ColliderHandle(string tag1, string tag2, ColliderBase collider1, ColliderBase collider2)

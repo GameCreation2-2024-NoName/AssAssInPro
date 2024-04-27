@@ -10771,7 +10771,7 @@ MonoBehaviour:
   friction: 10
   rotateSpeed: 0.1
   Direction: {x: 0, y: 0}
-  collideWithBoundary: {fileID: 0}
+  collideWithBoundary: {fileID: 7185820544702105388}
   thorn: {fileID: 7170706132954791828}
   pedestal: {fileID: 985286929357855488}
   hit: {fileID: 7185820544702105388}

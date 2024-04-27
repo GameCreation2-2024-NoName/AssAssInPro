@@ -1,11 +1,12 @@
 ﻿using System.Collections.Generic;
 using Pditine.Scripts.Data;
 using Pditine.Scripts.Data.GameModule;
+using Pditine.Scripts.SelectGameModuleScene;
+using PurpleFlowerCore;
 using TMPro;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
-namespace Pditine.Scripts.SelectGameModuleScene
+namespace Pditine.SelectGameModel
 {
     public class SelectGameModelManager : MonoBehaviour
     {
@@ -62,9 +63,8 @@ namespace Pditine.Scripts.SelectGameModuleScene
 
         public void StartGame()
         {
-            //todo:获取选择装备场景
-            SceneManager.LoadScene(0);
             DataManager.Instance.PassingData.currentGameModel = _currentGameModel;
+            SceneSystem.LoadScene(2);
         }
     }
 }

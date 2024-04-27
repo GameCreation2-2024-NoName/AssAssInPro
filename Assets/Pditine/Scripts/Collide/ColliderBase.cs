@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Pditine.Collide.CollideEvent;
 using PurpleFlowerCore;
 using PurpleFlowerCore.Utility;
@@ -12,7 +13,16 @@ namespace Pditine.Collide
         private HashSet<ColliderBase> _collidingColliders = new();
         // protected UnityAction collisionEvent;
         // public UnityAction CollisionEvent => collisionEvent;
-        protected List<CollidingEventBase> Events = new();
+        protected List<CollidingEventBase> _events;
+        public List<CollidingEventBase> Events => _events;
+
+        protected virtual void Awake()
+        {
+            _events = GetCollidingEvents();
+        }
+
+        protected abstract List<CollidingEventBase> GetCollidingEvents();
+        
         private void OnCollisionEnter2D(Collision2D other)
         {
             var otherCollider = other.collider.gameObject.GetComponent<ColliderBase>();
@@ -20,20 +30,18 @@ namespace Pditine.Collide
             if (_collidingColliders.Contains(otherCollider)) return;
             AddCollider(otherCollider);
             otherCollider.AddCollider(this);
-            
-            CollideHandler.ColliderHandle(Events,gameObject.tag,other.gameObject.tag,this,otherCollider);
+            PFCLog.Info(gameObject.tag);
+            CollideHandler.ColliderHandle(gameObject.tag,otherCollider.gameObject.tag,this,otherCollider);
         }
         
         public void AddCollider(ColliderBase theCollider)
         {
-            PFCLog.Info("add Collider"+gameObject.name);
             _collidingColliders.Add(theCollider);
             DelayUtility.Delay(0.1f, () =>
             {
                 if (_collidingColliders.Contains(theCollider))
                     _collidingColliders.Remove(theCollider);
             });
-            PFCLog.Info("add Collider 00 "+gameObject.name); 
         }
     }
 }

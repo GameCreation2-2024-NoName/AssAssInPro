@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: ClassicAss
   m_EditorClassIdentifier: 
   id: 0
-  hp: 100
-  initialVelocity: 30
+  hp: 3
+  initialVelocity: 10
   friction: 5
   prototype: {fileID: 5879413710637086575, guid: 3054868f3927c544b941dc102145c0bb, type: 3}
-  portrait: {fileID: 0}
-  assName: 
-  assIntroduction: 
+  portrait: {fileID: 1949771016, guid: fda60e6fbb169674f830355cd2a15d64, type: 3}
+  assName: "\u7ECF\u5178"
+  assIntroduction: "\u592A\u7ECF\u5178\u4E86"

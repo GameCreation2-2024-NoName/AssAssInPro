@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: AssAss
   m_EditorClassIdentifier: 
   id: 1
-  hp: 80
-  initialVelocity: 30
+  hp: 3
+  initialVelocity: 15
   friction: 5
   prototype: {fileID: 5879413710637086575, guid: 505578b467eec7e438c399d0bdaf2b43, type: 3}
-  portrait: {fileID: 0}
-  assName: 
-  assIntroduction: 
+  portrait: {fileID: -265627928, guid: fda60e6fbb169674f830355cd2a15d64, type: 3}
+  assName: ASS
+  assIntroduction: "\u4F60\u7684ASS\u6BD4\u8F83\u677E\u5F1B..."

@@ -1,6 +1,4 @@
-﻿using UnityEngine;
-
-namespace Pditine.Scripts.Player.Ass
+﻿namespace Pditine.Player.Ass
 {
     public class ClassicAss : AssBase
     {

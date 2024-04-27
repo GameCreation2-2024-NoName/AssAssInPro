@@ -1,8 +1,11 @@
-﻿using Pditine.Collide;
+﻿using System.Collections.Generic;
+using Pditine.Collide;
+using Pditine.Collide.CollideEvent;
 using Pditine.Scripts.Data.Ass;
+using Pditine.Scripts.Player;
 using UnityEngine;
 
-namespace Pditine.Scripts.Player.Ass
+namespace Pditine.Player.Ass
 {
     public abstract class AssBase : ColliderBase
     {
@@ -10,9 +13,14 @@ namespace Pditine.Scripts.Player.Ass
         public PlayerController ThePlayer => thePlayer;
 
         [SerializeField]protected AssDataBase data;
-        
+           
         public AssDataBase Data => data;
-        
+
+        protected override List<CollidingEventBase> GetCollidingEvents()
+        {
+            return new(){new Thorn_AssEvent(),new BarrierThorn_AssEvent()};
+        }
+
         public void Init(PlayerController parent)
         {
             thePlayer = parent;

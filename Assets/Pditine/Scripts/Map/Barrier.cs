@@ -1,8 +1,7 @@
-﻿using System;
-using MoreMountains.Feedbacks;
+﻿using MoreMountains.Feedbacks;
 using UnityEngine;
 
-namespace LJH.Scripts.Map
+namespace Pditine.Map
 {
     public class Barrier : MonoBehaviour
     {

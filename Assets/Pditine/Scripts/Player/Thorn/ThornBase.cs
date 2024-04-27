@@ -1,4 +1,6 @@
-﻿using Pditine.Collide;
+﻿using System.Collections.Generic;
+using Pditine.Collide;
+using Pditine.Collide.CollideEvent;
 using Pditine.Scripts.Data.Ass;
 using Pditine.Scripts.Player;
 using UnityEngine;
@@ -13,6 +15,11 @@ namespace Pditine.Player.Thorn
         [SerializeField]protected ThornDataBase data;
         public ThornDataBase Data => data;
 
+        protected override List<CollidingEventBase> GetCollidingEvents()
+        {
+            return new(){new Thorn_ThornEvent(),new Boundary_ThornEvent(),new Thorn_AssEvent(),new BarrierPedestal_ThornEvent(),new BarrierThorn_ThornEvent()};
+        }
+        
         public void Init(PlayerController parent)
         {
             thePlayer = parent;

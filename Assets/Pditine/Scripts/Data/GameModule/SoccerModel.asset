@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8f40ca03217b33741956c72183f47985, type: 3}
-  m_Name: GameModuleData 2
+  m_Name: SoccerModel
   m_EditorClassIdentifier: 
   id: 0
   moduleName: "\u8DB3\u7403\u6A21\u5F0F"

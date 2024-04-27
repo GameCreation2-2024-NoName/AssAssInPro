@@ -2,15 +2,15 @@
 
 namespace Pditine.Collide.CollideEvent
 {
-    public class ThornThornEvent : CollidingEventBase
+    public class Thorn_ThornEvent : CollidingEventBase
     {
-        public override bool CompareTag(string tag1, string tag2)
+        protected override bool CompareTag(string tag1, string tag2)
         {
             if (tag1 == "Thorn" && tag2 == "Thorn") return true;
             return false;
         }
 
-        public override void Happen(ColliderBase collider1, ColliderBase collider2)
+        protected override void Happen(ColliderBase collider1, ColliderBase collider2)
         {
             var thePlayer1 = (collider1 as ThornBase).ThePlayer;
             var thePlayer2 = (collider2 as ThornBase).ThePlayer;

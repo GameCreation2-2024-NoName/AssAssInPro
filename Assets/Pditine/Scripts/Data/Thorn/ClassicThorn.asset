@@ -13,7 +13,10 @@ MonoBehaviour:
   m_Name: ClassicThorn
   m_EditorClassIdentifier: 
   id: 0
-  atk: 50
-  cd: 1
+  atk: 1
+  cd: 0.5
   friction: 5
   prototype: {fileID: 3527323057261180279, guid: 0b32d0318cf54e0419a09af4ca8406db, type: 3}
+  portrait: {fileID: -662956048, guid: 85fd8cf60ad5c434597e6203c0b68df4, type: 3}
+  thornName: "\u7ECF\u5178"
+  thornIntroduction: "\u592A\u7ECF\u5178\u4E86"

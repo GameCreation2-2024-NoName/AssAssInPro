@@ -1,8 +1,9 @@
-﻿using MoreMountains.Feedbacks;
+﻿using System.Collections.Generic;
 using Pditine.Collide;
+using Pditine.Collide.CollideEvent;
 using UnityEngine;
 
-namespace LJH.Scripts.Map
+namespace Pditine.Map
 {
     public class Boundary : ColliderBase
     {
@@ -29,5 +30,13 @@ namespace LJH.Scripts.Map
         //     }
         //     
         // }
+        protected override List<CollidingEventBase> GetCollidingEvents()
+        {
+            return new()
+            {
+                new Boundary_BarrierThorn(), new Boundary_ThornEvent(),
+                new Boundary_BarrierPedestalEvent()
+            };
+        }
     }
 }

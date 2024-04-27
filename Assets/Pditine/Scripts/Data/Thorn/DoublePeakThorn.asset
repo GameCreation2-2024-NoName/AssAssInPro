@@ -13,7 +13,10 @@ MonoBehaviour:
   m_Name: DoublePeakThorn
   m_EditorClassIdentifier: 
   id: 1
-  atk: 30
-  cd: 0.7
-  friction: 5
+  atk: 0.5
+  cd: 0.5
+  friction: 6
   prototype: {fileID: 3527323057261180279, guid: 53ee0a2ba3c4f5a449b21936215e3560, type: 3}
+  portrait: {fileID: 1236517569, guid: 85fd8cf60ad5c434597e6203c0b68df4, type: 3}
+  thornName: "\u53CC\u5CF0"
+  thornIntroduction: "\u4E24\u4E2A\u523A"

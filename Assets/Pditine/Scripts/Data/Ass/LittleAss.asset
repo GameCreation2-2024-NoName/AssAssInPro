@@ -13,7 +13,10 @@ MonoBehaviour:
   m_Name: LittleAss
   m_EditorClassIdentifier: 
   id: 2
-  hp: 60
-  initialVelocity: 8
-  friction: 5
+  hp: 2
+  initialVelocity: 20
+  friction: 3
   prototype: {fileID: 5879413710637086575, guid: da6437d2c84b5e0498f1afce66231f70, type: 3}
+  portrait: {fileID: 1177991168, guid: fda60e6fbb169674f830355cd2a15d64, type: 3}
+  assName: "\u5C0F\u53EF\u7231"
+  assIntroduction: CUTE

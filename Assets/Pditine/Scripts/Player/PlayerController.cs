@@ -2,9 +2,9 @@ using System.Linq;
 using Hmxs.Scripts;
 using LJH.Scripts.UI;
 using MoreMountains.Feedbacks;
+using Pditine.Player;
+using Pditine.Player.Ass;
 using Pditine.Player.Thorn;
-using Pditine.Scripts.Player.Ass;
-using Pditine.Scripts.Player.Thorn;
 using PurpleFlowerCore;
 using PurpleFlowerCore.Utility;
 using Sirenix.OdinInspector;
@@ -27,7 +27,6 @@ namespace Pditine.Scripts.Player
         [HideInInspector]public float CurrentSpeed;
         [SerializeField] private float rotateSpeed;
         private Vector2 _inputDirection;
-        [SerializeField] private GameObject directionArrow;
         [HideInInspector]public Vector2 Direction;
         private PlayerCD _cdUI;
 
@@ -42,16 +41,10 @@ namespace Pditine.Scripts.Player
 
         public bool CanMove;
 
-        [SerializeField]private InputHandler _inputHandler;
+        private InputHandler _inputHandler;
         public InputHandler InputHandler => _inputHandler;
-        // {
-        //     get
-        //     {
-        //         if (_inputHandler is null)
-        //             _inputHandler = id == 1 ? PlayerManager.Instance.Handler1 : PlayerManager.Instance.Handler2;
-        //         return InputHandler;
-        //     }
-        // }
+
+        [SerializeField] private DirectionArrow arrow;
 
         [Title("Effect")]
         [SerializeField] private MMF_Player hitFeedback;
@@ -64,7 +57,6 @@ namespace Pditine.Scripts.Player
 
         private void Start()
         {
-            
             _scaleShaker = GetComponent<MMScaleShaker>();
             Direction = transform.right;
             _cdUI = FindObjectsOfType<PlayerCD>().FirstOrDefault(p=>p.ID == id);
@@ -88,7 +80,7 @@ namespace Pditine.Scripts.Player
 
         public void Init(ThornBase theThorn,AssBase theAss)
         {
-            //_inputHandler = id==1?PlayerManager.Instance.Handler1: PlayerManager.Instance.Handler2;
+            _inputHandler = id==1?PlayerManager.Instance.Handler1: PlayerManager.Instance.Handler2;
             _theAss = theAss;
             _theThorn = theThorn;
         }
@@ -96,9 +88,15 @@ namespace Pditine.Scripts.Player
         public void ChangeDirection(Vector3 direction)
         {
             if (!CanMove) return;
-            //_inputDirection = direction;
-            _inputDirection = (Camera.main.ScreenToWorldPoint(direction) - transform.position).normalized;
-            directionArrow.transform.right = _inputDirection;
+            if (InputHandler.IsKeyboard)
+            {
+                _inputDirection = (Camera.main.ScreenToWorldPoint(direction) - transform.position).normalized;
+                _inputDirection = _inputDirection.normalized; // LJH:奇怪的bug
+            }
+            else
+                _inputDirection = direction;
+            
+            arrow.ChangeDirection(_inputDirection);
         }
         
         public void Dash()
@@ -106,6 +104,7 @@ namespace Pditine.Scripts.Player
             if (!CanMove) return;
             if (_currentCD > 0) return;
             Direction = _inputDirection;
+
             CurrentSpeed = InitialVelocity;
             _currentCD = CD;
         }
