@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.Utilities;
 
 namespace Hmxs.Scripts
 {
@@ -8,11 +9,18 @@ namespace Hmxs.Scripts
     {
         public bool Confirm => _confirmAction.triggered;
         public Vector2 Select => _selectAction.ReadValue<Vector2>();
-
         public bool Dash => _dashAction.triggered;
         public Vector2 Direction => _directionAction.ReadValue<Vector2>();
 
+
         private PlayerInput _playerInput;
+        public PlayerInput PlayerInput => _playerInput;
+        public ReadOnlyArray<InputDevice> Devices => _playerInput.devices;
+        public ReadOnlyArray<InputDevice> PairedDevices => _playerInput.user.pairedDevices;
+        public bool IsKeyboard => _playerInput.currentControlScheme == InputScheme.KeyboardMouse;
+        public bool IsGamepad => _playerInput.currentControlScheme == InputScheme.GamePad;
+        public string ControlScheme => _playerInput.currentControlScheme;
+
         // Map: Selection
         private InputAction _selectAction;
         private InputAction _confirmAction;
