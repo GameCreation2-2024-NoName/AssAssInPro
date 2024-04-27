@@ -1,8 +1,9 @@
-﻿using LJH.Scripts.Collide;
+﻿using Pditine.Collide;
 using Pditine.Scripts.Data.Ass;
+using Pditine.Scripts.Player;
 using UnityEngine;
 
-namespace Pditine.Scripts.Player.Thorn
+namespace Pditine.Player.Thorn
 {
     public abstract class ThornBase : ColliderBase
     {

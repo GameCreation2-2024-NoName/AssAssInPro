@@ -13,7 +13,7 @@ namespace Pditine.Scripts.Data.Ass
         [SerializeField] private Sprite portrait;
         [SerializeField] private string assName;
         [SerializeField] private string assIntroduction;
-
+        
         public int ID => id;
         public float HP => hp;
         public float InitialVelocity => initialVelocity;

@@ -15,7 +15,6 @@ namespace LJH.Scripts.UI
             _cdUI = GetComponent<Image>();
         }
 
-
         public void UpdateCD(float fillCD)
         {
             _cdUI.fillAmount = fillCD;

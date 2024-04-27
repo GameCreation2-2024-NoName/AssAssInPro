@@ -1,4 +1,4 @@
-﻿using LJH.Scripts.Collide;
+﻿using Pditine.Collide;
 using Pditine.Scripts.Data.Ass;
 using UnityEngine;
 
@@ -10,6 +10,7 @@ namespace Pditine.Scripts.Player.Ass
         public PlayerController ThePlayer => thePlayer;
 
         [SerializeField]protected AssDataBase data;
+        
         public AssDataBase Data => data;
         
         public void Init(PlayerController parent)
@@ -20,6 +21,21 @@ namespace Pditine.Scripts.Player.Ass
             transform.parent = parent.transform;
         }
 
+        // public virtual float GetHP()
+        // {
+        //     return data.HP;
+        // }
+        //
+        // public virtual float GetFriction()
+        // {
+        //     return data.Friction;
+        // }
+        //
+        // public virtual float GetInitialVelocity()
+        // {
+        //     return data.InitialVelocity;
+        // }
+        
         // public void Init(AssDataBase theData)
         // {
         //     data = theData;

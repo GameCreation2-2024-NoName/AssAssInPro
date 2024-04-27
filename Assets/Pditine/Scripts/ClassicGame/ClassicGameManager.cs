@@ -1,6 +1,6 @@
 using Cinemachine;
-using LJH.Scripts.Player;
 using LJH.Scripts.Utility;
+using Pditine.Player.Thorn;
 using Pditine.Scripts.Data;
 using Pditine.Scripts.Data.DatePassing;
 using Pditine.Scripts.Player;
@@ -9,7 +9,6 @@ using Pditine.Scripts.Player.Thorn;
 using PurpleFlowerCore;
 using PurpleFlowerCore.Utility;
 using TMPro;
-using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;

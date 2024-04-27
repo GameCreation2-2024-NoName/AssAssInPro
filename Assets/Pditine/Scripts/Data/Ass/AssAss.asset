@@ -14,6 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 1
   hp: 80
-  initialVelocity: 7
+  initialVelocity: 30
   friction: 5
   prototype: {fileID: 5879413710637086575, guid: 505578b467eec7e438c399d0bdaf2b43, type: 3}
+  portrait: {fileID: 0}
+  assName: 
+  assIntroduction: 

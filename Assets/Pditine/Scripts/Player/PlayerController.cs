@@ -1,6 +1,8 @@
 using System.Linq;
+using Hmxs.Scripts;
 using LJH.Scripts.UI;
 using MoreMountains.Feedbacks;
+using Pditine.Player.Thorn;
 using Pditine.Scripts.Player.Ass;
 using Pditine.Scripts.Player.Thorn;
 using PurpleFlowerCore;
@@ -8,7 +10,6 @@ using PurpleFlowerCore.Utility;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.Serialization;
 
 namespace Pditine.Scripts.Player
 {
@@ -17,7 +18,6 @@ namespace Pditine.Scripts.Player
         [SerializeField]private int id;
         public int ID => id;
         
-        private bool _isCharging;
         private float InitialVelocity=>_theAss.Data.InitialVelocity;
         private float Friction=>_theAss.Data.Friction+_theThorn.Data.Friction;
         private float CD => _theThorn.Data.CD;
@@ -42,6 +42,17 @@ namespace Pditine.Scripts.Player
 
         public bool CanMove;
 
+        [SerializeField]private InputHandler _inputHandler;
+        public InputHandler InputHandler => _inputHandler;
+        // {
+        //     get
+        //     {
+        //         if (_inputHandler is null)
+        //             _inputHandler = id == 1 ? PlayerManager.Instance.Handler1 : PlayerManager.Instance.Handler2;
+        //         return InputHandler;
+        //     }
+        // }
+
         [Title("Effect")]
         [SerializeField] private MMF_Player hitFeedback;
         [SerializeField] private MMF_Player loseFeedback;
@@ -50,11 +61,10 @@ namespace Pditine.Scripts.Player
         [Title("Audios")]
         [SerializeField] private MMF_Player pushAudio;
         [SerializeField] private MMF_Player slowdownAudio;
-        [SerializeField] private MMF_Player selectAudio;
-        [SerializeField] private MMF_Player confirmAudio;
 
         private void Start()
         {
+            
             _scaleShaker = GetComponent<MMScaleShaker>();
             Direction = transform.right;
             _cdUI = FindObjectsOfType<PlayerCD>().FirstOrDefault(p=>p.ID == id);
@@ -72,58 +82,32 @@ namespace Pditine.Scripts.Player
         {
             ReduceSpeed();
             UpdateCD();
+            if(InputHandler.Dash)Dash();
+            if(InputHandler.Direction.sqrMagnitude != 0)ChangeDirection(InputHandler.Direction);
         }
 
         public void Init(ThornBase theThorn,AssBase theAss)
         {
+            //_inputHandler = id==1?PlayerManager.Instance.Handler1: PlayerManager.Instance.Handler2;
             _theAss = theAss;
             _theThorn = theThorn;
         }
         
-        public void ChangeDirection(InputAction.CallbackContext ctx)
+        public void ChangeDirection(Vector3 direction)
         {
             if (!CanMove) return;
-            if (!_isCharging) return;
-            var tempInputDirection = _inputDirection;
-            //_inputDirection = (Camera.main.ScreenToWorldPoint(ctx.ReadValue<Vector2>())-transform.position).normalized;
-            if (HaveGamepad())
-                _inputDirection = ctx.ReadValue<Vector2>().normalized;
-            else
-                _inputDirection = (ctx.ReadValue<Vector2>() - new Vector2(Screen.width / 2, Screen.height / 2))
-                    .normalized;
-            if (_inputDirection.normalized == Vector2.zero)
-                _inputDirection = tempInputDirection;
+            //_inputDirection = direction;
+            _inputDirection = (Camera.main.ScreenToWorldPoint(direction) - transform.position).normalized;
             directionArrow.transform.right = _inputDirection;
         }
-
-        private bool HaveGamepad()
-        {
-            return TheInput.devices.OfType<Gamepad>().Any();
-        }
         
-        public void Launch(InputAction.CallbackContext ctx)
+        public void Dash()
         {
             if (!CanMove) return;
             if (_currentCD > 0) return;
-            
-            if (ctx.started)
-            {
-                if (_isCharging) return;
-                _isCharging = true;
-                directionArrow.SetActive(true);
-                Debug.Log("开始蓄力");
-            }
-        
-            if (ctx.canceled)
-            {
-                if (!_isCharging) return;
-                _isCharging = false;
-                Direction = _inputDirection;
-                CurrentSpeed = InitialVelocity;
-                _currentCD = CD;
-                directionArrow.SetActive(false);
-                Debug.Log("结束蓄力");
-            }
+            Direction = _inputDirection;
+            CurrentSpeed = InitialVelocity;
+            _currentCD = CD;
         }
 
         private void ReduceSpeed()
@@ -134,8 +118,7 @@ namespace Pditine.Scripts.Player
 
         private void UpdateCD()
         {
-            if(!_isCharging)
-                _currentCD -= Time.deltaTime;
+            _currentCD -= Time.deltaTime;
             if (_currentCD <= 0) _currentCD = 0;
             _cdUI.UpdateCD(_currentCD/CD);
         }
@@ -155,7 +138,5 @@ namespace Pditine.Scripts.Player
         
         public void HitFeedback() => hitFeedback.PlayFeedbacks();
         public void LoseFeedback() => loseFeedback.PlayFeedbacks();
-        public void SelectAudio() => selectAudio.PlayFeedbacks();
-        public void ConfirmAudio() => confirmAudio.PlayFeedbacks();
     }
 }
