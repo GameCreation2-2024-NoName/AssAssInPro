@@ -90,4 +90,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   theImage: {fileID: 3300857635514511269}
-  speed: 0.1
+  speed: 0.2

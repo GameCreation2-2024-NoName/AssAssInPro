@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using Pditine.Scripts.Data;
 using Pditine.Scripts.Data.GameModule;
 using Pditine.Scripts.SelectGameModuleScene;
@@ -16,12 +17,14 @@ namespace Pditine.SelectGameModel
         [SerializeField] private RectTransform leftPoint;
         [SerializeField] private RectTransform centrePoint;
         [SerializeField] private RectTransform rightPoint;
+        [SerializeField]private TextMeshProUGUI gameModuleName;
+        [SerializeField]private TextMeshProUGUI gameModuleIntroduction;
+        [SerializeField] [Range(0, 1)] private float textFadeSpeed;
+        
         private int _gameModuleIndex;
         private GameModelBase _currentGameModel;
         private List<GameModelBase> _gameModels;
 
-        [SerializeField]private TextMeshProUGUI gameModuleName;
-        [SerializeField]private TextMeshProUGUI gameModuleIntroduction;
         
         private void Start()
         {
@@ -37,8 +40,7 @@ namespace Pditine.SelectGameModel
             rightImage.target = rightPoint;
             _currentGameModel = _gameModels[_gameModuleIndex];
             centreImage.Sprite = _currentGameModel.Preview;
-            gameModuleName.text = _currentGameModel.ModuleName;
-            gameModuleIntroduction.text = _currentGameModel.Introduction;
+            ChangeText();
         }
         
         public void TurnLeft()
@@ -66,5 +68,32 @@ namespace Pditine.SelectGameModel
             DataManager.Instance.PassingData.currentGameModel = _currentGameModel;
             SceneSystem.LoadScene(2);
         }
+
+        private Coroutine _changeText;
+        private void ChangeText()
+        {
+            if(_changeText is not null)
+                StopCoroutine(_changeText);
+            _changeText = StartCoroutine(DoChangeText());
+        }
+        
+        private IEnumerator DoChangeText()
+        {
+            while (gameModuleName.color.a>0.05f)
+            {
+                gameModuleName.color = Color.Lerp(gameModuleName.color,new Color(1,1,1,0),textFadeSpeed);
+                gameModuleIntroduction.color = gameModuleName.color;
+                yield return new WaitForSeconds(0.01f);
+            }
+            gameModuleName.text = _currentGameModel.ModuleName;
+            gameModuleIntroduction.text = _currentGameModel.Introduction;
+            while (gameModuleName.color.a<0.95f)
+            {
+                gameModuleName.color = Color.Lerp(gameModuleName.color,new Color(1,1,1,1),textFadeSpeed);
+                gameModuleIntroduction.color = gameModuleName.color;
+                yield return new WaitForSeconds(0.01f);
+            }
+        }
+        
     }
 }
