@@ -1,7 +1,10 @@
 ﻿using System;
 using Pditine.Scripts.Data;
+using Pditine.Utility;
 using PurpleFlowerCore;
+using PurpleFlowerCore.Utility;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Hmxs.Scripts
 {
@@ -39,5 +42,6 @@ namespace Hmxs.Scripts
         {
             SceneSystem.LoadScene(DataManager.Instance.PassingData.currentGameModel.SceneID);
         }
+        
     }
 }

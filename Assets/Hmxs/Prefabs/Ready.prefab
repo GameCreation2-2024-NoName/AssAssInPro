@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 501527419929839672}
   - component: {fileID: 4752902292644256956}
   - component: {fileID: 981351243910343173}
-  - component: {fileID: 6976087143684350803}
+  - component: {fileID: 5330634633553469240}
   m_Layer: 5
   m_Name: Ready
   m_TagString: Untagged
@@ -67,7 +67,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 1746118951, guid: f76f5be9f6ae77e40972a88f360654a5, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -120,8 +120,32 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 4752902292644256956}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
---- !u!114 &6976087143684350803
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 5330634633553469240}
+        m_TargetAssemblyTypeName: Hmxs.Scripts.ReadyUI, Assembly-CSharp
+        m_MethodName: SetReady
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &5330634633553469240
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -130,9 +154,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1156346636304546160}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0801454c2776447dadfa8ac1734e6e6d, type: 3}
+  m_Script: {fileID: 11500000, guid: c91be55ac664441cbb22115cd0d906f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxScale: 1.1
-  minScale: 0.9
-  scalingSpeed: 0.15
+  yellow: {fileID: 1746118951, guid: f76f5be9f6ae77e40972a88f360654a5, type: 3}
+  green: {fileID: -470545088, guid: 5f7193d643a4270448af2a81e8ff3f73, type: 3}
+  theImage: {fileID: 4752902292644256956}
+  thePlayer: {fileID: 0}

@@ -6,20 +6,21 @@ using Pditine.Scripts.SelectGameModuleScene;
 using PurpleFlowerCore;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Pditine.SelectGameModel
 {
     public class SelectGameModelManager : MonoBehaviour
     {
-        [SerializeField] private GameModelImage leftImage;
-        [SerializeField] private GameModelImage centreImage;
-        [SerializeField] private GameModelImage rightImage;
+        [SerializeField] private GameModelInfo leftInfo;
+        [SerializeField] private GameModelInfo centreInfo;
+        [SerializeField] private GameModelInfo rightInfo;
         [SerializeField] private RectTransform leftPoint;
         [SerializeField] private RectTransform centrePoint;
         [SerializeField] private RectTransform rightPoint;
-        [SerializeField]private TextMeshProUGUI gameModuleName;
-        [SerializeField]private TextMeshProUGUI gameModuleIntroduction;
-        [SerializeField] [Range(0, 1)] private float textFadeSpeed;
+        // [SerializeField]private TextMeshProUGUI gameModuleName;
+        // [SerializeField]private TextMeshProUGUI gameModuleIntroduction;
+        // [SerializeField] [Range(0, 1)] private float textFadeSpeed;
         
         private int _gameModuleIndex;
         private GameModelBase _currentGameModel;
@@ -35,21 +36,22 @@ namespace Pditine.SelectGameModel
 
         private void Init()
         {
-            leftImage.target = leftPoint;
-            centreImage.target = centrePoint;
-            rightImage.target = rightPoint;
+            leftInfo.target = leftPoint;
+            centreInfo.target = centrePoint;
+            rightInfo.target = rightPoint;
             _currentGameModel = _gameModels[_gameModuleIndex];
-            centreImage.Sprite = _currentGameModel.Preview;
-            ChangeText();
+            
+            centreInfo.SetInfo(_currentGameModel);
+            //ChangeText();
         }
         
         public void TurnLeft()
         {
             _gameModuleIndex--;
             if (_gameModuleIndex < 0) _gameModuleIndex = _gameModels.Count - 1;
-            rightImage.Enable = false;
-            leftImage.Enable = true;
-            (leftImage, centreImage, rightImage) = (rightImage, leftImage, centreImage);
+            rightInfo.Enable = false;
+            leftInfo.Enable = true;
+            (leftInfo, centreInfo, rightInfo) = (rightInfo, leftInfo, centreInfo);
             Init();
         }
         
@@ -57,9 +59,9 @@ namespace Pditine.SelectGameModel
         {
             _gameModuleIndex++;
             if (_gameModuleIndex > _gameModels.Count - 1) _gameModuleIndex = 0;
-            rightImage.Enable = true;
-            leftImage.Enable = false;
-            (leftImage, centreImage, rightImage) = (centreImage, rightImage, leftImage);
+            rightInfo.Enable = true;
+            leftInfo.Enable = false;
+            (leftInfo, centreInfo, rightInfo) = (centreInfo, rightInfo, leftInfo);
             Init();
         }
 
@@ -70,30 +72,30 @@ namespace Pditine.SelectGameModel
         }
 
         private Coroutine _changeText;
-        private void ChangeText()
-        {
-            if(_changeText is not null)
-                StopCoroutine(_changeText);
-            _changeText = StartCoroutine(DoChangeText());
-        }
+        // private void ChangeText()
+        // {
+        //     if(_changeText is not null)
+        //         StopCoroutine(_changeText);
+        //     _changeText = StartCoroutine(DoChangeText());
+        // }
         
-        private IEnumerator DoChangeText()
-        {
-            while (gameModuleName.color.a>0.05f)
-            {
-                gameModuleName.color = Color.Lerp(gameModuleName.color,new Color(1,1,1,0),textFadeSpeed);
-                gameModuleIntroduction.color = gameModuleName.color;
-                yield return new WaitForSeconds(0.01f);
-            }
-            gameModuleName.text = _currentGameModel.ModuleName;
-            gameModuleIntroduction.text = _currentGameModel.Introduction;
-            while (gameModuleName.color.a<0.95f)
-            {
-                gameModuleName.color = Color.Lerp(gameModuleName.color,new Color(1,1,1,1),textFadeSpeed);
-                gameModuleIntroduction.color = gameModuleName.color;
-                yield return new WaitForSeconds(0.01f);
-            }
-        }
+        // private IEnumerator DoChangeText()
+        // {
+        //     while (gameModuleName.color.a>0.05f)
+        //     {
+        //         gameModuleName.color = Color.Lerp(gameModuleName.color,new Color(1,1,1,0),textFadeSpeed);
+        //         gameModuleIntroduction.color = gameModuleName.color;
+        //         yield return new WaitForSeconds(0.01f);
+        //     }
+        //     gameModuleName.text = _currentGameModel.ModuleName;
+        //     gameModuleIntroduction.text = _currentGameModel.Introduction;
+        //     while (gameModuleName.color.a<0.95f)
+        //     {
+        //         gameModuleName.color = Color.Lerp(gameModuleName.color,new Color(1,1,1,1),textFadeSpeed);
+        //         gameModuleIntroduction.color = gameModuleName.color;
+        //         yield return new WaitForSeconds(0.01f);
+        //     }
+        // }
         
     }
 }

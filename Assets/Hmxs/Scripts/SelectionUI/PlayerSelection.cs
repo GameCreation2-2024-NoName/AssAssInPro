@@ -13,7 +13,7 @@ namespace Hmxs.Scripts
         [SerializeField] private InfoSetter infoSetter;
         [SerializeField] private Outline assOutline;
         [SerializeField] private Outline thornOutline;
-        [SerializeField] private Image readyUI;
+        [SerializeField] private ReadyUI readyUI;
 
         [SerializeField] [ReadOnly] private bool isReady;
         [SerializeField] [ReadOnly] private bool canSelect = true;
@@ -90,13 +90,16 @@ namespace Hmxs.Scripts
             }
         }
 
-        private void OnConfirm()
+        public void OnConfirm()
         {
+            if (InputHandler is null) return;
             Debug.Log("Confirm");
             isReady = !isReady;
+            
+            readyUI.SetReady(isReady);
+            
             if (isReady)
             {
-                readyUI.color = Color.green;
                 CloseOutline();
                 switch (id)
                 {
@@ -114,7 +117,6 @@ namespace Hmxs.Scripts
             }
             else
             {
-                readyUI.color = Color.white;
                 SetOutline();
             }
         }
