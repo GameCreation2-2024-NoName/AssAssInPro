@@ -281,7 +281,7 @@ GameObject:
   - component: {fileID: 3300857635514511269}
   - component: {fileID: -6890343811462914081}
   m_Layer: 5
-  m_Name: GameModuleImage
+  m_Name: GameModuleInfo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
