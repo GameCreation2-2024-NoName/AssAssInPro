@@ -1,68 +1,70 @@
-using System.Linq;
+using System;
 using Hmxs.Scripts;
-using LJH.Scripts.UI;
 using MoreMountains.Feedbacks;
-using Pditine.Player;
+using Pditine.GamePlay.UI;
 using Pditine.Player.Ass;
 using Pditine.Player.Thorn;
-using PurpleFlowerCore;
 using PurpleFlowerCore.Utility;
 using Sirenix.OdinInspector;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
-namespace Pditine.Scripts.Player
+namespace Pditine.Player
 {
     public class PlayerController : MonoBehaviour
     {
+        #region 属性
+
         [SerializeField]private int id;
         public int ID => id;
-        
         private float InitialVelocity=>_theAss.Data.InitialVelocity;
         private float Friction=>_theAss.Data.Friction+_theThorn.Data.Friction;
         private float CD => _theThorn.Data.CD;
-        private float HP => _theAss.Data.HP;
+
+        private int hp;
+        public int HP => hp;
         private float ATK => _theThorn.Data.ATK;
         
         [HideInInspector]public float CurrentSpeed;
         [SerializeField] private float rotateSpeed;
         private Vector2 _inputDirection;
         [HideInInspector]public Vector2 Direction;
-        private PlayerCD _cdUI;
-
+        
         private float _currentCD;
+        public float CurrentCD=>_currentCD;
+        
+        public bool CanMove;
 
-        [HideInInspector]public PlayerInput TheInput;
+        #endregion
+
+        #region 引用
         
         private ThornBase _theThorn;
         public ThornBase TheThorn => _theThorn;
         private AssBase _theAss;
         public AssBase TheAss => _theAss;
 
-        public bool CanMove;
-
         private InputHandler _inputHandler;
         public InputHandler InputHandler => _inputHandler;
 
         [SerializeField] private DirectionArrow arrow;
 
+        #endregion
+
+        #region 事件
+        public event Action<float> OnChangeCD;
+        public event Action<int> OnChangeHP;
+        public event Action OnDestroyed;
+
+        #endregion
+
         [Title("Effect")]
         [SerializeField] private MMF_Player hitFeedback;
         [SerializeField] private MMF_Player loseFeedback;
-        private MMScaleShaker _scaleShaker;
+        [SerializeField]private MMScaleShaker _scaleShaker;
 
         [Title("Audios")]
         [SerializeField] private MMF_Player pushAudio;
         [SerializeField] private MMF_Player slowdownAudio;
-
-        private void Start()
-        {
-            _scaleShaker = GetComponent<MMScaleShaker>();
-            Direction = transform.right;
-            _cdUI = FindObjectsOfType<PlayerCD>().FirstOrDefault(p=>p.ID == id);
-            if(!_cdUI)
-                PFCLog.Error("未找到UI");
-        }
 
         private void FixedUpdate()
         {
@@ -80,9 +82,12 @@ namespace Pditine.Scripts.Player
 
         public void Init(ThornBase theThorn,AssBase theAss)
         {
+            Direction = transform.right;
             _inputHandler = id==1?PlayerManager.Instance.Handler1: PlayerManager.Instance.Handler2;
             _theAss = theAss;
             _theThorn = theThorn;
+            hp = theAss.Data.HP;
+            UIManager.Instance.Init(this);
         }
         
         public void ChangeDirection(Vector3 direction)
@@ -104,7 +109,6 @@ namespace Pditine.Scripts.Player
             if (!CanMove) return;
             if (_currentCD > 0) return;
             Direction = _inputDirection;
-
             CurrentSpeed = InitialVelocity;
             _currentCD = CD;
         }
@@ -119,7 +123,13 @@ namespace Pditine.Scripts.Player
         {
             _currentCD -= Time.deltaTime;
             if (_currentCD <= 0) _currentCD = 0;
-            _cdUI.UpdateCD(_currentCD/CD);
+            OnChangeCD?.Invoke(_currentCD/CD);
+        }
+
+        public void ChangeHP(int delta)
+        {
+            hp += delta;
+            OnChangeHP?.Invoke(hp);
         }
         
         public void BeDestroy()
@@ -133,6 +143,7 @@ namespace Pditine.Scripts.Player
             {
                 Destroy(gameObject);
             });
+            OnDestroyed?.Invoke();
         }
         
         public void HitFeedback() => hitFeedback.PlayFeedbacks();

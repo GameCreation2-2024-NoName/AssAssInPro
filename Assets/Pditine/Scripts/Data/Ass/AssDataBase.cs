@@ -6,7 +6,7 @@ namespace Pditine.Scripts.Data.Ass
     public class AssDataBase : ScriptableObject
     {
         [SerializeField] private int id;
-        [SerializeField] private float hp;
+        [SerializeField] private int hp;
         [SerializeField] private float initialVelocity;
         [SerializeField] private float friction;
         [SerializeField] private GameObject prototype;
@@ -15,7 +15,7 @@ namespace Pditine.Scripts.Data.Ass
         [SerializeField] private string assIntroduction;
         
         public int ID => id;
-        public float HP => hp;
+        public int HP => hp;
         public float InitialVelocity => initialVelocity;
         public float Friction=>friction;
         public GameObject Prototype=>prototype;

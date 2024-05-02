@@ -68,10 +68,10 @@ namespace Pditine.SelectGameModel
         public void StartGame()
         {
             DataManager.Instance.PassingData.currentGameModel = _currentGameModel;
-            SceneSystem.LoadScene(2);
+            //SceneSystem.LoadScene(2);
         }
 
-        private Coroutine _changeText;
+        //private Coroutine _changeText;
         // private void ChangeText()
         // {
         //     if(_changeText is not null)

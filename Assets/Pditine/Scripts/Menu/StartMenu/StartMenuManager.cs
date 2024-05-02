@@ -1,13 +1,24 @@
-﻿using PurpleFlowerCore;
+﻿using Pditine.MainMenu;
+using PurpleFlowerCore;
 using UnityEngine;
 
 namespace Pditine.StartMenu
 {
     public class StartMenuManager : MonoBehaviour
     {
-        public void LoadScene(int index)
+        public void StartGame()
         {
-            SceneSystem.LoadScene(index);
+            MainMenuManager.Instance.ChangeMenu("OneOrTwoPlayer");
+        }
+
+        public void Setting()
+        {
+            
+        }
+
+        public void About()
+        {
+            
         }
 
         public void ExitGame()

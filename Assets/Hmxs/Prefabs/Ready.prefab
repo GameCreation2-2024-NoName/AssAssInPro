@@ -59,7 +59,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 2100000, guid: 6bb0dff3063d2f148b1b1169874866d6, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
@@ -160,4 +160,3 @@ MonoBehaviour:
   yellow: {fileID: 1746118951, guid: f76f5be9f6ae77e40972a88f360654a5, type: 3}
   green: {fileID: -470545088, guid: 5f7193d643a4270448af2a81e8ff3f73, type: 3}
   theImage: {fileID: 4752902292644256956}
-  thePlayer: {fileID: 0}

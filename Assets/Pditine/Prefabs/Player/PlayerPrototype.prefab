@@ -5030,11 +5030,11 @@ MonoBehaviour:
   CurrentSpeed: 0
   rotateSpeed: 0.4
   Direction: {x: 0, y: 0}
-  TheInput: {fileID: 0}
   CanMove: 0
   arrow: {fileID: 1519263122557232922}
   hitFeedback: {fileID: 3434302150148262072}
   loseFeedback: {fileID: 1446446151059052688}
+  _scaleShaker: {fileID: 6860474217648598647}
   pushAudio: {fileID: 0}
   slowdownAudio: {fileID: 0}
 --- !u!50 &1785434011896211637

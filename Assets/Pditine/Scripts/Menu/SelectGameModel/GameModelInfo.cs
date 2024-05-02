@@ -12,6 +12,7 @@ namespace Pditine.Scripts.SelectGameModuleScene
         [SerializeField]private Image theImage;
         [SerializeField] private TextMeshProUGUI gameModelName;
         [SerializeField] private TextMeshProUGUI introduction;
+        [SerializeField] private Image startBtn;
 
         public bool Enable
         {
@@ -20,6 +21,7 @@ namespace Pditine.Scripts.SelectGameModuleScene
                 theImage.enabled = value;
                 gameModelName.enabled = value;
                 introduction.enabled = value;
+                startBtn.enabled = value;
             }
         }
         
