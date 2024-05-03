@@ -17,6 +17,6 @@ MonoBehaviour:
   cd: 0.5
   friction: 5
   prototype: {fileID: 3527323057261180279, guid: 0b32d0318cf54e0419a09af4ca8406db, type: 3}
-  portrait: {fileID: -662956048, guid: 85fd8cf60ad5c434597e6203c0b68df4, type: 3}
+  portrait: {fileID: -337171882, guid: 22b5deefd12eeeb4a8dfed8c6ac0977a, type: 3}
   thornName: "\u7ECF\u5178"
-  thornIntroduction: "\u592A\u7ECF\u5178\u4E86"
+  thornIntroduction: "\u65E0\u7279\u6B8A\u6548\u679C\\n \u201C\u636E\u8BF4\uFF0C\u4E00\u5207\u7686\u59CB\u4E8E\u6B64...\u201D "

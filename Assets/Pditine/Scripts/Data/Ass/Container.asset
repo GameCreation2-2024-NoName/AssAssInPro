@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 584cdf1776c24ea793a9ba1da7984191, type: 3}
+  m_Name: Container
+  m_EditorClassIdentifier: 
+  id: 4
+  hp: 6
+  initialVelocity: 8
+  friction: 5
+  prototype: {fileID: 5879413710637086575, guid: 52ed3a4878bf0eb43b8c026b71f6ee92, type: 3}
+  portrait: {fileID: -265627928, guid: fda60e6fbb169674f830355cd2a15d64, type: 3}
+  assName: "\u5BB9\u5668"
+  assIntroduction: "\u5C06\u53D7\u5230\u4F24\u5BB3\u8F6C\u6362\u4E3A\u62A4\u76FE\uFF0C\u5B58\u572810s\\n\u201C\u6536\u5230\u4F24\u5BB3\u6765\u81EA\u9065\u8FDC\u56FD\u5EA6\u7684\u795E\u79D8\u5BB9\u5668\uFF0C\u53EF\u5EF6\u7F13\u751F\u547D\u7684\u6D41\u5931\u201D "

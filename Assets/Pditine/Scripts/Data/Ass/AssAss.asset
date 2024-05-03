@@ -12,11 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 584cdf1776c24ea793a9ba1da7984191, type: 3}
   m_Name: AssAss
   m_EditorClassIdentifier: 
-  id: 1
-  hp: 3
+  id: 3
+  hp: 6
   initialVelocity: 15
   friction: 5
   prototype: {fileID: 5879413710637086575, guid: 505578b467eec7e438c399d0bdaf2b43, type: 3}
-  portrait: {fileID: -265627928, guid: fda60e6fbb169674f830355cd2a15d64, type: 3}
+  portrait: {fileID: 543358383, guid: 0cce3b4f0a50dcd49a8a1613514bc2d4, type: 3}
   assName: ASS
-  assIntroduction: "\u4F60\u7684ASS\u6BD4\u8F83\u677E\u5F1B..."
+  assIntroduction: "\u88AB\u653B\u51FB\u65F6\u91CA\u653E\u6BD2\u6C14\uFF0C\u4F7F\u654C\u65B9\u6682\u65F6\u65E0\u6CD5\u884C\u52A8\\n
+    \u201C\u54E6\uFF0C\u5C41\u5C41\u201D "

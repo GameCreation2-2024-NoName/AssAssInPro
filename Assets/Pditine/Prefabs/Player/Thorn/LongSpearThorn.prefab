@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 8308695071138469450}
   - component: {fileID: 1804932204932612281}
   - component: {fileID: 2707994730493981764}
-  - component: {fileID: -9149600221783236560}
   m_Layer: 0
   m_Name: LongSpearThorn
   m_TagString: Thorn
@@ -29,7 +28,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -7.04, y: 0, z: 0}
-  m_LocalScale: {x: 0.8, y: 0.8, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -83,7 +82,7 @@ SpriteRenderer:
   m_Size: {x: 0.69, y: 1.84}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!114 &2707994730493981764
@@ -99,75 +98,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   data: {fileID: 11400000, guid: fed8a2d5c094da941971f363ec36137f, type: 2}
---- !u!60 &-9149600221783236560
-PolygonCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3527323057261180279}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0.5}
-    oldSize: {x: 1.23, y: 1.83}
-    newSize: {x: 0.69, y: 1.84}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: 0.64, y: -0.555}
-      - {x: 0.41, y: -0.435}
-      - {x: 0.24, y: -0.345}
-      - {x: 0.19999999, y: -0.305}
-      - {x: 0.32999998, y: -0.275}
-      - {x: 1.04, y: -0.074999996}
-      - {x: 1.1899999, y: -0.044999998}
-      - {x: 1.1999999, y: -0.024999999}
-      - {x: 1.1999999, y: 0.024999999}
-      - {x: 0.98999995, y: 0.095}
-      - {x: 0.37, y: 0.275}
-      - {x: 0.29999998, y: 0.295}
-      - {x: 0.22999999, y: 0.33499998}
-      - {x: 0.45999998, y: 0.445}
-      - {x: 0.61, y: 0.515}
-      - {x: 0.69, y: 0.555}
-      - {x: 0.65999997, y: 0.625}
-      - {x: 0.52, y: 0.685}
-      - {x: 0.089999996, y: 0.895}
-      - {x: 0.06, y: 0.91499996}
-      - {x: 0, y: 0.91499996}
-      - {x: 0, y: -0.885}
-      - {x: 0.03, y: -0.91499996}
-      - {x: 0.08, y: -0.905}
-      - {x: 0.37, y: -0.765}
-      - {x: 0.62, y: -0.645}
-      - {x: 0.66999996, y: -0.615}
-  m_UseDelaunayMesh: 0

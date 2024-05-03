@@ -12,11 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbfff37673094b198ad9c96612ffd696, type: 3}
   m_Name: LongSpearThorn
   m_EditorClassIdentifier: 
-  id: 2
+  id: 1
   atk: 1.5
   cd: 1
   friction: 8
   prototype: {fileID: 3527323057261180279, guid: 5b4705815bd7f8141ad012378eda2376, type: 3}
   portrait: {fileID: 1636983535, guid: 85fd8cf60ad5c434597e6203c0b68df4, type: 3}
   thornName: "\u957F\u77DB"
-  thornIntroduction: "\u662F\u957F\u7684"
+  thornIntroduction: "\u523A\u8EAB\u53D8\u957F\u3001\u653B\u51FB\u66F4\u9AD8\uFF0C\u4F46\u662F\u66F4\u6162   
+    \u201C\u66F4\u5927\uFF01\u66F4\u5F3A\uFF01\u66F4.....\u7B28\u91CD\u201D "
