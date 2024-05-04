@@ -1,5 +1,4 @@
 ﻿using Pditine.Player;
-using Pditine.Scripts.Player;
 using UnityEngine;
 using UnityEngine.UI;
 

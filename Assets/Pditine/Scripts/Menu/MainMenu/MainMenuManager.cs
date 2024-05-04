@@ -15,7 +15,13 @@ namespace Pditine.MainMenu
 
         public void ChangeMenu(int index)
         {
-            if(_doDisableMenu is not null)StopCoroutine(_doDisableMenu);
+            if (index == _currentMenuIndex) return;
+            if(_doDisableMenu is not null)
+            {
+                StopCoroutine(_doDisableMenu);
+                menus[_lastMenuIndex].alpha = 0;
+                menus[_lastMenuIndex].gameObject.SetActive(false);
+            }
             _lastMenuIndex = _currentMenuIndex;
             _currentMenuIndex = index;
             _doDisableMenu = StartCoroutine(DoDisableMenu(menus[_lastMenuIndex], menus[_currentMenuIndex]));

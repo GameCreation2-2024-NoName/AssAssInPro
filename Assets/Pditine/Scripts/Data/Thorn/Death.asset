@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Death
   m_EditorClassIdentifier: 
   id: 5
-  atk: 1
+  atk: 2
   cd: 0.8
   friction: 7
   prototype: {fileID: 3527323057261180279, guid: a737fb5b8d5012443b9a9f05858995c9, type: 3}

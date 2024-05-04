@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: DoublePeakThorn
   m_EditorClassIdentifier: 
   id: 2
-  atk: 0.5
+  atk: 1
   cd: 0.5
   friction: 6
   prototype: {fileID: 3527323057261180279, guid: 53ee0a2ba3c4f5a449b21936215e3560, type: 3}

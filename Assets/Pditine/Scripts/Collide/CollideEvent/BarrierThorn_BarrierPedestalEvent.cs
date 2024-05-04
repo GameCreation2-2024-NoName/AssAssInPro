@@ -1,4 +1,5 @@
-﻿using Pditine.Map;
+﻿using Pditine.Audio;
+using Pditine.Map;
 
 namespace Pditine.Collide.CollideEvent
 {
@@ -28,6 +29,7 @@ namespace Pditine.Collide.CollideEvent
             (theBarrier1.CurrentSpeed, theBarrier2.CurrentSpeed) = (theBarrier2.CurrentSpeed, theBarrier1.CurrentSpeed);
             theBarrier1.HitFeedback.PlayFeedbacks();
             theBarrier2.HitFeedback.PlayFeedbacks();
+            AAIAudioManager.Instance.PlayEffect("碰撞音效1");
         }
     }
 }

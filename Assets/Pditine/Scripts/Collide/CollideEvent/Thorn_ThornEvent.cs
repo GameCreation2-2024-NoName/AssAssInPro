@@ -1,4 +1,5 @@
-﻿using Pditine.Player.Thorn;
+﻿using Pditine.Audio;
+using Pditine.Player.Thorn;
 
 namespace Pditine.Collide.CollideEvent
 {
@@ -18,6 +19,7 @@ namespace Pditine.Collide.CollideEvent
             (thePlayer1.CurrentSpeed, thePlayer2.CurrentSpeed) = (thePlayer2.CurrentSpeed, thePlayer1.CurrentSpeed);
             thePlayer1.HitFeedback();
             thePlayer2.HitFeedback();
+            AAIAudioManager.Instance.PlayEffect("碰撞音效1");
         }
     }
 }

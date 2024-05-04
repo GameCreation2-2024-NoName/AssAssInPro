@@ -2,7 +2,7 @@
 
 namespace Pditine.Player.Ass
 {
-    public class Remains : MonoBehaviour
+    public class Remains : AssBase
     {
         
     }

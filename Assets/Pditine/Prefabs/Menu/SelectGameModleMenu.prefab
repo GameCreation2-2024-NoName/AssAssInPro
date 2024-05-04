@@ -48,6 +48,7 @@ GameObject:
   - component: {fileID: 1572832654383566807}
   - component: {fileID: 3173059636481755096}
   - component: {fileID: 1072749310974319159}
+  - component: {fileID: 5482998470767420796}
   m_Layer: 5
   m_Name: RightArrow
   m_TagString: Untagged
@@ -184,6 +185,20 @@ MonoBehaviour:
   maxScale: 1.1
   minScale: 0.9
   scalingSpeed: 0.15
+--- !u!114 &5482998470767420796
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 674215350169521203}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00dc9fe4f6124222b9a8e201aaf82a3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  selectedAudioName: "\u9009\u4E2D\u6309\u94AE"
+  pressDownAudioName: "\u6309\u4E0B\u6309\u94AE"
 --- !u!1 &1244629415161618651
 GameObject:
   m_ObjectHideFlags: 0
@@ -232,6 +247,7 @@ GameObject:
   - component: {fileID: 3854501994396350236}
   - component: {fileID: 8959753637412497907}
   - component: {fileID: 5507824857854815074}
+  - component: {fileID: 4302807451395649202}
   m_Layer: 5
   m_Name: LeftArrow
   m_TagString: Untagged
@@ -368,6 +384,20 @@ MonoBehaviour:
   maxScale: 1.1
   minScale: 0.9
   scalingSpeed: 0.15
+--- !u!114 &4302807451395649202
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1585420822023712886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00dc9fe4f6124222b9a8e201aaf82a3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  selectedAudioName: "\u9009\u4E2D\u6309\u94AE"
+  pressDownAudioName: "\u6309\u4E0B\u6309\u94AE"
 --- !u!1 &2005732719208371942
 GameObject:
   m_ObjectHideFlags: 0
@@ -381,6 +411,7 @@ GameObject:
   - component: {fileID: 2185010517012017643}
   - component: {fileID: 8933073885079854129}
   - component: {fileID: 8350347722933412797}
+  - component: {fileID: 1443034997407776355}
   m_Layer: 5
   m_Name: Back_Btn
   m_TagString: Untagged
@@ -516,6 +547,20 @@ MonoBehaviour:
   maxScale: 1.1
   minScale: 0.9
   scalingSpeed: 0.15
+--- !u!114 &1443034997407776355
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2005732719208371942}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00dc9fe4f6124222b9a8e201aaf82a3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  selectedAudioName: "\u9009\u4E2D\u6309\u94AE"
+  pressDownAudioName: "\u6309\u4E0B\u6309\u94AE"
 --- !u!1 &2320660563900072310
 GameObject:
   m_ObjectHideFlags: 0

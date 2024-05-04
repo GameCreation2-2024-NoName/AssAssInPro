@@ -2,7 +2,7 @@
 
 namespace Pditine.Player.Ass
 {
-    public class Giant : MonoBehaviour
+    public class Giant : AssBase
     {
         
     }

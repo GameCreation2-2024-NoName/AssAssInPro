@@ -1,7 +1,6 @@
-﻿using Pditine.Map;
+﻿using Pditine.Audio;
+using Pditine.Map;
 using Pditine.Player.Thorn;
-using Pditine.Scripts.Player;
-using PurpleFlowerCore;
 using UnityEngine;
 
 namespace Pditine.Collide.CollideEvent
@@ -23,6 +22,7 @@ namespace Pditine.Collide.CollideEvent
             thePlayer.HitFeedback();
             //collider1.transform.GetComponent<VisualBox>()?.Act();
             //collider1.transform.position += (Vector3)thePlayer.Direction;
+            AAIAudioManager.Instance.PlayEffect("碰撞音效1");
         }
     }
 }

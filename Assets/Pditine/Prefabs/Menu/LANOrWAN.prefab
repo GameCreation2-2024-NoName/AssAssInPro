@@ -58,7 +58,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 2100000, guid: 6bb0dff3063d2f148b1b1169874866d6, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
@@ -89,6 +89,7 @@ GameObject:
   - component: {fileID: 5229322135578909484}
   - component: {fileID: 2468401116046480435}
   - component: {fileID: 5806519205458583496}
+  - component: {fileID: 218344519350081067}
   m_Layer: 5
   m_Name: Back_Btn
   m_TagString: Untagged
@@ -200,13 +201,13 @@ MonoBehaviour:
       - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Pditine.MainMenu.MainMenuManager, Assembly-CSharp
         m_MethodName: ChangeMenu
-        m_Mode: 3
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 1
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: OneOrTwoPlayer
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &5806519205458583496
@@ -224,6 +225,20 @@ MonoBehaviour:
   maxScale: 1.1
   minScale: 0.9
   scalingSpeed: 0.15
+--- !u!114 &218344519350081067
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2268134267482835708}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00dc9fe4f6124222b9a8e201aaf82a3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  selectedAudioName: "\u9009\u4E2D\u6309\u94AE"
+  pressDownAudioName: "\u6309\u4E0B\u6309\u94AE"
 --- !u!1 &3633674096104786934
 GameObject:
   m_ObjectHideFlags: 0
@@ -316,6 +331,7 @@ GameObject:
   - component: {fileID: 8946097118554945404}
   - component: {fileID: 3255161091445479952}
   - component: {fileID: 3114948031585047011}
+  - component: {fileID: 2347742004709353055}
   m_Layer: 5
   m_Name: LAN
   m_TagString: Untagged
@@ -363,7 +379,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 2100000, guid: 6bb0dff3063d2f148b1b1169874866d6, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
@@ -428,13 +444,13 @@ MonoBehaviour:
       - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Pditine.MainMenu.MainMenuManager, Assembly-CSharp
         m_MethodName: ChangeMenu
-        m_Mode: 3
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 3
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: SelectGameModleMenu
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &3114948031585047011
@@ -452,6 +468,20 @@ MonoBehaviour:
   maxScale: 1.1
   minScale: 0.9
   scalingSpeed: 0.15
+--- !u!114 &2347742004709353055
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3658433373283333442}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00dc9fe4f6124222b9a8e201aaf82a3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  selectedAudioName: "\u9009\u4E2D\u6309\u94AE"
+  pressDownAudioName: "\u6309\u4E0B\u6309\u94AE"
 --- !u!1 &5396834197587890989
 GameObject:
   m_ObjectHideFlags: 0

@@ -6,7 +6,7 @@ namespace Pditine.Scripts.Data.Ass
     public class ThornDataBase : ScriptableObject
     {
         [SerializeField] private int id;
-        [SerializeField] private float atk;
+        [SerializeField] private int atk;
         [SerializeField] private float cd;
         [SerializeField] private float friction;
         [SerializeField] private GameObject prototype;
@@ -15,7 +15,7 @@ namespace Pditine.Scripts.Data.Ass
         [SerializeField] private string thornIntroduction;
 
         public int ID => id;
-        public float ATK => atk;
+        public int ATK => atk;
         public float CD => cd;
         public float Friction=>friction;
         public GameObject Prototype=>prototype;

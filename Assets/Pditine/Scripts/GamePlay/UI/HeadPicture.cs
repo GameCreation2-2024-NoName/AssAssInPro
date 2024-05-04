@@ -1,5 +1,4 @@
 ﻿using Pditine.Player;
-using Pditine.Scripts.Player;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,6 +13,8 @@ namespace Pditine.GamePlay.UI
         {
             thornImage.sprite = thePlayer.TheThorn.Data.Portrait;
             assImage.sprite = thePlayer.TheAss.Data.Portrait;
+            thornImage.SetNativeSize();
+            assImage.SetNativeSize();
         }
     }
 }

@@ -2,7 +2,6 @@
 using Pditine.Collide;
 using Pditine.Collide.CollideEvent;
 using Pditine.Scripts.Data.Ass;
-using Pditine.Scripts.Player;
 using UnityEngine;
 
 namespace Pditine.Player.Thorn

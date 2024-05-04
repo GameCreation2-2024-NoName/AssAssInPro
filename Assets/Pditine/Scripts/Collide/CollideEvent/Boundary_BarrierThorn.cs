@@ -1,4 +1,5 @@
 ﻿using Hmxs.Scripts;
+using Pditine.Audio;
 using Pditine.Map;
 using UnityEngine;
 
@@ -20,6 +21,7 @@ namespace Pditine.Collide.CollideEvent
             theBarrier.Direction = Out_Direction;
             collider1.transform.GetComponent<VisualBox>()?.Act();
             theBarrier.collideWithBoundary.PlayFeedbacks();
+            AAIAudioManager.Instance.PlayEffect("碰撞音效1");
         }
     }
 }

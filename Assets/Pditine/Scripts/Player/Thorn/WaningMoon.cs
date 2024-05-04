@@ -2,7 +2,7 @@
 
 namespace Pditine.Player.Thorn
 {
-    public class WaningMoon : MonoBehaviour
+    public class WaningMoon : ThornBase
     {
         
     }

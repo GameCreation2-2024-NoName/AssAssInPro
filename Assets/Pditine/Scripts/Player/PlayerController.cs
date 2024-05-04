@@ -1,6 +1,7 @@
 using System;
 using Hmxs.Scripts;
 using MoreMountains.Feedbacks;
+using Pditine.Audio;
 using Pditine.GamePlay.UI;
 using Pditine.Player.Ass;
 using Pditine.Player.Thorn;
@@ -16,21 +17,23 @@ namespace Pditine.Player
 
         [SerializeField]private int id;
         public int ID => id;
-        private float InitialVelocity=>_theAss.Data.InitialVelocity;
-        private float Friction=>_theAss.Data.Friction+_theThorn.Data.Friction;
+        public float InitialVelocity=>_theAss.Data.InitialVelocity;
+        public float Friction=>_theAss.Data.Friction+_theThorn.Data.Friction;
         private float CD => _theThorn.Data.CD;
+        
+        public int HP => _theAss.Data.HP;
+        public int ATK => _theThorn.Data.ATK;
 
-        private int hp;
-        public int HP => hp;
-        private float ATK => _theThorn.Data.ATK;
+        private int _currentHP;
+        public int CurrentHP => _currentHP;
+        
+        private float _currentCD;
+        public float CurrentCD=>_currentCD;
         
         [HideInInspector]public float CurrentSpeed;
         [SerializeField] private float rotateSpeed;
         private Vector2 _inputDirection;
         [HideInInspector]public Vector2 Direction;
-        
-        private float _currentCD;
-        public float CurrentCD=>_currentCD;
         
         public bool CanMove;
 
@@ -86,7 +89,7 @@ namespace Pditine.Player
             _inputHandler = id==1?PlayerManager.Instance.Handler1: PlayerManager.Instance.Handler2;
             _theAss = theAss;
             _theThorn = theThorn;
-            hp = theAss.Data.HP;
+            _currentHP = HP;
             UIManager.Instance.Init(this);
         }
         
@@ -108,6 +111,7 @@ namespace Pditine.Player
         {
             if (!CanMove) return;
             if (_currentCD > 0) return;
+            AAIAudioManager.Instance.PlayEffect("加速音效");
             Direction = _inputDirection;
             CurrentSpeed = InitialVelocity;
             _currentCD = CD;
@@ -128,8 +132,8 @@ namespace Pditine.Player
 
         public void ChangeHP(int delta)
         {
-            hp += delta;
-            OnChangeHP?.Invoke(hp);
+            _currentHP += delta;
+            OnChangeHP?.Invoke(_currentHP);
         }
         
         public void BeDestroy()

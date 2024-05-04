@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1816944099944717131}
   - component: {fileID: 705736233331693415}
   - component: {fileID: 6262915600364427917}
+  - component: {fileID: 2794011931899359960}
   m_Layer: 5
   m_Name: Back_Btn
   m_TagString: Untagged
@@ -148,6 +149,20 @@ MonoBehaviour:
   maxScale: 1.1
   minScale: 0.9
   scalingSpeed: 0.15
+--- !u!114 &2794011931899359960
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 715313916742774252}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00dc9fe4f6124222b9a8e201aaf82a3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  selectedAudioName: "\u9009\u4E2D\u6309\u94AE"
+  pressDownAudioName: "\u6309\u4E0B\u6309\u94AE"
 --- !u!1 &1069772423616050111
 GameObject:
   m_ObjectHideFlags: 0
@@ -368,6 +383,7 @@ GameObject:
   - component: {fileID: 5232309628793052630}
   - component: {fileID: 4829947344754001593}
   - component: {fileID: 4012689760918629586}
+  - component: {fileID: 338204902037474164}
   m_Layer: 5
   m_Name: Multiplayer
   m_TagString: Untagged
@@ -504,6 +520,20 @@ MonoBehaviour:
   maxScale: 1.1
   minScale: 0.9
   scalingSpeed: 0.15
+--- !u!114 &338204902037474164
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4663215097765755878}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00dc9fe4f6124222b9a8e201aaf82a3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  selectedAudioName: "\u9009\u4E2D\u6309\u94AE"
+  pressDownAudioName: "\u6309\u4E0B\u6309\u94AE"
 --- !u!1 &8815940646827116615
 GameObject:
   m_ObjectHideFlags: 0

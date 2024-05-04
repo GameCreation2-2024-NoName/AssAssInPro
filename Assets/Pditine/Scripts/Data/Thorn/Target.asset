@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Target
   m_EditorClassIdentifier: 
   id: 6
-  atk: 1
+  atk: 0
   cd: 0
   friction: 0
   prototype: {fileID: 3527323057261180279, guid: 3b632a8450cbcfd40ae8caa80f6768e7, type: 3}

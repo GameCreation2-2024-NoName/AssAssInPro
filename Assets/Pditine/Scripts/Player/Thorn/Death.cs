@@ -2,7 +2,7 @@
 
 namespace Pditine.Player.Thorn
 {
-    public class Death : MonoBehaviour
+    public class Death : ThornBase
     {
         
     }

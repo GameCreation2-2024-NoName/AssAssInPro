@@ -2,7 +2,7 @@
 
 namespace Pditine.Player.Thorn
 {
-    public class PureSpur : MonoBehaviour
+    public class PureSpur : ThornBase
     {
         
     }

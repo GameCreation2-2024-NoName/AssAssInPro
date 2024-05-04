@@ -1,4 +1,5 @@
-﻿using Pditine.Map;
+﻿using Pditine.Audio;
+using Pditine.Map;
 using Pditine.Player.Thorn;
 
 namespace Pditine.Collide.CollideEvent
@@ -24,6 +25,7 @@ namespace Pditine.Collide.CollideEvent
             theBarrier.CurrentSpeed = thePlayer.CurrentSpeed/1.5f;
             thePlayer.CurrentSpeed /= 1.2f;
             thePlayer.HitFeedback();
+            AAIAudioManager.Instance.PlayEffect("碰撞音效1");
         }
     }
 }

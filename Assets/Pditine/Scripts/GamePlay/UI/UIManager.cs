@@ -1,5 +1,4 @@
 ﻿using Pditine.Player;
-using Pditine.Scripts.Player;
 using PurpleFlowerCore;
 using UnityEngine;
 

@@ -246,6 +246,7 @@ GameObject:
   - component: {fileID: 6439797488682038983}
   - component: {fileID: 2463200060529878142}
   - component: {fileID: 9069107918192009922}
+  - component: {fileID: 9122199421896705334}
   m_Layer: 5
   m_Name: StartGame
   m_TagString: Untagged
@@ -382,6 +383,20 @@ MonoBehaviour:
   normal: {fileID: 1552143549, guid: e28cfe12b3a1c3241bb340dc53df2801, type: 3}
   selected: {fileID: 217423361, guid: 7a4d7b13fb34d844b9f1f7434243d976, type: 3}
   theImage: {fileID: 2463200060529878142}
+--- !u!114 &9122199421896705334
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2687780718403248038}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00dc9fe4f6124222b9a8e201aaf82a3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  selectedAudioName: "\u9009\u4E2D\u6309\u94AE"
+  pressDownAudioName: "\u6309\u4E0B\u6309\u94AE"
 --- !u!1 &4138208686459437901
 GameObject:
   m_ObjectHideFlags: 0
@@ -395,6 +410,7 @@ GameObject:
   - component: {fileID: 7599769581052279779}
   - component: {fileID: 869102851856626878}
   - component: {fileID: 3558099641002615465}
+  - component: {fileID: 3109880011204999106}
   m_Layer: 5
   m_Name: About
   m_TagString: Untagged
@@ -531,6 +547,20 @@ MonoBehaviour:
   normal: {fileID: 1552143549, guid: e28cfe12b3a1c3241bb340dc53df2801, type: 3}
   selected: {fileID: 217423361, guid: 7a4d7b13fb34d844b9f1f7434243d976, type: 3}
   theImage: {fileID: 869102851856626878}
+--- !u!114 &3109880011204999106
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4138208686459437901}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00dc9fe4f6124222b9a8e201aaf82a3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  selectedAudioName: "\u9009\u4E2D\u6309\u94AE"
+  pressDownAudioName: "\u6309\u4E0B\u6309\u94AE"
 --- !u!1 &4875885867010346442
 GameObject:
   m_ObjectHideFlags: 0
@@ -772,6 +802,7 @@ GameObject:
   - component: {fileID: 335218878165659609}
   - component: {fileID: 2147220516977794783}
   - component: {fileID: 4255673772432310112}
+  - component: {fileID: 8891284983286221215}
   m_Layer: 5
   m_Name: Setting
   m_TagString: Untagged
@@ -908,6 +939,20 @@ MonoBehaviour:
   normal: {fileID: 1552143549, guid: e28cfe12b3a1c3241bb340dc53df2801, type: 3}
   selected: {fileID: 217423361, guid: 7a4d7b13fb34d844b9f1f7434243d976, type: 3}
   theImage: {fileID: 2147220516977794783}
+--- !u!114 &8891284983286221215
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7483074678888212574}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00dc9fe4f6124222b9a8e201aaf82a3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  selectedAudioName: "\u9009\u4E2D\u6309\u94AE"
+  pressDownAudioName: "\u6309\u4E0B\u6309\u94AE"
 --- !u!1 &7528525272753356012
 GameObject:
   m_ObjectHideFlags: 0
@@ -1000,6 +1045,7 @@ GameObject:
   - component: {fileID: 2670397113039901728}
   - component: {fileID: 2138358398475367478}
   - component: {fileID: 1984869019998954846}
+  - component: {fileID: 7767682351761007526}
   m_Layer: 5
   m_Name: ExitGame
   m_TagString: Untagged
@@ -1136,6 +1182,20 @@ MonoBehaviour:
   normal: {fileID: 1552143549, guid: e28cfe12b3a1c3241bb340dc53df2801, type: 3}
   selected: {fileID: 217423361, guid: 7a4d7b13fb34d844b9f1f7434243d976, type: 3}
   theImage: {fileID: 2138358398475367478}
+--- !u!114 &7767682351761007526
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7555501040074357006}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00dc9fe4f6124222b9a8e201aaf82a3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  selectedAudioName: "\u9009\u4E2D\u6309\u94AE"
+  pressDownAudioName: "\u6309\u4E0B\u6309\u94AE"
 --- !u!1 &8043660663099944675
 GameObject:
   m_ObjectHideFlags: 0

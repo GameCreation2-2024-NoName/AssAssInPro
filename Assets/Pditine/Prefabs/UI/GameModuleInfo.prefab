@@ -377,6 +377,7 @@ GameObject:
   - component: {fileID: 5719174228377302038}
   - component: {fileID: 9190849966458972275}
   - component: {fileID: 5900445982319188405}
+  - component: {fileID: 3853869868333525420}
   m_Layer: 5
   m_Name: GameStartBtn
   m_TagString: Untagged
@@ -497,3 +498,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &3853869868333525420
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8576910636511942546}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00dc9fe4f6124222b9a8e201aaf82a3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  selectedAudioName: "\u9009\u4E2D\u6309\u94AE"
+  pressDownAudioName: "\u6309\u4E0B\u6309\u94AE"

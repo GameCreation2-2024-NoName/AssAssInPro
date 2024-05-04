@@ -1,7 +1,4 @@
-﻿using Pditine.Player.Thorn;
-using UnityEngine;
-
-namespace Pditine.Scripts.Player.Thorn
+﻿namespace Pditine.Player.Thorn
 {
     public class ClassicThorn : ThornBase
     {

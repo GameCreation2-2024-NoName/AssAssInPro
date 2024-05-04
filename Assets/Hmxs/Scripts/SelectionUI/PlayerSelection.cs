@@ -1,5 +1,6 @@
 ﻿using System;
 using Hmxs.Toolkit.Base.Bindable;
+using Pditine.Audio;
 using Pditine.Scripts.Data;
 using Sirenix.OdinInspector;
 using UnityEngine;
@@ -41,7 +42,7 @@ namespace Hmxs.Scripts
 
             infoSetter.SetAssInfo(DataManager.Instance.GetAssData(assId.Value));
             infoSetter.SetThornInfo(DataManager.Instance.GetThornData(thornId.Value));
-            SetOutline();
+            //SetOutline();
         }
 
         private void OnDestroy()
@@ -93,6 +94,7 @@ namespace Hmxs.Scripts
         public void OnConfirm()
         {
             if (InputHandler is null) return;
+            AAIAudioManager.Instance.PlayEffect("按下按钮");
             Debug.Log("Confirm");
             isReady = !isReady;
             

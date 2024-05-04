@@ -13,6 +13,8 @@ namespace Pditine.Collide
         private HashSet<ColliderBase> _collidingColliders = new();
         // protected UnityAction collisionEvent;
         // public UnityAction CollisionEvent => collisionEvent;
+        
+        //protected static List<CollidingEventBase> _events;
         protected List<CollidingEventBase> _events;
         public List<CollidingEventBase> Events => _events;
 
