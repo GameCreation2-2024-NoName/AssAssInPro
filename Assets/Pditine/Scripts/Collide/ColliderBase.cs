@@ -15,8 +15,8 @@ namespace Pditine.Collide
         // public UnityAction CollisionEvent => collisionEvent;
         protected List<CollidingEventBase> _events;
         public List<CollidingEventBase> Events => _events;
-        
-        
+
+        public UnityAction CallBack;
 
         protected virtual void Awake()
         {

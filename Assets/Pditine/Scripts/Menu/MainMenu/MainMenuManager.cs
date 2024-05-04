@@ -44,7 +44,7 @@ namespace Pditine.MainMenu
             while (lastMenu.alpha > 0.02f)
             {
                 lastMenu.alpha = Mathf.Lerp(lastMenu.alpha, 0, 0.05f);
-                theMaterial.SetFloat("_Cutoff", (1 - lastMenu.alpha)/2.08f);
+                theMaterial.SetFloat("_Cutoff", (1 - lastMenu.alpha)/2f);
                 yield return new WaitForSeconds(0.01f);
             }
             theMaterial.SetFloat("_Cutoff",1);
@@ -55,7 +55,7 @@ namespace Pditine.MainMenu
             while (currentMenu.alpha<0.95f)
             {
                 currentMenu.alpha = Mathf.Lerp(currentMenu.alpha, 1, 0.05f);
-                theMaterial.SetFloat("_Cutoff",(1 - currentMenu.alpha)/2.08f);
+                theMaterial.SetFloat("_Cutoff",(1 - currentMenu.alpha)/2f);
                 yield return new WaitForSeconds(0.01f);
             }
             currentMenu.alpha =1;

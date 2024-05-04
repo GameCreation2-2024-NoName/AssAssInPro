@@ -16,7 +16,7 @@ MonoBehaviour:
   hp: 4
   initialVelocity: 15
   friction: 5
-  prototype: {fileID: 5879413710637086575, guid: 505578b467eec7e438c399d0bdaf2b43, type: 3}
-  portrait: {fileID: -265627928, guid: fda60e6fbb169674f830355cd2a15d64, type: 3}
+  prototype: {fileID: 5879413710637086575, guid: ed485a36bd3f2b14495956fa0ea33129, type: 3}
+  portrait: {fileID: -1821356742, guid: 0cce3b4f0a50dcd49a8a1613514bc2d4, type: 3}
   assName: "\u9057\u9AB8"
-  assIntroduction: "\u82E5\u89D2\u8272\u6B7B\u4EA1\uFF0C\u5C06\u57285s\u80FD\u7EE7\u7EED\u884C\u52A8\u5E76\u83B7\u5F97\u4E00\u51FB\u5FC5\u6740\u80FD\u529B\\n\u201C\u4ED6\u51FA\u4E86\u4E00\u4E2A\u540D\u5200\u53F8\u547D\uFF01\u201D "
+  assIntroduction: "\u4ED6\u51FA\u4E86\u4E00\u4E2A\u540D\u5200\u53F8\u547D\uFF01"

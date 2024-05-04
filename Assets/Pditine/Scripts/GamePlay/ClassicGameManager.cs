@@ -6,7 +6,6 @@ using Pditine.Player.Ass;
 using Pditine.Player.Thorn;
 using Pditine.Scripts.Data;
 using Pditine.Scripts.Data.DatePassing;
-using Pditine.Scripts.Player;
 using PurpleFlowerCore;
 using PurpleFlowerCore.Utility;
 using TMPro;

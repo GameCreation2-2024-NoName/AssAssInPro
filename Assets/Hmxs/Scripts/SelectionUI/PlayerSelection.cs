@@ -11,8 +11,8 @@ namespace Hmxs.Scripts
     {
         [SerializeField] private int id;
         [SerializeField] private InfoSetter infoSetter;
-        [SerializeField] private Outline assOutline;
-        [SerializeField] private Outline thornOutline;
+        [SerializeField] private EquipUI assOutline;
+        [SerializeField] private EquipUI thornOutline;
         [SerializeField] private ReadyUI readyUI;
 
         [SerializeField] [ReadOnly] private bool isReady;
@@ -153,20 +153,20 @@ namespace Hmxs.Scripts
         {
             if (isAssSelected)
             {
-                assOutline.enabled = true;
-                thornOutline.enabled = false;
+                assOutline.IsSelected(true);
+                thornOutline.IsSelected(false);
             }
             else
             {
-                assOutline.enabled = false;
-                thornOutline.enabled = true;
+                assOutline.IsSelected(false);
+                thornOutline.IsSelected(true);
             }
         }
 
-        private void CloseOutline()
+        public void CloseOutline()
         {
-            assOutline.enabled = false;
-            thornOutline.enabled = false;
+            assOutline.IsSelected(false);
+            thornOutline.IsSelected(false);
         }
 
         public void SetSelection(bool isAss)

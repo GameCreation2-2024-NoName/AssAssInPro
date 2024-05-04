@@ -9,7 +9,7 @@ namespace Hmxs.Scripts
     public class InfoSetter : MonoBehaviour
     {
         [Title("Ass Info")]
-        [SerializeField] private Image assImg;
+        [SerializeField] private EquipUI assImg;
         [SerializeField] private TMP_Text assName;
         [SerializeField] private InfoUI assProperty1;
         [SerializeField] private InfoUI assProperty2;
@@ -20,7 +20,7 @@ namespace Hmxs.Scripts
         [SerializeField] [MinMaxSlider(0, 20, true)] private Vector2 assProperty3Range;
 
         [Title("Thorn Info")]
-        [SerializeField] private Image thornImg;
+        [SerializeField] private EquipUI thornImg;
         [SerializeField] private TMP_Text thornName;
         [SerializeField] private InfoUI thornProperty1;
         [SerializeField] private InfoUI thornProperty2;
@@ -32,7 +32,7 @@ namespace Hmxs.Scripts
 
         private void SetAssImg(Sprite sprite)
         {
-            assImg.sprite = sprite;
+            assImg.Sprite = sprite;
             assImg.SetNativeSize();
         }
         private void SetAssName(string nameOfAss) => assName.text = nameOfAss;
@@ -43,7 +43,7 @@ namespace Hmxs.Scripts
 
         private void SetThornImg(Sprite sprite)
         {
-            thornImg.sprite = sprite;
+            thornImg.Sprite = sprite;
             thornImg.SetNativeSize();
         }
         private void SetThornName(string nameOfThorn) => thornName.text = nameOfThorn;

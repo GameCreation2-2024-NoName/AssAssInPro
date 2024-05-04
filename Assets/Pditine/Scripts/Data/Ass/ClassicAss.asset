@@ -19,4 +19,4 @@ MonoBehaviour:
   prototype: {fileID: 5879413710637086575, guid: 3054868f3927c544b941dc102145c0bb, type: 3}
   portrait: {fileID: 2129531702, guid: 0cce3b4f0a50dcd49a8a1613514bc2d4, type: 3}
   assName: "\u7ECF\u5178"
-  assIntroduction: "\u65E0\u7279\u6B8A\u6548\u679C\\n\u201C\u6CA1\u6709\u5B83\uFF0C\u5C31\u6CA1\u6709\u523A...\u201D "
+  assIntroduction: "\u6CA1\u6709\u5B83\uFF0C\u5C31\u6CA1\u6709\u523A..."
