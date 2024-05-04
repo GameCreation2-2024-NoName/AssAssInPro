@@ -1,9 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using Pditine.Data;
+using Pditine.Menu.SelectGameModel;
 using Pditine.Scripts.Data;
 using Pditine.Scripts.Data.GameModule;
-using Pditine.Scripts.SelectGameModuleScene;
 using PurpleFlowerCore;
 using TMPro;
 using UnityEngine;

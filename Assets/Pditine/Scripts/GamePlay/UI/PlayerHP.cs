@@ -35,9 +35,9 @@ namespace Pditine.GamePlay.UI
                 theHeart.SetHp(1);
             }
         }
-        
+
         /// <param name="hp">以0.5心为最小单位,如3颗心即6点hp</param>
-        private void ChangeHp(int hp)
+        private void ChangeHp(int hp,int _)
         {
             int num1 = hp / 2;
             int num2 = hp % 2;

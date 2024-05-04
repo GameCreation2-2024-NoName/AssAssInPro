@@ -20,9 +20,9 @@ namespace Pditine.Collide.CollideEvent
             //CameraMoveUtility.MoveAndZoom(collider2.transform.position,0.03f,4);
             var thePlayer = (collider2 as AssBase).ThePlayer;
             var theBarrier = (collider1 as BarrierThorn).TheBarrier;
-            //ClassicGameManager.Instance.PlayerDead(thePlayer.transform,thePlayer.ID);
-            //thePlayer.BeDestroy();
-            //thePlayer.LoseFeedback();
+            // ClassicGameManager.Instance.PlayerDead(thePlayer.transform,thePlayer.ID);
+            // thePlayer.BeDestroy();
+            // thePlayer.LoseFeedback();
             theBarrier.HitFeedback.PlayFeedbacks();
             thePlayer.ChangeHP(-1);
             //EventSystem.EventTrigger("GameOver");

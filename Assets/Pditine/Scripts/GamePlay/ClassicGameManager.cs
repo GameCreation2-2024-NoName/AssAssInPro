@@ -1,53 +1,64 @@
+using System;
 using Cinemachine;
 using Hmxs.Scripts;
 using LJH.Scripts.Utility;
+using MoreMountains.Feedbacks;
 using Pditine.Data;
+using Pditine.GamePlay.UI;
 using Pditine.Player;
 using Pditine.Player.Ass;
 using Pditine.Player.Thorn;
-using Pditine.Scripts.Data;
 using Pditine.Scripts.Data.DatePassing;
 using PurpleFlowerCore;
 using PurpleFlowerCore.Utility;
-using TMPro;
 using UnityEngine;
-using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 namespace Pditine.ClassicGame
 {
-    public class ClassicGameManager : SingletonMono<ClassicGameManager>
+    public class ClassicGameManager : MonoBehaviour
     {
         private bool _gameOver;
         [Header("相机")]
         [SerializeField] private CinemachineVirtualCamera camera;
+
         [Header("UI控件")]
-        [SerializeField] private Image blackCurtain;
-        [SerializeField] private TextMeshProUGUI playerDeadInfo;
+        // [SerializeField] private Image blackCurtain;
+        [SerializeField] private MMF_Player startEffect;
         [Header("玩家")]
         [SerializeField] private PlayerController player1;
         [SerializeField] private PlayerController player2;
-
-        private PassingData _passingData;
         
+        private PassingData _passingData;
+
+        public static ClassicGameManager Instance { get; private set; }
+
+        private void Awake()
+        {
+            if (Instance == null)
+                Instance = this;
+            else
+            {
+                Debug.LogWarning("单例重复");
+                Destroy(gameObject);
+            }
+        }
+
         private void Start()
         {
             _passingData = DataManager.Instance.PassingData;
+            player1.OnChangeHP += CheckPlayerDead;
+            player2.OnChangeHP += CheckPlayerDead;
             Init();
-            Time.timeScale = 1;
-            _gameOver = false;
-            FadeUtility.FadeOut(blackCurtain,80);
-            PlayerManager.Instance.SwitchMap("GamePlay");
         }
 
-        private void OnEnable()
-        {
-            EventSystem.AddEventListener("GameOver", GameOver);
-        }
-        private void OnDisable()
-        {
-            EventSystem.RemoveEventListener("GameOver", GameOver);
-        }
+        // private void OnEnable()
+        // {
+        //     EventSystem.AddEventListener("GameOver", GameOver);
+        // }
+        // private void OnDisable()
+        // {
+        //     EventSystem.RemoveEventListener("GameOver", GameOver);
+        // }
 
         private void Init()
         {
@@ -55,7 +66,15 @@ namespace Pditine.ClassicGame
             CreatePlayer(_passingData.player1AssID,_passingData.player1ThornID,player1);
             CreatePlayer(_passingData.player2AssID,_passingData.player2ThornID,player2);
             
-            PlayerCanMove(true);
+            startEffect.PlayFeedbacks();
+            
+            Time.timeScale = 1;
+            _gameOver = false;
+            DelayUtility.Delay(5.5f,()=>
+            {
+                PlayerCanMove(true);
+            }); 
+            PlayerManager.Instance.SwitchMap("GamePlay");
         }
 
         private void CreatePlayer(int assID,int thornID,PlayerController thePlayer)
@@ -67,25 +86,19 @@ namespace Pditine.ClassicGame
             thePlayer.Init(theThorn,theAss);
         }
         
-        private void GameOver()
-        {
-            if (_gameOver) return;
-            _gameOver = true;
-            Time.timeScale = 0.3f;
-            FadeUtility.FadeInAndStay(
-                blackCurtain,
-                20,
-                () => { SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex); });
-            //todo:游戏结束逻辑
-        }
-        
-        public void PlayerDead(Transform thePlayer,int playerIndex)
+        //临时
+        private void CheckPlayerDead(int hp,int playerID)
         {
             if(_gameOver)return;
-            //todo:换一种摄像机移动方式
-            CameraMoveUtility.MoveAndZoomForever(camera,thePlayer.transform, 0.04f, 3);
-            FadeUtility.FadeInAndStay(playerDeadInfo,80);
-            playerDeadInfo.text = $"Player{playerIndex} Died";
+            if (hp > 0) return;
+            _gameOver = true;
+            Time.timeScale = 0.3f;
+            var theLoser = playerID == 1 ? player1 : player2;
+            var theWinner = playerID == 1 ? player2 : player1;
+            CameraMoveUtility.MoveAndZoomForever(camera,theLoser.transform, 0.04f, 3);
+            PlayerCanMove(false);
+            theLoser.BeDestroy();
+            DelayUtility.Delay(2, () => { UIManager.Instance.GameOver(theWinner); }); 
         }
 
         public void PlayerCanMove(bool canMove)

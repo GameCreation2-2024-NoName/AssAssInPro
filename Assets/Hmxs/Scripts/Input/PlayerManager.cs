@@ -22,7 +22,7 @@ namespace Hmxs.Scripts
             if (Instance == null)
                 Instance = this;
             else
-                Destroy(this);
+                Destroy(gameObject);
             DontDestroyOnLoad(gameObject);
         }
 
@@ -64,6 +64,7 @@ namespace Hmxs.Scripts
         private void OnPlayerLeft(PlayerInput playerInput)
         {
             var handler = playerInput.GetComponent<InputHandler>();
+            
             if (handler == null) return;
 
             if (handler1 == handler)
@@ -77,7 +78,7 @@ namespace Hmxs.Scripts
                 Debug.Log("Player2 - Left");
             }
         }
-
+        
         public void SwitchMap(string map)
         {
             if (handler1) handler1.SwitchMap(map);

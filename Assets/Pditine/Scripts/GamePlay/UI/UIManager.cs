@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Pditine.GamePlay.UI
 {
-    public class UIManager : SingletonMono<UIManager>
+    public class UIManager : MonoBehaviour
     {
         [SerializeField] private PlayerCD cd1;
         [SerializeField] private PlayerCD cd2;
@@ -12,6 +12,20 @@ namespace Pditine.GamePlay.UI
         [SerializeField] private HeadPicture head2;
         [SerializeField] private PlayerHP hp1;
         [SerializeField] private PlayerHP hp2;
+        [SerializeField] private SettlementPanel settlementPanel;
+        
+        public static UIManager Instance { get; private set; }
+
+        private void Awake()
+        {
+            if (Instance == null)
+                Instance = this;
+            else
+            {
+                Debug.LogWarning("单例重复");
+                Destroy(gameObject);
+            }
+        }
         
         public void Init(PlayerController thePlayer)
         {
@@ -26,6 +40,11 @@ namespace Pditine.GamePlay.UI
                 head2.Init(thePlayer);
                 hp2.Init(thePlayer);
             }else PFCLog.Error("玩家ID错误");
+        }
+
+        public void GameOver(PlayerController theWinner)
+        {
+            settlementPanel.Init(theWinner);
         }
     }
 }

@@ -5,6 +5,7 @@ using Pditine.Audio;
 using Pditine.GamePlay.UI;
 using Pditine.Player.Ass;
 using Pditine.Player.Thorn;
+using PurpleFlowerCore;
 using PurpleFlowerCore.Utility;
 using Sirenix.OdinInspector;
 using UnityEngine;
@@ -55,7 +56,7 @@ namespace Pditine.Player
 
         #region 事件
         public event Action<float> OnChangeCD;
-        public event Action<int> OnChangeHP;
+        public event Action<int,int> OnChangeHP;
         public event Action OnDestroyed;
 
         #endregion
@@ -65,19 +66,18 @@ namespace Pditine.Player
         [SerializeField] private MMF_Player loseFeedback;
         [SerializeField]private MMScaleShaker _scaleShaker;
 
-        [Title("Audios")]
-        [SerializeField] private MMF_Player pushAudio;
-        [SerializeField] private MMF_Player slowdownAudio;
+        // [Title("Audios")]
+        // [SerializeField] private MMF_Player pushAudio;
+        // [SerializeField] private MMF_Player slowdownAudio;
 
         private void FixedUpdate()
         {
-            transform.position += (Vector3)Direction*(CurrentSpeed*Time.deltaTime);
-            transform.right = Vector3.Lerp(transform.right, Direction, rotateSpeed);
+            UpdateTransform();
+            ReduceSpeed();
         }
 
         private void Update()
         {
-            ReduceSpeed();
             UpdateCD();
             if(InputHandler.Dash)Dash();
             if(InputHandler.Direction.sqrMagnitude != 0)ChangeDirection(InputHandler.Direction);
@@ -123,6 +123,12 @@ namespace Pditine.Player
             if (CurrentSpeed <= 0) CurrentSpeed = 0;
         }
 
+        private void UpdateTransform()
+        {
+            transform.position += (Vector3)Direction*(CurrentSpeed*Time.deltaTime);
+            transform.right = Vector3.Lerp(transform.right, Direction, rotateSpeed);
+        }
+
         private void UpdateCD()
         {
             _currentCD -= Time.deltaTime;
@@ -133,13 +139,14 @@ namespace Pditine.Player
         public void ChangeHP(int delta)
         {
             _currentHP += delta;
-            OnChangeHP?.Invoke(_currentHP);
+            OnChangeHP?.Invoke(_currentHP,ID);
         }
         
         public void BeDestroy()
         {
             CanMove = false;
-            DelayUtility.Delay(3.7f, () =>
+            
+            DelayUtility.Delay(3f, () =>
             {
                 loseFeedback.PlayFeedbacks();
             });

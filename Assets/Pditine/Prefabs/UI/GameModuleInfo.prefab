@@ -361,9 +361,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   theImage: {fileID: 3300857635514511269}
+  button: {fileID: 5900445982319188405}
+  buttonImage: {fileID: 9190849966458972275}
+  theEffect: {fileID: 3853869868333525420}
   gameModelName: {fileID: 6648203173730701652}
   introduction: {fileID: 6400138989639222716}
-  startBtn: {fileID: 9190849966458972275}
+  doneSprite: {fileID: -1868187735, guid: d5d450566ad803c4da2d20bb05c766fd, type: 3}
+  notDoneSprite: {fileID: -2058013435, guid: 06b9fcf715efe654881dafc9761b9429, type: 3}
   speed: 0.2
 --- !u!1 &8576910636511942546
 GameObject:

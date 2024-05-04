@@ -10,7 +10,7 @@ namespace Pditine.Component
         [SerializeField] private Sprite normal;
         [SerializeField] private Sprite selected;
         [SerializeField] private Image theImage;
-        private void Start()
+        private void OnEnable()
         {
             theImage.sprite = normal;
         }

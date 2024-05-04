@@ -3,6 +3,7 @@ using Hmxs.Toolkit.Base.Bindable;
 using Pditine.Audio;
 using Pditine.Data;
 using Pditine.Scripts.Data;
+using PurpleFlowerCore;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.UI;
@@ -61,7 +62,7 @@ namespace Hmxs.Scripts
         private void Update()
         {
             if (InputHandler == null) return;
-
+            
             if (InputHandler.Confirm)
                 OnConfirm();
 

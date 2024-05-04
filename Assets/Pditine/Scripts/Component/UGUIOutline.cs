@@ -11,13 +11,13 @@ namespace Pditine.Component
     {
         public Color OutlineColor = Color.white;
         [Range(0, 6)] public int OutlineWidth = 0;
+        [SerializeField] private Shader theShader;
 
         private static List<UIVertex> _vertexList = new();
 
         public void Init()
         {
-            var shader = Shader.Find("Pditine/UGUIOutline");
-            base.graphic.material = new Material(shader);
+            base.graphic.material = new Material(theShader);
 
             var v1 = base.graphic.canvas.additionalShaderChannels;
             var v2 = AdditionalCanvasShaderChannels.TexCoord1;

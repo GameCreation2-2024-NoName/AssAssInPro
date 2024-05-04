@@ -10328,7 +10328,7 @@ MonoBehaviour:
   Feedbacks: []
   InitializationMode: 2
   SafeMode: 3
-  Direction: 0
+  Direction: 1
   AutoChangeDirectionOnEnd: 0
   AutoPlayOnStart: 0
   AutoPlayOnEnable: 0
@@ -11092,7 +11092,7 @@ MonoBehaviour:
         RemapRangeFalloff: {x: 0, y: 1}
         Owner: {fileID: 4853732126795044146}
         DebugActive: 0
-        Sfx: {fileID: 8300000, guid: 54f1a4b484d8df44696941132e00be2d, type: 3}
+        Sfx: {fileID: 8300000, guid: 04e9f77cd4a45574e9ca75b1281d422e, type: 3}
         RandomSfx: []
         TestPlayButton:
           ButtonText: Debug Play Sound
@@ -11705,7 +11705,7 @@ MonoBehaviour:
         RemapRangeFalloff: {x: 0, y: 1}
         Owner: {fileID: 9176769951461287582}
         DebugActive: 0
-        Sfx: {fileID: 8300000, guid: 54f1a4b484d8df44696941132e00be2d, type: 3}
+        Sfx: {fileID: 8300000, guid: 04e9f77cd4a45574e9ca75b1281d422e, type: 3}
         RandomSfx: []
         TestPlayButton:
           ButtonText: Debug Play Sound
@@ -12454,7 +12454,7 @@ MonoBehaviour:
         RemapRangeFalloff: {x: 0, y: 1}
         Owner: {fileID: 25723007503848422}
         DebugActive: 0
-        Sfx: {fileID: 8300000, guid: d090e8da66a7c1a43a0021fffbd3d3e9, type: 3}
+        Sfx: {fileID: 8300000, guid: bce6fd1cf1374df43b7fb994b3841845, type: 3}
         RandomSfx: []
         TestPlayButton:
           ButtonText: Debug Play Sound
@@ -12605,7 +12605,7 @@ MonoBehaviour:
   m_BlockingObjects: 0
   m_BlockingMask:
     serializedVersion: 2
-    m_Bits: 1079
+    m_Bits: 55
 --- !u!1 &9001696140720747579
 GameObject:
   m_ObjectHideFlags: 0
@@ -13169,7 +13169,7 @@ MonoBehaviour:
         RemapRangeFalloff: {x: 0, y: 1}
         Owner: {fileID: 8800314028915857592}
         DebugActive: 0
-        Sfx: {fileID: 8300000, guid: 54f1a4b484d8df44696941132e00be2d, type: 3}
+        Sfx: {fileID: 8300000, guid: 04e9f77cd4a45574e9ca75b1281d422e, type: 3}
         RandomSfx: []
         TestPlayButton:
           ButtonText: Debug Play Sound

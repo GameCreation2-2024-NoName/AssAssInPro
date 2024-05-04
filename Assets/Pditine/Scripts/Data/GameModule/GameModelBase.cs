@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Pditine.Scripts.Data.GameModule
@@ -19,6 +20,12 @@ namespace Pditine.Scripts.Data.GameModule
         
         [SerializeField] private Sprite preview;
         public Sprite Preview=>preview;
+        
+        // [SerializeField] private List<Sprite> buttonSprite;
+        // public List<Sprite> ButtonSprite=>buttonSprite;
+        
+        [SerializeField] private bool done;
+        public bool Done=>done;
 
     }
 }

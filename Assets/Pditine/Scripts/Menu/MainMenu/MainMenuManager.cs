@@ -1,7 +1,11 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using Hmxs.Scripts;
+using Pditine.Data;
 using PurpleFlowerCore;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace Pditine.MainMenu
 {
@@ -12,6 +16,28 @@ namespace Pditine.MainMenu
         private int _currentMenuIndex;
         private Coroutine _doDisableMenu;
         [SerializeField] private Material theMaterial;
+
+        private void Start()
+        {
+            OpenMenu(DataManager.Instance.PassingData.mainMenuOpenedMenuIndex);
+            //PlayerManager.Instance.Init();
+            Time.timeScale = 1;
+            PlayerManager.Instance.SwitchMap("Selection");
+        }
+
+        public void OpenMenu(int menuIndex)
+        {
+            foreach (var menu in menus)
+            {
+                menu.alpha = 0;
+                menu.gameObject.SetActive(false);
+            }
+
+            var theMenu = menus[menuIndex];
+            theMenu.alpha = 1;
+            _currentMenuIndex = menuIndex;
+            theMenu.gameObject.SetActive(true);
+        }
 
         public void ChangeMenu(int index)
         {
@@ -50,7 +76,7 @@ namespace Pditine.MainMenu
             while (lastMenu.alpha > 0.02f)
             {
                 lastMenu.alpha = Mathf.Lerp(lastMenu.alpha, 0, 0.05f);
-                theMaterial.SetFloat("_Cutoff", (1 - lastMenu.alpha)/2f);
+                theMaterial.SetFloat("_Cutoff", (1 - lastMenu.alpha)/1.9f);
                 yield return new WaitForSeconds(0.01f);
             }
             theMaterial.SetFloat("_Cutoff",1);
@@ -61,7 +87,7 @@ namespace Pditine.MainMenu
             while (currentMenu.alpha<0.95f)
             {
                 currentMenu.alpha = Mathf.Lerp(currentMenu.alpha, 1, 0.05f);
-                theMaterial.SetFloat("_Cutoff",(1 - currentMenu.alpha)/2f);
+                theMaterial.SetFloat("_Cutoff",(1 - currentMenu.alpha)/1.9f);
                 yield return new WaitForSeconds(0.01f);
             }
             currentMenu.alpha =1;

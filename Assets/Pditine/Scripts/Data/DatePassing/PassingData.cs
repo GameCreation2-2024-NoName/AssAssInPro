@@ -12,5 +12,6 @@ namespace Pditine.Scripts.Data.DatePassing
         public int player1ThornID;
         public int player2ThornID;
         public GameModelBase currentGameModel;
+        public int mainMenuOpenedMenuIndex;
     }
 }

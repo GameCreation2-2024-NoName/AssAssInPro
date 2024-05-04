@@ -1,18 +1,24 @@
-﻿using Pditine.Scripts.Data.GameModule;
+﻿using Pditine.Component;
+using Pditine.Scripts.Data.GameModule;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 
-namespace Pditine.Scripts.SelectGameModuleScene
+namespace Pditine.Menu.SelectGameModel
 {
     public class GameModelInfo : MonoBehaviour
     {
         public RectTransform target;
         [SerializeField]private Image theImage;
+        [SerializeField] private Button button;
+        [SerializeField] private Image buttonImage;
+        [SerializeField] private ButtonEffect_Audio theEffect;
         [SerializeField] private TextMeshProUGUI gameModelName;
         [SerializeField] private TextMeshProUGUI introduction;
-        [SerializeField] private Image startBtn;
+
+        [SerializeField] private Sprite doneSprite;
+        [SerializeField] private Sprite notDoneSprite;
+
 
         public bool Enable
         {
@@ -21,7 +27,7 @@ namespace Pditine.Scripts.SelectGameModuleScene
                 theImage.enabled = value;
                 gameModelName.enabled = value;
                 introduction.enabled = value;
-                startBtn.enabled = value;
+                buttonImage.enabled = value;
             }
         }
         
@@ -37,6 +43,18 @@ namespace Pditine.Scripts.SelectGameModuleScene
             theImage.sprite = info.Preview;
             gameModelName.text = info.ModuleName;
             introduction.text = info.Introduction;
+            if (info.Done)
+            {
+                button.enabled = true;
+                buttonImage.sprite = doneSprite;
+                theEffect.enabled = true;
+            }
+            else
+            {
+                button.enabled = false;
+                buttonImage.sprite = notDoneSprite;
+                theEffect.enabled = false;  
+            }
         }
 
         private void Move()
