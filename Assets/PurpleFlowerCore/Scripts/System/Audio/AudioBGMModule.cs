@@ -23,7 +23,7 @@ namespace PurpleFlowerCore.Audio
             get => BgmSource.volume;
             set
             {
-                if (value <= 0) throw new ArgumentOutOfRangeException(nameof(value));
+                if (value < 0 || value>1) throw new ArgumentOutOfRangeException(nameof(value));
                 BgmSource.volume = value;
             }
         }

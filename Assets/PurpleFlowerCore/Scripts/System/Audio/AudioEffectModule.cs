@@ -5,19 +5,19 @@ using UnityEngine.Events;
 namespace PurpleFlowerCore.Audio
 {
     public class AudioEffectModule : MonoBehaviour
-                                           {
-                                               private GameObjectPoolData _pool;
-                                               private GameObjectPoolData Pool
-                                               {
-                                                   get
-                                                   {
-                                                       if (_pool is not null) return _pool;
-                                                       _pool = new GameObjectPoolData(transform,ResourceSystem.LoadResource<GameObject>("PFCRes/AudioPlayer"));
+    {
+        private GameObjectPoolData _pool;
+        private GameObjectPoolData Pool
+        {
+            get
+            {
+                if (_pool is not null) return _pool;
+                _pool = new GameObjectPoolData(transform,ResourceSystem.LoadResource<GameObject>("PFCRes/AudioPlayer"));
                 return _pool;
             }
         }
 
-        public void Play(AudioClip clip,Transform parent,UnityAction finishCallBack)
+        public void Play(AudioClip clip,Transform parent,float volume,UnityAction finishCallBack)
         {
             AudioPlayer thePlayer = Pool.Pop().GetComponent<AudioPlayer>();
             if(parent)
@@ -30,10 +30,10 @@ namespace PurpleFlowerCore.Audio
             {
                 Pool.Push(thePlayer.gameObject);
             };
-            thePlayer.Play(clip,1,finishCallBack);
+            thePlayer.Play(clip,volume,finishCallBack);
         }
         
-        public void Play(AudioClip clip,Vector3 position,UnityAction finishCallBack)
+        public void Play(AudioClip clip,Vector3 position,float volume,UnityAction finishCallBack)
         {
             AudioPlayer thePlayer = Pool.Pop().GetComponent<AudioPlayer>();
             thePlayer.transform.position = position;
@@ -42,7 +42,7 @@ namespace PurpleFlowerCore.Audio
             {
                 Pool.Push(thePlayer.gameObject);
             };
-            thePlayer.Play(clip,1,finishCallBack);
+            thePlayer.Play(clip,volume,finishCallBack);
         }
     }
 }

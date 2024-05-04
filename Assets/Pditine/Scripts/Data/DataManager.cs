@@ -5,7 +5,7 @@ using Pditine.Scripts.Data.GameModule;
 using PurpleFlowerCore;
 using UnityEngine;
 
-namespace Pditine.Scripts.Data
+namespace Pditine.Data
 {
     public class DataManager : DdolSingletonMono<DataManager>
     {

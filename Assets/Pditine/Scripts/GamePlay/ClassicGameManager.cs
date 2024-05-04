@@ -1,6 +1,7 @@
 using Cinemachine;
 using Hmxs.Scripts;
 using LJH.Scripts.Utility;
+using Pditine.Data;
 using Pditine.Player;
 using Pditine.Player.Ass;
 using Pditine.Player.Thorn;

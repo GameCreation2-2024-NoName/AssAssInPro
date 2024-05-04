@@ -1,6 +1,7 @@
 ﻿using System;
 using Hmxs.Toolkit.Base.Bindable;
 using Pditine.Audio;
+using Pditine.Data;
 using Pditine.Scripts.Data;
 using Sirenix.OdinInspector;
 using UnityEngine;

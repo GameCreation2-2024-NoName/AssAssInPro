@@ -28,7 +28,7 @@ namespace PurpleFlowerCore
 
         private static AudioBGMModule _bgmModule;
 
-        public static AudioBGMModule BGMModule
+        private static AudioBGMModule BGMModule
         {
             get
             {
@@ -83,7 +83,7 @@ namespace PurpleFlowerCore
         
         private static AudioEffectModule _effectModule;
 
-        public static AudioEffectModule EffectModule
+        private static AudioEffectModule EffectModule
         {
             get
             {
@@ -92,15 +92,22 @@ namespace PurpleFlowerCore
                 return _effectModule;
             }
         }
+
+        private static float _effectVolume = 1;
+        public static float EffectVolume
+        {
+            get => _effectVolume;
+            set => _effectVolume = Mathf.Clamp(value, 0, 1);
+        }
         
         public static void PlayEffect(AudioClip clip,Transform parent = null,UnityAction finishCallBack = null)
         {
-            EffectModule.Play(clip,parent,finishCallBack);
+            EffectModule.Play(clip,parent,_effectVolume,finishCallBack);
         }
         
         public static void PlayEffect(AudioClip clip,Vector3 position = default,UnityAction finishCallBack = null)
         {
-            EffectModule.Play(clip,position,finishCallBack);
+            EffectModule.Play(clip,position,_effectVolume,finishCallBack);
         }
 
         public static void PlayEffect(string clipName,Transform parent = null,UnityAction finishCallBack = null)
