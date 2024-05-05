@@ -54,21 +54,41 @@ namespace Pditine.Player
 
         #endregion
 
-        #region 事件
-        public event Action<float> OnChangeCD;
-        public event Action<int,int> OnChangeHP;
-        public event Action OnDestroyed;
-
-        #endregion
+        #region 其他变量
 
         [Title("Effect")]
         [SerializeField] private MMF_Player hitFeedback;
         [SerializeField] private MMF_Player loseFeedback;
         [SerializeField]private MMScaleShaker _scaleShaker;
 
+        private bool _isPause;
+
+        #endregion
+
+        #region 事件
+        public event Action<float> OnChangeCD;
+        public event Action<int,int> OnChangeHP;
+        public event Action OnDestroyed;
+
+        #endregion
         // [Title("Audios")]
         // [SerializeField] private MMF_Player pushAudio;
         // [SerializeField] private MMF_Player slowdownAudio;
+
+        private void OnEnable()
+        {
+            EventSystem.AddEventListener("Pause",Pause);
+            EventSystem.AddEventListener("UnPause",UnPause);
+        }
+
+        private void OnDisable()
+        {
+            EventSystem.RemoveEventListener("Pause",Pause);
+            EventSystem.RemoveEventListener("UnPause",UnPause);
+        }
+
+        private void Pause() => _isPause = true;
+        private void UnPause() => _isPause = false;
 
         private void FixedUpdate()
         {
@@ -96,6 +116,7 @@ namespace Pditine.Player
         public void ChangeDirection(Vector3 direction)
         {
             if (!CanMove) return;
+            if (_isPause) return;
             if (InputHandler.IsKeyboard)
             {
                 _inputDirection = (Camera.main.ScreenToWorldPoint(direction) - transform.position).normalized;
@@ -110,6 +131,7 @@ namespace Pditine.Player
         public void Dash()
         {
             if (!CanMove) return;
+            if (_isPause) return;
             if (_currentCD > 0) return;
             AAIAudioManager.Instance.PlayEffect("加速音效");
             Direction = _inputDirection;

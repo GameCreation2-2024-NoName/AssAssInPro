@@ -33,16 +33,16 @@ namespace Pditine.GamePlay.UI
             thorn.SetNativeSize();
             ass.SetNativeSize();
         }
-
-        public void BackToMainMenu()
-        {
-            DataManager.Instance.PassingData.mainMenuOpenedMenuIndex = 0;
-            SceneSystem.LoadScene(0);
-        }
-
+        
         public void AnotherGame()
         {
             DataManager.Instance.PassingData.mainMenuOpenedMenuIndex = 4;
+            SceneSystem.LoadScene(0);
+        }
+        
+        public void BackToMainMenu()
+        {
+            DataManager.Instance.PassingData.mainMenuOpenedMenuIndex = 0;
             SceneSystem.LoadScene(0);
         }
     }

@@ -29,6 +29,7 @@ namespace Pditine.ClassicGame
         [SerializeField] private PlayerController player2;
         
         private PassingData _passingData;
+        private bool _isPause;
 
         public static ClassicGameManager Instance { get; private set; }
 
@@ -51,6 +52,12 @@ namespace Pditine.ClassicGame
             Init();
         }
 
+        private void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.Escape)) SetPause();
+
+        }
+
         // private void OnEnable()
         // {
         //     EventSystem.AddEventListener("GameOver", GameOver);
@@ -59,7 +66,7 @@ namespace Pditine.ClassicGame
         // {
         //     EventSystem.RemoveEventListener("GameOver", GameOver);
         // }
-
+        
         private void Init()
         {
             //组装玩家
@@ -77,6 +84,14 @@ namespace Pditine.ClassicGame
             PlayerManager.Instance.SwitchMap("GamePlay");
         }
 
+        public void SetPause()
+        {
+            if (_gameOver) return;
+            _isPause = !_isPause;
+            Time.timeScale = _isPause ? 0 : 1;
+            EventSystem.EventTrigger(_isPause ? "Pause" : "UnPause");
+        }
+        
         private void CreatePlayer(int assID,int thornID,PlayerController thePlayer)
         {
             AssBase theAss = Instantiate(DataManager.Instance.GetAssData(assID).Prototype).GetComponent<AssBase>();

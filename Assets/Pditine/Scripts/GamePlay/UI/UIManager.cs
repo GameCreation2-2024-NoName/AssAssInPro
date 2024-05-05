@@ -1,6 +1,8 @@
 ﻿using Pditine.Player;
 using PurpleFlowerCore;
+using PurpleFlowerCore.Utility;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Pditine.GamePlay.UI
 {
@@ -13,7 +15,10 @@ namespace Pditine.GamePlay.UI
         [SerializeField] private PlayerHP hp1;
         [SerializeField] private PlayerHP hp2;
         [SerializeField] private SettlementPanel settlementPanel;
-        
+        [SerializeField] private Image gaussianBlur;
+        [SerializeField] private GameObject pausePanel;
+
+        private const float GaussianBlurAlpha = (float)83 / 255; 
         public static UIManager Instance { get; private set; }
 
         private void Awake()
@@ -25,6 +30,18 @@ namespace Pditine.GamePlay.UI
                 Debug.LogWarning("单例重复");
                 Destroy(gameObject);
             }
+        }
+        
+        private void OnEnable()
+        {
+            EventSystem.AddEventListener("Pause",SetPausePanelOpen);
+            EventSystem.AddEventListener("UnPause",SetPausePanelUnOpen);
+        }
+
+        private void OnDisable()
+        {
+            EventSystem.RemoveEventListener("Pause",SetPausePanelOpen);
+            EventSystem.RemoveEventListener("UnPause",SetPausePanelUnOpen);
         }
         
         public void Init(PlayerController thePlayer)
@@ -42,8 +59,31 @@ namespace Pditine.GamePlay.UI
             }else PFCLog.Error("玩家ID错误");
         }
 
+        // private void SetPausePanelOpen(bool isOpen)
+        // {
+        //     pausePanel.SetActive(isOpen);
+        //     var targetAlpha = isOpen ? 1 : 0;
+        //     var color = gaussianBlur.color;
+        //     gaussianBlur.color = new Color(color.r, color.g, color.b, targetAlpha);
+        // }
+        private void SetPausePanelOpen()
+        {
+            pausePanel.SetActive(true);
+            var color = gaussianBlur.color;
+            gaussianBlur.color = new Color(color.r, color.g, color.b, GaussianBlurAlpha);
+        }
+        
+        private void SetPausePanelUnOpen()
+        {
+            pausePanel.SetActive(false);
+            var color = gaussianBlur.color;
+            gaussianBlur.color = new Color(color.r, color.g, color.b, 0);
+        }
+        
+        
         public void GameOver(PlayerController theWinner)
         {
+            FadeUtility.FadeInAndStay(gaussianBlur,40,null,GaussianBlurAlpha);
             settlementPanel.Init(theWinner);
         }
     }

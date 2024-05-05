@@ -2,7 +2,9 @@
 using Pditine.Collide;
 using Pditine.Collide.CollideEvent;
 using Pditine.Scripts.Data.Ass;
+using PurpleFlowerCore.Utility;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace Pditine.Player.Thorn
 {
@@ -35,11 +37,11 @@ namespace Pditine.Player.Thorn
         // [HideInInspector]public float CurrentScale;
         // [SerializeField] private float thornMaxScale;
 
-        // private void Start()
-        // {
-        //     collisionEvent += HandleVibration;
-        //     CurrentScale = transform.localScale.x;
-        // }
+        private void Start()
+        {
+            CallBack += HandleVibration;
+            //CurrentScale = transform.localScale.x;
+        }
         //
         // private void FixedUpdate()
         // {
@@ -51,18 +53,18 @@ namespace Pditine.Player.Thorn
         //     if (thePlayer.TheInput&&thePlayer.TheInput.devices[0] is Gamepad theGamepad) theGamepad.ResetHaptics();
         // }
         //
-        // private void HandleVibration()
-        // {
-        //     Gamepad theGamepad = null;
-        //     if(thePlayer.TheInput)
-        //         theGamepad = thePlayer.TheInput.devices[0] as Gamepad;
-        //     if (theGamepad==null) return;
-        //     theGamepad.SetMotorSpeeds(0.5f,0.5f);
-        //     DelayUtility.Delay(0.3f,() =>
-        //     {
-        //         theGamepad.ResetHaptics();
-        //     });
-        // }
+        private void HandleVibration()
+        {
+            Gamepad theGamepad = null;
+            if (thePlayer.InputHandler.IsGamepad)
+                theGamepad = thePlayer.InputHandler.Devices[0] as Gamepad;
+            if (theGamepad==null) return;
+            theGamepad.SetMotorSpeeds(0.5f,0.5f);
+            DelayUtility.Delay(0.3f,() =>
+            {
+                theGamepad.ResetHaptics();
+            });
+        }
         //
         // public void ChangeScale(float delta)
         // {
