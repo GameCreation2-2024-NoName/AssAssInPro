@@ -19,4 +19,4 @@ MonoBehaviour:
   prototype: {fileID: 3527323057261180279, guid: 53ee0a2ba3c4f5a449b21936215e3560, type: 3}
   portrait: {fileID: 1707546615, guid: 22b5deefd12eeeb4a8dfed8c6ac0977a, type: 3}
   thornName: "\u53CC\u5CF0"
-  thornIntroduction: "\u53EA\u8981\u80FD\u4E24\u4E2A\u523A\u4E00\u8D77\u6253\u5230...\u4F1A\u8D62\u7684"
+  thornIntroduction: "\u53EA\u8981\u80FD\u4E24\u4E2A\u523A<br>\u4E00\u8D77\u6253\u5230...\u4F1A\u8D62\u7684"
