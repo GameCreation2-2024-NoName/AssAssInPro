@@ -2,6 +2,7 @@ using System;
 using Hmxs.Scripts;
 using MoreMountains.Feedbacks;
 using Pditine.Audio;
+using Pditine.GamePlay.Buff;
 using Pditine.GamePlay.UI;
 using Pditine.Player.Ass;
 using Pditine.Player.Thorn;
@@ -18,13 +19,30 @@ namespace Pditine.Player
 
         [SerializeField]private int id;
         public int ID => id;
-        public float InitialVelocity=>_theAss.Data.InitialVelocity;
-        public float Friction=>_theAss.Data.Friction+_theThorn.Data.Friction;
-        private float CD => _theThorn.Data.CD;
-        
-        public int HP => _theAss.Data.HP;
-        public int ATK => _theThorn.Data.ATK;
 
+        public float initialVelocityMulAdjustment = 1;
+        public float initialVelocityAddAdjustment = 0;
+        public float InitialVelocity =>
+            _theAss.Data.InitialVelocity * initialVelocityMulAdjustment + initialVelocityAddAdjustment;
+
+        public float frictionMulAdjustment = 1;
+        public float frictionAddAdjustment = 0;
+
+        public float Friction => (_theAss.Data.Friction + _theThorn.Data.Friction) * frictionMulAdjustment +
+                                 frictionAddAdjustment;
+        
+        public float cdMulAdjustment = 1;
+        public float cdAddAdjustment = 0;
+        private float CD => _theThorn.Data.CD * cdMulAdjustment + cdAddAdjustment;
+
+        public float hpMulAdjustment = 1;
+        public int hpAddAdjustment = 0;
+        public int HP => (int)(_theAss.Data.HP * hpMulAdjustment + hpAddAdjustment);
+
+        public float atkMulAdjustment = 1;
+        public int atkAddAdjustment = 0;
+        public int ATK => (int)(_theThorn.Data.ATK * atkMulAdjustment + atkAddAdjustment);
+        
         private int _currentHP;
         public int CurrentHP => _currentHP;
         
@@ -37,6 +55,7 @@ namespace Pditine.Player
         [HideInInspector]public Vector2 Direction;
         
         public bool CanMove;
+        public bool isInvincible;
 
         #endregion
 
@@ -111,6 +130,7 @@ namespace Pditine.Player
             _theThorn = theThorn;
             _currentHP = HP;
             UIManager.Instance.Init(this);
+            BuffManager.Instance.Init(this);
         }
         
         public void ChangeDirection(Vector3 direction)
@@ -178,7 +198,22 @@ namespace Pditine.Player
             });
             OnDestroyed?.Invoke();
         }
-        
+
+        public void ResetProperty()
+        {
+            initialVelocityMulAdjustment = 1;
+            atkMulAdjustment = 1;
+            cdMulAdjustment = 1;
+            frictionMulAdjustment = 1;
+            hpMulAdjustment = 1;
+
+            atkAddAdjustment = 0;
+            cdAddAdjustment = 0;
+            frictionAddAdjustment = 0;
+            hpAddAdjustment = 0;
+            initialVelocityAddAdjustment = 0;
+        }
+
         public void HitFeedback() => hitFeedback.PlayFeedbacks();
         public void LoseFeedback() => loseFeedback.PlayFeedbacks();
     }

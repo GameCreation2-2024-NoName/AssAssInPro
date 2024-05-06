@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
+using Pditine.GamePlay.Buff;
 using Pditine.Scripts.Data.Ass;
 using Pditine.Scripts.Data.DatePassing;
 using Pditine.Scripts.Data.GameModule;
@@ -12,9 +14,11 @@ namespace Pditine.Data
         [SerializeField] private List<AssDataBase> asses = new();
         [SerializeField] private List<ThornDataBase> thorns = new();
         [SerializeField] private List<GameModelBase> gameModules = new();
+        [SerializeField] private List<BuffData> buffData = new();
         public List<AssDataBase> Asses => asses;
         public List<ThornDataBase> Thorns => thorns;
         public List<GameModelBase> GameModules => gameModules;
+        public List<BuffData> BuffData => buffData;
 
         [SerializeField] private PassingData passingData;
         /// <summary>
@@ -35,6 +39,16 @@ namespace Pditine.Data
         {
             if (gameModuleID >= gameModules.Count) return null;
             return gameModules[gameModuleID];
+        }
+
+        public BuffData GetBuffData(int buffDataIndex)
+        {
+            return buffData[buffDataIndex];
+        }
+
+        public BuffData GetBuffData(string buffDataName)
+        {
+            return buffData.Find(theBuff => theBuff.buffName == buffDataName);
         }
     }
 }
