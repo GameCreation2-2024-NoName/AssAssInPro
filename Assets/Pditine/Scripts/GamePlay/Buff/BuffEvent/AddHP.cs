@@ -1,5 +1,4 @@
-﻿using Pditine.Player;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Pditine.GamePlay.Buff
 {

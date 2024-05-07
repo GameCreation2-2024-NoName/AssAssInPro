@@ -5,11 +5,12 @@ using UnityEngine;
 
 namespace Pditine.GamePlay.LightBall
 {
-    public class AddHP : LightBallBase
-    {
-        protected override BuffInfo AddBuff(PlayerController targetPlayer)
-        {
-            return new BuffInfo(DataManager.Instance.GetBuffData("AddHP"),gameObject,targetPlayer);
-        }
-    }
+    //弃用
+    // public class AddHP : LightBallBase
+    // {
+    //     protected override BuffInfo AddBuff(PlayerController targetPlayer)
+    //     {
+    //         return new BuffInfo(DataManager.Instance.GetBuffData("AddHP"),gameObject,targetPlayer);
+    //     }
+    // }
 }

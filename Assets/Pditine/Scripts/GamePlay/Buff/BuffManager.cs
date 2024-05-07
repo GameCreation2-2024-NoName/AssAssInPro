@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Pditine.Player;
+using PurpleFlowerCore;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.Events;
@@ -9,7 +10,6 @@ using UnityEngine.Events;
 namespace Pditine.GamePlay.Buff
 {
     public class BuffManager : MonoBehaviour
-
     {
 #if UNITY_EDITOR
     [SerializeField] [ReadOnly] private List<BuffInfo> buffList = new();
@@ -19,7 +19,10 @@ namespace Pditine.GamePlay.Buff
     
     private readonly SortedSet<BuffInfo> _buffBufferSet = new();
     
-    private event UnityAction OnReset;
+    public event UnityAction<BuffInfo> OnAttachBuff;
+    public event UnityAction<BuffInfo> OnLostBuff;
+
+    public event UnityAction OnReset;
 
     public static BuffManager Instance { get; private set; }
 
@@ -34,9 +37,10 @@ namespace Pditine.GamePlay.Buff
         }
     }
     
-    public void Init(PlayerController thePlayer)
+    public void Init(PlayerController player1,PlayerController player2)
     {
-        OnReset += thePlayer.ResetProperty;
+        OnReset += player1.ResetProperty;
+        OnReset += player2.ResetProperty;
     }
     
     private void Update()
@@ -67,7 +71,10 @@ namespace Pditine.GamePlay.Buff
             if (buffInfo.durationCounter < 0)
                 _buffBufferSet.Add(buffInfo);
             else
-                buffInfo.durationCounter -= Time.deltaTime;
+            {
+                if (buffInfo.durationCounter<10000)
+                    buffInfo.durationCounter -= Time.deltaTime;
+            }
         }
 
         foreach (var buffInfo in _buffBufferSet)
@@ -81,7 +88,8 @@ namespace Pditine.GamePlay.Buff
 
     public void AttachBuff(BuffInfo buffInfo)
     {
-        if (_buffSet.Contains(buffInfo))
+        //if (_buffSet.Contains(buffInfo))
+        if (_buffSet.Contains(buffInfo)&& buffInfo.buffData.attachType != BuffAttachType.Keep)
         {
             // buff存在
             var buff = GetBuffById(buffInfo.buffData.id);
@@ -106,20 +114,27 @@ namespace Pditine.GamePlay.Buff
                     _ => buff.durationCounter
                 };
             }
-
-            buff.OnAttack();
+            
+            buff.OnAttach();
+            OnAttachBuff?.Invoke(buffInfo);
             return;
         }
 
         // buff不存在
         buffInfo.durationCounter = buffInfo.buffData.durationTime;
         buffInfo.tickCounter = buffInfo.buffData.tickTime;
-        buffInfo.OnAttack();
+        buffInfo.OnAttach();
+        OnAttachBuff?.Invoke(buffInfo);
         _buffSet.Add(buffInfo);
     }
 
     public void LostBuff(BuffInfo buffInfo)
     {
+        if (!_buffSet.Contains(buffInfo))
+        {
+            PFCLog.Warning("无对应buff");
+            return;
+        }
         switch (buffInfo.buffData.lostType)
         {
             case BuffLostType.Reduce:
@@ -137,7 +152,7 @@ namespace Pditine.GamePlay.Buff
             default:
                 throw new ArgumentOutOfRangeException();
         }
-
+        OnLostBuff?.Invoke(buffInfo);
         ResetBuff();
     }
 

@@ -17,22 +17,20 @@ namespace Pditine.Collide.CollideEvent
 
         protected override void Happen(ColliderBase collider1, ColliderBase collider2)
         {
-            //         //CameraMoveUtility.MoveAndZoom(collider2.transform.position,0.03f,4);
             var thePlayer1 = (collider1 as ThornBase).ThePlayer;
             var thePlayer2 = (collider2 as AssBase).ThePlayer;
-            //ClassicGameManager.Instance.PlayerDead(thePlayer.transform,thePlayer.ID);
-            //thePlayer.BeDestroy();
-            //thePlayer.LoseFeedback();
-            //EventSystem.EventTrigger("GameOver");
+
             thePlayer1.HitFeedback();
             thePlayer2.ChangeHP(-thePlayer1.ATK);
 
             float deltaSpeed = thePlayer1.CurrentSpeed * Mathf.Abs(
                                Mathf.Cos(Vector2.Angle(thePlayer1.Direction, thePlayer2.Direction)));
             thePlayer2.CurrentSpeed += deltaSpeed;
-            //thePlayer1.CurrentSpeed -= deltaSpeed;
             thePlayer1.Direction = Vector2.Reflect(thePlayer1.Direction, -thePlayer2.Direction);
             AAIAudioManager.Instance.PlayEffect("碰撞音效1");
+            
+            (collider1 as ThornBase).OnAttack?.Invoke();
+            (collider2 as AssBase).OnBeAttack?.Invoke();
         }
     }
 }

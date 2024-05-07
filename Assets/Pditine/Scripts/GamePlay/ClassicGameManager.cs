@@ -4,6 +4,7 @@ using Hmxs.Scripts;
 using LJH.Scripts.Utility;
 using MoreMountains.Feedbacks;
 using Pditine.Data;
+using Pditine.GamePlay.Buff;
 using Pditine.GamePlay.UI;
 using Pditine.Player;
 using Pditine.Player.Ass;
@@ -69,14 +70,16 @@ namespace Pditine.ClassicGame
         
         private void Init()
         {
+            Time.timeScale = 1;
+            _gameOver = false;
             //组装玩家
             CreatePlayer(_passingData.player1AssID,_passingData.player1ThornID,player1);
             CreatePlayer(_passingData.player2AssID,_passingData.player2ThornID,player2);
             
-            startEffect.PlayFeedbacks();
+            BuffManager.Instance.Init(player1,player2);
+            UIManager.Instance.Init(player1,player2);
             
-            Time.timeScale = 1;
-            _gameOver = false;
+            startEffect.PlayFeedbacks();
             DelayUtility.Delay(5.5f,()=>
             {
                 PlayerCanMove(true);
@@ -113,13 +116,15 @@ namespace Pditine.ClassicGame
             CameraMoveUtility.MoveAndZoomForever(camera,theLoser.transform, 0.04f, 3);
             PlayerCanMove(false);
             theLoser.BeDestroy();
-            DelayUtility.Delay(2, () => { UIManager.Instance.GameOver(theWinner); }); 
+            //todo:耦合
+            DelayUtility.Delay(2, () => { UIManager.Instance.GameOver(theWinner); });
+            EventSystem.EventTrigger("GameOver");
         }
 
         public void PlayerCanMove(bool canMove)
         {
-            player1.CanMove = canMove;
-            player2.CanMove = canMove;
+            player1.canMove = canMove;
+            player2.canMove = canMove;
         }
     }
 }

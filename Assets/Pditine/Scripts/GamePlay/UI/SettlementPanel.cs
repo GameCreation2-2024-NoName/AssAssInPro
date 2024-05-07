@@ -11,7 +11,6 @@ namespace Pditine.GamePlay.UI
     public class SettlementPanel : MonoBehaviour
     {
         [SerializeField] private Image backgroundLight;
-        //[SerializeField] private Image sunglasses;
         [SerializeField] private Image thorn;
         [SerializeField] private Image ass;
         [SerializeField] private Animator theAnimator;

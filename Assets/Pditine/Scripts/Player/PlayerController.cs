@@ -10,6 +10,7 @@ using PurpleFlowerCore;
 using PurpleFlowerCore.Utility;
 using Sirenix.OdinInspector;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Pditine.Player
 {
@@ -54,8 +55,9 @@ namespace Pditine.Player
         private Vector2 _inputDirection;
         [HideInInspector]public Vector2 Direction;
         
-        public bool CanMove;
+        public bool canMove;
         public bool isInvincible;
+        public float targetScale = 1;
 
         #endregion
 
@@ -129,13 +131,11 @@ namespace Pditine.Player
             _theAss = theAss;
             _theThorn = theThorn;
             _currentHP = HP;
-            UIManager.Instance.Init(this);
-            BuffManager.Instance.Init(this);
         }
         
         public void ChangeDirection(Vector3 direction)
         {
-            if (!CanMove) return;
+            if (!canMove) return;
             if (_isPause) return;
             if (InputHandler.IsKeyboard)
             {
@@ -150,7 +150,7 @@ namespace Pditine.Player
         
         public void Dash()
         {
-            if (!CanMove) return;
+            if (!canMove) return;
             if (_isPause) return;
             if (_currentCD > 0) return;
             AAIAudioManager.Instance.PlayEffect("加速音效");
@@ -180,13 +180,15 @@ namespace Pditine.Player
 
         public void ChangeHP(int delta)
         {
+            if (delta < 0 && isInvincible) return;
             _currentHP += delta;
+            if (_currentCD > HP) _currentCD = HP;
             OnChangeHP?.Invoke(_currentHP,ID);
         }
         
         public void BeDestroy()
         {
-            CanMove = false;
+            canMove = false;
             
             DelayUtility.Delay(3f, () =>
             {

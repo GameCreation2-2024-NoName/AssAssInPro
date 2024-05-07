@@ -1,4 +1,6 @@
-﻿using Pditine.Player;
+﻿using System;
+using Pditine.GamePlay.Buff;
+using Pditine.Player;
 using PurpleFlowerCore;
 using PurpleFlowerCore.Utility;
 using UnityEngine;
@@ -14,6 +16,8 @@ namespace Pditine.GamePlay.UI
         [SerializeField] private HeadPicture head2;
         [SerializeField] private PlayerHP hp1;
         [SerializeField] private PlayerHP hp2;
+        [SerializeField] private BuffList buffList1;
+        [SerializeField] private BuffList buffList2;
         [SerializeField] private SettlementPanel settlementPanel;
         [SerializeField] private Image gaussianBlur;
         [SerializeField] private GameObject pausePanel;
@@ -44,7 +48,16 @@ namespace Pditine.GamePlay.UI
             EventSystem.RemoveEventListener("UnPause",SetPausePanelUnOpen);
         }
         
-        public void Init(PlayerController thePlayer)
+        public void Init(PlayerController player1,PlayerController player2)
+        {
+            BindPlayer(player1);
+            BindPlayer(player2);
+
+            BuffManager.Instance.OnAttachBuff += AddBuffUI;
+            BuffManager.Instance.OnLostBuff += RemoveBuffUI;
+        }
+
+        private void BindPlayer(PlayerController thePlayer)
         {
             if (thePlayer.ID == 1)
             {
@@ -58,14 +71,7 @@ namespace Pditine.GamePlay.UI
                 hp2.Init(thePlayer);
             }else PFCLog.Error("玩家ID错误");
         }
-
-        // private void SetPausePanelOpen(bool isOpen)
-        // {
-        //     pausePanel.SetActive(isOpen);
-        //     var targetAlpha = isOpen ? 1 : 0;
-        //     var color = gaussianBlur.color;
-        //     gaussianBlur.color = new Color(color.r, color.g, color.b, targetAlpha);
-        // }
+        
         private void SetPausePanelOpen()
         {
             pausePanel.SetActive(true);
@@ -85,6 +91,27 @@ namespace Pditine.GamePlay.UI
         {
             FadeUtility.FadeInAndStay(gaussianBlur,40,null,GaussianBlurAlpha);
             settlementPanel.Init(theWinner);
+        }
+
+        public void AddBuffUI(BuffInfo buffInfo)
+        {
+            if (buffInfo.durationCounter <= 0) return;
+            if(buffInfo.target.ID == 1)
+                buffList1.AddBuff(buffInfo);
+            else if(buffInfo.target.ID == 2)
+                buffList2.AddBuff(buffInfo);
+            else 
+                Debug.LogError("玩家ID错误");
+        }
+        
+        public void RemoveBuffUI(BuffInfo buffInfo)
+        {
+            if(buffInfo.target.ID == 1)
+                buffList1.RemoveBuff(buffInfo);
+            else if(buffInfo.target.ID == 2)
+                buffList2.RemoveBuff(buffInfo);
+            else 
+                Debug.LogError("玩家ID错误");
         }
     }
 }

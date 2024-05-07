@@ -8,6 +8,7 @@ namespace Pditine.Audio
 {
     public class AAIAudioManager : DdolSingletonMono<AAIAudioManager>
     {
+        //todo:考虑移至dataManager
         [SerializeField] private List<AudioClip> effectAudios = new();
         [SerializeField] private List<AudioClip> BGMAudios = new();
 

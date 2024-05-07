@@ -8,8 +8,8 @@ namespace Pditine.GamePlay.Buff
     /// </summary>
     public enum BuffAttachType
     {
-        Add,        // 增加层数，时间叠加
         Override,   // 覆写
+        Add,        // 增加层数，时间叠加
         Keep        // 无法叠加
     }
 
@@ -36,7 +36,7 @@ namespace Pditine.GamePlay.Buff
 
         [Title("Time Info")]
         public bool willLastForever;
-        public float durationTime;
+        public float durationTime; // 大于等于10000则认为持续时间无限
         public float tickTime;
 
         [Title("Update Type")]

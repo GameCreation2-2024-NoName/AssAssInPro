@@ -14,25 +14,27 @@ namespace Pditine.GamePlay.Buff
         public float tickCounter;
         public int currentStack;
 
-        public BuffInfo(BuffData buffData, GameObject creator, PlayerController target,int currentStack = 1)
+        public BuffInfo(BuffData buffData, GameObject creator, PlayerController target)
         {
             this.buffData = buffData;
             this.creator = creator;
             this.target = target;
-            this.currentStack = currentStack;
         }
 
         public int CompareTo(BuffInfo other)
         {
             if (ReferenceEquals(this, other)) return 0;
+            
             if (other == null) return 1;
             if (buffData == null) return other.buffData == null ? 0 : -1;
             if (other.buffData == null) return 1;
 
-            return buffData.id.CompareTo(other.buffData.id);
+            if (target == other.target)
+                return buffData.id.CompareTo(other.buffData.id);
+            else return target.ID > other.target.ID ? 1 : -1;
         }
         
-        public void OnAttack()
+        public void OnAttach()
         {
             if (buffData.onAttachEvents is null) return;
             foreach (var onAttachEvent in buffData.onAttachEvents)

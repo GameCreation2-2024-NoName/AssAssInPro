@@ -15,7 +15,7 @@ MonoBehaviour:
   id: 0
   buffName: "\u751F\u547D\u56DE\u590D"
   description: 
-  icon: {fileID: 0}
+  icon: {fileID: 626982978, guid: 02ef1fc9b339b6340808d972f48032c9, type: 3}
   priority: 0
   maxStack: 0
   tags: []
@@ -24,6 +24,8 @@ MonoBehaviour:
   tickTime: 0
   attachType: 0
   lostType: 0
-  onAttachEvents: []
+  onAttachEvents:
+  - {fileID: 11400000, guid: b7f39a8205eb09e4092ebf49c9a8a844, type: 2}
   onLostEvents: []
   onTickEvents: []
+  onResetEvents: []

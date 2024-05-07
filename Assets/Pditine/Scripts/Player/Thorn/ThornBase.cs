@@ -4,6 +4,7 @@ using Pditine.Collide.CollideEvent;
 using Pditine.Scripts.Data.Ass;
 using PurpleFlowerCore.Utility;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
 namespace Pditine.Player.Thorn
@@ -15,6 +16,8 @@ namespace Pditine.Player.Thorn
 
         [SerializeField]protected ThornDataBase data;
         public ThornDataBase Data => data;
+
+        public UnityAction OnAttack;
 
         protected override List<CollidingEventBase> GetCollidingEvents()
         {
@@ -29,30 +32,10 @@ namespace Pditine.Player.Thorn
             transform.parent = parent.transform;
         }
 
-        // public void Init(ThornDataBase theData)
-        // {
-        //     data = theData;
-        // }
-
-        // [HideInInspector]public float CurrentScale;
-        // [SerializeField] private float thornMaxScale;
-
         private void Start()
         {
             CallBack += HandleVibration;
-            //CurrentScale = transform.localScale.x;
         }
-        //
-        // private void FixedUpdate()
-        // {
-        //     DoChangeScale();
-        // }
-        //
-        // private void OnDisable()
-        // {
-        //     if (thePlayer.TheInput&&thePlayer.TheInput.devices[0] is Gamepad theGamepad) theGamepad.ResetHaptics();
-        // }
-        //
         private void HandleVibration()
         {
             Gamepad theGamepad = null;
@@ -65,18 +48,5 @@ namespace Pditine.Player.Thorn
                 theGamepad.ResetHaptics();
             });
         }
-        //
-        // public void ChangeScale(float delta)
-        // {
-        //     CurrentScale += delta;
-        //     if (CurrentScale > thornMaxScale)
-        //         CurrentScale = thornMaxScale;
-        // }
-        //
-        // private void DoChangeScale()
-        // {
-        //     if (transform.localScale.x.Equals(CurrentScale)) return;
-        //     transform.localScale = Vector3.Lerp(transform.localScale,new Vector3(CurrentScale,CurrentScale,CurrentScale),0.02f);
-        // }
     }
 }

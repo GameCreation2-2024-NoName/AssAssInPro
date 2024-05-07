@@ -3,6 +3,7 @@ using Pditine.Collide;
 using Pditine.Collide.CollideEvent;
 using Pditine.Scripts.Data.Ass;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Pditine.Player.Ass
 {
@@ -14,6 +15,8 @@ namespace Pditine.Player.Ass
         [SerializeField]protected AssDataBase data;
            
         public AssDataBase Data => data;
+
+        public UnityAction OnBeAttack;
 
         protected override List<CollidingEventBase> GetCollidingEvents()
         {

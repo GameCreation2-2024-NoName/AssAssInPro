@@ -14,11 +14,13 @@ namespace Pditine.Data
         [SerializeField] private List<AssDataBase> asses = new();
         [SerializeField] private List<ThornDataBase> thorns = new();
         [SerializeField] private List<GameModelBase> gameModules = new();
-        [SerializeField] private List<BuffData> buffData = new();
+        //[SerializeField] private List<BuffData> buffData = new();
+        [SerializeField] private List<GameObject> lightBalls = new();
         public List<AssDataBase> Asses => asses;
         public List<ThornDataBase> Thorns => thorns;
         public List<GameModelBase> GameModules => gameModules;
-        public List<BuffData> BuffData => buffData;
+        //public List<BuffData> BuffData => buffData;
+        public List<GameObject> LightBalls => lightBalls;
 
         [SerializeField] private PassingData passingData;
         /// <summary>
@@ -41,14 +43,14 @@ namespace Pditine.Data
             return gameModules[gameModuleID];
         }
 
-        public BuffData GetBuffData(int buffDataIndex)
-        {
-            return buffData[buffDataIndex];
-        }
-
-        public BuffData GetBuffData(string buffDataName)
-        {
-            return buffData.Find(theBuff => theBuff.buffName == buffDataName);
-        }
+        // public BuffData GetBuffData(int buffDataIndex)
+        // {
+        //     return buffData[buffDataIndex];
+        // }
+        //
+        // public BuffData GetBuffData(string buffDataName)
+        // {
+        //     return buffData.Find(theBuff => theBuff.buffName == buffDataName);
+        // }
     }
 }
