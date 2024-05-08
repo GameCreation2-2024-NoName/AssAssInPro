@@ -13,9 +13,8 @@ MonoBehaviour:
   m_Name: ColorModel
   m_EditorClassIdentifier: 
   id: 3
-  moduleName: "\u6D82\u8272"
+  moduleName: "\u6D82\u8272\u6A21\u5F0F"
   introduction: "\u8BE5\u6A21\u5F0F\u6B63\u5728\u5F00\u53D1\u4E2D"
   sceneID: 0
   preview: {fileID: 832199330, guid: b8fc988d4c3e2d5429ee76bfa4f07c58, type: 3}
-  buttonSprite: {fileID: 0}
   done: 0

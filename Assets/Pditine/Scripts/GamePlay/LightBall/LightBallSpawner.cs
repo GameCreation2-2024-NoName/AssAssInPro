@@ -24,6 +24,7 @@ namespace Pditine.GamePlay.LightBall
         private void Awake()
         {
             _lightBalls = DataManager.Instance.LightBalls;
+            _cd = Random.Range(minCD, maxCD);
         }
 
         private void OnEnable()

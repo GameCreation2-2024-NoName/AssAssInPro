@@ -317,10 +317,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   leftUpPoint: {fileID: 96053481}
   rightDownPoint: {fileID: 1839035147}
-  lightBalls:
-  - {fileID: 7267595852629431396, guid: 82733ae6e98f47947b86a06b681967c0, type: 3}
-  minCD: 3
-  maxCD: 6
+  minCD: 5
+  maxCD: 10
 --- !u!4 &77796781
 Transform:
   m_ObjectHideFlags: 0
