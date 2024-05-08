@@ -317,8 +317,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   leftUpPoint: {fileID: 96053481}
   rightDownPoint: {fileID: 1839035147}
-  minCD: 5
-  maxCD: 10
+  minCD: 4
+  maxCD: 8
 --- !u!4 &77796781
 Transform:
   m_ObjectHideFlags: 0
@@ -1095,7 +1095,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 13.135372, y: 2.2684317}
+  m_Offset: {x: 19.661493, y: 2.2684317}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -1106,7 +1106,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.8223352, y: 11.034042}
+  m_Size: {x: 14.874599, y: 11.034042}
   m_EdgeRadius: 0
 --- !u!114 &324813365
 MonoBehaviour:
@@ -1587,7 +1587,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 13.6794, y: 1.2098126}
+  m_Offset: {x: 7.4128666, y: 1.2098126}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -1598,7 +1598,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.4965382, y: 13.048001}
+  m_Size: {x: 14.029606, y: 13.048001}
   m_EdgeRadius: 0
 --- !u!114 &689223717
 MonoBehaviour:
@@ -2661,7 +2661,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 2.2055044, y: 8.471644}
+  m_Offset: {x: 2.2055044, y: 13.234209}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -2672,7 +2672,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 22.33943, y: 3.3784966}
+  m_Size: {x: 22.33943, y: 12.9036255}
   m_EdgeRadius: 0
 --- !u!114 &1288674498
 MonoBehaviour:
@@ -2752,7 +2752,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 3.6593962, y: -3.76761}
+  m_Offset: {x: 3.6593962, y: -8.064661}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -2763,7 +2763,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 19.728502, y: 2.0550792}
+  m_Size: {x: 19.728502, y: 10.64918}
   m_EdgeRadius: 0
 --- !u!114 &1296299632
 MonoBehaviour:

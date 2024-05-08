@@ -53,7 +53,7 @@ namespace Pditine.Player
         [HideInInspector]public float CurrentSpeed;
         [SerializeField] private float rotateSpeed;
         private Vector2 _inputDirection;
-        [HideInInspector]public Vector2 Direction;
+        public Vector2 Direction;
         
         public bool canMove;
         public bool isInvincible;

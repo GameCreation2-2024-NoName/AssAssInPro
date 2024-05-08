@@ -117,6 +117,8 @@ namespace Pditine.GamePlay.Buff
             
             buff.OnAttach();
             OnAttachBuff?.Invoke(buffInfo);
+
+            ResetBuff();
             return;
         }
 
