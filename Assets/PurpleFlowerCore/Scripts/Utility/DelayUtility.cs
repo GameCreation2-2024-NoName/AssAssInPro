@@ -14,7 +14,7 @@ namespace PurpleFlowerCore.Utility
         private static IEnumerator DoDelay(float time,UnityAction action,bool canScale)
         {
             float waitTime = canScale ? time * Time.timeScale : time;
-            yield return new WaitForSeconds(waitTime);
+            yield return new WaitForSecondsRealtime(waitTime);
             action?.Invoke();
         }
     }

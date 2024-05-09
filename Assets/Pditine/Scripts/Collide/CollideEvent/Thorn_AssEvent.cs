@@ -1,4 +1,5 @@
 ﻿using Pditine.Audio;
+using Pditine.GamePlay.Camera;
 using Pditine.Player.Ass;
 using Pditine.Player.Thorn;
 using PurpleFlowerCore;
@@ -20,15 +21,17 @@ namespace Pditine.Collide.CollideEvent
             var thePlayer2 = (collider2 as AssBase).ThePlayer;
 
             thePlayer1.HitFeedback();
+            thePlayer2.BeHitAssFeedback();
             thePlayer2.ChangeHP(-thePlayer1.ATK);
-
+            
             float deltaSpeed = thePlayer1.CurrentSpeed * Mathf.Abs(
                                Mathf.Cos(Vector2.Angle(thePlayer1.Direction, thePlayer2.Direction)));
             thePlayer2.CurrentSpeed += deltaSpeed;
             thePlayer1.Direction = Vector2.Reflect(thePlayer1.Direction, -thePlayer2.Direction);
             AAIAudioManager.Instance.PlayEffect("碰撞音效1");
-            
+            CameraManager.Instance.OnCollidePLayerAss(thePlayer2.ID);
             (collider1 as ThornBase).OnAttack?.Invoke();
+            (collider2 as AssBase).OnBeAttackByThorn?.Invoke();
             (collider2 as AssBase).OnBeAttack?.Invoke();
         }
     }

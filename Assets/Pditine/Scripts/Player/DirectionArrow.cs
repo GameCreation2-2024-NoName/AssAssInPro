@@ -9,6 +9,8 @@ namespace Pditine.Player
         [Range(0, 1)] [SerializeField] private float disappearSpeed;
         private SpriteRenderer _theSpriteRenderer;
         private float _currentCD;
+        [SerializeField] private Sprite blue;
+        [SerializeField] private Sprite yellow;
 
         private void Start()
         {
@@ -19,6 +21,11 @@ namespace Pditine.Player
         {
             _currentCD -= Time.deltaTime;
             UpdateSprite();
+        }
+
+        public void Init(int id)
+        {
+            _theSpriteRenderer.sprite = id == 1 ? blue : yellow;
         }
         
         public void ChangeDirection(Vector3 direction)

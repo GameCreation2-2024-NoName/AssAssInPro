@@ -16,6 +16,7 @@ MonoBehaviour:
   hp: 4
   initialVelocity: 40
   friction: 3
+  weight: 3
   prototype: {fileID: 5879413710637086575, guid: da6437d2c84b5e0498f1afce66231f70, type: 3}
   portrait: {fileID: -1293628946, guid: 9476abcf734681d4b8c35e9fcb791e38, type: 3}
   assName: "\u5C0F\u53EF\u7231"

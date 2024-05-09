@@ -20,6 +20,7 @@ namespace Pditine.Collide.CollideEvent
             var theBarrier = (collider1 as BarrierThorn).TheBarrier;
 
             theBarrier.HitFeedback.PlayFeedbacks();
+            thePlayer.BeHitAssFeedback();
             thePlayer.ChangeHP(-1);
             float deltaSpeed = theBarrier.CurrentSpeed *
                                Mathf.Cos(Vector2.Angle(thePlayer.Direction, theBarrier.Direction));

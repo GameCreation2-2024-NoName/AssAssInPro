@@ -1,4 +1,5 @@
-﻿using Pditine.Scripts.Data.Ass;
+﻿using Pditine.Data.Ass;
+using Pditine.Scripts.Data.Ass;
 using Sirenix.OdinInspector;
 using TMPro;
 using UnityEngine;
@@ -71,7 +72,7 @@ namespace Hmxs.Scripts
 
             SetAssProperty1(DataMapping(assInfo.HP, assProperty1Range));
             SetAssProperty2(DataMapping(assInfo.InitialVelocity, assProperty2Range));
-            SetAssProperty3(DataMapping(assInfo.Friction, assProperty3Range));
+            SetAssProperty3(DataMapping(assInfo.Weight, assProperty3Range));
 
             SetAssIntroduction(assInfo.AssIntroduction);
         }
@@ -89,7 +90,7 @@ namespace Hmxs.Scripts
 
             SetThornProperty1(DataMapping(thornInfo.ATK, thornProperty1Range));
             SetThornProperty2(DataMapping(thornInfo.CD, thornProperty2Range));
-            SetThornProperty3(DataMapping(thornInfo.Friction, thornProperty3Range));
+            SetThornProperty3(DataMapping(thornInfo.Weight, thornProperty3Range));
 
             SetThornIntroduction(thornInfo.ThornIntroduction);
         }
