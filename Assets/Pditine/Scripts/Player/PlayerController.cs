@@ -21,27 +21,27 @@ namespace Pditine.Player
         [SerializeField]private int id;
         public int ID => id;
 
-        public float initialVelocityMulAdjustment = 1;
-        public float initialVelocityAddAdjustment = 0;
+        [HideInInspector] public float initialVelocityMulAdjustment = 1;
+        [HideInInspector] public float initialVelocityAddAdjustment = 0;
         public float InitialVelocity =>
             _theAss.Data.InitialVelocity * initialVelocityMulAdjustment + initialVelocityAddAdjustment;
 
-        public float frictionMulAdjustment = 1;
-        public float frictionAddAdjustment = 0;
+        [HideInInspector] public float frictionMulAdjustment = 1;
+        [HideInInspector] public float frictionAddAdjustment = 0;
 
         public float Friction => (_theAss.Data.Friction + _theThorn.Data.Friction) * frictionMulAdjustment +
                                  frictionAddAdjustment;
         
-        public float cdMulAdjustment = 1;
-        public float cdAddAdjustment = 0;
+        [HideInInspector] public float cdMulAdjustment = 1;
+        [HideInInspector] public float cdAddAdjustment = 0;
         private float CD => _theThorn.Data.CD * cdMulAdjustment + cdAddAdjustment;
 
-        public float hpMulAdjustment = 1;
-        public int hpAddAdjustment = 0;
+        [HideInInspector] public float hpMulAdjustment = 1;
+        [HideInInspector] public int hpAddAdjustment = 0;
         public int HP => (int)(_theAss.Data.HP * hpMulAdjustment + hpAddAdjustment);
 
-        public float atkMulAdjustment = 1;
-        public int atkAddAdjustment = 0;
+        [HideInInspector] public float atkMulAdjustment = 1;
+        [HideInInspector] public int atkAddAdjustment = 0;
         public int ATK => (int)(_theThorn.Data.ATK * atkMulAdjustment + atkAddAdjustment);
         
         private int _currentHP;
@@ -120,6 +120,11 @@ namespace Pditine.Player
         private void Update()
         {
             UpdateCD();
+            OnUpdate();
+        }
+
+        protected virtual void OnUpdate()
+        {
             if(InputHandler.Dash)Dash();
             if(InputHandler.Direction.sqrMagnitude != 0)ChangeDirection(InputHandler.Direction);
         }
