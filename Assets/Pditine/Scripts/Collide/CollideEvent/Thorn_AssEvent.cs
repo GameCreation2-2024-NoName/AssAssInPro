@@ -1,5 +1,4 @@
 ﻿using Pditine.Audio;
-using Pditine.ClassicGame;
 using Pditine.Player.Ass;
 using Pditine.Player.Thorn;
 using PurpleFlowerCore;

@@ -89,11 +89,14 @@ namespace Pditine.GamePlay.UI
         
         public void GameOver(PlayerController theWinner)
         {
-            FadeUtility.FadeInAndStay(gaussianBlur,40,null,GaussianBlurAlpha);
-            settlementPanel.Init(theWinner);
+            DelayUtility.Delay(2, () =>
+            {
+                FadeUtility.FadeInAndStay(gaussianBlur, 40, null, GaussianBlurAlpha);
+                settlementPanel.Init(theWinner);
+            });
         }
 
-        public void AddBuffUI(BuffInfo buffInfo)
+        private void AddBuffUI(BuffInfo buffInfo)
         {
             if (buffInfo.durationCounter <= 0) return;
             if(buffInfo.target.ID == 1)
@@ -104,7 +107,7 @@ namespace Pditine.GamePlay.UI
                 Debug.LogError("玩家ID错误");
         }
         
-        public void RemoveBuffUI(BuffInfo buffInfo)
+        private void RemoveBuffUI(BuffInfo buffInfo)
         {
             if(buffInfo.target.ID == 1)
                 buffList1.RemoveBuff(buffInfo);
