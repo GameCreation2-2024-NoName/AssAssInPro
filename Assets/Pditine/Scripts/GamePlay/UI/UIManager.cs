@@ -89,7 +89,7 @@ namespace Pditine.GamePlay.UI
         
         public void GameOver(PlayerController theWinner)
         {
-            DelayUtility.Delay(3.2f, () =>
+            DelayUtility.Delay(2.5f, () =>
             {
                 FadeUtility.FadeInAndStay(gaussianBlur, 40, null, GaussianBlurAlpha);
                 settlementPanel.Init(theWinner);

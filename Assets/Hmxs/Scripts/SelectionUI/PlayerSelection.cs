@@ -50,9 +50,19 @@ namespace Hmxs.Scripts
             infoSetter.SetAssInfo(DataManager.Instance.GetAssData(assId.Value));
             infoSetter.SetThornInfo(DataManager.Instance.GetThornData(thornId.Value));
 
+            OnPlayerJoin(null);
+        }
+
+        private void OnEnable()
+        {
             PlayerInputManager.instance.onPlayerJoined += OnPlayerJoin;
             PlayerInputManager.instance.onPlayerLeft += OnPlayerLeft;
+        }
 
+        private void OnDisable()
+        {
+            PlayerInputManager.instance.onPlayerJoined -= OnPlayerJoin;
+            PlayerInputManager.instance.onPlayerLeft -= OnPlayerLeft;
         }
 
         private void OnDestroy()
@@ -75,7 +85,9 @@ namespace Hmxs.Scripts
                 OnConfirm();
 
             if (InputHandler.Select != Vector2.zero && !isReady && canSelect)
+            {
                 OnSelect(InputHandler.Select);
+            }
             else if (InputHandler.Select == Vector2.zero)
                 canSelect = true;
         }

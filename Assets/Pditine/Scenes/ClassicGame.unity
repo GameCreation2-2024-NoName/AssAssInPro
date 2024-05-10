@@ -1361,6 +1361,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1972039444015165488, guid: 4c0bc0971c2a3cc4893bcff19123f889, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 1036
+      objectReference: {fileID: 0}
+    - target: {fileID: 2154002663431941477, guid: 4c0bc0971c2a3cc4893bcff19123f889, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4546022312314155320, guid: 4c0bc0971c2a3cc4893bcff19123f889, type: 3}
       propertyPath: m_Camera
       value: 
@@ -1415,6 +1423,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6860171280595306749, guid: 4c0bc0971c2a3cc4893bcff19123f889, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7239581844280606042, guid: 4c0bc0971c2a3cc4893bcff19123f889, type: 3}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7239581844280606042, guid: 4c0bc0971c2a3cc4893bcff19123f889, type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7239581844280606042, guid: 4c0bc0971c2a3cc4893bcff19123f889, type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7239581844280606042, guid: 4c0bc0971c2a3cc4893bcff19123f889, type: 3}
+      propertyPath: m_Color.r
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
