@@ -209,16 +209,17 @@ namespace Pditine.Player
         {
             canMove = false;
             
-            DelayUtility.Delay(1f, () =>
+            DelayUtility.Delay(0.5f, () =>
             {
                 LoseFeedback();
                 _theThorn.gameObject.SetActive(false);
                 _theAss.gameObject.SetActive(false);
+                arrow.gameObject.SetActive(false);
             });
-            DelayUtility.Delay(4, () =>
-            {
-                Destroy(gameObject);
-            });
+            // DelayUtility.Delay(2, () =>
+            // {
+            //     Destroy(gameObject);
+            // });
             OnDestroyed?.Invoke();
         }
 

@@ -19,7 +19,7 @@ namespace Pditine.Collide.CollideEvent
             var originDirection = theBarrier.Direction;
             Vector2 Out_Direction = Vector2.Reflect(originDirection,((Boundary)collider1).NormalDirection);
             theBarrier.Direction = Out_Direction;
-            collider1.transform.GetComponent<VisualBox>()?.Act();
+            //collider1.transform.GetComponent<VisualBox>()?.Act();
             //theBarrier.collideWithBoundary.PlayFeedbacks();
             AAIAudioManager.Instance.PlayEffect("碰撞音效1");
         }

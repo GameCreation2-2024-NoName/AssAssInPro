@@ -10,6 +10,7 @@ namespace Pditine.GamePlay.Camera
         [SerializeField] protected CinemachineVirtualCamera player1Camera;
         [SerializeField] protected CinemachineVirtualCamera player2Camera;
         
+        [SerializeField]private float motionTime;
         public static CameraManager Instance { get; private set; }
 
         protected void Awake()
@@ -29,7 +30,7 @@ namespace Pditine.GamePlay.Camera
             var playerCamera = id == 1 ? player1Camera : player2Camera;
             mainCamera.VirtualCameraGameObject.SetActive(false);
             playerCamera.VirtualCameraGameObject.SetActive(true);
-            DelayUtility.Delay(1, () =>
+            DelayUtility.Delay(motionTime, () =>
             {
                 mainCamera.VirtualCameraGameObject.SetActive(true);
                 playerCamera.VirtualCameraGameObject.SetActive(false);

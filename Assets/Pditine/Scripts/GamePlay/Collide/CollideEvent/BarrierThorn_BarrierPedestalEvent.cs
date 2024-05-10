@@ -16,15 +16,6 @@ namespace Pditine.Collide.CollideEvent
             var theBarrier1 = (collider1 as BarrierThorn).TheBarrier;
             var theBarrier2 = (collider2 as BarrierPedestal).TheBarrier;
             
-            // (collider1 as BarrierThorn).TheBarrier.ThePedestal.AddCollider(collider2);
-            // collider2.AddCollider((collider1 as BarrierThorn).TheBarrier.ThePedestal);
-            //
-            // PFCLog.Info((collider2 as BarrierPedestal).TheBarrier.TheThorn);
-            // PFCLog.Info(collider1);
-            // (collider2 as BarrierPedestal).TheBarrier.TheThorn.AddCollider((collider1));
-            //
-            // collider1.AddCollider((collider2 as BarrierThorn).TheBarrier.TheThorn);
-            
             (theBarrier1.Direction, theBarrier2.Direction) = (theBarrier2.Direction, theBarrier1.Direction);
             (theBarrier1.CurrentSpeed, theBarrier2.CurrentSpeed) = (theBarrier2.CurrentSpeed, theBarrier1.CurrentSpeed);
             theBarrier1.HitFeedback.PlayFeedbacks();

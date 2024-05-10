@@ -20,7 +20,7 @@ namespace Pditine.Collide.CollideEvent
             var thePlayer1 = (collider1 as ThornBase).ThePlayer;
             var thePlayer2 = (collider2 as AssBase).ThePlayer;
 
-            thePlayer1.HitFeedback();
+            //thePlayer1.HitFeedback();
             thePlayer2.BeHitAssFeedback();
             thePlayer2.ChangeHP(-thePlayer1.ATK);
             

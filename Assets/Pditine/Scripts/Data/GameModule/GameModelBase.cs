@@ -1,30 +1,25 @@
 using System.Collections.Generic;
+using Pditine.Data.GameLevel;
 using UnityEngine;
 
-namespace Pditine.Scripts.Data.GameModule
+namespace Pditine.Data.GameModule
 {
     [CreateAssetMenu(fileName = "GameModelData",menuName = "AssAssIn/GameModelData")]
     public class GameModelBase : ScriptableObject
     {
         [SerializeField] private int id;
-        public int ID => id;
-        
         [SerializeField] private string moduleName;
-        public string ModuleName=>moduleName;
-        
         [SerializeField] private string introduction;
-        public string Introduction=>introduction;
-        
-        [SerializeField] private int sceneID;
-        public int SceneID=>sceneID;
-        
+        [SerializeField] private int sceneID; //todo: 临时
         [SerializeField] private Sprite preview;
-        public Sprite Preview=>preview;
-        
-        // [SerializeField] private List<Sprite> buttonSprite;
-        // public List<Sprite> ButtonSprite=>buttonSprite;
-        
+        [SerializeField] private List<GameLevelBase> gameLevels = new(); 
         [SerializeField] private bool done;
+        public int ID => id;
+        public string ModuleName=>moduleName;
+        public string Introduction=>introduction;
+        public int SceneID=>sceneID;
+        public Sprite Preview=>preview;
+        public List<GameLevelBase> GameLevels => gameLevels;
         public bool Done=>done;
 
     }
