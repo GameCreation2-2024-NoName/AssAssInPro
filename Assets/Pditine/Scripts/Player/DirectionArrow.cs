@@ -7,15 +7,15 @@ namespace Pditine.Player
     {
         [SerializeField] private float CD;
         [Range(0, 1)] [SerializeField] private float disappearSpeed;
-        private SpriteRenderer _theSpriteRenderer;
+        private SpriteRenderer theSpriteRenderer => GetComponent<SpriteRenderer>();
         private float _currentCD;
         [SerializeField] private Sprite blue;
         [SerializeField] private Sprite yellow;
 
-        private void Start()
-        {
-            _theSpriteRenderer = GetComponent<SpriteRenderer>();
-        }
+        // private void Start()
+        // {
+        //     theSpriteRenderer = GetComponent<SpriteRenderer>();
+        // }
 
         private void FixedUpdate()
         {
@@ -25,7 +25,7 @@ namespace Pditine.Player
 
         public void Init(int id)
         {
-            _theSpriteRenderer.sprite = id == 1 ? blue : yellow;
+            theSpriteRenderer.sprite = id == 1 ? blue : yellow;
         }
         
         public void ChangeDirection(Vector3 direction)
@@ -36,10 +36,10 @@ namespace Pditine.Player
 
         private void UpdateSprite()
         {
-            Color color = _theSpriteRenderer.color;
+            Color color = theSpriteRenderer.color;
             if (_currentCD < 0)
-                _theSpriteRenderer.color = Color.Lerp(color, new Color(color.r, color.g, color.b, 0), disappearSpeed);
-            else _theSpriteRenderer.color = new Color(color.r, color.g, color.b, 1);
+                theSpriteRenderer.color = Color.Lerp(color, new Color(color.r, color.g, color.b, 0), disappearSpeed);
+            else theSpriteRenderer.color = new Color(color.r, color.g, color.b, 1);
         }
     }
 }
