@@ -1,6 +1,7 @@
 ﻿using Pditine.Audio;
 using Pditine.Map;
 using Pditine.Player.Thorn;
+using Pditine.Utility;
 
 namespace Pditine.Collide.CollideEvent
 {
@@ -20,10 +21,15 @@ namespace Pditine.Collide.CollideEvent
             (collider1 as BarrierThorn).TheBarrier.ThePedestal.AddCollider(collider2);
             collider2.AddCollider((collider1 as BarrierThorn).TheBarrier.ThePedestal);
             
-            theBarrier.Direction = thePlayer.Direction;
-            thePlayer.Direction = -thePlayer.Direction;
-            theBarrier.CurrentSpeed = thePlayer.CurrentSpeed/1.5f;
-            thePlayer.CurrentSpeed /= 1.2f;
+            var res =
+                PhysicsUtility.ElasticCollision(thePlayer.Direction * thePlayer.CurrentSpeed,
+                    theBarrier.Direction * theBarrier.CurrentSpeed,
+                    thePlayer.Weight, theBarrier.Weight, thePlayer.transform.position, theBarrier.transform.position);
+            thePlayer.Direction = res.v1Prime.normalized;
+            theBarrier.Direction = res.v2Prime.normalized;
+            thePlayer.CurrentSpeed = res.v1Prime.magnitude;
+            theBarrier.CurrentSpeed = res.v2Prime.magnitude;
+            
             thePlayer.HitFeedback();
             theBarrier.HitFeedback.PlayFeedbacks();
             AAIAudioManager.Instance.PlayEffect("碰撞音效1");

@@ -1,14 +1,19 @@
 ﻿using MoreMountains.Feedbacks;
+using Sirenix.OdinInspector;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Pditine.Map
 {
     public class Barrier : MonoBehaviour
     {
         [HideInInspector]public float CurrentSpeed;
-        [SerializeField] private float friction;
+        [SerializeField] private int atk;
+        public int ATK => atk;
+        [SerializeField] private float weight;
+        public float Weight => weight;
         [SerializeField] private float rotateSpeed;
-        [HideInInspector]public Vector2 Direction;
+        [ReadOnly]public Vector2 Direction;
         public MMF_Player collideWithBoundary;
         [SerializeField] private BarrierThorn thorn;
         public BarrierThorn TheThorn => thorn;
@@ -36,7 +41,7 @@ namespace Pditine.Map
 
         private void ReduceSpeed()
         {
-            CurrentSpeed -= friction*Time.deltaTime;
+            CurrentSpeed -= weight*Time.deltaTime;
             if (CurrentSpeed <= 0) CurrentSpeed = 0;
         }
     }

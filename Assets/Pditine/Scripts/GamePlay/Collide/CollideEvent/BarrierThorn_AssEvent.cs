@@ -1,6 +1,7 @@
 ﻿using Pditine.Audio;
 using Pditine.Map;
 using Pditine.Player.Ass;
+using Pditine.Utility;
 using PurpleFlowerCore;
 using UnityEngine;
 
@@ -21,11 +22,15 @@ namespace Pditine.Collide.CollideEvent
 
             theBarrier.HitFeedback.PlayFeedbacks();
             thePlayer.BeHitAssFeedback();
-            thePlayer.ChangeHP(-1);
-            float deltaSpeed = theBarrier.CurrentSpeed *
-                               Mathf.Cos(Vector2.Angle(thePlayer.Direction, theBarrier.Direction));
-            thePlayer.CurrentSpeed += deltaSpeed;
-            theBarrier.Direction = Vector2.Reflect(theBarrier.Direction, -theBarrier.Direction);
+            thePlayer.ChangeHP(-theBarrier.ATK);
+            var res =
+                PhysicsUtility.ElasticCollision(thePlayer.Direction * thePlayer.CurrentSpeed,
+                    theBarrier.Direction * theBarrier.CurrentSpeed,
+                    thePlayer.Weight, theBarrier.Weight, thePlayer.transform.position, theBarrier.transform.position);
+            thePlayer.Direction = res.v1Prime.normalized;
+            theBarrier.Direction = res.v2Prime.normalized;
+            thePlayer.CurrentSpeed = res.v1Prime.magnitude;
+            theBarrier.CurrentSpeed = res.v2Prime.magnitude;
             AAIAudioManager.Instance.PlayEffect("碰撞音效1");
             
             (collider2 as AssBase).OnBeAttack?.Invoke();

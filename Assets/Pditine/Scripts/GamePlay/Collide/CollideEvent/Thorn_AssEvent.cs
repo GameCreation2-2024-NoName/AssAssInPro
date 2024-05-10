@@ -2,6 +2,7 @@
 using Pditine.GamePlay.Camera;
 using Pditine.Player.Ass;
 using Pditine.Player.Thorn;
+using Pditine.Utility;
 using PurpleFlowerCore;
 using UnityEngine;
 
@@ -24,12 +25,18 @@ namespace Pditine.Collide.CollideEvent
             thePlayer2.BeHitAssFeedback();
             thePlayer2.ChangeHP(-thePlayer1.ATK);
             
-            float deltaSpeed = thePlayer1.CurrentSpeed * Mathf.Abs(
-                               Mathf.Cos(Vector2.Angle(thePlayer1.Direction, thePlayer2.Direction)));
-            thePlayer2.CurrentSpeed += deltaSpeed;
-            thePlayer1.Direction = Vector2.Reflect(thePlayer1.Direction, -thePlayer2.Direction);
+            var res =
+                PhysicsUtility.ElasticCollision(thePlayer1.Direction * thePlayer1.CurrentSpeed,
+                    thePlayer2.Direction * thePlayer2.CurrentSpeed,
+                    thePlayer1.Weight, thePlayer2.Weight, thePlayer1.transform.position, thePlayer2.transform.position);
+            thePlayer1.Direction = res.v1Prime.normalized;
+            thePlayer2.Direction = res.v2Prime.normalized;
+            thePlayer1.CurrentSpeed = res.v1Prime.magnitude;
+            thePlayer2.CurrentSpeed = res.v2Prime.magnitude;
+            
             AAIAudioManager.Instance.PlayEffect("碰撞音效1");
             CameraManager.Instance.OnCollidePLayerAss(thePlayer2.ID);
+            
             (collider1 as ThornBase).OnAttack?.Invoke();
             (collider2 as AssBase).OnBeAttackByThorn?.Invoke();
             (collider2 as AssBase).OnBeAttack?.Invoke();

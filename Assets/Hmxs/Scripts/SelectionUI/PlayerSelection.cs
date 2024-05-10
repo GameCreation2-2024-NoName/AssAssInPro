@@ -4,8 +4,10 @@ using Pditine.Audio;
 using Pditine.Data;
 using Pditine.Scripts.Data;
 using PurpleFlowerCore;
+using PurpleFlowerCore.Utility;
 using Sirenix.OdinInspector;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 namespace Hmxs.Scripts
@@ -17,6 +19,8 @@ namespace Hmxs.Scripts
         [SerializeField] private EquipUI assOutline;
         [SerializeField] private EquipUI thornOutline;
         [SerializeField] private ReadyUI readyUI;
+        [SerializeField] private GameObject mask;
+        [SerializeField] private DeviceIcon deviceIcon;
 
         [SerializeField] [ReadOnly] private bool isReady;
         [SerializeField] [ReadOnly] private bool canSelect = true;
@@ -24,6 +28,7 @@ namespace Hmxs.Scripts
         [SerializeField] [ReadOnly] private BindableProperty<int> assId = new() { Value = 0 };
         [SerializeField] [ReadOnly] private BindableProperty<int> thornId = new() { Value = 0 };
         [SerializeField] [ReadOnly] private bool isAssSelected = true;
+        
 
         public bool IsReady => isReady;
         public Action onConfirm;
@@ -44,7 +49,10 @@ namespace Hmxs.Scripts
 
             infoSetter.SetAssInfo(DataManager.Instance.GetAssData(assId.Value));
             infoSetter.SetThornInfo(DataManager.Instance.GetThornData(thornId.Value));
-            //SetOutline();
+
+            PlayerInputManager.instance.onPlayerJoined += OnPlayerJoin;
+            PlayerInputManager.instance.onPlayerLeft += OnPlayerLeft;
+
         }
 
         private void OnDestroy()
@@ -177,6 +185,27 @@ namespace Hmxs.Scripts
         {
             isAssSelected = isAss;
             SetOutline();
+        }
+
+        private void OnPlayerJoin(PlayerInput theInput)
+        {
+            if (InputHandler == null) return;
+            //if (InputHandler.PlayerInput != theInput) return;
+            mask.SetActive(false);
+            DelayUtility.DelayFrame(2, () =>
+            {
+                if(InputHandler.IsGamepad)
+                    deviceIcon.ChangeDevice(DeviceType.Gamepad);
+                else deviceIcon.ChangeDevice(DeviceType.Mouse);
+            });
+        }
+
+        private void OnPlayerLeft(PlayerInput theInput)
+        {
+            if (InputHandler != null) return;
+            //if (InputHandler.PlayerInput != theInput) return;
+            mask.SetActive(true);
+            deviceIcon.ChangeDevice(DeviceType.Null);
         }
     }
 }

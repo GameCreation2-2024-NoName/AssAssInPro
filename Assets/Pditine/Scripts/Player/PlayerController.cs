@@ -2,15 +2,12 @@ using System;
 using Hmxs.Scripts;
 using MoreMountains.Feedbacks;
 using Pditine.Audio;
-using Pditine.GamePlay.Buff;
-using Pditine.GamePlay.UI;
 using Pditine.Player.Ass;
 using Pditine.Player.Thorn;
 using PurpleFlowerCore;
 using PurpleFlowerCore.Utility;
 using Sirenix.OdinInspector;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace Pditine.Player
 {
@@ -65,7 +62,7 @@ namespace Pditine.Player
         
         [ReadOnly]public bool canMove;
         [ReadOnly]public bool isInvincible;
-        [HideInInspector]public float targetScale = 1;
+
 
         #endregion
 
@@ -86,6 +83,8 @@ namespace Pditine.Player
         #region 其他变量
         
         private bool _isPause;
+        
+        [HideInInspector]public float targetScale;
 
         #endregion
 
@@ -144,6 +143,7 @@ namespace Pditine.Player
         public void Init(ThornBase theThorn,AssBase theAss)
         {
             Direction = transform.right;
+            targetScale = transform.localScale.x;
             _inputHandler = id==1?PlayerManager.Instance.Handler1: PlayerManager.Instance.Handler2;
             _theAss = theAss;
             _theThorn = theThorn;
