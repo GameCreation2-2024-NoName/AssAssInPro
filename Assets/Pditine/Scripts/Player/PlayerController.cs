@@ -83,6 +83,7 @@ namespace Pditine.Player
         [SerializeField]private MMScaleShaker _scaleShaker;
 
         private bool _isPause;
+        public bool IsPause => _isPause;
 
         #endregion
 
@@ -95,6 +96,13 @@ namespace Pditine.Player
         // [Title("Audios")]
         // [SerializeField] private MMF_Player pushAudio;
         // [SerializeField] private MMF_Player slowdownAudio;
+
+        private void Start()
+        {
+            OnStart();
+        }
+
+        protected virtual void OnStart() { }
 
         private void OnEnable()
         {
