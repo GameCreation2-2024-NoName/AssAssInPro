@@ -136,6 +136,7 @@ namespace Pditine.Player
 
         protected virtual void OnUpdate()
         {
+            if (_inputHandler is null) return;
             if(InputHandler.Dash)Dash();
             if(InputHandler.Direction.sqrMagnitude != 0)ChangeDirection(InputHandler.Direction);
         }
