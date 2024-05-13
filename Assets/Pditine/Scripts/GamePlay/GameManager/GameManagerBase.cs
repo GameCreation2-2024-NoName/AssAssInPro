@@ -1,6 +1,4 @@
-﻿using Cinemachine;
-using Hmxs.Scripts;
-using LJH.Scripts.Utility;
+﻿using Hmxs.Scripts;
 using MoreMountains.Feedbacks;
 using Pditine.Data;
 using Pditine.GamePlay.Buff;
@@ -11,18 +9,16 @@ using Pditine.Player.Thorn;
 using Pditine.Scripts.Data.DatePassing;
 using PurpleFlowerCore;
 using PurpleFlowerCore.Utility;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Pditine.GamePlay.GameManager
 {
     public abstract class GameManagerBase<T> : MonoBehaviour where T: GameManagerBase<T>
     {
         protected bool GameOver;
-        [Header("相机")]
-        [SerializeField] protected CinemachineVirtualCamera theCamera;
-
-        [Header("UI控件")]
-        // [SerializeField] private Image blackCurtain;
+        
         [SerializeField] protected MMF_Player startEffect;
         [Header("玩家")]
         [SerializeField] protected PlayerController player1;
@@ -81,6 +77,14 @@ namespace Pditine.GamePlay.GameManager
             Time.timeScale = IsPause ? 0 : 1;
             EventSystem.EventTrigger(IsPause ? "Pause" : "UnPause");
         }
+
+        public virtual void SetPause(bool isPause)
+        {
+            if (GameOver) return;
+            IsPause = isPause;
+            Time.timeScale = IsPause ? 0 : 1;
+            EventSystem.EventTrigger(IsPause ? "Pause" : "UnPause");
+        }
         
         protected virtual void CreatePlayer(int assID,int thornID,PlayerController thePlayer)
         {
@@ -96,10 +100,8 @@ namespace Pditine.GamePlay.GameManager
             if(GameOver)return;
             if (hp > 0) return;
             GameOver = true;
-            Time.timeScale = 0.3f;
             var theLoser = playerID == 1 ? player1 : player2;
             var theWinner = playerID == 1 ? player2 : player1;
-            CameraMoveUtility.MoveAndZoomForever(theCamera,theLoser.transform, 0.04f, 3);
             PlayerCanMove(false);
             theLoser.BeDestroy();
             UIManager.Instance.GameOver(theWinner);

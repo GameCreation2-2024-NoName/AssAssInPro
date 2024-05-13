@@ -12,7 +12,7 @@ namespace Pditine.GamePlay.UI
         public void Init(PlayerController thePlayer)
         {
             thornImage.sprite = thePlayer.TheThorn.Data.Portrait;
-            assImage.sprite = thePlayer.TheAss.Data.Portrait;
+            assImage.sprite = thePlayer.ID == 1? thePlayer.TheAss.Data.PortraitBlue : thePlayer.TheAss.Data.PortraitYellow;
             thornImage.SetNativeSize();
             assImage.SetNativeSize();
         }

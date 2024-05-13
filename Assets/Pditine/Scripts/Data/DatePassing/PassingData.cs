@@ -1,4 +1,4 @@
-﻿using Pditine.Scripts.Data.GameModule;
+﻿using Pditine.Data.GameModule;
 using UnityEngine;
 
 namespace Pditine.Scripts.Data.DatePassing

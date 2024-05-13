@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Pditine.Collide;
 using Pditine.Collide.CollideEvent;
-using Pditine.Scripts.Data.Ass;
+using Pditine.Data.Ass;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -12,11 +12,17 @@ namespace Pditine.Player.Ass
         protected PlayerController thePlayer;
         public PlayerController ThePlayer => thePlayer;
 
+        private SpriteRenderer theSpriteRenderer => GetComponent<SpriteRenderer>();
+
         [SerializeField]protected AssDataBase data;
            
         public AssDataBase Data => data;
 
         public UnityAction OnBeAttack;
+
+        public UnityAction OnBeAttackByThorn;
+
+        [SerializeField] private TrailRenderer theTrail;
 
         protected override List<CollidingEventBase> GetCollidingEvents()
         {
@@ -29,51 +35,11 @@ namespace Pditine.Player.Ass
             transform.position = parent.transform.position;
             transform.rotation = parent.transform.rotation;
             transform.parent = parent.transform;
+
+            theSpriteRenderer.sprite = parent.ID == 1 ? data.PortraitBlue : data.PortraitYellow;
+
+            theTrail.startColor = parent.ID == 1 ? new Color(0, 1, 1) : new Color(1, 0.8f, 0.063f);
+            theTrail.endColor = parent.ID == 1 ? new Color(0, 1, 1) : new Color(1, 0.8f, 0.063f);
         }
-
-        // public virtual float GetHP()
-        // {
-        //     return data.HP;
-        // }
-        //
-        // public virtual float GetFriction()
-        // {
-        //     return data.Friction;
-        // }
-        //
-        // public virtual float GetInitialVelocity()
-        // {
-        //     return data.InitialVelocity;
-        // }
-        
-        // public void Init(AssDataBase theData)
-        // {
-        //     data = theData;
-        // }
-
-        // [HideInInspector]public float CurrentScale;
-        // [SerializeField] private float assMinScale;
-
-        // private void Start()
-        // {
-        //     CurrentScale = transform.localScale.x;
-        // }
-        //
-        // private void FixedUpdate()
-        // {
-        //     DoChangeScale();
-        // }
-        // public void ChangeScale(float delta)
-        // {
-        //     CurrentScale += delta;
-        //     if (CurrentScale < assMinScale)
-        //         CurrentScale = assMinScale;
-        // }
-        //
-        // private void DoChangeScale()
-        // {
-        //     if (transform.localScale.x.Equals(CurrentScale)) return;
-        //     transform.localScale = Vector3.Lerp(transform.localScale,new Vector3(CurrentScale,CurrentScale,CurrentScale),0.02f);
-        // }
     }
 }

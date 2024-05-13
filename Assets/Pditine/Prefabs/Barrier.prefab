@@ -10768,7 +10768,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CurrentSpeed: 0
-  friction: 10
+  weight: 10
   rotateSpeed: 0.1
   Direction: {x: 0, y: 0}
   collideWithBoundary: {fileID: 7185820544702105388}

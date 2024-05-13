@@ -6,10 +6,11 @@ namespace Pditine.GamePlay.UI
 {
     public class HeartUI : MonoBehaviour
     {
-        [SerializeField] private Image leftHalfHeart;
-        [SerializeField] private Image rightHalfHeart;
+        [SerializeField] private Image heartImage;
+        //[SerializeField] private Image rightHalfHeart;
         [SerializeField] private Sprite leftHalfSprite;
-        [SerializeField] private Sprite rightHalfSprite;
+        //[SerializeField] private Sprite rightHalfSprite;
+        [SerializeField] private Sprite fullSprite;
         [SerializeField] private Sprite nullSprite;
         
         /// <param name="hp">0~2</param>
@@ -18,16 +19,13 @@ namespace Pditine.GamePlay.UI
             switch (hp)
             {
                 case 0:
-                    leftHalfHeart.sprite = nullSprite;
-                    rightHalfHeart.sprite = nullSprite;
+                    heartImage.sprite = nullSprite;
                     break;
                 case 1:
-                    leftHalfHeart.sprite = leftHalfSprite;
-                    rightHalfHeart.sprite = nullSprite;
+                    heartImage.sprite = leftHalfSprite;
                     break;
                 case 2:
-                    leftHalfHeart.sprite = leftHalfSprite;
-                    rightHalfHeart.sprite = rightHalfSprite;
+                    heartImage.sprite = fullSprite;
                     break;
             }
         }

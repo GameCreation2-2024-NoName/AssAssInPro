@@ -1,5 +1,5 @@
 ﻿using Pditine.Component;
-using Pditine.Scripts.Data.GameModule;
+using Pditine.Data.GameModule;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;

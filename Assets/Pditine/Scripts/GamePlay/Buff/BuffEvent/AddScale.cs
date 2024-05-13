@@ -24,8 +24,7 @@ namespace Pditine.GamePlay.Buff
 
         private IEnumerator DoAddScale(PlayerController thePlayer)
         { 
-            while (thePlayer.transform.localScale.x< thePlayer.targetScale|| 
-                   !thePlayer.transform.localScale.x.Equals(thePlayer.targetScale))
+            while (Mathf.Abs(thePlayer.transform.localScale.x - thePlayer.targetScale)>0.001f)
             {
                 float playerScale = thePlayer.transform.localScale.x;
                 float res = Mathf.Lerp(playerScale, thePlayer.targetScale, speed);

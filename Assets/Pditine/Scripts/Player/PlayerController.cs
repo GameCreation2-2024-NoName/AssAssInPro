@@ -2,15 +2,12 @@ using System;
 using Hmxs.Scripts;
 using MoreMountains.Feedbacks;
 using Pditine.Audio;
-using Pditine.GamePlay.Buff;
-using Pditine.GamePlay.UI;
 using Pditine.Player.Ass;
 using Pditine.Player.Thorn;
 using PurpleFlowerCore;
 using PurpleFlowerCore.Utility;
 using Sirenix.OdinInspector;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace Pditine.Player
 {
@@ -29,8 +26,16 @@ namespace Pditine.Player
         [HideInInspector] public float frictionMulAdjustment = 1;
         [HideInInspector] public float frictionAddAdjustment = 0;
 
-        public float Friction => (_theAss.Data.Friction + _theThorn.Data.Friction) * frictionMulAdjustment +
+
+        private float _friction;
+        public float Friction => _friction * frictionMulAdjustment +
                                  frictionAddAdjustment;
+        
+        [HideInInspector] public float weightMulAdjustment = 1;
+        [HideInInspector] public float weightAddAdjustment = 0;
+
+        public float Weight => (_theAss.Data.Weight + _theThorn.Data.Weight) * weightMulAdjustment +
+                               weightAddAdjustment;
         
         [HideInInspector] public float cdMulAdjustment = 1;
         [HideInInspector] public float cdAddAdjustment = 0;
@@ -53,11 +58,11 @@ namespace Pditine.Player
         [HideInInspector]public float CurrentSpeed;
         [SerializeField] private float rotateSpeed;
         private Vector2 _inputDirection;
-        public Vector2 Direction;
+        [ReadOnly]public Vector2 Direction;
         
-        public bool canMove;
-        public bool isInvincible;
-        public float targetScale = 1;
+        [ReadOnly]public bool canMove;
+        [ReadOnly]public bool isInvincible;
+
 
         #endregion
 
@@ -76,14 +81,11 @@ namespace Pditine.Player
         #endregion
 
         #region 其他变量
-
-        [Title("Effect")]
-        [SerializeField] private MMF_Player hitFeedback;
-        [SerializeField] private MMF_Player loseFeedback;
-        [SerializeField]private MMScaleShaker _scaleShaker;
-
+        
         private bool _isPause;
         public bool IsPause => _isPause;
+        
+        [HideInInspector]public float targetScale;
 
         #endregion
 
@@ -93,9 +95,18 @@ namespace Pditine.Player
         public event Action OnDestroyed;
 
         #endregion
-        // [Title("Audios")]
-        // [SerializeField] private MMF_Player pushAudio;
-        // [SerializeField] private MMF_Player slowdownAudio;
+
+        #region 特效
+
+        [Title("Effect")]
+        [SerializeField] private MMF_Player hitFeedback;
+        [SerializeField] private MMF_Player loseFeedbackBlue;
+        [SerializeField] private MMF_Player loseFeedbackYellow;
+        //[SerializeField] private MMScaleShaker scaleShaker;
+        [SerializeField] private MMF_Player beHitAssFeedbackBlue;
+        [SerializeField] private MMF_Player beHitAssFeedbackYellow;
+        
+        #endregion
 
         private void Start()
         {
@@ -140,10 +151,13 @@ namespace Pditine.Player
         public void Init(ThornBase theThorn,AssBase theAss)
         {
             Direction = transform.right;
+            targetScale = transform.localScale.x;
             _inputHandler = id==1?PlayerManager.Instance.Handler1: PlayerManager.Instance.Handler2;
             _theAss = theAss;
             _theThorn = theThorn;
             _currentHP = HP;
+            _friction = Weight;
+            arrow.Init(id);
         }
         
         public void ChangeDirection(Vector3 direction)
@@ -203,14 +217,17 @@ namespace Pditine.Player
         {
             canMove = false;
             
-            DelayUtility.Delay(3f, () =>
+            DelayUtility.Delay(0.5f, () =>
             {
-                loseFeedback.PlayFeedbacks();
+                LoseFeedback();
+                _theThorn.gameObject.SetActive(false);
+                _theAss.gameObject.SetActive(false);
+                arrow.gameObject.SetActive(false);
             });
-            DelayUtility.Delay(4, () =>
-            {
-                Destroy(gameObject);
-            });
+            // DelayUtility.Delay(2, () =>
+            // {
+            //     Destroy(gameObject);
+            // });
             OnDestroyed?.Invoke();
         }
 
@@ -228,8 +245,18 @@ namespace Pditine.Player
             hpAddAdjustment = 0;
             initialVelocityAddAdjustment = 0;
         }
-
+        
         public void HitFeedback() => hitFeedback.PlayFeedbacks();
-        public void LoseFeedback() => loseFeedback.PlayFeedbacks();
+
+        public void BeHitAssFeedback()
+        {
+            var mmfPlayer = id == 1 ? beHitAssFeedbackBlue : beHitAssFeedbackYellow;
+            mmfPlayer.PlayFeedbacks();
+        }
+        public void LoseFeedback()
+        {
+            var mmfPlayer = id == 1 ? loseFeedbackBlue : loseFeedbackYellow;
+            mmfPlayer.PlayFeedbacks();
+        }
     }
 }

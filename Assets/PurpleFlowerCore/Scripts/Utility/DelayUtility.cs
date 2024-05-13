@@ -14,7 +14,22 @@ namespace PurpleFlowerCore.Utility
         private static IEnumerator DoDelay(float time,UnityAction action,bool canScale)
         {
             float waitTime = canScale ? time * Time.timeScale : time;
-            yield return new WaitForSeconds(waitTime);
+            yield return new WaitForSecondsRealtime(waitTime);
+            action?.Invoke();
+        }
+
+        public static void DelayFrame(int frame, UnityAction action)
+        {
+            MonoSystem.Start_Coroutine(DoDelayFrame(frame, action));
+        }
+
+        private static IEnumerator DoDelayFrame(int frame,UnityAction action)
+        {
+            if(frame>0)
+                for (int i = 1; i < frame; i++)
+                {
+                    yield return null;
+                }
             action?.Invoke();
         }
     }
