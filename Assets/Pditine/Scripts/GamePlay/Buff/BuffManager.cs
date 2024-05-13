@@ -103,6 +103,10 @@ namespace Pditine.GamePlay.Buff
                     BuffAttachType.Override => buff.buffData.durationTime,
                     _ => buff.durationCounter
                 };
+                
+                buff.OnAttach();
+                OnAttachBuff?.Invoke(buffInfo);
+                ResetBuff();
             }
             else
             {
@@ -115,10 +119,6 @@ namespace Pditine.GamePlay.Buff
                 };
             }
             
-            buff.OnAttach();
-            OnAttachBuff?.Invoke(buffInfo);
-
-            ResetBuff();
             return;
         }
 

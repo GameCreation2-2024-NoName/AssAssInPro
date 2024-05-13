@@ -17,12 +17,13 @@ MonoBehaviour:
   description: 
   icon: {fileID: 1934936334, guid: 02ef1fc9b339b6340808d972f48032c9, type: 3}
   priority: 0
-  maxStack: 0
+  maxStack: 2
   tags: []
+  showInUI: 1
   willLastForever: 0
-  durationTime: 0
+  durationTime: 10000
   tickTime: 0
-  attachType: 0
+  attachType: 1
   lostType: 0
   onAttachEvents:
   - {fileID: 11400000, guid: cf203c99b56d1a840b24c3ec5da4d7ac, type: 2}

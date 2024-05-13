@@ -9,6 +9,7 @@ TagManager:
   - Boundary
   - BarrierPedestal
   - BarrierThorn
+  - LightBall
   layers:
   - Default
   - TransparentFX

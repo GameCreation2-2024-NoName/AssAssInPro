@@ -10,24 +10,24 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cd3c8db6a29a459f891dace4898c93ef, type: 3}
-  m_Name: Shackle
+  m_Name: AssAss
   m_EditorClassIdentifier: 
-  id: 3
-  buffName: "\u7F1A\u5730"
+  id: 7
+  buffName: "\u5C41\u80A1"
   description: 
-  icon: {fileID: 1268446555, guid: 02ef1fc9b339b6340808d972f48032c9, type: 3}
+  icon: {fileID: 1101341183, guid: 02ef1fc9b339b6340808d972f48032c9, type: 3}
   priority: 0
-  maxStack: 10
+  maxStack: 0
   tags: []
   showInUI: 1
   willLastForever: 0
-  durationTime: 10000
+  durationTime: 3
   tickTime: 0
-  attachType: 1
+  attachType: 0
   lostType: 0
   onAttachEvents:
-  - {fileID: 11400000, guid: 2a3d0a5bffb3105468ea7417c664adae, type: 2}
-  onLostEvents: []
+  - {fileID: 11400000, guid: d74e293d935ac6446a5094b968cbf227, type: 2}
+  onLostEvents:
+  - {fileID: 11400000, guid: 168e173e20aa9a540b718acd9dfd6ffd, type: 2}
   onTickEvents: []
-  onResetEvents:
-  - {fileID: 11400000, guid: 2a3d0a5bffb3105468ea7417c664adae, type: 2}
+  onResetEvents: []

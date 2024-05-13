@@ -19,8 +19,9 @@ MonoBehaviour:
   priority: 0
   maxStack: 0
   tags: []
+  showInUI: 1
   willLastForever: 0
-  durationTime: 10000
+  durationTime: 10
   tickTime: 0
   attachType: 0
   lostType: 0

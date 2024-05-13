@@ -63,7 +63,7 @@ namespace Pditine.GamePlay.GameManager
             UIManager.Instance.Init(player1,player2);
             
             startEffect.PlayFeedbacks();
-            DelayUtility.Delay(5.5f,()=>
+            DelayUtility.Delay(4.7f,()=>
             {
                 PlayerCanMove(true);
             }); 

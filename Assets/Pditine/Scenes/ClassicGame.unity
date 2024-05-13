@@ -1365,6 +1365,10 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 519420031}
+    - target: {fileID: 4546022312314155320, guid: 4c0bc0971c2a3cc4893bcff19123f889, type: 3}
+      propertyPath: m_AdditionalShaderChannelsFlag
+      value: -1
+      objectReference: {fileID: 0}
     - target: {fileID: 4651474790004950751, guid: 4c0bc0971c2a3cc4893bcff19123f889, type: 3}
       propertyPath: m_Sprite
       value: 

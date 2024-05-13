@@ -15404,8 +15404,8 @@ GameObject:
   - component: {fileID: 6642966397244250994}
   - component: {fileID: 8358518690900254848}
   m_Layer: 0
-  m_Name: AddAtk
-  m_TagString: Untagged
+  m_Name: AddATK
+  m_TagString: LightBall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -33,6 +33,7 @@ namespace Pditine.GamePlay.Buff
         public int priority;
         public int maxStack;
         public string[] tags;
+        public bool showInUI;
 
         [Title("Time Info")]
         public bool willLastForever;

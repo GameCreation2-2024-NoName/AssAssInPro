@@ -18,9 +18,9 @@ namespace Pditine.Player.Ass
            
         public AssDataBase Data => data;
 
-        public UnityAction OnBeAttack;
+        public UnityAction<ColliderBase> OnBeAttack;
 
-        public UnityAction OnBeAttackByThorn;
+        public UnityAction<ColliderBase> OnBeAttackByThorn;
 
         [SerializeField] private TrailRenderer theTrail;
 
@@ -29,7 +29,7 @@ namespace Pditine.Player.Ass
             return new(){new Thorn_AssEvent(),new BarrierThorn_AssEvent()};
         }
 
-        public void Init(PlayerController parent)
+        public virtual void Init(PlayerController parent)
         {
             thePlayer = parent;
             transform.position = parent.transform.position;
@@ -39,7 +39,7 @@ namespace Pditine.Player.Ass
             theSpriteRenderer.sprite = parent.ID == 1 ? data.PortraitBlue : data.PortraitYellow;
 
             theTrail.startColor = parent.ID == 1 ? new Color(0, 1, 1) : new Color(1, 0.8f, 0.063f);
-            theTrail.endColor = parent.ID == 1 ? new Color(0, 1, 1) : new Color(1, 0.8f, 0.063f);
+            theTrail.endColor = parent.ID == 1 ? new Color(0, 1, 1,0) : new Color(1, 0.8f, 0.063f,0);
         }
     }
 }

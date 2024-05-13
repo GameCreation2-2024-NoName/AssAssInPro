@@ -99,6 +99,7 @@ namespace Pditine.GamePlay.UI
         private void AddBuffUI(BuffInfo buffInfo)
         {
             if (buffInfo.durationCounter <= 0) return;
+            if (!buffInfo.buffData.showInUI) return;
             if(buffInfo.target.ID == 1)
                 buffList1.AddBuff(buffInfo);
             else if(buffInfo.target.ID == 2)
@@ -109,6 +110,7 @@ namespace Pditine.GamePlay.UI
         
         private void RemoveBuffUI(BuffInfo buffInfo)
         {
+            if (!buffInfo.buffData.showInUI) return;
             if(buffInfo.target.ID == 1)
                 buffList1.RemoveBuff(buffInfo);
             else if(buffInfo.target.ID == 2)

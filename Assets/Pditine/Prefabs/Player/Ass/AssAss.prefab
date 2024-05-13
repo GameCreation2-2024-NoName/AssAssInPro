@@ -246,6 +246,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   data: {fileID: 11400000, guid: 4d9aef827f6d4ec4296f5465720b4e1f, type: 2}
   theTrail: {fileID: 3632717441890775380}
+  assAssBuffData: {fileID: 11400000, guid: 76678e788f116b9448a925e9d0c57cdb, type: 2}
 --- !u!60 &2492766046267196177
 PolygonCollider2D:
   m_ObjectHideFlags: 0

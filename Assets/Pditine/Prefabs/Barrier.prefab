@@ -10768,6 +10768,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CurrentSpeed: 0
+  atk: 1
   weight: 10
   rotateSpeed: 0.1
   Direction: {x: 0, y: 0}

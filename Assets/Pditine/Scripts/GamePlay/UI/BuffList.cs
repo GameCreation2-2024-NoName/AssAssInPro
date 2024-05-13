@@ -12,7 +12,8 @@ namespace Pditine.GamePlay.UI
         {
             //todo:对象池
             var theIcon = Instantiate(buffPrototype.gameObject, transform).GetComponent<BuffIcon>();
-            theIcon.transform.localScale = transform.localScale;
+            int turn = buffInfo.target.ID == 1 ? 1 : -1;
+            theIcon.transform.localScale = new Vector3(turn, 1, 1);
             theIcon.Init(buffInfo);
             _buffIcons.Add(theIcon);
         }

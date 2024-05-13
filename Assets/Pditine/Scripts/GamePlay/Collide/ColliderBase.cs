@@ -18,7 +18,7 @@ namespace Pditine.Collide
         protected List<CollidingEventBase> _events;
         public List<CollidingEventBase> Events => _events;
 
-        public UnityAction CallBack;
+        public UnityAction<ColliderBase> OnCollide;
 
         protected virtual void Awake()
         {
@@ -34,7 +34,6 @@ namespace Pditine.Collide
             if (_collidingColliders.Contains(otherCollider)) return;
             AddCollider(otherCollider);
             otherCollider.AddCollider(this);
-            PFCLog.Info(gameObject.tag);
             CollideHandler.ColliderHandle(gameObject.tag,otherCollider.gameObject.tag,this,otherCollider);
         }
         

@@ -38,8 +38,8 @@ namespace Pditine.Collide.CollideEvent
             CameraManager.Instance.OnCollidePLayerAss(thePlayer2.ID);
             
             (collider1 as ThornBase).OnAttack?.Invoke();
-            (collider2 as AssBase).OnBeAttackByThorn?.Invoke();
-            (collider2 as AssBase).OnBeAttack?.Invoke();
+            (collider2 as AssBase).OnBeAttackByThorn?.Invoke(collider1);
+            (collider2 as AssBase).OnBeAttack?.Invoke(collider1);
         }
     }
 }

@@ -10,24 +10,24 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cd3c8db6a29a459f891dace4898c93ef, type: 3}
-  m_Name: Shackle
+  m_Name: DoublePeak
   m_EditorClassIdentifier: 
-  id: 3
-  buffName: "\u7F1A\u5730"
+  id: 6
+  buffName: "\u53CC\u5CF0"
   description: 
-  icon: {fileID: 1268446555, guid: 02ef1fc9b339b6340808d972f48032c9, type: 3}
+  icon: {fileID: 0}
   priority: 0
-  maxStack: 10
+  maxStack: 0
   tags: []
-  showInUI: 1
+  showInUI: 0
   willLastForever: 0
   durationTime: 10000
   tickTime: 0
-  attachType: 1
+  attachType: 0
   lostType: 0
   onAttachEvents:
-  - {fileID: 11400000, guid: 2a3d0a5bffb3105468ea7417c664adae, type: 2}
+  - {fileID: 11400000, guid: 8c9065c019180fb46af97cf5fa53d887, type: 2}
   onLostEvents: []
   onTickEvents: []
   onResetEvents:
-  - {fileID: 11400000, guid: 2a3d0a5bffb3105468ea7417c664adae, type: 2}
+  - {fileID: 11400000, guid: 8c9065c019180fb46af97cf5fa53d887, type: 2}

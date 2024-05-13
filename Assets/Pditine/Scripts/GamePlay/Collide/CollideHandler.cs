@@ -4,8 +4,8 @@
     {
         public static void ColliderHandle(string tag1,string tag2, ColliderBase collider1,ColliderBase collider2)
         {
-            collider1.CallBack?.Invoke();
-            collider2.CallBack?.Invoke();
+            collider1.OnCollide?.Invoke(collider2);
+            collider2.OnCollide?.Invoke(collider1);
             
             if(collider1.Events is not null)
                 foreach (var theEvent in collider1.Events)

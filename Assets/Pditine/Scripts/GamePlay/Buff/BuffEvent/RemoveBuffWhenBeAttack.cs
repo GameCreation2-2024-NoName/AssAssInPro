@@ -8,7 +8,7 @@ namespace Pditine.GamePlay.Buff
         public override void Trigger(BuffInfo buffInfo)
         {
             var theAss = buffInfo.target.TheAss;
-            theAss.OnBeAttack += () => BuffManager.Instance.LostBuff(buffInfo);//todo:是否有内存泄漏?
+            theAss.OnBeAttack += (c) => BuffManager.Instance.LostBuff(buffInfo);//todo:是否有内存泄漏?
         }
     }
 }

@@ -33,7 +33,7 @@ namespace Pditine.Collide.CollideEvent
             theBarrier.CurrentSpeed = res.v2Prime.magnitude;
             AAIAudioManager.Instance.PlayEffect("碰撞音效1");
             
-            (collider2 as AssBase).OnBeAttack?.Invoke();
+            (collider2 as AssBase).OnBeAttack?.Invoke(collider1);
         }
     }
 }

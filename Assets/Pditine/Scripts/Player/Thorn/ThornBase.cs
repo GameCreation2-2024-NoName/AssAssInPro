@@ -24,7 +24,7 @@ namespace Pditine.Player.Thorn
             return new(){new Thorn_ThornEvent(),new Boundary_ThornEvent(),new Thorn_AssEvent(),new BarrierPedestal_ThornEvent(),new BarrierThorn_ThornEvent()};
         }
         
-        public void Init(PlayerController parent)
+        public virtual void Init(PlayerController parent)
         {
             thePlayer = parent;
             transform.position = parent.transform.position;
@@ -34,10 +34,11 @@ namespace Pditine.Player.Thorn
 
         private void Start()
         {
-            CallBack += HandleVibration;
+            OnCollide += HandleVibration;
         }
-        private void HandleVibration()
+        private void HandleVibration(ColliderBase _)
         {
+            if (!thePlayer.InputHandler) return;
             Gamepad theGamepad = null;
             if (thePlayer.InputHandler.IsGamepad)
                 theGamepad = thePlayer.InputHandler.Devices[0] as Gamepad;
