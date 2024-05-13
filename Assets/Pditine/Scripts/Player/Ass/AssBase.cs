@@ -2,7 +2,6 @@
 using Pditine.Collide;
 using Pditine.Collide.CollideEvent;
 using Pditine.Data.Ass;
-using Pditine.Scripts.Data.Ass;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -12,6 +11,8 @@ namespace Pditine.Player.Ass
     {
         protected PlayerController thePlayer;
         public PlayerController ThePlayer => thePlayer;
+
+        private SpriteRenderer theSpriteRenderer => GetComponent<SpriteRenderer>();
 
         [SerializeField]protected AssDataBase data;
            
@@ -34,6 +35,8 @@ namespace Pditine.Player.Ass
             transform.position = parent.transform.position;
             transform.rotation = parent.transform.rotation;
             transform.parent = parent.transform;
+
+            theSpriteRenderer.sprite = parent.ID == 1 ? data.PortraitBlue : data.PortraitYellow;
 
             theTrail.startColor = parent.ID == 1 ? new Color(0, 1, 1) : new Color(1, 0.8f, 0.063f);
             theTrail.endColor = parent.ID == 1 ? new Color(0, 1, 1) : new Color(1, 0.8f, 0.063f);

@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Pditine.Data.Ass
 {
@@ -10,7 +11,8 @@ namespace Pditine.Data.Ass
         [SerializeField] private float initialVelocity;
         [SerializeField] private float weight;
         [SerializeField] private GameObject prototype;
-        [SerializeField] private Sprite portrait;
+        [SerializeField] private Sprite portraitBlue;
+        [SerializeField] private Sprite portraitYellow;
         [SerializeField] private string assName;
         [SerializeField] private string assIntroduction;
         
@@ -19,7 +21,8 @@ namespace Pditine.Data.Ass
         public float InitialVelocity => initialVelocity;
         public float Weight=>weight;
         public GameObject Prototype=>prototype;
-        public Sprite Portrait => portrait;
+        public Sprite PortraitBlue => portraitBlue;
+        public Sprite PortraitYellow => portraitYellow;
         public string AssName => assName;
         public string AssIntroduction => assIntroduction;
     }

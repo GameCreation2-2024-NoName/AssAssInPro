@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 904a330949f025148afdd0313460b336
+guid: fcd6213bb15e58f47905d2a31bd637a7
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 120
+  spritePixelsToUnits: 167
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -110,22 +110,22 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: "\u624B\u67C4icon_0"
+      name: "\u9EC4\u8272Giant_0"
       rect:
         serializedVersion: 2
-        x: 424
-        y: 947
-        width: 110
-        height: 99
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 637
+        y: 666
+        width: 212
+        height: 283
+      alignment: 5
+      pivot: {x: 1, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 16b3b57fa0ba2bf48972160cbb062617
-      internalID: -573353732
+      spriteID: 659c457a11e8bfe48a46d1a1ff8b5a88
+      internalID: -1392292784
       vertices: []
       indices: 
       edges: []
@@ -141,8 +141,11 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      "\u624B\u67C4icon_0": -573353732
-      "\u624B\u67C4icon_1": 732871749
+      "\u9EC4\u8272Giant_0": -1392292784
+      "\u9EC4\u8272Giant_1": -1779202673
+      "\u9EC4\u8272Giant_2": 706667797
+      "\u9EC4\u8272Giant_3": 1847557784
+      "\u9EC4\u8272Giant_4": 808455984
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -77,6 +77,14 @@ namespace Pditine.GamePlay.GameManager
             Time.timeScale = IsPause ? 0 : 1;
             EventSystem.EventTrigger(IsPause ? "Pause" : "UnPause");
         }
+
+        public virtual void SetPause(bool isPause)
+        {
+            if (GameOver) return;
+            IsPause = isPause;
+            Time.timeScale = IsPause ? 0 : 1;
+            EventSystem.EventTrigger(IsPause ? "Pause" : "UnPause");
+        }
         
         protected virtual void CreatePlayer(int assID,int thornID,PlayerController thePlayer)
         {

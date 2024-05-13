@@ -889,6 +889,19 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: Pditine.GamePlay.GameManager.GameManagerBase`1[[Pditine.GamePlay.GameManager.ClassicGameManager,
+          Assembly-CSharp
+        m_MethodName: SetPause
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &5094705848547232598
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1059,7 +1072,7 @@ MonoBehaviour:
   thorn: {fileID: 7859373930564550987}
   ass: {fileID: 5497277683534737049}
   theAnimator: {fileID: 1973325999318526587}
-  speed: 10
+  speed: 1.5
 --- !u!95 &1973325999318526587
 Animator:
   serializedVersion: 5
@@ -2348,7 +2361,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.69803923, g: 0.69803923, b: 0.69803923, a: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 0}
   m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -2379,7 +2392,7 @@ PrefabInstance:
       objectReference: {fileID: 5069938704575655488}
     - target: {fileID: 1991851866712309363, guid: a3022e4b20d67c54398d15311563c837, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 207.29999
+      value: 170.8
       objectReference: {fileID: 0}
     - target: {fileID: 1991851866712309363, guid: a3022e4b20d67c54398d15311563c837, type: 3}
       propertyPath: m_AnchoredPosition.y

@@ -9,6 +9,7 @@ namespace Hmxs.Scripts
 {
     public class InfoSetter : MonoBehaviour
     {
+        [SerializeField] private int id;
         [Title("Ass Info")]
         [SerializeField] private EquipUI assImg;
         [SerializeField] private TMP_Text assName;
@@ -67,7 +68,8 @@ namespace Hmxs.Scripts
                 return;
             }
 
-            SetAssImg(assInfo.Portrait);
+            var assSprite = id == 1 ? assInfo.PortraitBlue : assInfo.PortraitYellow;
+            SetAssImg(assSprite);
             SetAssName(assInfo.AssName);
 
             SetAssProperty1(DataMapping(assInfo.HP, assProperty1Range));
