@@ -4,7 +4,7 @@ namespace Hmxs.Scripts.SinglePlayer.Transition
 {
     public class NormalAIDashTransition : ITransition<NormalAIState>
     {
-        public bool Transition(out NormalAIState type)
+        public bool Transit(out NormalAIState type)
         {
             type = NormalAIState.Idle;
             return true;

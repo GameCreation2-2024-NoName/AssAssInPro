@@ -36,7 +36,7 @@ namespace Hmxs.Scripts.FSM
 
         public void Update()
         {
-            if(_currentState.Transition(out T type))
+            if(_currentState.Transit(out T type))
                 TransferState(type);
             _currentState.OnUpdate();
         }

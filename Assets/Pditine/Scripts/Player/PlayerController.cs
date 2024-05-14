@@ -57,7 +57,7 @@ namespace Pditine.Player
         
         [HideInInspector]public float CurrentSpeed;
         [SerializeField] private float rotateSpeed;
-        private Vector2 _inputDirection;
+        protected Vector2 InputDirection;
         [ReadOnly]public Vector2 Direction;
         
         [ReadOnly]public bool canMove;
@@ -73,8 +73,8 @@ namespace Pditine.Player
         private AssBase _theAss;
         public AssBase TheAss => _theAss;
 
-        private InputHandler _inputHandler;
-        public InputHandler InputHandler => _inputHandler;
+        public InputHandler InputHandler =>
+            id == 1 ? PlayerManager.Instance.Handler1 : PlayerManager.Instance.Handler2;
 
         [SerializeField] private DirectionArrow arrow;
 
@@ -108,13 +108,6 @@ namespace Pditine.Player
         
         #endregion
 
-        private void Start()
-        {
-            OnStart();
-        }
-
-        protected virtual void OnStart() { }
-
         private void OnEnable()
         {
             EventSystem.AddEventListener("Pause",Pause);
@@ -144,7 +137,7 @@ namespace Pditine.Player
 
         protected virtual void OnUpdate()
         {
-            if (_inputHandler is null) return;
+            if (InputHandler is null) return;
             if(InputHandler.Dash)Dash();
             if(InputHandler.Direction.sqrMagnitude != 0)ChangeDirection(InputHandler.Direction);
         }
@@ -153,27 +146,30 @@ namespace Pditine.Player
         {
             Direction = transform.right;
             targetScale = transform.localScale.x;
-            _inputHandler = id==1?PlayerManager.Instance.Handler1: PlayerManager.Instance.Handler2;
             _theAss = theAss;
             _theThorn = theThorn;
             _currentHP = HP;
             _friction = Weight;
             arrow.Init(id);
+
+            OnInit();
         }
-        
-        public void ChangeDirection(Vector3 direction)
+
+        protected virtual void OnInit() { }
+
+        public virtual void ChangeDirection(Vector3 direction)
         {
             if (!canMove) return;
             if (_isPause) return;
             if (InputHandler.IsKeyboard)
             {
-                _inputDirection = (Camera.main.ScreenToWorldPoint(direction) - transform.position).normalized;
-                _inputDirection = _inputDirection.normalized; // LJH:奇怪的bug
+                InputDirection = (Camera.main.ScreenToWorldPoint(direction) - transform.position).normalized;
+                InputDirection = InputDirection.normalized; // LJH:奇怪的bug
             }
             else
-                _inputDirection = direction;
-            
-            arrow.ChangeDirection(_inputDirection);
+                InputDirection = direction;
+
+            arrow.ChangeDirection(InputDirection);
         }
         
         public void Dash()
@@ -182,7 +178,7 @@ namespace Pditine.Player
             if (_isPause) return;
             if (_currentCD > 0) return;
             AAIAudioManager.Instance.PlayEffect("加速音效");
-            Direction = _inputDirection;
+            Direction = InputDirection;
             CurrentSpeed = InitialVelocity;
             _currentCD = CD;
         }
@@ -225,10 +221,7 @@ namespace Pditine.Player
                 _theAss.gameObject.SetActive(false);
                 arrow.gameObject.SetActive(false);
             });
-            // DelayUtility.Delay(2, () =>
-            // {
-            //     Destroy(gameObject);
-            // });
+
             OnDestroyed?.Invoke();
         }
 

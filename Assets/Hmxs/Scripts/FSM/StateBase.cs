@@ -1,18 +1,21 @@
 ﻿using System;
+using UnityEngine;
 
 namespace Hmxs.Scripts.FSM
 {
+    [Serializable]
     public abstract class StateBase<T> where T : Enum
     {
-        protected StateBase(T type, ITransition<T> transition)
+        private ITransition<T> Transition { get; }
+        public T Type { get; }
+        public GameObject Owner { get; }
+
+        protected StateBase(T type, ITransition<T> transition, GameObject owner)
         {
             Type = type;
-            _transition = transition;
+            Transition = transition;
+            Owner = owner;
         }
-
-        private readonly ITransition<T> _transition;
-
-        public T Type { get; }
 
         public abstract void OnEnter();
 
@@ -20,6 +23,6 @@ namespace Hmxs.Scripts.FSM
 
         public abstract void OnUpdate();
 
-        public bool Transition(out T type) => _transition.Transition(out type);
+        public bool Transit(out T type) => Transition.Transit(out type);
     }
 }
