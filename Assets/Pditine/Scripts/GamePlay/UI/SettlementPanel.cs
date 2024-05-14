@@ -27,7 +27,8 @@ namespace Pditine.GamePlay.UI
             theAnimator.SetTrigger("Init");
             _showing = true;
             thorn.sprite = thePlayer.TheThorn.Data.Portrait;
-            ass.sprite = thePlayer.TheAss.Data.PortraitBlue;
+            
+            ass.sprite = thePlayer.ID == 1? thePlayer.TheAss.Data.PortraitBlue: thePlayer.TheAss.Data.PortraitYellow;
             thorn.SetNativeSize();
             ass.SetNativeSize();
         }
