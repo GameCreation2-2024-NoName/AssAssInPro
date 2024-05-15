@@ -16,9 +16,9 @@ namespace Pditine.Collide.CollideEvent
         protected override void Happen(ColliderBase collider1, ColliderBase collider2)
         {
             var thePlayer = (collider2 as ThornBase).ThePlayer;
-            var originDirection = thePlayer.Direction;
+            var originDirection = thePlayer.CurrentDirection;
             Vector2 Out_Direction = Vector2.Reflect(originDirection,((Boundary)collider1).NormalDirection);
-            thePlayer.Direction = Out_Direction;
+            thePlayer.CurrentDirection = Out_Direction;
             thePlayer.HitFeedback();
             //collider1.transform.GetComponent<VisualBox>()?.Act();
             //collider1.transform.position += (Vector3)thePlayer.Direction;

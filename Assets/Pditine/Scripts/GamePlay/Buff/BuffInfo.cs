@@ -33,6 +33,15 @@ namespace Pditine.GamePlay.Buff
                 return buffData.id.CompareTo(other.buffData.id);
             else return target.ID > other.target.ID ? 1 : -1;
         }
+
+        public void OnInit()
+        {
+            if (buffData.onInitEvents is null) return;
+            foreach (var onInitEvent in buffData.onInitEvents)
+            {
+                onInitEvent.Trigger(this);
+            }
+        }
         
         public void OnAttach()
         {

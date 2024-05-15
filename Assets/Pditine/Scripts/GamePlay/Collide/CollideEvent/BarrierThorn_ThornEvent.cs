@@ -22,10 +22,10 @@ namespace Pditine.Collide.CollideEvent
             collider2.AddCollider((collider1 as BarrierThorn).TheBarrier.ThePedestal);
             
             var res =
-                PhysicsUtility.ElasticCollision(thePlayer.Direction * thePlayer.CurrentSpeed,
+                PhysicsUtility.ElasticCollision(thePlayer.CurrentDirection * thePlayer.CurrentSpeed,
                     theBarrier.Direction * theBarrier.CurrentSpeed,
                     thePlayer.Weight, theBarrier.Weight, thePlayer.transform.position, theBarrier.transform.position);
-            thePlayer.Direction = res.v1Prime.normalized;
+            thePlayer.CurrentDirection = res.v1Prime.normalized;
             theBarrier.Direction = res.v2Prime.normalized;
             thePlayer.CurrentSpeed = res.v1Prime.magnitude;
             theBarrier.CurrentSpeed = res.v2Prime.magnitude;

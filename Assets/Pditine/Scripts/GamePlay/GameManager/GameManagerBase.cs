@@ -99,6 +99,9 @@ namespace Pditine.GamePlay.GameManager
         {
             if(GameOver)return;
             if (hp > 0) return;
+            if (playerID == 1 && player1.isInvincible) return;
+            if (playerID == 2 && player2.isInvincible) return;
+            
             GameOver = true;
             var theLoser = playerID == 1 ? player1 : player2;
             var theWinner = playerID == 1 ? player2 : player1;

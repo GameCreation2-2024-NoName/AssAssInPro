@@ -12,8 +12,8 @@ namespace Pditine.GamePlay.LightBall
         [SerializeField] private Transform leftUpPoint;
         [SerializeField] private Transform rightDownPoint;
         
-        //[SerializeField] private List<GameObject> lightBalls = new();
-        private List<GameObject> _lightBalls;
+        [SerializeField] private List<GameObject> lightBalls = new();
+        //private List<GameObject> _lightBalls;
 
         private float _cd;
         [SerializeField] private float minCD;
@@ -23,7 +23,7 @@ namespace Pditine.GamePlay.LightBall
 
         private void Awake()
         {
-            _lightBalls = DataManager.Instance.LightBalls;
+            //_lightBalls = DataManager.Instance.LightBalls;
             _cd = Random.Range(minCD, maxCD);
         }
 
@@ -64,7 +64,7 @@ namespace Pditine.GamePlay.LightBall
         {
             //todo:对象池
             //var theBall = PoolSystem.GetGameObject(lightBalls[Random.Range(0, lightBalls.Count)]).GetComponent<LightBall>();
-            var theBall = Instantiate(_lightBalls[Random.Range(0, _lightBalls.Count)]).GetComponent<LightBall>();
+            var theBall = Instantiate(lightBalls[Random.Range(0, lightBalls.Count)].transform).GetComponent<LightBall>();
             theBall.transform.position = new Vector3(
                 Random.Range(leftUpPoint.transform.position.x, rightDownPoint.transform.position.x),
                 Random.Range(rightDownPoint.transform.position.y, leftUpPoint.transform.position.y), 0);

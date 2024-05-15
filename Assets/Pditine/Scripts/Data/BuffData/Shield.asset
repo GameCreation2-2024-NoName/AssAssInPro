@@ -10,25 +10,27 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cd3c8db6a29a459f891dace4898c93ef, type: 3}
-  m_Name: AssAss
+  m_Name: Shield
   m_EditorClassIdentifier: 
-  id: 7
-  buffName: "\u5C41\u80A1"
+  id: 8
+  buffName: "\u62A4\u76FE"
   description: 
-  icon: {fileID: 1101341183, guid: 02ef1fc9b339b6340808d972f48032c9, type: 3}
+  icon: {fileID: 105594501, guid: 02ef1fc9b339b6340808d972f48032c9, type: 3}
   priority: 0
-  maxStack: 0
+  maxStack: 100
   tags: []
   showInUI: 1
   willLastForever: 0
-  durationTime: 3
+  durationTime: 10
   tickTime: 0
   attachType: 0
   lostType: 0
-  onInitEvents: []
+  onInitEvents:
+  - {fileID: 11400000, guid: 82ccc78c1fc22ee4989e0bd58a53a3c7, type: 2}
   onAttachEvents:
-  - {fileID: 11400000, guid: d74e293d935ac6446a5094b968cbf227, type: 2}
+  - {fileID: 11400000, guid: 8c3592e285904bc47ad9affc4867bacb, type: 2}
   onLostEvents:
-  - {fileID: 11400000, guid: 40acfccaf3e644249973dba8dfd4305c, type: 2}
+  - {fileID: 11400000, guid: 168e173e20aa9a540b718acd9dfd6ffd, type: 2}
   onTickEvents: []
-  onResetEvents: []
+  onResetEvents:
+  - {fileID: 11400000, guid: 8c3592e285904bc47ad9affc4867bacb, type: 2}

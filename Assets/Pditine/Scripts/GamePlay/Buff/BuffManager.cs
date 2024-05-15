@@ -18,6 +18,8 @@ namespace Pditine.GamePlay.Buff
     public SortedSet<BuffInfo> BuffSet => _buffSet;
     
     private readonly SortedSet<BuffInfo> _buffBufferSet = new();
+
+    private readonly SortedSet<BuffInfo> _initializedBuffSet = new();
     
     public event UnityAction<BuffInfo> OnAttachBuff;
     public event UnityAction<BuffInfo> OnLostBuff;
@@ -82,17 +84,32 @@ namespace Pditine.GamePlay.Buff
         _buffBufferSet.Clear();
     }
 
-    private BuffInfo GetBuffById(int id) => _buffSet.First(buffInfo => buffInfo.buffData.id == id);
+    private BuffInfo GetBuff(BuffInfo other)
+    {
+        foreach (var buff in _buffSet)
+        {
+            if (buff.buffData.id == other.buffData.id && buff.target.ID == other.target.ID)
+                return buff;
+        }
+        
+        return null;
+    }
 
     #region Public Methods
 
     public void AttachBuff(BuffInfo buffInfo)
     {
+        if (!_initializedBuffSet.Contains(buffInfo))
+        {
+            buffInfo.OnInit();
+            _initializedBuffSet.Add(buffInfo);
+        }
+        
         //if (_buffSet.Contains(buffInfo))
         if (_buffSet.Contains(buffInfo)&& buffInfo.buffData.attachType != BuffAttachType.Keep)
         {
             // buff存在
-            var buff = GetBuffById(buffInfo.buffData.id);
+            var buff = GetBuff(buffInfo);
             if (buff.currentStack < buff.buffData.maxStack)
             {
                 // 当前buff层数小于最大层数
@@ -118,10 +135,9 @@ namespace Pditine.GamePlay.Buff
                     _ => buff.durationCounter
                 };
             }
-            
+
             return;
         }
-
         // buff不存在
         buffInfo.durationCounter = buffInfo.buffData.durationTime;
         buffInfo.tickCounter = buffInfo.buffData.tickTime;
@@ -133,28 +149,30 @@ namespace Pditine.GamePlay.Buff
     public void LostBuff(BuffInfo buffInfo)
     {
         if (!_buffSet.Contains(buffInfo))
-        {
-            PFCLog.Warning("无对应buff");
             return;
-        }
-        switch (buffInfo.buffData.lostType)
+        var buff = GetBuff(buffInfo);
+        switch (buff.buffData.lostType)
         {
             case BuffLostType.Reduce:
-                buffInfo.currentStack--;
-                buffInfo.OnLost();
-                if (buffInfo.currentStack <= 0)
-                    _buffSet.Remove(buffInfo);
+                buff.currentStack--;
+                if (buff.currentStack < 0)
+                {
+                    _buffSet.Remove(buff);
+                    buff.OnLost();
+                    OnLostBuff?.Invoke(buff);
+                }
                 else
-                    buffInfo.durationCounter = buffInfo.buffData.durationTime;
+                    buff.durationCounter = buff.buffData.durationTime;
                 break;
             case BuffLostType.Clear:
-                buffInfo.OnLost();
-                _buffSet.Remove(buffInfo);
+                buff.OnLost();
+                OnLostBuff?.Invoke(buff);
+                _buffSet.Remove(buff);
                 break;
             default:
                 throw new ArgumentOutOfRangeException();
         }
-        OnLostBuff?.Invoke(buffInfo);
+
         ResetBuff();
     }
 
@@ -165,7 +183,10 @@ namespace Pditine.GamePlay.Buff
         OnReset?.Invoke();
         foreach (var buff in _buffSet)
         {
-            buff.OnReset();
+            for (int i = -1; i < buff.currentStack; i++)
+            {
+                buff.OnReset();
+            }
         }
     }
     }

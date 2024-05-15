@@ -25,10 +25,12 @@ MonoBehaviour:
   tickTime: 0
   attachType: 0
   lostType: 0
+  onInitEvents:
+  - {fileID: 11400000, guid: 46b8881b58718004e9237d6ffb50ed48, type: 2}
   onAttachEvents:
   - {fileID: 11400000, guid: 8c3592e285904bc47ad9affc4867bacb, type: 2}
-  - {fileID: 11400000, guid: 46b8881b58718004e9237d6ffb50ed48, type: 2}
   onLostEvents:
   - {fileID: 11400000, guid: 168e173e20aa9a540b718acd9dfd6ffd, type: 2}
   onTickEvents: []
-  onResetEvents: []
+  onResetEvents:
+  - {fileID: 11400000, guid: 8c3592e285904bc47ad9affc4867bacb, type: 2}

@@ -22,20 +22,20 @@ namespace Pditine.Collide.CollideEvent
             var thePlayer2 = (collider2 as AssBase).ThePlayer;
 
             //thePlayer1.HitFeedback();
-            thePlayer2.BeHitAssFeedback();
-            thePlayer2.ChangeHP(-thePlayer1.ATK);
-            
             var res =
-                PhysicsUtility.ElasticCollision(thePlayer1.Direction * thePlayer1.CurrentSpeed,
-                    thePlayer2.Direction * thePlayer2.CurrentSpeed,
+                PhysicsUtility.ElasticCollision(thePlayer1.CurrentDirection * thePlayer1.CurrentSpeed,
+                    thePlayer2.CurrentDirection * thePlayer2.CurrentSpeed,
                     thePlayer1.Weight, thePlayer2.Weight, thePlayer1.transform.position, thePlayer2.transform.position);
-            thePlayer1.Direction = res.v1Prime.normalized;
-            thePlayer2.Direction = res.v2Prime.normalized;
+            thePlayer1.CurrentDirection = res.v1Prime.normalized;
+            thePlayer2.CurrentDirection = res.v2Prime.normalized;
             thePlayer1.CurrentSpeed = res.v1Prime.magnitude;
             thePlayer2.CurrentSpeed = res.v2Prime.magnitude;
             
             AAIAudioManager.Instance.PlayEffect("碰撞音效1");
             CameraManager.Instance.OnCollidePLayerAss(thePlayer2.ID);
+            
+            thePlayer2.BeHitAssFeedback();
+            thePlayer2.ChangeHP(-thePlayer1.ATK);
             
             (collider1 as ThornBase).OnAttack?.Invoke();
             (collider2 as AssBase).OnBeAttackByThorn?.Invoke(collider1);

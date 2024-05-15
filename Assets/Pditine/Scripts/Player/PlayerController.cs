@@ -58,7 +58,17 @@ namespace Pditine.Player
         [HideInInspector]public float CurrentSpeed;
         [SerializeField] private float rotateSpeed;
         protected Vector2 InputDirection;
-        [ReadOnly]public Vector2 Direction;
+        [ReadOnly]private Vector2 _currentDirection;
+
+        public Vector2 CurrentDirection
+        {
+            get => _currentDirection;
+            set
+            {
+                OnChangeCurrentDirection?.Invoke(value.normalized);
+                _currentDirection = value.normalized;
+            }
+        }
         
         [ReadOnly]public bool canMove;
         [ReadOnly]public bool isInvincible;
@@ -90,9 +100,11 @@ namespace Pditine.Player
         #endregion
 
         #region 事件
-        public event Action<float> OnChangeCD;
-        public event Action<int,int> OnChangeHP;
+        public event Action<float> OnChangeCD; 
+        public event Action<int> OnTryChangeHP; // 血量变化量
+        public event Action<int,int> OnChangeHP; // 当前血量 玩家id
         public event Action OnDestroyed;
+        public event Action<Vector3> OnChangeCurrentDirection;
 
         #endregion
 
@@ -144,7 +156,7 @@ namespace Pditine.Player
 
         public void Init(ThornBase theThorn,AssBase theAss)
         {
-            Direction = transform.right;
+            _currentDirection = transform.right;
             targetScale = transform.localScale.x;
             _theAss = theAss;
             _theThorn = theThorn;
@@ -156,7 +168,7 @@ namespace Pditine.Player
         }
 
         protected virtual void OnInit() { }
-
+        
         public virtual void ChangeDirection(Vector3 direction)
         {
             if (!canMove) return;
@@ -178,7 +190,7 @@ namespace Pditine.Player
             if (_isPause) return;
             if (_currentCD > 0) return;
             AAIAudioManager.Instance.PlayEffect("加速音效");
-            Direction = InputDirection;
+            _currentDirection = InputDirection;
             CurrentSpeed = InitialVelocity;
             _currentCD = CD;
         }
@@ -191,8 +203,8 @@ namespace Pditine.Player
 
         private void UpdateTransform()
         {
-            transform.position += (Vector3)Direction*(CurrentSpeed*Time.deltaTime);
-            transform.right = Vector3.Lerp(transform.right, Direction, rotateSpeed);
+            transform.position += (Vector3)_currentDirection*(CurrentSpeed*Time.deltaTime);
+            transform.right = Vector3.Lerp(transform.right, _currentDirection, rotateSpeed);
         }
 
         private void UpdateCD()
@@ -204,7 +216,15 @@ namespace Pditine.Player
 
         public void ChangeHP(int delta)
         {
-            if (delta < 0 && isInvincible) return;
+            //Debug.Log("change hp :"+delta);
+
+            if (delta < 0 && isInvincible)
+            {
+                OnTryChangeHP?.Invoke(delta);
+                return;
+            }
+            
+            OnTryChangeHP?.Invoke(delta);
             _currentHP += delta;
             if (_currentCD > HP) _currentCD = HP;
             OnChangeHP?.Invoke(_currentHP,ID);

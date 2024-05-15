@@ -1,4 +1,5 @@
-﻿using Sirenix.OdinInspector;
+﻿using Org.BouncyCastle.Pqc.Crypto.Ntru;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace Pditine.GamePlay.Buff
@@ -45,6 +46,7 @@ namespace Pditine.GamePlay.Buff
         public BuffLostType lostType;
 
         [Title("Callback Event")]
+        [InlineEditor] public BuffEvent[] onInitEvents;
         [InlineEditor] public BuffEvent[] onAttachEvents;
         [InlineEditor] public BuffEvent[] onLostEvents;
         [InlineEditor] public BuffEvent[] onTickEvents;

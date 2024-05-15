@@ -243,6 +243,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   leftUpPoint: {fileID: 96053481}
   rightDownPoint: {fileID: 1839035147}
+  lightBalls:
+  - {fileID: 3550005666127261084, guid: 414b4a77ccef1f443b8d3c5487be1db2, type: 3}
+  - {fileID: 3550005666127261084, guid: 548ff30556d4e64488a8105517924057, type: 3}
+  - {fileID: 6006876733962089475, guid: 572f7edc9964e1a40aceb06543995f02, type: 3}
+  - {fileID: 1779683209088446744, guid: 92d92200dc2b62740b9642f8418faad3, type: 3}
+  - {fileID: 2712554538581469519, guid: 956531653624a174f9de3af0dc8fc6aa, type: 3}
+  - {fileID: 1779683209088446744, guid: d0133a1561bf00249a367be1d2c54712, type: 3}
   minCD: 4
   maxCD: 8
 --- !u!4 &77796781

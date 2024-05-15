@@ -21,8 +21,8 @@ namespace Pditine.Collide.CollideEvent
                 (collider1 as BarrierPedestal).TheBarrier.TheThorn.AddCollider(collider2);
                 collider2.AddCollider((collider1 as BarrierPedestal).TheBarrier.TheThorn);
                 
-                theBarrier.Direction = thePlayer.Direction;
-                thePlayer.Direction = -thePlayer.Direction;
+                theBarrier.Direction = thePlayer.CurrentDirection;
+                thePlayer.CurrentDirection = -thePlayer.CurrentDirection;
                 theBarrier.CurrentSpeed = thePlayer.CurrentSpeed/1.5f;
                 thePlayer.CurrentSpeed /= 1.2f;
                 thePlayer.HitFeedback();
