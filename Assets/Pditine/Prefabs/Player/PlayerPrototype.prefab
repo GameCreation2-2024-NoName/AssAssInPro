@@ -10242,7 +10242,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 0.3018868, g: 0.3018868, b: 0.3018868, a: 1}
-      maxColor: {r: 1, g: 1, b: 1, a: 1}
+      maxColor: {r: 0.9882353, g: 0.78431374, b: 0.2901961, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -30274,11 +30274,10 @@ MonoBehaviour:
   atkAddAdjustment: 0
   CurrentSpeed: 0
   rotateSpeed: 0.4
-  Direction: {x: 0, y: 0}
   canMove: 0
   isInvincible: 0
-  targetScale: 1
   arrow: {fileID: 1519263122557232922}
+  targetScale: 1
   hitFeedback: {fileID: 7232768473824068903}
   loseFeedbackBlue: {fileID: 1887594393323342707}
   loseFeedbackYellow: {fileID: 3610293969884283739}
@@ -30928,7 +30927,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 0.3018868, g: 0.3018868, b: 0.3018868, a: 1}
-      maxColor: {r: 1, g: 1, b: 1, a: 1}
+      maxColor: {r: 0.2, g: 0.8901961, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -45642,7 +45641,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 0.3018868, g: 0.3018868, b: 0.3018868, a: 1}
-      maxColor: {r: 1, g: 1, b: 1, a: 1}
+      maxColor: {r: 0.9882353, g: 0.78431374, b: 0.2901961, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -119481,7 +119480,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 0.3018868, g: 0.3018868, b: 0.3018868, a: 1}
-      maxColor: {r: 1, g: 1, b: 1, a: 1}
+      maxColor: {r: 0.2, g: 0.8901961, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}

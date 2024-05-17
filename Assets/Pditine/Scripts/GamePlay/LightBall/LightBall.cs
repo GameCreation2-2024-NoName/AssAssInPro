@@ -38,7 +38,7 @@ namespace Pditine.GamePlay.LightBall
             eatenFeedback.Initialization();
             theBall.gameObject.SetActive(false);
             halo.Play();
-            DelayUtility.Delay(1.3f, () =>
+            DelayUtility.Delay(1f, () =>
             {
                 _ready = true;
                 theBall.gameObject.SetActive(true);

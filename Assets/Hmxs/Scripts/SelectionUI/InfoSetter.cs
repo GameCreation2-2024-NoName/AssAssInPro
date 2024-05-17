@@ -19,7 +19,7 @@ namespace Hmxs.Scripts
         [SerializeField] private TMP_Text assIntroduction;
         [SerializeField] [MinMaxSlider(0, 20, true)] private Vector2 assProperty1Range;
         [SerializeField] [MinMaxSlider(0, 40, true)] private Vector2 assProperty2Range;
-        [SerializeField] [MinMaxSlider(0, 20, true)] private Vector2 assProperty3Range;
+        [SerializeField] [MinMaxSlider(0, 60, true)] private Vector2 assProperty3Range;
 
         [Title("Thorn Info")]
         [SerializeField] private EquipUI thornImg;
