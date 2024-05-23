@@ -16,6 +16,6 @@ MonoBehaviour:
   moduleName: "\u7ECF\u5178\u6A21\u5F0F"
   introduction: "\u503E\u5C3D\u5168\u529B\uFF0C\u53BB\u653B\u51FB\u5BF9\u9762\u7684ass\u5427\uFF01"
   sceneID: 1
-  preview: {fileID: 1586511156, guid: cd33109596b35274fb2e0cfd6c63c35e, type: 3}
+  preview: {fileID: 533004277, guid: 862998324beb9c74598ffd88a38de4a1, type: 3}
   gameLevels: []
   done: 1
