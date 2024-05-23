@@ -66,8 +66,8 @@ namespace Pditine.GamePlay.GameManager
             DelayUtility.Delay(4.7f,()=>
             {
                 PlayerCanMove(true);
-            }); 
-            PlayerManager.Instance.SwitchMap("GamePlay");
+                PlayerManager.Instance.SwitchMap("GamePlay");
+            });
         }
 
         public virtual void SetPause()

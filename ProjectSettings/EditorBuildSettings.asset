@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Pditine/Scenes/ClassicGame 0.unity
     guid: 790893535f7c7b94cb83d49ae2a80364
+  - enabled: 1
+    path: Assets/Hmxs/Scene/SinglePlayerGame.unity
+    guid: 341d77bc6a84c6046ab73964c54eaf0a
   m_configObjects: {}

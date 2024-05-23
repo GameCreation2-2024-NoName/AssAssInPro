@@ -150,8 +150,8 @@ namespace Pditine.Player
         protected virtual void OnUpdate()
         {
             if (InputHandler is null) return;
-            if(InputHandler.Dash)Dash();
-            if(InputHandler.Direction.sqrMagnitude != 0)ChangeDirection(InputHandler.Direction);
+            if(InputHandler.Dash) Dash();
+            if(InputHandler.Direction.sqrMagnitude != 0) ChangeDirection(InputHandler.Direction);
         }
 
         public void Init(ThornBase theThorn,AssBase theAss)
