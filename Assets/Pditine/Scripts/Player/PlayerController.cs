@@ -2,6 +2,7 @@ using System;
 using Hmxs.Scripts;
 using MoreMountains.Feedbacks;
 using Pditine.Audio;
+using Pditine.Component;
 using Pditine.Player.Ass;
 using Pditine.Player.Thorn;
 using PurpleFlowerCore;
@@ -15,11 +16,12 @@ namespace Pditine.Player
     {
         #region 属性
 
-        [SerializeField]private int id;
+        [SerializeField] private int id;
         public int ID => id;
 
         [HideInInspector] public float initialVelocityMulAdjustment = 1;
         [HideInInspector] public float initialVelocityAddAdjustment = 0;
+
         public float InitialVelocity =>
             _theAss.Data.InitialVelocity * initialVelocityMulAdjustment + initialVelocityAddAdjustment;
 
@@ -28,15 +30,16 @@ namespace Pditine.Player
 
 
         private float _friction;
+
         public float Friction => _friction * frictionMulAdjustment +
                                  frictionAddAdjustment;
-        
+
         [HideInInspector] public float weightMulAdjustment = 1;
         [HideInInspector] public float weightAddAdjustment = 0;
 
         public float Weight => (_theAss.Data.Weight + _theThorn.Data.Weight) * weightMulAdjustment +
                                weightAddAdjustment;
-        
+
         [HideInInspector] public float cdMulAdjustment = 1;
         [HideInInspector] public float cdAddAdjustment = 0;
         private float CD => _theThorn.Data.CD * cdMulAdjustment + cdAddAdjustment;
@@ -48,17 +51,17 @@ namespace Pditine.Player
         [HideInInspector] public float atkMulAdjustment = 1;
         [HideInInspector] public int atkAddAdjustment = 0;
         public int ATK => (int)(_theThorn.Data.ATK * atkMulAdjustment + atkAddAdjustment);
-        
+
         private int _currentHP;
         public int CurrentHP => _currentHP;
-        
+
         private float _currentCD;
-        public float CurrentCD=>_currentCD;
-        
-        [HideInInspector]public float CurrentSpeed;
+        public float CurrentCD => _currentCD;
+
+        [HideInInspector] public float CurrentSpeed;
         [SerializeField] private float rotateSpeed;
         protected Vector2 InputDirection;
-        [ReadOnly]private Vector2 _currentDirection;
+        [ReadOnly] private Vector2 _currentDirection;
 
         public Vector2 CurrentDirection
         {
@@ -69,15 +72,15 @@ namespace Pditine.Player
                 _currentDirection = value.normalized;
             }
         }
-        
-        [ReadOnly]public bool canMove;
-        [ReadOnly]public bool isInvincible;
+
+        [ReadOnly] public bool canMove;
+        [ReadOnly] public bool isInvincible;
 
 
         #endregion
 
         #region 引用
-        
+
         private ThornBase _theThorn;
         public ThornBase TheThorn => _theThorn;
         private AssBase _theAss;
@@ -91,18 +94,19 @@ namespace Pditine.Player
         #endregion
 
         #region 其他变量
-        
+
         private bool _isPause;
         public bool IsPause => _isPause;
-        
-        [HideInInspector]public float targetScale;
+
+        [HideInInspector] public float targetScale;
 
         #endregion
 
         #region 事件
-        public event Action<float> OnChangeCD; 
+
+        public event Action<float> OnChangeCD;
         public event Action<int> OnTryChangeHP; // 血量变化量
-        public event Action<int,int> OnChangeHP; // 当前血量 玩家id
+        public event Action<int, int> OnChangeHP; // 当前血量 玩家id
         public event Action OnDestroyed;
         public event Action<Vector3> OnChangeCurrentDirection;
 
@@ -110,26 +114,28 @@ namespace Pditine.Player
 
         #region 特效
 
-        [Title("Effect")]
-        [SerializeField] private MMF_Player hitFeedback;
+        [Title("Effect")] [SerializeField] private MMF_Player hitFeedback;
         [SerializeField] private MMF_Player loseFeedbackBlue;
+
         [SerializeField] private MMF_Player loseFeedbackYellow;
+
         //[SerializeField] private MMScaleShaker scaleShaker;
         [SerializeField] private MMF_Player beHitAssFeedbackBlue;
         [SerializeField] private MMF_Player beHitAssFeedbackYellow;
-        
+        [SerializeField] private SpriteEffect_Flash spriteEffectFlash;
+
         #endregion
 
         private void OnEnable()
         {
-            EventSystem.AddEventListener("Pause",Pause);
-            EventSystem.AddEventListener("UnPause",UnPause);
+            EventSystem.AddEventListener("Pause", Pause);
+            EventSystem.AddEventListener("UnPause", UnPause);
         }
 
         private void OnDisable()
         {
-            EventSystem.RemoveEventListener("Pause",Pause);
-            EventSystem.RemoveEventListener("UnPause",UnPause);
+            EventSystem.RemoveEventListener("Pause", Pause);
+            EventSystem.RemoveEventListener("UnPause", UnPause);
         }
 
         private void Pause() => _isPause = true;
@@ -150,11 +156,11 @@ namespace Pditine.Player
         protected virtual void OnUpdate()
         {
             if (InputHandler is null) return;
-            if(InputHandler.Dash) Dash();
-            if(InputHandler.Direction.sqrMagnitude != 0) ChangeDirection(InputHandler.Direction);
+            if (InputHandler.Dash) Dash();
+            if (InputHandler.Direction.sqrMagnitude != 0) ChangeDirection(InputHandler.Direction);
         }
 
-        public void Init(ThornBase theThorn,AssBase theAss)
+        public void Init(ThornBase theThorn, AssBase theAss)
         {
             _currentDirection = transform.right;
             targetScale = transform.localScale.x;
@@ -167,8 +173,10 @@ namespace Pditine.Player
             OnInit();
         }
 
-        protected virtual void OnInit() { }
-        
+        protected virtual void OnInit()
+        {
+        }
+
         public virtual void ChangeDirection(Vector3 direction)
         {
             if (!canMove) return;
@@ -183,7 +191,7 @@ namespace Pditine.Player
 
             arrow.ChangeDirection(InputDirection);
         }
-        
+
         public void Dash()
         {
             if (!canMove) return;
@@ -197,13 +205,13 @@ namespace Pditine.Player
 
         private void ReduceSpeed()
         {
-            CurrentSpeed -= Friction*Time.deltaTime;
+            CurrentSpeed -= Friction * Time.deltaTime;
             if (CurrentSpeed <= 0) CurrentSpeed = 0;
         }
 
         private void UpdateTransform()
         {
-            transform.position += (Vector3)_currentDirection*(CurrentSpeed*Time.deltaTime);
+            transform.position += (Vector3)_currentDirection * (CurrentSpeed * Time.deltaTime);
             transform.right = Vector3.Lerp(transform.right, _currentDirection, rotateSpeed);
         }
 
@@ -211,7 +219,7 @@ namespace Pditine.Player
         {
             _currentCD -= Time.deltaTime;
             if (_currentCD <= 0) _currentCD = 0;
-            OnChangeCD?.Invoke(_currentCD/CD);
+            OnChangeCD?.Invoke(_currentCD / CD);
         }
 
         public void ChangeHP(int delta)
@@ -223,17 +231,17 @@ namespace Pditine.Player
                 OnTryChangeHP?.Invoke(delta);
                 return;
             }
-            
+
             OnTryChangeHP?.Invoke(delta);
             _currentHP += delta;
             if (_currentCD > HP) _currentCD = HP;
-            OnChangeHP?.Invoke(_currentHP,ID);
+            OnChangeHP?.Invoke(_currentHP, ID);
         }
-        
+
         public void BeDestroy()
         {
             canMove = false;
-            
+
             DelayUtility.Delay(0.5f, () =>
             {
                 LoseFeedback();
@@ -259,7 +267,7 @@ namespace Pditine.Player
             hpAddAdjustment = 0;
             initialVelocityAddAdjustment = 0;
         }
-        
+
         public void HitFeedback() => hitFeedback.PlayFeedbacks();
 
         public void BeHitAssFeedback()
@@ -267,10 +275,20 @@ namespace Pditine.Player
             var mmfPlayer = id == 1 ? beHitAssFeedbackBlue : beHitAssFeedbackYellow;
             mmfPlayer.PlayFeedbacks();
         }
+
         public void LoseFeedback()
         {
             var mmfPlayer = id == 1 ? loseFeedbackBlue : loseFeedbackYellow;
             mmfPlayer.PlayFeedbacks();
         }
+
+        public void SetFlash(bool open)
+        {
+            if(open)
+                spriteEffectFlash.FlashOn();
+            else 
+                spriteEffectFlash.FlashOff();
+        }
+    
     }
 }

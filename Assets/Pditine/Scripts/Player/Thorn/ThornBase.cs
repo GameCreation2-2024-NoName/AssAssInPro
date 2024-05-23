@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using Pditine.Collide;
 using Pditine.Collide.CollideEvent;
+using Pditine.Component;
 using Pditine.Scripts.Data.Ass;
 using PurpleFlowerCore.Utility;
 using UnityEngine;
@@ -18,6 +19,9 @@ namespace Pditine.Player.Thorn
         public ThornDataBase Data => data;
 
         public UnityAction OnAttack;
+        
+        [SerializeField] private SpriteEffect_Flash spriteEffectFlash;
+        public SpriteEffect_Flash SpriteEffectFlash => spriteEffectFlash;
 
         protected override List<CollidingEventBase> GetCollidingEvents()
         {

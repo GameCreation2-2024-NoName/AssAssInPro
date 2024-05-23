@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1804932204932612281}
   - component: {fileID: -3372519487630286751}
   - component: {fileID: 8828998618239107114}
+  - component: {fileID: 1141984866917466549}
   m_Layer: 0
   m_Name: PureSpur
   m_TagString: Thorn
@@ -99,6 +100,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   data: {fileID: 11400000, guid: e97941baf49d4ff459d5fdb7184ff305, type: 2}
+  spriteEffectFlash: {fileID: 1141984866917466549}
+  pureSpurBuffData: {fileID: 0}
 --- !u!60 &8828998618239107114
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -225,3 +228,16 @@ PolygonCollider2D:
       - {x: 0.21560009, y: 0.19677822}
       - {x: 0.2508997, y: 0.19677822}
   m_UseDelaunayMesh: 0
+--- !u!114 &1141984866917466549
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3527323057261180279}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4428bc875d4a4e968589b6863a4bc642, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flashMaterial: {fileID: 2100000, guid: 7f8ecbffc73dfbc4a86c96a6fa8e6628, type: 2}

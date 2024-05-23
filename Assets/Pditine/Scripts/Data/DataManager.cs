@@ -17,17 +17,20 @@ namespace Pditine.Data
         [SerializeField] private List<GameModelBase> gameModules = new();
         //[SerializeField] private List<BuffData> buffData = new();
         [SerializeField] private List<GameObject> lightBalls = new();
+        [SerializeField] private List<BuffData> buffData;
+        [SerializeField] private PassingData passingData;
         public List<AssDataBase> Asses => asses;
         public List<ThornDataBase> Thorns => thorns;
         public List<GameModelBase> GameModules => gameModules;
         //public List<BuffData> BuffData => buffData;
         public List<GameObject> LightBalls => lightBalls;
-
-        [SerializeField] private PassingData passingData;
+        
         /// <summary>
         /// 用于跨场景数据传输
         /// </summary>
-        public PassingData PassingData => passingData; 
+        public PassingData PassingData => passingData;
+
+        public List<BuffData> BuffData => buffData;
 
         public AssDataBase GetAssData(int assID)
         {
@@ -42,6 +45,11 @@ namespace Pditine.Data
         {
             if (gameModuleID >= gameModules.Count) return null;
             return gameModules[gameModuleID];
+        }
+
+        public BuffData GetBuffData(int buffId)
+        {
+            return buffData.Find((b) => b.id == buffId);
         }
 
         // public BuffData GetBuffData(int buffDataIndex)

@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using Pditine.Collide;
 using Pditine.Collide.CollideEvent;
+using Pditine.Component;
 using Pditine.Data.Ass;
 using UnityEngine;
 using UnityEngine.Events;
@@ -24,6 +25,9 @@ namespace Pditine.Player.Ass
 
         [SerializeField] private TrailRenderer theTrail;
 
+        [SerializeField] private SpriteEffect_Flash spriteEffectFlash;
+        public SpriteEffect_Flash SpriteEffectFlash => spriteEffectFlash;
+        
         protected override List<CollidingEventBase> GetCollidingEvents()
         {
             return new(){new Thorn_AssEvent(),new BarrierThorn_AssEvent()};
