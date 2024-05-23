@@ -36,8 +36,10 @@ namespace Pditine.Player.Thorn
         {
             CallBack += HandleVibration;
         }
+
         private void HandleVibration()
         {
+            if (!thePlayer.InputHandler) return;
             Gamepad theGamepad = null;
             if (thePlayer.InputHandler.IsGamepad)
                 theGamepad = thePlayer.InputHandler.Devices[0] as Gamepad;
