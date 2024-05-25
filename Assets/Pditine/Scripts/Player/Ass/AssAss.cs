@@ -18,8 +18,8 @@ namespace Pditine.Player.Ass
 
         private void AddBuff(ColliderBase theThorn)
         {
-            if (theThorn is BarrierThorn) return;
-            var targetPlayer = (theThorn as ThornBase).ThePlayer;
+            if (theThorn is not ThornBase @base) return;
+            var targetPlayer = @base.ThePlayer;
             BuffManager.Instance.AttachBuff(new BuffInfo(assAssBuffData, gameObject,targetPlayer));
         }
     }
