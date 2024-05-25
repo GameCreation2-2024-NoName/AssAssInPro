@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 0052fc363664b444db0186b6f60347b2
+guid: 97a2d298b57083c4d846ff4e5d79fa97
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 80
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -110,13 +110,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: "\u673A\u5173\u7AD6_0"
+      name: "\u673A\u5173\u6A2A_0"
       rect:
         serializedVersion: 2
-        x: 911
-        y: 158
-        width: 63
-        height: 769
+        x: 771
+        y: 511
+        width: 341
+        height: 63
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -124,8 +124,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1d1dea39daab5a84a86bb5f93e9e219c
-      internalID: 1522953169
+      spriteID: 486464d2e9565444daaad38e2435f5ff
+      internalID: -1982074751
       vertices: []
       indices: 
       edges: []
@@ -141,7 +141,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      "\u673A\u5173\u7AD6_0": 1522953169
+      "\u673A\u5173\u6A2A_0": -1982074751
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

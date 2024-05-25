@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 97a2d298b57083c4d846ff4e5d79fa97
+guid: 60333a19fbdebf348b00a7a8f73123de
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 80
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -110,12 +110,12 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: "\u673A\u5173\u6A2A_0"
+      name: "\u673A\u5173\u523A_0"
       rect:
         serializedVersion: 2
-        x: 771
+        x: 705
         y: 511
-        width: 341
+        width: 57
         height: 63
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -124,8 +124,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 486464d2e9565444daaad38e2435f5ff
-      internalID: -1982074751
+      spriteID: b0bb52ee92621ae48a14442706975a90
+      internalID: 787556590
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "\u673A\u5173\u523A_1"
+      rect:
+        serializedVersion: 2
+        x: 1121
+        y: 511
+        width: 57
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fd162606812f3434f91e490c3021da74
+      internalID: -1490535149
       vertices: []
       indices: 
       edges: []
@@ -141,7 +162,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      "\u673A\u5173\u6A2A_0": -1982074751
+      "\u673A\u5173\u523A_0": 787556590
+      "\u673A\u5173\u523A_1": -1490535149
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
