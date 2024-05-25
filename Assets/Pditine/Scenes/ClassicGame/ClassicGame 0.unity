@@ -520,7 +520,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be6f97fa204b4bc89cda6219f840fb30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  normalDirection: {x: -1, y: 0}
+  normalDirection: {x: 1, y: 0}
 --- !u!20 &519420031 stripped
 Camera:
   m_CorrespondingSourceObject: {fileID: 7651948980537287348, guid: ba098df08fc2df8488978581d035cfc9, type: 3}

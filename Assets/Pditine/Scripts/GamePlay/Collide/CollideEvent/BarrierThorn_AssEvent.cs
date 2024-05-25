@@ -15,7 +15,7 @@ namespace Pditine.Collide.CollideEvent
             return false;
         }
 
-        protected override void Happen(ColliderBase collider1, ColliderBase collider2)
+        protected override void Happen(ColliderBase collider1, ColliderBase collider2,CollideInfo info)
         {
             var thePlayer = (collider2 as AssBase).ThePlayer;
             var theBarrier = (collider1 as BarrierThorn).TheBarrier;

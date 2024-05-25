@@ -13,7 +13,7 @@ namespace Pditine.Collide.CollideEvent
             return false;
         }
 
-        protected override void Happen(ColliderBase collider1, ColliderBase collider2)
+        protected override void Happen(ColliderBase collider1, ColliderBase collider2,CollideInfo info)
         {
             var theBarrier= (collider2 as BarrierThorn).TheBarrier;
             var originDirection = theBarrier.Direction;
