@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: LongSpearThorn
   m_EditorClassIdentifier: 
   id: 1
-  atk: 2
-  cd: 1
-  weight: 8
+  atk: 3
+  cd: 0.8
+  weight: 20
   prototype: {fileID: 3527323057261180279, guid: 5b4705815bd7f8141ad012378eda2376, type: 3}
   portrait: {fileID: 787717790, guid: 6a67b63c051cdba48be755f97680bce2, type: 3}
   thornName: "\u957F\u77DB"

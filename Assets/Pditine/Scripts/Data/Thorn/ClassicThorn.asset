@@ -15,8 +15,7 @@ MonoBehaviour:
   id: 0
   atk: 2
   cd: 0.5
-  friction: 5
-  weight: 5
+  weight: 10
   prototype: {fileID: 3527323057261180279, guid: 0b32d0318cf54e0419a09af4ca8406db, type: 3}
   portrait: {fileID: -337171882, guid: 22b5deefd12eeeb4a8dfed8c6ac0977a, type: 3}
   thornName: "\u7ECF\u5178"

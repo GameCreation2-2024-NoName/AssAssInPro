@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 6a67b63c051cdba48be755f97680bce2
+guid: 724128b1a2ce3824f9a91c59c988f532
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -110,22 +110,64 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: "\u957F\u77DB_0"
+      name: Ass_0
       rect:
         serializedVersion: 2
-        x: 1669
-        y: 742
-        width: 535
-        height: 130
-      alignment: 4
-      pivot: {x: 0, y: 0.5}
+        x: 633
+        y: 661
+        width: 222
+        height: 293
+      alignment: 9
+      pivot: {x: 1, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 35f9cb95b551b9b4d81f07053afee0ef
-      internalID: 787717790
+      spriteID: 4f8e3935c625f684eb09d0548e43b35f
+      internalID: 2129531702
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ass_1
+      rect:
+        serializedVersion: 2
+        x: 1009
+        y: 664
+        width: 220
+        height: 286
+      alignment: 9
+      pivot: {x: 1, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 743771cbab3849f4590bd16977c5a6bd
+      internalID: 543358383
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ass_2
+      rect:
+        serializedVersion: 2
+        x: 1367
+        y: 640
+        width: 227
+        height: 335
+      alignment: 9
+      pivot: {x: 1, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: db6c0f060fca8324bb13c120c2712029
+      internalID: -1821356742
       vertices: []
       indices: 
       edges: []
@@ -141,7 +183,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      "\u957F\u77DB_0": 787717790
+      Ass_0: 2129531702
+      Ass_1: 543358383
+      Ass_2: -1821356742
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

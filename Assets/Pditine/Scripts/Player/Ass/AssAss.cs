@@ -1,5 +1,6 @@
 ﻿using Pditine.Collide;
 using Pditine.GamePlay.Buff;
+using Pditine.Map;
 using Pditine.Player.Thorn;
 using UnityEngine;
 
@@ -17,6 +18,7 @@ namespace Pditine.Player.Ass
 
         private void AddBuff(ColliderBase theThorn)
         {
+            if (theThorn is BarrierThorn) return;
             var targetPlayer = (theThorn as ThornBase).ThePlayer;
             BuffManager.Instance.AttachBuff(new BuffInfo(assAssBuffData, gameObject,targetPlayer));
         }

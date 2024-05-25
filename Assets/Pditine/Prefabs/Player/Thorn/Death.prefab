@@ -101,6 +101,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   data: {fileID: 11400000, guid: deca109582db33947beb15af9476cfb2, type: 2}
   spriteEffectFlash: {fileID: 4015190503524455421}
+  rotateSpeed: 5
 --- !u!60 &-5946255681927810527
 PolygonCollider2D:
   m_ObjectHideFlags: 0

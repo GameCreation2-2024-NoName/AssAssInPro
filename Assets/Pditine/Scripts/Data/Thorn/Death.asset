@@ -13,10 +13,9 @@ MonoBehaviour:
   m_Name: Death
   m_EditorClassIdentifier: 
   id: 5
-  atk: 2
-  cd: 0.8
-  friction: 7
-  weight: 7
+  atk: 3
+  cd: 0.7
+  weight: 14
   prototype: {fileID: 3527323057261180279, guid: a737fb5b8d5012443b9a9f05858995c9, type: 3}
   portrait: {fileID: 305611355, guid: 22b5deefd12eeeb4a8dfed8c6ac0977a, type: 3}
   thornName: "\u6B7B\u795E"
