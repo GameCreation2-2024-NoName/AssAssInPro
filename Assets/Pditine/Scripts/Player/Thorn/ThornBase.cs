@@ -25,7 +25,7 @@ namespace Pditine.Player.Thorn
 
         protected override List<CollidingEventBase> GetCollidingEvents()
         {
-            return new(){new Thorn_ThornEvent(),new Boundary_ThornEvent(),new Thorn_AssEvent(),new BarrierPedestal_ThornEvent(),new BarrierThorn_ThornEvent()};
+            return new(){new Thorn_ThornEvent(),new Wall_ThornEvent(),new Thorn_AssEvent(),new BarrierPedestal_ThornEvent(),new BarrierThorn_ThornEvent()};
         }
         
         public virtual void Init(PlayerController parent)

@@ -6,10 +6,10 @@ TagManager:
   tags:
   - Ass
   - Thorn
-  - Boundary
   - BarrierPedestal
   - BarrierThorn
   - LightBall
+  - Wall
   layers:
   - Default
   - TransparentFX

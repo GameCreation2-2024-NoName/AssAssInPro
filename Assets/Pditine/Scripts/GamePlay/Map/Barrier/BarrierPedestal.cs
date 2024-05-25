@@ -5,18 +5,13 @@ using UnityEngine;
 
 namespace Pditine.Map
 {
-    public class BarrierThorn : ColliderBase
+    public class BarrierPedestal : ColliderBase
     {
         [SerializeField] private Barrier theBarrier;
         public Barrier TheBarrier=>theBarrier;
-
         protected override List<CollidingEventBase> GetCollidingEvents()
         {
-            return new List<CollidingEventBase>()
-            {
-                new Boundary_BarrierThorn(), new BarrierThorn_BarrierPedestalEvent(), new BarrierThorn_AssEvent(),
-                new BarrierThorn_ThornEvent(), new BarrierThorn_BarrierThornEvent()
-            };
+            return new(){new BarrierPedestal_ThornEvent(),new Wall_BarrierPedestalEvent(),new BarrierThorn_BarrierPedestalEvent()};
         }
     }
 }
