@@ -13,6 +13,7 @@ TagManager:
   - Boundary
   - StaticThorn
   - CrossButton
+  - DestructibleBox
   layers:
   - Default
   - TransparentFX
