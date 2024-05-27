@@ -9,8 +9,14 @@ EditorBuildSettings:
     path: Assets/Pditine/Scenes/MainMenu.unity
     guid: 84e5039ed7a881f43bbce743425878bc
   - enabled: 1
-    path: Assets/Pditine/Scenes/ClassicGame 0.unity
-    guid: 790893535f7c7b94cb83d49ae2a80364
+    path: Assets/Pditine/Scenes/ClassicGame/ClassicGame 1.unity
+    guid: f3597980bf0270c44a3ed46fcf001682
+  - enabled: 1
+    path: Assets/Pditine/Scenes/ClassicGame/ClassicGame 2.unity
+    guid: 5111d0d9b635f73488fe803b6777121d
+  - enabled: 1
+    path: Assets/Pditine/Scenes/ClassicGame/ClassicGame 3.unity
+    guid: f5d064f665b5ee14aa45f206de0dfb74
   - enabled: 1
     path: Assets/Hmxs/Scene/SinglePlayerGame.unity
     guid: 341d77bc6a84c6046ab73964c54eaf0a

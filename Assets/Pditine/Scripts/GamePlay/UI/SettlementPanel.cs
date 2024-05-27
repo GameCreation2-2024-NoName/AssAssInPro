@@ -35,7 +35,7 @@ namespace Pditine.GamePlay.UI
         
         public void AnotherGame()
         {
-            DataManager.Instance.PassingData.mainMenuOpenedMenuIndex = 4;
+            DataManager.Instance.PassingData.mainMenuOpenedMenuIndex = 3;
             SceneSystem.LoadScene(0);
         }
         

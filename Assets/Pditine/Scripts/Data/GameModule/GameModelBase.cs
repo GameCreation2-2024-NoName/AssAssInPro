@@ -10,17 +10,20 @@ namespace Pditine.Data.GameModule
         [SerializeField] private int id;
         [SerializeField] private string moduleName;
         [SerializeField] private string introduction;
-        [SerializeField] private int sceneID; //todo: 临时
         [SerializeField] private Sprite preview;
-        [SerializeField] private List<GameLevelBase> gameLevels = new(); 
+        [SerializeField] private List<int> gameLevels = new(); 
         [SerializeField] private bool done;
         public int ID => id;
         public string ModuleName=>moduleName;
         public string Introduction=>introduction;
-        public int SceneID=>sceneID;
         public Sprite Preview=>preview;
-        public List<GameLevelBase> GameLevels => gameLevels;
+        public List<int> GameLevels => gameLevels;
         public bool Done=>done;
+
+        public int GetARandomScene()
+        {
+            return gameLevels[Random.Range(0, gameLevels.Count)];
+        }
 
     }
 }

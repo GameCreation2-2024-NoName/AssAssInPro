@@ -38,7 +38,7 @@ namespace Hmxs.Scripts
         private void StartGame()
         {
             PFCLog.Info("场景转换");
-            SceneSystem.LoadScene(DataManager.Instance.PassingData.currentGameModel.SceneID);
+            SceneSystem.LoadScene(DataManager.Instance.PassingData.currentGameModel.GetARandomScene());
         }
         
     }

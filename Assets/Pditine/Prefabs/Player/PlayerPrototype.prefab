@@ -30223,7 +30223,7 @@ GameObject:
   - component: {fileID: 5039602538813561730}
   - component: {fileID: 1785434011896211637}
   - component: {fileID: 6860474217648598647}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: PlayerPrototype
   m_TagString: Player
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
@@ -30283,6 +30283,7 @@ MonoBehaviour:
   loseFeedbackYellow: {fileID: 3610293969884283739}
   beHitAssFeedbackBlue: {fileID: 3658978956765728295}
   beHitAssFeedbackYellow: {fileID: 6202508968262405804}
+  spriteEffectFlash: {fileID: 0}
 --- !u!50 &1785434011896211637
 Rigidbody2D:
   serializedVersion: 4

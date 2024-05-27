@@ -525,7 +525,7 @@ GameObject:
   - component: {fileID: 7880264876877222252}
   m_Layer: 0
   m_Name: FoodWhite
-  m_TagString: Untagged
+  m_TagString: LightBall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -112,6 +112,7 @@ GameObject:
   - component: {fileID: 1804932204932612281}
   - component: {fileID: 490293098549341739}
   - component: {fileID: -4995252924172821272}
+  - component: {fileID: 8091273901224485562}
   m_Layer: 0
   m_Name: DoublePeakThorn
   m_TagString: Thorn
@@ -201,6 +202,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   data: {fileID: 11400000, guid: ddf7d0a9288489a4497077db793db7ef, type: 2}
+  spriteEffectFlash: {fileID: 8091273901224485562}
   doublePeakBuffData: {fileID: 11400000, guid: d4df81eb3ed3c6c4f848ff9eb9ecdb19, type: 2}
 --- !u!60 &-4995252924172821272
 PolygonCollider2D:
@@ -335,6 +337,19 @@ PolygonCollider2D:
       - {x: 0.17137416, y: -0.07129975}
       - {x: 0.16128854, y: -0.07129975}
   m_UseDelaunayMesh: 0
+--- !u!114 &8091273901224485562
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3527323057261180279}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4428bc875d4a4e968589b6863a4bc642, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flashMaterial: {fileID: 2100000, guid: 7f8ecbffc73dfbc4a86c96a6fa8e6628, type: 2}
 --- !u!1 &7680102066313777221
 GameObject:
   m_ObjectHideFlags: 0

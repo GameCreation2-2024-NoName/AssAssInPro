@@ -1,4 +1,6 @@
 ﻿using Pditine.Audio;
+using Pditine.Data;
+using Pditine.GamePlay.Buff;
 using Pditine.Map;
 using Pditine.Player.Ass;
 using Pditine.Utility;
@@ -15,7 +17,7 @@ namespace Pditine.Collide.CollideEvent
             return false;
         }
 
-        protected override void Happen(ColliderBase collider1, ColliderBase collider2)
+        protected override void Happen(ColliderBase collider1, ColliderBase collider2,CollideInfo info)
         {
             var thePlayer = (collider2 as AssBase).ThePlayer;
             var theBarrier = (collider1 as BarrierThorn).TheBarrier;
@@ -23,6 +25,9 @@ namespace Pditine.Collide.CollideEvent
             theBarrier.HitFeedback.PlayFeedbacks();
             thePlayer.BeHitAssFeedback();
             thePlayer.ChangeHP(-theBarrier.ATK);
+            
+            BuffManager.Instance.AttachBuff(new BuffInfo(DataManager.Instance.GetBuffData(9),null,thePlayer));
+            
             var res =
                 PhysicsUtility.ElasticCollision(thePlayer.CurrentDirection * thePlayer.CurrentSpeed,
                     theBarrier.Direction * theBarrier.CurrentSpeed,
@@ -32,6 +37,8 @@ namespace Pditine.Collide.CollideEvent
             thePlayer.CurrentSpeed = res.v1Prime.magnitude;
             theBarrier.CurrentSpeed = res.v2Prime.magnitude;
             AAIAudioManager.Instance.PlayEffect("碰撞音效1");
+            
+            
             
             (collider2 as AssBase).OnBeAttack?.Invoke(collider1);
         }

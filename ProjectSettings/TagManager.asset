@@ -6,10 +6,14 @@ TagManager:
   tags:
   - Ass
   - Thorn
-  - Boundary
   - BarrierPedestal
   - BarrierThorn
   - LightBall
+  - Wall
+  - Boundary
+  - StaticThorn
+  - CrossButton
+  - DestructibleBox
   layers:
   - Default
   - TransparentFX
@@ -17,8 +21,8 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
+  - Wall
+  - Player
   - 
   - 
   - 

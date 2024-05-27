@@ -10,7 +10,7 @@ namespace Pditine.Collide
 {
     public abstract class ColliderBase : MonoBehaviour
     {
-        private HashSet<ColliderBase> _collidingColliders = new();
+        private readonly HashSet<ColliderBase> _collidingColliders = new();
         // protected UnityAction collisionEvent;
         // public UnityAction CollisionEvent => collisionEvent;
         
@@ -34,7 +34,7 @@ namespace Pditine.Collide
             if (_collidingColliders.Contains(otherCollider)) return;
             AddCollider(otherCollider);
             otherCollider.AddCollider(this);
-            CollideHandler.ColliderHandle(gameObject.tag,otherCollider.gameObject.tag,this,otherCollider);
+            CollideHandler.ColliderHandle(new CollideInfo(gameObject.tag,otherCollider.gameObject.tag,this,otherCollider,other));
         }
         
         public void AddCollider(ColliderBase theCollider)

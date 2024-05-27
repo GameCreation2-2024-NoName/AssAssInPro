@@ -157,6 +157,7 @@ GameObject:
   - component: {fileID: 3606368539539999785}
   - component: {fileID: -4974639204874752584}
   - component: {fileID: 1931535204294756298}
+  - component: {fileID: 4220961915200619893}
   m_Layer: 0
   m_Name: Giant
   m_TagString: Ass
@@ -246,6 +247,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   data: {fileID: 11400000, guid: c20722ae3d4d7c448a7b24fd1680cb8b, type: 2}
   theTrail: {fileID: 8922586244442557359}
+  spriteEffectFlash: {fileID: 4220961915200619893}
 --- !u!60 &1931535204294756298
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -298,3 +300,16 @@ PolygonCollider2D:
       - {x: 0.0053015132, y: -0.86201936}
       - {x: 0.0053015132, y: 0.84407824}
   m_UseDelaunayMesh: 0
+--- !u!114 &4220961915200619893
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5879413710637086575}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4428bc875d4a4e968589b6863a4bc642, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flashMaterial: {fileID: 2100000, guid: 7f8ecbffc73dfbc4a86c96a6fa8e6628, type: 2}

@@ -64,10 +64,17 @@ namespace Pditine.GamePlay.LightBall
         {
             //todo:对象池
             //var theBall = PoolSystem.GetGameObject(lightBalls[Random.Range(0, lightBalls.Count)]).GetComponent<LightBall>();
+            float posX = Random.Range(leftUpPoint.transform.position.x, rightDownPoint.transform.position.x);
+            float posY = Random.Range(rightDownPoint.transform.position.y, leftUpPoint.transform.position.y);
+
+            var overlaps = Physics2D.OverlapPointAll(new( posX, posY));
+            foreach (var overlay in overlaps)
+            {
+                if (overlay.CompareTag("LightBall")) return;
+            }
+            
             var theBall = Instantiate(lightBalls[Random.Range(0, lightBalls.Count)].transform).GetComponent<LightBall>();
-            theBall.transform.position = new Vector3(
-                Random.Range(leftUpPoint.transform.position.x, rightDownPoint.transform.position.x),
-                Random.Range(rightDownPoint.transform.position.y, leftUpPoint.transform.position.y), 0);
+            theBall.transform.position = new Vector3(posX, posY, 0);
             theBall.Init();
         }
     }

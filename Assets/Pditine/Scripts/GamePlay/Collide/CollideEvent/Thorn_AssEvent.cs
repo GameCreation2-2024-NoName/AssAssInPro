@@ -1,4 +1,6 @@
 ﻿using Pditine.Audio;
+using Pditine.Data;
+using Pditine.GamePlay.Buff;
 using Pditine.GamePlay.Camera;
 using Pditine.Player.Ass;
 using Pditine.Player.Thorn;
@@ -16,7 +18,7 @@ namespace Pditine.Collide.CollideEvent
             return false;
         }
 
-        protected override void Happen(ColliderBase collider1, ColliderBase collider2)
+        protected override void Happen(ColliderBase collider1, ColliderBase collider2,CollideInfo info)
         {
             var thePlayer1 = (collider1 as ThornBase).ThePlayer;
             var thePlayer2 = (collider2 as AssBase).ThePlayer;
@@ -36,6 +38,8 @@ namespace Pditine.Collide.CollideEvent
             
             thePlayer2.BeHitAssFeedback();
             thePlayer2.ChangeHP(-thePlayer1.ATK);
+            
+            BuffManager.Instance.AttachBuff(new BuffInfo(DataManager.Instance.GetBuffData(9),null,thePlayer2));
             
             (collider1 as ThornBase).OnAttack?.Invoke();
             (collider2 as AssBase).OnBeAttackByThorn?.Invoke(collider1);

@@ -14,7 +14,7 @@ namespace Pditine.GamePlay.UI
 
         public void ReStart()
         {
-            SceneSystem.LoadScene(DataManager.Instance.PassingData.currentGameModel.SceneID);
+            SceneSystem.LoadScene(DataManager.Instance.PassingData.currentGameModel.GetARandomScene());
         }
     }
 }

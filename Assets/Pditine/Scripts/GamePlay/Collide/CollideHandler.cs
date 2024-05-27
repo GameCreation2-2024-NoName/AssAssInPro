@@ -2,23 +2,11 @@
 {
     public static class CollideHandler
     {
-        public static void ColliderHandle(string tag1,string tag2, ColliderBase collider1,ColliderBase collider2)
+        public static void ColliderHandle(CollideInfo info)
         {
-            collider1.OnCollide?.Invoke(collider2);
-            collider2.OnCollide?.Invoke(collider1);
+            info.OnCollideEvent();
             
-            if(collider1.Events is not null)
-                foreach (var theEvent in collider1.Events)
-                {
-                    if(theEvent.TryDo(tag1, tag2, collider1, collider2))
-                        return;
-                }
-            if(collider2.Events is not null)
-                foreach (var theEvent in collider2.Events)
-                {
-                    if(theEvent.TryDo(tag1, tag2, collider1, collider2))
-                        return;
-                }
+            info.TryDo();
         }
     }
 }
