@@ -2009,14 +2009,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   theLaser: {fileID: 1567450100}
   startPoint: {fileID: 524768768}
-  direction1: {x: -1, y: 0, z: 0}
-  direction2: {x: 1, y: 0, z: 0}
   playerLayerMask:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 128
   wallLayerMask:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 64
   rotateSpeed: 0
 --- !u!1001 &8749765577415240277
 PrefabInstance:
