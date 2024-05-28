@@ -10,7 +10,6 @@ TagManager:
   - BarrierThorn
   - LightBall
   - Wall
-  - Boundary
   - StaticThorn
   - CrossButton
   - DestructibleBox

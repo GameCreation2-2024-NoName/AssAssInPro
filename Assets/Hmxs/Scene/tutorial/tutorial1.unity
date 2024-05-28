@@ -34891,7 +34891,7 @@ GameObject:
   - component: {fileID: 324813365}
   m_Layer: 0
   m_Name: Boundary (3)
-  m_TagString: Boundary
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -60070,7 +60070,7 @@ GameObject:
   - component: {fileID: 689223717}
   m_Layer: 0
   m_Name: Boundary (4)
-  m_TagString: Boundary
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -70621,7 +70621,7 @@ GameObject:
   - component: {fileID: 1288674498}
   m_Layer: 0
   m_Name: Boundary (5)
-  m_TagString: Boundary
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -75624,7 +75624,7 @@ GameObject:
   - component: {fileID: 1296299632}
   m_Layer: 0
   m_Name: Boundary (6)
-  m_TagString: Boundary
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -135968,7 +135968,6 @@ MonoBehaviour:
   loseFeedbackYellow: {fileID: 504840698}
   beHitAssFeedbackBlue: {fileID: 1273109309}
   beHitAssFeedbackYellow: {fileID: 1994014176}
-  spriteEffectFlash: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
