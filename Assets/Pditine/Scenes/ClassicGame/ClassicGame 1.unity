@@ -1368,14 +1368,6 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 519420031}
-    - target: {fileID: 4546022312314155320, guid: 4c0bc0971c2a3cc4893bcff19123f889, type: 3}
-      propertyPath: m_AdditionalShaderChannelsFlag
-      value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4651474790004950751, guid: 4c0bc0971c2a3cc4893bcff19123f889, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 698762436, guid: db440530849dac5468185f9a4f6ab61c, type: 3}
     - target: {fileID: 4865455582148013326, guid: 4c0bc0971c2a3cc4893bcff19123f889, type: 3}
       propertyPath: m_Name
       value: UI
@@ -1574,14 +1566,6 @@ PrefabInstance:
       propertyPath: m_LookAt
       value: 
       objectReference: {fileID: 804432902}
-    - target: {fileID: 3196527719739991888, guid: ba098df08fc2df8488978581d035cfc9, type: 3}
-      propertyPath: motionTime
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3203668309498164586, guid: ba098df08fc2df8488978581d035cfc9, type: 3}
-      propertyPath: m_DefaultBlend.m_Time
-      value: 0.3
-      objectReference: {fileID: 0}
     - target: {fileID: 5886554807014862630, guid: ba098df08fc2df8488978581d035cfc9, type: 3}
       propertyPath: m_Name
       value: Camera
