@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3977075188434347909}
   - component: {fileID: 3632762074128369155}
   - component: {fileID: 4650949816356970516}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: PeakRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -113,7 +113,7 @@ GameObject:
   - component: {fileID: 490293098549341739}
   - component: {fileID: -4995252924172821272}
   - component: {fileID: 8091273901224485562}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DoublePeakThorn
   m_TagString: Thorn
   m_Icon: {fileID: 0}
@@ -361,7 +361,7 @@ GameObject:
   - component: {fileID: 2025381214227649765}
   - component: {fileID: 787648314047160783}
   - component: {fileID: 6884412706732468784}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: PeakLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}

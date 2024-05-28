@@ -122,7 +122,6 @@ namespace Pditine.Player
         //[SerializeField] private MMScaleShaker scaleShaker;
         [SerializeField] private MMF_Player beHitAssFeedbackBlue;
         [SerializeField] private MMF_Player beHitAssFeedbackYellow;
-        [SerializeField] private SpriteEffect_Flash spriteEffectFlash;
 
         #endregion
 
@@ -281,14 +280,5 @@ namespace Pditine.Player
             var mmfPlayer = id == 1 ? loseFeedbackBlue : loseFeedbackYellow;
             mmfPlayer.PlayFeedbacks();
         }
-
-        public void SetFlash(bool open)
-        {
-            if(open)
-                spriteEffectFlash.FlashOn();
-            else 
-                spriteEffectFlash.FlashOff();
-        }
-    
     }
 }

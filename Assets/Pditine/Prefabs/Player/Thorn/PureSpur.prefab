@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: -3372519487630286751}
   - component: {fileID: 8828998618239107114}
   - component: {fileID: 1141984866917466549}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: PureSpur
   m_TagString: Thorn
   m_Icon: {fileID: 0}

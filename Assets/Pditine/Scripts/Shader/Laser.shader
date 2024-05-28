@@ -3,8 +3,10 @@ Shader "Pditine/Laser" {
 Properties {
 	_MainTex("Main Texture", 2D) = "white" {}
 	_Color("Color",Color) = (1,1,1,1)
-	_NoiseTex("NoiseTex",2D) = "white"{}
-	_Concentrate("_Concentrate",Range(1,20)) = 2
+	//_NoiseTex("NoiseTex",2D) = "white"{}
+	_Concentrate("集中性",Range(1,30)) = 2
+	_CenterConcentrate("中心集中性",Range(0,1)) = 0
+	_luminance("中心亮度",Range(0,1)) = 0
 }
 
 Category {
@@ -37,10 +39,12 @@ Category {
 
 			sampler2D _MainTex;
 			float4 _MainTex_ST;
-			sampler2D _NoiseTex;
-			float4 _NoiseTex_ST;
+			// sampler2D _NoiseTex;
+			// float4 _NoiseTex_ST;
 			float _Concentrate;
 			fixed4 _Color;
+			fixed _CenterConcentrate;
+			fixed _luminance;
 
 			v2f vert (appdata_t v)
 			{
@@ -57,6 +61,8 @@ Category {
 				//todo:激光流动效果
 				//fixed alpha = pow(baseAlpha,_Concentrate)* tex2D(_NoiseTex,i.uv.y*_Time.w-floor(i.uv.y*_Time.w)).r;
 				fixed alpha = pow(baseAlpha,_Concentrate);
+				if(alpha>_CenterConcentrate)
+					col.rgb+=_luminance;
 				return fixed4(col.rgb,alpha);
 			}
 			ENDCG 

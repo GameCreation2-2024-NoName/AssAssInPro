@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5897523508078181461}
   - component: {fileID: -5213903528621249242}
   - component: {fileID: -7196346473701856475}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ClassicThorn
   m_TagString: Thorn
   m_Icon: {fileID: 0}

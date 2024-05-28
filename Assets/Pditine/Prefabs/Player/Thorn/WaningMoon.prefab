@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2454090256714275704}
   - component: {fileID: 1504312680116637268}
   - component: {fileID: -3780369013404076941}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: WaningMoon
   m_TagString: Thorn
   m_Icon: {fileID: 0}

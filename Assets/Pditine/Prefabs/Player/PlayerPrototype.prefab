@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8518554343088661384}
   - component: {fileID: 3610293969884283739}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: LoseMMFPlayerYellow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Feedbacks: []
-  InitializationMode: 2
+  InitializationMode: 1
   SafeMode: 3
   Direction: 0
   AutoChangeDirectionOnEnd: 0
@@ -214,7 +214,7 @@ GameObject:
   - component: {fileID: 6956877694866470301}
   - component: {fileID: 2872712918195752163}
   - component: {fileID: 1861883011073728074}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ParticlesWhite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5122,7 +5122,7 @@ GameObject:
   - component: {fileID: 8073001968908849903}
   - component: {fileID: 1421411571069149817}
   - component: {fileID: 4279734597211170426}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ParticlesRed
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10030,7 +10030,7 @@ GameObject:
   - component: {fileID: 7165772421511676428}
   - component: {fileID: 7021404760231768588}
   - component: {fileID: 8725764903140209732}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: LightParticles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14937,7 +14937,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1265362080638724176}
   - component: {fileID: 1887594393323342707}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: LoseMMFPlayerBlue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14972,7 +14972,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Feedbacks: []
-  InitializationMode: 2
+  InitializationMode: 1
   SafeMode: 3
   Direction: 0
   AutoChangeDirectionOnEnd: 0
@@ -15140,7 +15140,7 @@ GameObject:
   m_Component:
   - component: {fileID: 292431216332940925}
   - component: {fileID: 7232768473824068903}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: HitMMFPlayer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15175,7 +15175,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Feedbacks: []
-  InitializationMode: 2
+  InitializationMode: 1
   SafeMode: 3
   Direction: 0
   AutoChangeDirectionOnEnd: 0
@@ -15462,7 +15462,7 @@ GameObject:
   - component: {fileID: 2190617278408594905}
   - component: {fileID: 7902192086845614519}
   - component: {fileID: 1652102604597562746}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Circle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20369,7 +20369,7 @@ GameObject:
   - component: {fileID: 3805446529447320863}
   - component: {fileID: 5948003891263669192}
   - component: {fileID: 6066173141807708031}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: LoseParticlesWhite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25275,7 +25275,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5760245589747033977}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Effect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25314,7 +25314,7 @@ GameObject:
   - component: {fileID: 5149260444990764902}
   - component: {fileID: 49300813892738220}
   - component: {fileID: 7526163295877680410}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: LoseParticlesRed
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -30394,7 +30394,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6240706528522084414}
   - component: {fileID: 6202508968262405804}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: HitProMMFPlayerYellow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -30429,7 +30429,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Feedbacks: []
-  InitializationMode: 2
+  InitializationMode: 1
   SafeMode: 3
   Direction: 0
   AutoChangeDirectionOnEnd: 0
@@ -30716,7 +30716,7 @@ GameObject:
   - component: {fileID: 2362738260491930017}
   - component: {fileID: 8347525518822384316}
   - component: {fileID: 8089296313724615103}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: LightParticles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -35624,7 +35624,7 @@ GameObject:
   - component: {fileID: 8397437865323922073}
   - component: {fileID: 6563647291892188053}
   - component: {fileID: 8701092451626922015}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Circle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40522,7 +40522,7 @@ GameObject:
   - component: {fileID: 4644733596497434307}
   - component: {fileID: 7028849633235206224}
   - component: {fileID: 8482398584269541076}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: LoseParticlesBlue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -45430,7 +45430,7 @@ GameObject:
   - component: {fileID: 2547950925351611561}
   - component: {fileID: 423204204479775378}
   - component: {fileID: 2547378402944401643}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: LightParticles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -50338,7 +50338,7 @@ GameObject:
   - component: {fileID: 55255430247503797}
   - component: {fileID: 3409931291754982255}
   - component: {fileID: 9136362474404704876}
-  m_Layer: 18
+  m_Layer: 7
   m_Name: HitSparks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -55180,7 +55180,7 @@ GameObject:
   - component: {fileID: 2379818552221165258}
   - component: {fileID: 2418511621985250263}
   - component: {fileID: 3723612324806556485}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Circle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -60078,7 +60078,7 @@ GameObject:
   - component: {fileID: 7590208454752449893}
   - component: {fileID: 7124421829330835471}
   - component: {fileID: 8265109463001426832}
-  m_Layer: 18
+  m_Layer: 7
   m_Name: HitSparksProYellow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -64923,7 +64923,7 @@ GameObject:
   - component: {fileID: 3928775552269016306}
   - component: {fileID: 641357983752865376}
   - component: {fileID: 4564304296621140554}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ParticlesRed
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -69831,7 +69831,7 @@ GameObject:
   - component: {fileID: 8499989309408397419}
   - component: {fileID: 2364998711987864405}
   - component: {fileID: 841664175200003108}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: LoseParticlesYellow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -74744,7 +74744,7 @@ GameObject:
   - component: {fileID: 7724881730781234508}
   - component: {fileID: 6203082962794456853}
   - component: {fileID: 6046721251153764481}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ParticlesWhite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -79652,7 +79652,7 @@ GameObject:
   - component: {fileID: 5884680983947786900}
   - component: {fileID: 7645949044793844245}
   - component: {fileID: 8232237234704866158}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: LoseParticlesRed
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -84560,7 +84560,7 @@ GameObject:
   - component: {fileID: 5333921286176191607}
   - component: {fileID: 2563257162442014726}
   - component: {fileID: 7761874159875929512}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Circle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -89458,7 +89458,7 @@ GameObject:
   - component: {fileID: 2951186814544229305}
   - component: {fileID: 1095030901825095501}
   - component: {fileID: 1519263122557232922}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Direction
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -89559,7 +89559,7 @@ GameObject:
   - component: {fileID: 6846212866840724621}
   - component: {fileID: 3905874596980134907}
   - component: {fileID: 5760101226099628523}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ParticlesWhite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94467,7 +94467,7 @@ GameObject:
   - component: {fileID: 7633717978539875484}
   - component: {fileID: 8454069587269001809}
   - component: {fileID: 4744149438754183568}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: LoseParticlesWhite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -99375,7 +99375,7 @@ GameObject:
   - component: {fileID: 7172063076841814438}
   - component: {fileID: 1508146052010833756}
   - component: {fileID: 217857770348381733}
-  m_Layer: 18
+  m_Layer: 7
   m_Name: HitSparksProBlue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -104220,7 +104220,7 @@ GameObject:
   - component: {fileID: 937737562013590480}
   - component: {fileID: 4395312214067374670}
   - component: {fileID: 8707814370038009628}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Circle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -109126,7 +109126,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4592841352767304139}
   - component: {fileID: 3658978956765728295}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: HitProMMFPlayerBlue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -109161,7 +109161,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Feedbacks: []
-  InitializationMode: 2
+  InitializationMode: 1
   SafeMode: 3
   Direction: 0
   AutoChangeDirectionOnEnd: 0
@@ -109448,7 +109448,7 @@ GameObject:
   - component: {fileID: 6963060891745617635}
   - component: {fileID: 1508809966197830507}
   - component: {fileID: 211572442625214747}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: LoseParticlesBlue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -114361,7 +114361,7 @@ GameObject:
   - component: {fileID: 4445080836968553413}
   - component: {fileID: 4142399773704991977}
   - component: {fileID: 3296686632831449601}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ParticlesBlue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -119269,7 +119269,7 @@ GameObject:
   - component: {fileID: 5126838910868380389}
   - component: {fileID: 8262984569380000143}
   - component: {fileID: 6884081543573660584}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: LightParticles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -124177,7 +124177,7 @@ GameObject:
   - component: {fileID: 1790922137016358311}
   - component: {fileID: 5771460276248390693}
   - component: {fileID: 3363409976687275020}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: LoseParticlesYellow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -129085,7 +129085,7 @@ GameObject:
   - component: {fileID: 4246768042643631455}
   - component: {fileID: 231194463996639652}
   - component: {fileID: 3145211140813608509}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ParticlesYellow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -133991,7 +133991,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3559405802634743689}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Particles1
   m_TagString: Untagged
   m_Icon: {fileID: 0}

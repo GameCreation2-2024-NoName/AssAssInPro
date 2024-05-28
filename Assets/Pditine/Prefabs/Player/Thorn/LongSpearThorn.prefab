@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2707994730493981764}
   - component: {fileID: 8869069484429333057}
   - component: {fileID: 8110265921491928730}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: LongSpearThorn
   m_TagString: Thorn
   m_Icon: {fileID: 0}

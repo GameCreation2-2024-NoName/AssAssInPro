@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1408540808922474446}
   - component: {fileID: 8922586244442557359}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Trail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -158,7 +158,7 @@ GameObject:
   - component: {fileID: -4974639204874752584}
   - component: {fileID: 1931535204294756298}
   - component: {fileID: 4220961915200619893}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Giant
   m_TagString: Ass
   m_Icon: {fileID: 0}

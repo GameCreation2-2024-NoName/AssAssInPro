@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3117734709715104470}
   - component: {fileID: -5946255681927810527}
   - component: {fileID: 4015190503524455421}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Death
   m_TagString: Thorn
   m_Icon: {fileID: 0}
