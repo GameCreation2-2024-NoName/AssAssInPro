@@ -40,7 +40,7 @@ namespace Pditine.Player.Thorn
         {
             OnCollide += HandleVibration;
         }
-        private void HandleVibration(ColliderBase _)
+        private void HandleVibration(ColliderBase _,CollideInfo __)
         {
             if (!thePlayer.InputHandler) return;
             Gamepad theGamepad = null;

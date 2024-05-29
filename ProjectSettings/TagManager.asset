@@ -13,6 +13,7 @@ TagManager:
   - StaticThorn
   - CrossButton
   - DestructibleBox
+  - DynamicBarrier
   layers:
   - Default
   - TransparentFX
@@ -47,6 +48,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Background
+    uniqueID: 319376029
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0

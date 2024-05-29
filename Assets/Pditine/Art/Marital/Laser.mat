@@ -49,13 +49,13 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _CenterConcentrate: 0.747
-    - _Concentrate: 11.9
+    - _CenterConcentrate: 0.846
+    - _Concentrate: 3
     - _EnableExternalAlpha: 0
     - _InvFade: 1.11
-    - _luminance: 0.097
+    - _luminance: 0.828
     m_Colors:
-    - _Color: {r: 1, g: 0.007940387, b: 0, a: 1}
+    - _Color: {r: 1, g: 0, b: 0.07012701, a: 1}
     - _Flip: {r: 1, g: 1, b: 1, a: 1}
     - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
     - _TintColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}

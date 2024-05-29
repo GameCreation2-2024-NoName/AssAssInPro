@@ -22,8 +22,8 @@ namespace Pditine.Collide
 
         public void OnCollideEvent()
         {
-            collider1.OnCollide?.Invoke(collider2);
-            collider2.OnCollide?.Invoke(collider1);
+            collider1.OnCollide?.Invoke(collider2,this);
+            collider2.OnCollide?.Invoke(collider1,this);
         }
 
         public void TryDo()
