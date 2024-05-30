@@ -29,6 +29,9 @@ namespace Hmxs.Scripts
         private InputAction _dashAction;
         private InputAction _directionAction;
 
+        public InputAction DashAction => _dashAction;
+        public InputAction DirectionAction => _directionAction;
+
         private void Awake()
         {
             _playerInput = GetComponent<PlayerInput>();
