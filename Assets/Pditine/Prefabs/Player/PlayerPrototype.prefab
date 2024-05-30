@@ -30240,7 +30240,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -7.04, y: 0, z: 0}
-  m_LocalScale: {x: 0.8, y: 0.8, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2951186814544229305}
@@ -30283,7 +30283,6 @@ MonoBehaviour:
   loseFeedbackYellow: {fileID: 3610293969884283739}
   beHitAssFeedbackBlue: {fileID: 3658978956765728295}
   beHitAssFeedbackYellow: {fileID: 6202508968262405804}
-  spriteEffectFlash: {fileID: 0}
 --- !u!50 &1785434011896211637
 Rigidbody2D:
   serializedVersion: 4
