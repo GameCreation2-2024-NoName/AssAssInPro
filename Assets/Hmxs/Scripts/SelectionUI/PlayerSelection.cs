@@ -2,13 +2,10 @@
 using Hmxs.Toolkit.Base.Bindable;
 using Pditine.Audio;
 using Pditine.Data;
-using Pditine.Scripts.Data;
-using PurpleFlowerCore;
 using PurpleFlowerCore.Utility;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.UI;
 
 namespace Hmxs.Scripts
 {

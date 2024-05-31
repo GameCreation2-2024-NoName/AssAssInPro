@@ -40,6 +40,5 @@ namespace Hmxs.Scripts
             PFCLog.Info("场景转换");
             SceneSystem.LoadScene(DataManager.Instance.PassingData.currentGameModel.GetARandomScene());
         }
-        
     }
 }
