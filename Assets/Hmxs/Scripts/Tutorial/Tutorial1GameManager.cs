@@ -1,4 +1,5 @@
 ﻿using Hmxs.Toolkit.Plugins.Fungus.FungusTools;
+using Pditine.Data;
 using Pditine.GamePlay.Buff;
 using Pditine.GamePlay.GameManager;
 using Pditine.GamePlay.UI;
@@ -11,10 +12,13 @@ namespace Hmxs.Scripts.Tutorial
 {
     public class Tutorial1GameManager : GameManagerBase<Tutorial1GameManager>
     {
+        public Transform Player1 => player1.transform;
+
         [Required] [SerializeField] private GameObject player1Thorn;
         [Required] [SerializeField] private GameObject player1Ass;
         [Required] [SerializeField] private GameObject player2Thorn;
         [Required] [SerializeField] private GameObject player2Ass;
+
         private SpriteRenderer _player1ThornSprite;
         private SpriteRenderer _player1AssSprite;
         private SpriteRenderer _player2ThornSprite;
@@ -22,6 +26,11 @@ namespace Hmxs.Scripts.Tutorial
 
         protected override void Init()
         {
+            DataManager.Instance.PassingData.player1AssID = 0;
+            DataManager.Instance.PassingData.player1ThornID = 0;
+            DataManager.Instance.PassingData.player2AssID = 0;
+            DataManager.Instance.PassingData.player2ThornID = 0;
+
             _player1AssSprite = player1Ass.GetComponent<SpriteRenderer>();
             _player1ThornSprite = player1Thorn.GetComponent<SpriteRenderer>();
             _player2AssSprite = player2Ass.GetComponent<SpriteRenderer>();

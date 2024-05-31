@@ -16,8 +16,8 @@ MonoBehaviour:
   - m_From: Main Virtual Camera
     m_To: Tutorial_player1 Virtual Camera
     m_Blend:
-      m_Style: 1
-      m_Time: 2
+      m_Style: 2
+      m_Time: 1.5
       m_CustomCurve:
         serializedVersion: 2
         m_Curve: []
@@ -27,8 +27,8 @@ MonoBehaviour:
   - m_From: Main Virtual Camera
     m_To: Tutorial_player2 Virtual Camera
     m_Blend:
-      m_Style: 1
-      m_Time: 2
+      m_Style: 2
+      m_Time: 1.5
       m_CustomCurve:
         serializedVersion: 2
         m_Curve: []
@@ -38,8 +38,8 @@ MonoBehaviour:
   - m_From: Tutorial_player1 Virtual Camera
     m_To: '**ANY CAMERA**'
     m_Blend:
-      m_Style: 1
-      m_Time: 2
+      m_Style: 2
+      m_Time: 1.5
       m_CustomCurve:
         serializedVersion: 2
         m_Curve: []
@@ -49,8 +49,8 @@ MonoBehaviour:
   - m_From: Tutorial_player2 Virtual Camera
     m_To: '**ANY CAMERA**'
     m_Blend:
-      m_Style: 1
-      m_Time: 2
+      m_Style: 2
+      m_Time: 1.5
       m_CustomCurve:
         serializedVersion: 2
         m_Curve: []

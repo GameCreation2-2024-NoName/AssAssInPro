@@ -9,23 +9,23 @@ namespace Pditine.GamePlay.UI
 {
     public class SettlementPanel : MonoBehaviour
     {
-        [SerializeField] private Image backgroundLight;
-        [SerializeField] private Image thorn;
-        [SerializeField] private Image ass;
-        [SerializeField] private Animator theAnimator;
-        [SerializeField]private float speed;
-        private bool _showing;
+        [SerializeField] protected Image backgroundLight;
+        [SerializeField] protected Image thorn;
+        [SerializeField] protected Image ass;
+        [SerializeField] protected Animator theAnimator;
+        [SerializeField] protected float speed;
+        protected bool Showing;
         
         private void FixedUpdate()
         {
-            if(_showing)
+            if(Showing)
                 backgroundLight.transform.Rotate(0,0,speed);
         }
 
-        public void Init(PlayerController thePlayer)
+        public virtual void Init(PlayerController thePlayer)
         {
             theAnimator.SetTrigger("Init");
-            _showing = true;
+            Showing = true;
             thorn.sprite = thePlayer.TheThorn.Data.Portrait;
             
             ass.sprite = thePlayer.ID == 1? thePlayer.TheAss.Data.PortraitBlue: thePlayer.TheAss.Data.PortraitYellow;
