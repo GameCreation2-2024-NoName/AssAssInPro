@@ -15,6 +15,7 @@ TagManager:
   - DestructibleBox
   - DynamicBarrier
   - Tennis
+  - HollowCircle
   layers:
   - Default
   - TransparentFX
