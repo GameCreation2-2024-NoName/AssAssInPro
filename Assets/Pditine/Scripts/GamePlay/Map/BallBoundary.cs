@@ -1,6 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using Pditine.Collide;
 using Pditine.GamePlay.LightBall;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 
 namespace Pditine.Map
@@ -9,13 +14,28 @@ namespace Pditine.Map
     {
         [SerializeField] private Transform createPoint;
         [SerializeField] private List<GameObject> lightBalls = new();
-        private void OnTriggerEnter2D(Collider2D other)
-        {
-            if (other.CompareTag("DynamicBarrier"))
-                CreateLightBall();
+        [SerializeField] private TextMeshPro scoreUI;
+        [SerializeField] private Wall theWall;
+        private int _score;
 
+        private void Start()
+        {
+            theWall.OnCollide += OnCollide;
         }
-        
+
+        private void OnCollide(ColliderBase theCollider,CollideInfo _)
+        {
+            if (theCollider is not DynamicBarrier) return;
+            UpdateScore();
+            CreateLightBall();
+            
+        }
+
+        private void UpdateScore()
+        {
+            _score++;
+            scoreUI.text = _score.ToString();
+        }
         private void CreateLightBall()
         {
             //todo:对象池
