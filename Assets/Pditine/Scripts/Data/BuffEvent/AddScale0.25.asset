@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bf1d3f96da0e4835a20b0794199ac122, type: 3}
-  m_Name: AddScale0.2
+  m_Name: AddScale0.25
   m_EditorClassIdentifier: 
-  deltaScale: 0.2
+  deltaScale: 0.25
   speed: 0.15

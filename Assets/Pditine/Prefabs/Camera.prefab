@@ -239,7 +239,7 @@ MonoBehaviour:
   m_BlendUpdateMethod: 1
   m_DefaultBlend:
     m_Style: 1
-    m_Time: 2
+    m_Time: 0.3
     m_CustomCurve:
       serializedVersion: 2
       m_Curve: []
@@ -549,6 +549,7 @@ MonoBehaviour:
   mainCamera: {fileID: 2467953010947427804}
   player1Camera: {fileID: 3092724004016735656}
   player2Camera: {fileID: 193875827946181860}
+  motionTime: 1
 --- !u!1 &5192330917136875756
 GameObject:
   m_ObjectHideFlags: 0

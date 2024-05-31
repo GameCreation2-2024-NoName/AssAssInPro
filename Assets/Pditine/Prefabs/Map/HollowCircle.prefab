@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1304218409123214493}
   m_Layer: 0
   m_Name: HollowCircle
-  m_TagString: Wall
+  m_TagString: HollowCircle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -127,6 +127,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 30
+  weight: 600
+  calculatingSpeed: 3
 --- !u!60 &1304218409123214493
 PolygonCollider2D:
   m_ObjectHideFlags: 0
