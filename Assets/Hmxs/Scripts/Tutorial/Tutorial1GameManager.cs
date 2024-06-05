@@ -3,6 +3,7 @@ using Pditine.Data;
 using Pditine.GamePlay.Buff;
 using Pditine.GamePlay.GameManager;
 using Pditine.GamePlay.UI;
+using Pditine.Player;
 using Pditine.Player.Ass;
 using Pditine.Player.Thorn;
 using Sirenix.OdinInspector;
@@ -13,6 +14,7 @@ namespace Hmxs.Scripts.Tutorial
     public class Tutorial1GameManager : GameManagerBase<Tutorial1GameManager>
     {
         public Transform Player1 => player1.transform;
+        public PlayerController Player1Controller => player1;
 
         [Required] [SerializeField] private GameObject player1Thorn;
         [Required] [SerializeField] private GameObject player1Ass;
@@ -23,6 +25,11 @@ namespace Hmxs.Scripts.Tutorial
         private SpriteRenderer _player1AssSprite;
         private SpriteRenderer _player2ThornSprite;
         private SpriteRenderer _player2AssSprite;
+
+        protected override void Update()
+        {
+            // Disable Pause
+        }
 
         protected override void Init()
         {

@@ -1,8 +1,9 @@
 ﻿using System.Collections;
+using Fungus;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace Fungus
+namespace Hmxs.Scripts.Tutorial
 {
     [CommandInfo("Input",
         "WaitUntilInputAction2",
@@ -12,7 +13,6 @@ namespace Fungus
     {
         [SerializeField] protected InputActionReference inputAction;
         [SerializeField] protected float operationTime;
-        [SerializeField] protected float delay;
         private float _operationTime;
         public override void OnEnter()
         {
@@ -24,15 +24,15 @@ namespace Fungus
         {
             while (_operationTime < operationTime)
             {
-                if (inputAction.action.WasPerformedThisFrame())
-                    _operationTime += Time.deltaTime;
+                if (Tutorial1GameManager.Instance.Player1Controller.InputHandler.IsKeyboard)
+                {
+                    if (inputAction.action.WasPerformedThisFrame())
+                        _operationTime += Time.deltaTime;
+                }
+                else if (inputAction.action.inProgress)
+                        _operationTime += Time.deltaTime;
                 yield return null;
             }
-            Invoke(nameof(InputActionIsPerformed), delay);
-        }
-
-        private void InputActionIsPerformed()
-        {
             Continue();
         }
     }
