@@ -20,7 +20,7 @@ namespace Hmxs.Scripts
         [SerializeField] private DeviceIcon deviceIcon;
 
         [SerializeField] [ReadOnly] private bool isReady;
-        [SerializeField] [ReadOnly] private bool canSelect = true;
+        // [SerializeField] [ReadOnly] private bool canSelect = true;
 
         [SerializeField] [ReadOnly] private BindableProperty<int> assId = new() { Value = 0 };
         [SerializeField] [ReadOnly] private BindableProperty<int> thornId = new() { Value = 0 };

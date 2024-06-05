@@ -35,15 +35,13 @@ namespace Hmxs.Scripts.Tutorial
         public void TryAgain()
         {
             DataManager.Instance.PassingData.mainMenuOpenedMenuIndex = 0;
-            // todo: 参数要改
             SceneSystem.LoadScene(0);
         }
 
         public void NextLevel()
         {
             DataManager.Instance.PassingData.mainMenuOpenedMenuIndex = 0;
-            // todo: 参数要改
-            SceneSystem.LoadScene(0);
+            SceneSystem.LoadScene(7);
         }
     }
 }
