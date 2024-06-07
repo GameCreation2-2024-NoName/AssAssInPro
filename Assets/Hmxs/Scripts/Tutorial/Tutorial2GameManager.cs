@@ -101,7 +101,7 @@ namespace Hmxs.Scripts.Tutorial
 
         public void ResetHighlight()
         {
-            _lightBallSprite.sortingOrder = 0;
+            if (lightBall) _lightBallSprite.sortingOrder = 0;
             _player1AssSprite.sortingOrder = 1;
             _player2AssSprite.sortingOrder = 1;
             _player1ThornSprite.sortingOrder = 1;
@@ -122,5 +122,7 @@ namespace Hmxs.Scripts.Tutorial
             }
             lightBall.GetComponent<LightBall>().Init();
         }
+
+        public void SetBuffPause(bool isPause) => BuffManager.Instance.SetPause(isPause);
     }
 }

@@ -28,6 +28,10 @@ namespace Pditine.GamePlay.Buff
 
     public static BuffManager Instance { get; private set; }
 
+    public void SetPause(bool isPause) => _isPause = isPause;
+    public bool IsPause => _isPause;
+    private bool _isPause;
+
     private void Awake()
     {
         if (Instance == null)
@@ -43,10 +47,13 @@ namespace Pditine.GamePlay.Buff
     {
         OnReset += player1.ResetProperty;
         OnReset += player2.ResetProperty;
+        _isPause = false;
     }
     
     private void Update()
     {
+        if (_isPause) return;
+
 #if UNITY_EDITOR
         buffList = _buffSet.ToList();
 #endif

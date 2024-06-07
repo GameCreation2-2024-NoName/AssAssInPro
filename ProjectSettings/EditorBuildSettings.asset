@@ -26,4 +26,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Hmxs/Scene/tutorial/tutorial1.unity
     guid: 352f70b415882ba4a95eb6180fa4798b
+  - enabled: 1
+    path: Assets/Hmxs/Scene/tutorial/tutorial2.unity
+    guid: ed780a0b9d83be64a86887cd6082b7da
   m_configObjects: {}
