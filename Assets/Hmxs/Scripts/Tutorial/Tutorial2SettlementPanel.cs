@@ -40,7 +40,7 @@ namespace Hmxs.Scripts.Tutorial
 
         public void NextLevel()
         {
-            DataManager.Instance.PassingData.mainMenuOpenedMenuIndex = 0;
+            DataManager.Instance.PassingData.mainMenuOpenedMenuIndex = 7;
             SceneSystem.LoadScene(0);
         }
     }

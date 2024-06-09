@@ -1,18 +1,24 @@
 ﻿using Pditine.Data;
 using PurpleFlowerCore;
-using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace Hmxs.Scripts.SinglePlayer
 {
-    public class SelectionSinglePlayer : MonoBehaviour
+    public class SelectionTutorial3 : MonoBehaviour
     {
-        [Required] [SerializeField] private PlayerSelectionSingle player1;
+        [SerializeField] private PlayerSelection player1;
 
         private void Start()
         {
+            if (player1 == null)
+            {
+                Debug.LogError("Player1 is null");
+                return;
+            }
+
             player1.onConfirm += () =>
             {
+                Debug.Log("Player1 Confirm");
                 if (player1.IsReady) StartGame();
             };
         }
@@ -20,7 +26,7 @@ namespace Hmxs.Scripts.SinglePlayer
         private void StartGame()
         {
             PFCLog.Info("场景转换");
-            SceneSystem.LoadScene(6);
+            SceneSystem.LoadScene(8);
         }
     }
 }

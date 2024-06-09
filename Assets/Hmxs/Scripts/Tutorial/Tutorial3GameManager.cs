@@ -49,7 +49,7 @@ namespace Hmxs.Scripts.Tutorial
             BuffManager.Instance.Init(player1, player2);
             UIManager.Instance.Init(player1, player2);
 
-            FlowchartManager.ExecuteBlock("Tutorial1Start");
+            FlowchartManager.ExecuteBlock("Tutorial3Start");
         }
 
         public void EnablePlayerInput() => PlayerManager.Instance.SwitchMap("GamePlay");
