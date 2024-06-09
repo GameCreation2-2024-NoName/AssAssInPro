@@ -9966,8 +9966,8 @@ GameObject:
   m_Component:
   - component: {fileID: 7483650218436751564}
   - component: {fileID: 9067919022210005197}
-  - component: {fileID: 7170706132954791828}
   - component: {fileID: 5742769909801272006}
+  - component: {fileID: 1055880280608725840}
   m_Layer: 0
   m_Name: BarrierThorn
   m_TagString: BarrierThorn
@@ -10042,19 +10042,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &7170706132954791828
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3860846380225961987}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 86f9276f55ea4b15ad65a011b23fa68f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  theBarrier: {fileID: 4959812823709938260}
 --- !u!60 &5742769909801272006
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -10104,6 +10091,19 @@ PolygonCollider2D:
       - {x: 0.325, y: 0.61323494}
       - {x: -0.31297907, y: 0.88497126}
   m_UseDelaunayMesh: 0
+--- !u!114 &1055880280608725840
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3860846380225961987}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86f9276f55ea4b15ad65a011b23fa68f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  theBarrier: {fileID: 4959812823709938260}
 --- !u!1 &4933626711450849401
 GameObject:
   m_ObjectHideFlags: 0
@@ -10773,7 +10773,7 @@ MonoBehaviour:
   rotateSpeed: 0.1
   Direction: {x: 0, y: 0}
   collideWithBoundary: {fileID: 7185820544702105388}
-  thorn: {fileID: 7170706132954791828}
+  thorn: {fileID: 1055880280608725840}
   pedestal: {fileID: 985286929357855488}
   hit: {fileID: 7185820544702105388}
 --- !u!114 &8714588498683490745

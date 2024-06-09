@@ -12,7 +12,7 @@ namespace Pditine.Map
 
         protected override List<CollidingEventBase> GetCollidingEvents()
         {
-            return new List<CollidingEventBase>()
+            return new List<CollidingEventBase>
             {
                 new Wall_BarrierThorn(), new BarrierThorn_BarrierPedestalEvent(), new BarrierThorn_AssEvent(),
                 new BarrierThorn_ThornEvent(), new BarrierThorn_BarrierThornEvent()

@@ -11,7 +11,10 @@ namespace Pditine.Map
         public Barrier TheBarrier=>theBarrier;
         protected override List<CollidingEventBase> GetCollidingEvents()
         {
-            return new(){new BarrierPedestal_ThornEvent(),new Wall_BarrierPedestalEvent(),new BarrierThorn_BarrierPedestalEvent()};
+            return new List<CollidingEventBase>
+            {
+                new BarrierPedestal_ThornEvent(),new Wall_BarrierPedestalEvent(),new BarrierThorn_BarrierPedestalEvent()
+            };
         }
     }
 }
