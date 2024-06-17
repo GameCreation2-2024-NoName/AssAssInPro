@@ -32,4 +32,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Hmxs/Scene/tutorial/tutorial3.unity
     guid: d7cf0ec6e86391c44b8f0a2d077ab455
+  - enabled: 1
+    path: Assets/Pditine/Scenes/SoccerModel/SoccerModelGame.unity
+    guid: dfd5d9490c7afde449499cde6f9a4d16
   m_configObjects: {}

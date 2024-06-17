@@ -10,6 +10,7 @@ namespace Pditine.Map
     {
         [HideInInspector]public float CurrentSpeed;
         [SerializeField] private float weight;
+        [SerializeField] private float friction;
         public float Weight => weight;
         [ReadOnly]public Vector2 Direction;
 
@@ -21,6 +22,7 @@ namespace Pditine.Map
         private void FixedUpdate()
         {
             transform.position += (Vector3)Direction*(CurrentSpeed*Time.deltaTime);
+            CurrentSpeed -= friction * Time.deltaTime;
         }
         
         protected override List<CollidingEventBase> GetCollidingEvents()

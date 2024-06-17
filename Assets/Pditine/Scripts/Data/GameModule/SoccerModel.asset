@@ -15,7 +15,6 @@ MonoBehaviour:
   id: 2
   moduleName: "\u8DB3\u7403\u6A21\u5F0F"
   introduction: "\u8BE5\u6A21\u5F0F\u6B63\u5728\u5F00\u53D1\u4E2D"
-  sceneID: 0
-  preview: {fileID: 832199330, guid: b8fc988d4c3e2d5429ee76bfa4f07c58, type: 3}
-  buttonSprite: {fileID: 0}
-  done: 0
+  preview: {fileID: -1576440250, guid: 4761d41d299d04d47ae32f1b6d8007b6, type: 3}
+  gameLevels: 09000000
+  done: 1
