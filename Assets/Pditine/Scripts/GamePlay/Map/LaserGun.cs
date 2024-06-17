@@ -1,4 +1,5 @@
 ﻿using System;
+using Pditine.Audio;
 using Pditine.Data;
 using Pditine.GamePlay.Buff;
 using Pditine.Player;
@@ -58,6 +59,7 @@ namespace Pditine.Map
         {
             if (!_ready) return;
             _ready = false;
+            AAIAudioManager.Instance.PlayEffect("激光发射音效");
             theLaser.enabled = true;
             rotateSpeed = -rotateSpeed;
             if (rotateSpeed > 0) _angleZTarget = 90;
