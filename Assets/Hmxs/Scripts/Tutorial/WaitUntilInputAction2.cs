@@ -13,24 +13,28 @@ namespace Hmxs.Scripts.Tutorial
     {
         [SerializeField] protected InputActionReference inputAction;
         [SerializeField] protected float operationTime;
+        [SerializeField] protected float securedOperationTime;
         private float _operationTime;
+        private float _securedOperationTime;
         public override void OnEnter()
         {
             _operationTime = 0;
+            _securedOperationTime = 0;
             StartCoroutine(CheckInput());
         }
 
         private IEnumerator CheckInput()
         {
-            while (_operationTime < operationTime)
+            while (_operationTime < operationTime || _securedOperationTime < securedOperationTime)
             {
                 if (Tutorial1GameManager.Instance.Player1Controller.InputHandler.IsKeyboard)
                 {
                     if (inputAction.action.WasPerformedThisFrame())
-                        _operationTime += Time.deltaTime;
+                        _operationTime += Time.unscaledDeltaTime;
                 }
                 else if (inputAction.action.inProgress)
-                        _operationTime += Time.deltaTime;
+                        _operationTime += Time.unscaledDeltaTime;
+                _securedOperationTime += Time.unscaledDeltaTime;
                 yield return null;
             }
             Continue();
