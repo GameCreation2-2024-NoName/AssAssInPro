@@ -2231,6 +2231,7 @@ MonoBehaviour:
   startEffect: {fileID: 1525619136}
   player1: {fileID: 804432901}
   player2: {fileID: 1098822981}
+  bgmName: "pong\u5730\u56FE\u80CC\u666F\u97F3\u4E50"
 --- !u!4 &1852840571
 Transform:
   m_ObjectHideFlags: 0
