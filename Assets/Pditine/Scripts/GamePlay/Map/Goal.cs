@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Pditine.Collide;
+using Pditine.GamePlay.GameManager;
 using Pditine.GamePlay.LightBall;
 using TMPro;
 using UnityEngine;
@@ -12,6 +13,7 @@ namespace Pditine.Map
         // [SerializeField] private Transform createPoint;
         // [SerializeField] private List<GameObject> lightBalls = new();
         [SerializeField] private TextMeshPro scoreUI;
+        [SerializeField] private int id;
         //[SerializeField] private Wall theWall;
         private int _score;
 
@@ -20,9 +22,9 @@ namespace Pditine.Map
         //     theWall.OnCollide += OnCollide;
         // }
 
-        private void OnCollisionEnter2D(Collision2D other)
+        private void OnTriggerEnter2D(Collider2D other)
         {
-            if(other.gameObject.CompareTag("DynamicBarrier"))
+            if(other.CompareTag("DynamicBarrier"))
                 UpdateScore();
         }
 
@@ -30,6 +32,7 @@ namespace Pditine.Map
         {
             _score++;
             scoreUI.text = _score.ToString();
+            SoccerGameManager.Instance.CheckGameOver(id,_score);
         }
         // private void CreateLightBall()
         // {

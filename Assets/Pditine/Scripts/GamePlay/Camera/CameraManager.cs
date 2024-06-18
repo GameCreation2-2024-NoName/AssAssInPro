@@ -13,6 +13,7 @@ namespace Pditine.GamePlay.Camera
         [SerializeField] protected CinemachineVirtualCamera player2Camera;
         
         [SerializeField]private float motionTime;
+        public bool CollideEffectOn = true;
 
         private bool _gameOver;
         public static CameraManager Instance { get; private set; }
@@ -40,6 +41,7 @@ namespace Pditine.GamePlay.Camera
 
         public void OnCollidePLayerAss(int id)
         {
+            if (!CollideEffectOn) return;
             if (_gameOver) return;
             Time.timeScale = 0.3f;
             var playerCamera = id == 1 ? player1Camera : player2Camera;

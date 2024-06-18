@@ -288,6 +288,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreUI: {fileID: 1544853113}
+  id: 1
 --- !u!212 &276565786
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -384,7 +385,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -693,7 +694,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 621138072}
-  - component: {fileID: 621138075}
   - component: {fileID: 621138074}
   - component: {fileID: 621138073}
   m_Layer: 0
@@ -856,14 +856,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!222 &621138075
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 621138071}
-  m_CullTransparentMesh: 1
 --- !u!1 &689223713
 GameObject:
   m_ObjectHideFlags: 0
@@ -1348,6 +1340,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreUI: {fileID: 621138073}
+  id: 2
 --- !u!61 &903111817
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1377,7 +1370,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -1506,6 +1499,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1620350299}
     m_Modifications:
+    - target: {fileID: 1144861423587903741, guid: 88e2f75604f9a864791e259e53e3d8ee, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1144861423587903741, guid: 88e2f75604f9a864791e259e53e3d8ee, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.1
+      objectReference: {fileID: 0}
     - target: {fileID: 1144861423587903741, guid: 88e2f75604f9a864791e259e53e3d8ee, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1653,8 +1654,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CurrentSpeed: 0
-  weight: 6
-  friction: 3
+  weight: 15
+  friction: 10
   Direction: {x: 0, y: 0}
 --- !u!1 &1288674494
 GameObject:
@@ -1940,7 +1941,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1544853112}
-  - component: {fileID: 1544853115}
   - component: {fileID: 1544853114}
   - component: {fileID: 1544853113}
   m_Layer: 0
@@ -2103,14 +2103,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!222 &1544853115
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1544853111}
-  m_CullTransparentMesh: 1
 --- !u!1 &1620350298
 GameObject:
   m_ObjectHideFlags: 0
@@ -2289,30 +2281,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1852840571}
-  - component: {fileID: 1852840570}
+  - component: {fileID: 1852840572}
   m_Layer: 0
-  m_Name: ClassicGameManager
+  m_Name: SoccerGameManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1852840570
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1852840569}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1e0d00a27e16dc44a9d703d7f752acf4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  startEffect: {fileID: 1525619136}
-  player1: {fileID: 804432901}
-  player2: {fileID: 1098822981}
-  bgmName: "pong\u5730\u56FE\u80CC\u666F\u97F3\u4E50"
 --- !u!4 &1852840571
 Transform:
   m_ObjectHideFlags: 0
@@ -2328,6 +2304,24 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1716836055}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1852840572
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1852840569}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 706e609eb8d2401e8af3e0f38fbf469a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startEffect: {fileID: 1525619136}
+  player1: {fileID: 804432901}
+  player2: {fileID: 1098822981}
+  bgmName: "pong\u5730\u56FE\u80CC\u666F\u97F3\u4E50"
+  theBuff: {fileID: 11400000, guid: f503a167c46a22145b3b6d83c32231cf, type: 2}
+  neededScore: 10
 --- !u!1001 &2074240571
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2492,6 +2486,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 379055191953658652, guid: 4c0bc0971c2a3cc4893bcff19123f889, type: 3}
+      propertyPath: m_Text
+      value: "\u4F60\u83B7\u80DC\u4E86!!!"
+      objectReference: {fileID: 0}
+    - target: {fileID: 379055191953658652, guid: 4c0bc0971c2a3cc4893bcff19123f889, type: 3}
+      propertyPath: m_FontData.m_Alignment
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2546381912605963115, guid: 4c0bc0971c2a3cc4893bcff19123f889, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4267157653490117920, guid: 4c0bc0971c2a3cc4893bcff19123f889, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4546022312314155320, guid: 4c0bc0971c2a3cc4893bcff19123f889, type: 3}
       propertyPath: m_Camera
       value: 
@@ -2511,7 +2521,7 @@ PrefabInstance:
     - target: {fileID: 5235748158545402841, guid: 4c0bc0971c2a3cc4893bcff19123f889, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1852840570}
+      objectReference: {fileID: 0}
     - target: {fileID: 6860171280595306749, guid: 4c0bc0971c2a3cc4893bcff19123f889, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -2552,10 +2562,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7897252760227090083, guid: 4c0bc0971c2a3cc4893bcff19123f889, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8157227679940168844, guid: 4c0bc0971c2a3cc4893bcff19123f889, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 1852840570}
+      objectReference: {fileID: 0}
+    - target: {fileID: 8501036980837716200, guid: 4c0bc0971c2a3cc4893bcff19123f889, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2636,6 +2654,10 @@ PrefabInstance:
     - target: {fileID: 3196527719739991888, guid: ba098df08fc2df8488978581d035cfc9, type: 3}
       propertyPath: motionTime
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3196527719739991888, guid: ba098df08fc2df8488978581d035cfc9, type: 3}
+      propertyPath: CollideEffectOn
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3203668309498164586, guid: ba098df08fc2df8488978581d035cfc9, type: 3}
       propertyPath: m_DefaultBlend.m_Time
