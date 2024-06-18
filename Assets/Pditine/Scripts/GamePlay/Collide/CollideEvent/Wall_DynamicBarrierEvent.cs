@@ -17,7 +17,7 @@ namespace Pditine.Collide.CollideEvent
 
         protected override void Happen(ColliderBase collider1, ColliderBase collider2,CollideInfo info)
         {
-            Debug.Log(1);
+            //Debug.Log(1);
             var theBarrier= collider2 as DynamicBarrier;
             var originDirection = theBarrier.Direction;
             Vector2 Out_Direction = Vector2.Reflect(originDirection,info.Collision2D.contacts[0].normal);

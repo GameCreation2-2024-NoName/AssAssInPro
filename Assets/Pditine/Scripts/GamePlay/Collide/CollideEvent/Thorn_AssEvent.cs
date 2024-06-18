@@ -34,7 +34,7 @@ namespace Pditine.Collide.CollideEvent
             thePlayer2.CurrentSpeed = res.v2Prime.magnitude;
             
             AAIAudioManager.Instance.PlayEffect("碰撞音效1");
-            CameraManager.Instance.OnCollidePLayerAss(thePlayer2.ID);
+            CameraManagerBase.Instance.OnCollidePLayerAss(thePlayer2.ID);
             
             thePlayer2.BeHitAssFeedback();
             thePlayer2.ChangeHP(-thePlayer1.ATK);

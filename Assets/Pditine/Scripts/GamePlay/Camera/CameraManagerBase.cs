@@ -3,20 +3,21 @@ using Cinemachine;
 using PurpleFlowerCore;
 using PurpleFlowerCore.Utility;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Pditine.GamePlay.Camera
 {
-    public class CameraManager : MonoBehaviour
+    public class CameraManagerBase : MonoBehaviour
     {
         [SerializeField] protected CinemachineVirtualCamera mainCamera;
         [SerializeField] protected CinemachineVirtualCamera player1Camera;
         [SerializeField] protected CinemachineVirtualCamera player2Camera;
         
         [SerializeField]private float motionTime;
-        public bool CollideEffectOn = true;
+        public bool collideEffectOn = true;
 
         private bool _gameOver;
-        public static CameraManager Instance { get; private set; }
+        public static CameraManagerBase Instance { get; private set; }
 
         protected void Awake()
         {
@@ -39,9 +40,9 @@ namespace Pditine.GamePlay.Camera
             EventSystem.RemoveEventListener("GameOver",SetGameOver);
         }
 
-        public void OnCollidePLayerAss(int id)
+        public virtual void OnCollidePLayerAss(int id)
         {
-            if (!CollideEffectOn) return;
+            if (!collideEffectOn) return;
             if (_gameOver) return;
             Time.timeScale = 0.3f;
             var playerCamera = id == 1 ? player1Camera : player2Camera;

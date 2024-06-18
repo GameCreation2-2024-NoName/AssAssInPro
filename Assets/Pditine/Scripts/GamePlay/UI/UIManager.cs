@@ -21,8 +21,10 @@ namespace Pditine.GamePlay.UI
         [SerializeField] private SettlementPanel settlementPanel;
         [SerializeField] private Image gaussianBlur;
         [SerializeField] private GameObject pausePanel;
-
-        private const float GaussianBlurAlpha = (float)83 / 255; 
+        [SerializeField]private CanvasGroup canvasGroup;
+        private const float GaussianBlurAlpha = (float)83 / 255;
+        public CanvasGroup CanvasGroup => canvasGroup;
+        
         public static UIManager Instance { get; private set; }
 
         private void Awake()
@@ -95,12 +97,6 @@ namespace Pditine.GamePlay.UI
                 settlementPanel.Init(theWinner);
             });
         }
-
-        // private void UpdateBuffUI(BuffInfo buffInfo)
-        // {
-        //     if (!buffInfo.buffData.showInUI) return;
-        //     
-        // }
         
         private void AddBuffUI(BuffInfo buffInfo)
         {
@@ -123,6 +119,16 @@ namespace Pditine.GamePlay.UI
                 buffList2.RemoveBuff(buffInfo);
             else 
                 Debug.LogError("玩家ID错误");
+        }
+
+        public void ShowUI()
+        {
+            FadeUtility.FadeInAndStay(canvasGroup,80);
+        }
+        
+        public void HideUI()
+        {
+            canvasGroup.alpha = 0;
         }
     }
 }
