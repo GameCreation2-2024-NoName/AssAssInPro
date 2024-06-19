@@ -13,6 +13,7 @@ namespace Pditine.Map
         [SerializeField] private LineRenderer theLaser;
         [SerializeField] private Transform startPoint;
         [SerializeField] private LayerMask layerMask;
+        [SerializeField] private GameObject theParticle;
         
         [SerializeField][Range(0,1)] private float rotateSpeed;
 
@@ -37,6 +38,7 @@ namespace Pditine.Map
         {
             var result1 = Physics2D.Raycast(startPoint.position, CurrentDirection, 100, layerMask);
             theLaser.SetPosition(1,result1.centroid);
+            theParticle.transform.position = result1.centroid;
             var theAss = result1.collider.transform.GetComponent<AssBase>();
             if(theAss)
                 HitPlayer(theAss.ThePlayer);
@@ -47,6 +49,7 @@ namespace Pditine.Map
             if (Mathf.Abs(_angleZTarget-theLaser.transform.eulerAngles.z)<1)
             {
                 theLaser.enabled = false;
+                theParticle.SetActive(false);
                 _ready = true;
                 return;
             }
@@ -61,6 +64,7 @@ namespace Pditine.Map
             _ready = false;
             AAIAudioManager.Instance.PlayEffect("激光发射音效");
             theLaser.enabled = true;
+            theParticle.SetActive(true);
             rotateSpeed = -rotateSpeed;
             if (rotateSpeed > 0) _angleZTarget = 90;
             else _angleZTarget = 270;
@@ -69,6 +73,7 @@ namespace Pditine.Map
 
         private void HitPlayer(PlayerController thePlayer)
         {
+            if (_ready) return;
             if (thePlayer.isInvincible) return;
             thePlayer.BeHitAssFeedback();
             thePlayer.ChangeHP(-atk);

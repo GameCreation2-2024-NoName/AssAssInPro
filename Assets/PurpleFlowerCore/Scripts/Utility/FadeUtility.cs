@@ -99,6 +99,25 @@ namespace PurpleFlowerCore.Utility
             allBack?.Invoke();
         }
         
+        public static void FadeInAndStay(CanvasGroup graphic,float speed, UnityAction allBack = null, float alpha = 1)
+        {
+            MonoSystem.Start_Coroutine(DoFadeInAndStay(graphic,speed,allBack,alpha));
+        }
+
+        private static IEnumerator DoFadeInAndStay(CanvasGroup graphic,float speed, UnityAction allBack, float alpha)
+        {
+            graphic.alpha = 0;
+            graphic.enabled = true;
+            while (graphic.alpha<alpha - 0.05f)
+            {
+                yield return new WaitForSeconds(1/speed);
+                graphic.alpha += 0.01f;
+            }
+
+            graphic.alpha = 1;
+            allBack?.Invoke();
+        }
+        
         public static void FadeInAndStay(SpriteRenderer graphic,float speed, UnityAction allBack = null, float alpha = 1)
         {
             MonoSystem.Start_Coroutine(DoFadeInAndStay(graphic,speed,allBack,alpha));

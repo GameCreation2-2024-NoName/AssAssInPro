@@ -8,6 +8,9 @@ namespace Pditine.GamePlay.UI
     {
         [SerializeField] private Image thornImage;
         [SerializeField] private Image assImage;
+
+        public Image ThornImage => thornImage;
+        public Image AssImage => assImage;
         
         public void Init(PlayerController thePlayer)
         {

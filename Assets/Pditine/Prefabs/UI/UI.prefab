@@ -2173,6 +2173,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6910740265470647995}
   - component: {fileID: 1009684290270281588}
+  - component: {fileID: 4623080878215896809}
   m_Layer: 5
   m_Name: UIManager
   m_TagString: Untagged
@@ -2228,6 +2229,19 @@ MonoBehaviour:
   settlementPanel: {fileID: 6217814276506141551}
   gaussianBlur: {fileID: 7239581844280606042}
   pausePanel: {fileID: 2154002663431941477}
+  canvasGroup: {fileID: 4623080878215896809}
+--- !u!225 &4623080878215896809
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8424436831254840655}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &8838356200554618646
 GameObject:
   m_ObjectHideFlags: 0

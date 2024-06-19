@@ -11824,8 +11824,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 3
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 14e1dfbcabbd7644494c274382e8a75b, type: 2}
-  m_sharedMaterial: {fileID: -8418972405489874529, guid: 14e1dfbcabbd7644494c274382e8a75b, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 6d8091d81c50dfa45883950b67c12e85, type: 2}
+  m_sharedMaterial: {fileID: -8418972405489874529, guid: 6d8091d81c50dfa45883950b67c12e85, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -11834,12 +11834,12 @@ MonoBehaviour:
     rgba: 4294967295
   m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
-  m_colorMode: 3
+  m_colorMode: 0
   m_fontColorGradient:
-    topLeft: {r: 1, g: 1, b: 1, a: 1}
-    topRight: {r: 1, g: 1, b: 1, a: 1}
-    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
-    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+    topLeft: {r: 0.99607843, g: 0.29803923, b: 0.2627451, a: 1}
+    topRight: {r: 0.99607843, g: 0.29803923, b: 0.2627451, a: 1}
+    bottomLeft: {r: 0.99607843, g: 0.29803923, b: 0.2627451, a: 1}
+    bottomRight: {r: 0.99607843, g: 0.29803923, b: 0.2627451, a: 1}
   m_fontColorGradientPreset: {fileID: 0}
   m_spriteAsset: {fileID: 0}
   m_tintAllSprites: 0
@@ -12522,7 +12522,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &5099295708883521527
 RectTransform:
   m_ObjectHideFlags: 0

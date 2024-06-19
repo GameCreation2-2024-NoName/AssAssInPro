@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Pditine.Collide;
 using Pditine.Collide.CollideEvent;
 using Sirenix.OdinInspector;
@@ -10,6 +11,7 @@ namespace Pditine.Map
     {
         [HideInInspector]public float CurrentSpeed;
         [SerializeField] private float weight;
+        [SerializeField] private float friction;
         public float Weight => weight;
         [ReadOnly]public Vector2 Direction;
 
@@ -18,9 +20,16 @@ namespace Pditine.Map
             Direction = transform.right;
         }
 
-        private void FixedUpdate()
+        private void Update()
         {
             transform.position += (Vector3)Direction*(CurrentSpeed*Time.deltaTime);
+            UpdateSpeed();
+        }
+
+        private void UpdateSpeed()
+        {
+            CurrentSpeed -= friction * Time.deltaTime;
+            if (CurrentSpeed < 0) CurrentSpeed = 0;
         }
         
         protected override List<CollidingEventBase> GetCollidingEvents()

@@ -17,7 +17,7 @@ namespace Pditine.GamePlay.GameManager
 {
     public abstract class GameManagerBase<T> : MonoBehaviour where T: GameManagerBase<T>
     {
-        protected bool GameOver;
+        protected bool IsGameOver;
         
         [SerializeField] protected MMF_Player startEffect;
         [Header("玩家")]
@@ -72,7 +72,7 @@ namespace Pditine.GamePlay.GameManager
 
         public virtual void SetPause()
         {
-            if (GameOver) return;
+            if (IsGameOver) return;
             IsPause = !IsPause;
             Time.timeScale = IsPause ? 0 : 1;
             EventSystem.EventTrigger(IsPause ? "Pause" : "UnPause");
@@ -80,7 +80,7 @@ namespace Pditine.GamePlay.GameManager
 
         public virtual void SetPause(bool isPause)
         {
-            if (GameOver) return;
+            if (IsGameOver) return;
             IsPause = isPause;
             Time.timeScale = IsPause ? 0 : 1;
             EventSystem.EventTrigger(IsPause ? "Pause" : "UnPause");
@@ -97,16 +97,28 @@ namespace Pditine.GamePlay.GameManager
         
         protected virtual void CheckPlayerDead(int hp,int playerID)
         {
-            if(GameOver)return;
+            if(IsGameOver)return;
             if (hp > 0) return;
             if (playerID == 1 && player1.isInvincible) return;
             if (playerID == 2 && player2.isInvincible) return;
-            
-            GameOver = true;
+
+            PlayerDead(playerID);
+            GameOver(playerID);
+        }
+
+        public virtual void PlayerDead(int playerID)
+        {
             var theLoser = playerID == 1 ? player1 : player2;
-            var theWinner = playerID == 1 ? player2 : player1;
-            PlayerCanMove(false);
             theLoser.BeDestroy();
+        }
+        
+        public virtual void GameOver(int loserID)
+        {
+            IsGameOver = true;
+            var theLoser = loserID == 1 ? player1 : player2;
+            var theWinner = loserID == 1 ? player2 : player1;
+            PlayerCanMove(false);
+            //theLoser.BeDestroy();
             UIManager.Instance.GameOver(theWinner);
             EventSystem.EventTrigger("GameOver");
         }
