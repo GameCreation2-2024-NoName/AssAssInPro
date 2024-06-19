@@ -2582,7 +2582,7 @@ MonoBehaviour:
   player2: {fileID: 1098822981}
   bgmName: "pong\u5730\u56FE\u80CC\u666F\u97F3\u4E50"
   theBuff: {fileID: 11400000, guid: f503a167c46a22145b3b6d83c32231cf, type: 2}
-  neededScore: 10
+  neededScore: 6
 --- !u!1001 &2094688552
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2785,8 +2785,21 @@ PrefabInstance:
       value: UI
       objectReference: {fileID: 0}
     - target: {fileID: 5235748158545402841, guid: 4c0bc0971c2a3cc4893bcff19123f889, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5235748158545402841, guid: 4c0bc0971c2a3cc4893bcff19123f889, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
+      objectReference: {fileID: 1852840572}
+    - target: {fileID: 5235748158545402841, guid: 4c0bc0971c2a3cc4893bcff19123f889, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetPause
+      objectReference: {fileID: 0}
+    - target: {fileID: 5235748158545402841, guid: 4c0bc0971c2a3cc4893bcff19123f889, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Pditine.GamePlay.GameManager.GameManagerBase`1[[Pditine.GamePlay.GameManager.SoccerGameManager,
+        Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 6860171280595306749, guid: 4c0bc0971c2a3cc4893bcff19123f889, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2835,6 +2848,15 @@ PrefabInstance:
     - target: {fileID: 8157227679940168844, guid: 4c0bc0971c2a3cc4893bcff19123f889, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
+      objectReference: {fileID: 1852840572}
+    - target: {fileID: 8157227679940168844, guid: 4c0bc0971c2a3cc4893bcff19123f889, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: SetPause
+      objectReference: {fileID: 0}
+    - target: {fileID: 8157227679940168844, guid: 4c0bc0971c2a3cc4893bcff19123f889, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: Pditine.GamePlay.GameManager.GameManagerBase`1[[Pditine.GamePlay.GameManager.SoccerGameManager,
+        Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 8501036980837716200, guid: 4c0bc0971c2a3cc4893bcff19123f889, type: 3}
       propertyPath: m_IsActive

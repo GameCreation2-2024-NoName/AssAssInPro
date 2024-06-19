@@ -15,6 +15,7 @@ namespace Pditine.Data
         [SerializeField] private List<AssDataBase> asses = new();
         [SerializeField] private List<ThornDataBase> thorns = new();
         [SerializeField] private List<GameModelBase> gameModules = new();
+        [SerializeField] private List<GameModelBase> multiplayerGameModules = new();
         //[SerializeField] private List<BuffData> buffData = new();
         [SerializeField] private List<GameObject> lightBalls = new();
         [SerializeField] private List<BuffData> buffData;
@@ -22,6 +23,7 @@ namespace Pditine.Data
         public List<AssDataBase> Asses => asses;
         public List<ThornDataBase> Thorns => thorns;
         public List<GameModelBase> GameModules => gameModules;
+        public List<GameModelBase> MultiplayerGameModules => multiplayerGameModules;
         //public List<BuffData> BuffData => buffData;
         public List<GameObject> LightBalls => lightBalls;
         

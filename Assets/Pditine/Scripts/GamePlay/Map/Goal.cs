@@ -17,8 +17,10 @@ namespace Pditine.Map
         {
             if(other.CompareTag("DynamicBarrier"))
             {
-                UpdateScore();
+
                 var theBall = other.GetComponent<Soccer>();
+                if(theBall.HasTriggered)return;
+                UpdateScore();
                 theBall.Destroy();
                 CreateSoccer();
             }

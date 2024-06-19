@@ -2256,6 +2256,11 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 30398b7e647dfbc44bf9865437d0b4f3, type: 2}
   - {fileID: 11400000, guid: 2585d4249c9a32c459fbfcb86ee2ca8b, type: 2}
   - {fileID: 11400000, guid: c7427e56be5abcf479eb3c12598fd9d7, type: 2}
+  multiplayerGameModules:
+  - {fileID: 11400000, guid: ccc96942cf67a6f4890220f959c9eb30, type: 2}
+  - {fileID: 11400000, guid: 710370f237f5aec4daa2bbc7bcc66e2c, type: 2}
+  - {fileID: 11400000, guid: 30398b7e647dfbc44bf9865437d0b4f3, type: 2}
+  - {fileID: 11400000, guid: 2585d4249c9a32c459fbfcb86ee2ca8b, type: 2}
   lightBalls:
   - {fileID: 6006876733962089475, guid: 572f7edc9964e1a40aceb06543995f02, type: 3}
   - {fileID: 3550005666127261084, guid: 548ff30556d4e64488a8105517924057, type: 3}
