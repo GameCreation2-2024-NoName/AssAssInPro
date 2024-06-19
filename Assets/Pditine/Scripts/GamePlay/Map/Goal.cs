@@ -1,3 +1,4 @@
+using Pditine.Audio;
 using Pditine.GamePlay.GameManager;
 using TMPro;
 using UnityEngine;
@@ -25,6 +26,7 @@ namespace Pditine.Map
 
         private void UpdateScore()
         {
+            //AAIAudioManager.Instance.PlayEffect(cheerAudioName);
             _score++;
             scoreUI.text = _score.ToString();
 

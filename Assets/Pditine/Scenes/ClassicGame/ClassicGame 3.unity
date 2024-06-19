@@ -829,11 +829,19 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 1620350299}
     m_Modifications:
     - target: {fileID: 827933508753537540, guid: 4f7c824efd68bc34aa73dd0d21c284b5, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.7692308
+      objectReference: {fileID: 0}
+    - target: {fileID: 827933508753537540, guid: 4f7c824efd68bc34aa73dd0d21c284b5, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.7692308
+      objectReference: {fileID: 0}
+    - target: {fileID: 827933508753537540, guid: 4f7c824efd68bc34aa73dd0d21c284b5, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -9.5
+      value: -7.3076925
       objectReference: {fileID: 0}
     - target: {fileID: 827933508753537540, guid: 4f7c824efd68bc34aa73dd0d21c284b5, type: 3}
       propertyPath: m_LocalPosition.y
@@ -949,11 +957,19 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 1620350299}
     m_Modifications:
     - target: {fileID: 827933508753537540, guid: 4f7c824efd68bc34aa73dd0d21c284b5, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.7692308
+      objectReference: {fileID: 0}
+    - target: {fileID: 827933508753537540, guid: 4f7c824efd68bc34aa73dd0d21c284b5, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.7692308
+      objectReference: {fileID: 0}
+    - target: {fileID: 827933508753537540, guid: 4f7c824efd68bc34aa73dd0d21c284b5, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 9.5
+      value: 7.3076925
       objectReference: {fileID: 0}
     - target: {fileID: 827933508753537540, guid: 4f7c824efd68bc34aa73dd0d21c284b5, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1651,6 +1667,8 @@ Transform:
   - {fileID: 1910205404}
   - {fileID: 261654172}
   - {fileID: 1179477434}
+  - {fileID: 804432902}
+  - {fileID: 1098822982}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1640335582
@@ -2404,5 +2422,3 @@ SceneRoots:
   - {fileID: 3431244820578332032}
   - {fileID: 1620350299}
   - {fileID: 2103193202}
-  - {fileID: 804432900}
-  - {fileID: 1098822980}
