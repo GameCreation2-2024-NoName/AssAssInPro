@@ -35,7 +35,7 @@ namespace Hmxs.Scripts.Tutorial
         public void TryAgain()
         {
             DataManager.Instance.PassingData.mainMenuOpenedMenuIndex = 0;
-            SceneSystem.LoadScene(0);
+            SceneSystem.LoadScene(7);
         }
 
         public void NextLevel()

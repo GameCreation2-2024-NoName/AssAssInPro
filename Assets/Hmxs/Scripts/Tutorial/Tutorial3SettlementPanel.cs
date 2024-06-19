@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 namespace Hmxs.Scripts.Tutorial
 {
-    public class Tutorial1SettlementPanel : SettlementPanel
+    public class Tutorial3SettlementPanel : SettlementPanel
     {
         [SerializeField] protected Text titleText;
         [SerializeField] protected GameObject nextLevel;
@@ -35,13 +35,13 @@ namespace Hmxs.Scripts.Tutorial
         public void TryAgain()
         {
             DataManager.Instance.PassingData.mainMenuOpenedMenuIndex = 0;
-            SceneSystem.LoadScene(6);
+            SceneSystem.LoadScene(8);
         }
 
         public void NextLevel()
         {
             DataManager.Instance.PassingData.mainMenuOpenedMenuIndex = 0;
-            SceneSystem.LoadScene(7);
+            SceneSystem.LoadScene(0);
         }
     }
 }

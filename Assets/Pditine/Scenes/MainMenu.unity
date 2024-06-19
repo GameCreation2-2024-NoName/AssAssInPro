@@ -483,13 +483,45 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4790539630352359593, guid: aad3ad02cbb44de479beb597310a168f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4790539630352359593, guid: aad3ad02cbb44de479beb597310a168f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4790539630352359593, guid: aad3ad02cbb44de479beb597310a168f, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 541501090}
+    - target: {fileID: 4790539630352359593, guid: aad3ad02cbb44de479beb597310a168f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1450477115}
     - target: {fileID: 4790539630352359593, guid: aad3ad02cbb44de479beb597310a168f, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
       objectReference: {fileID: 1450477115}
+    - target: {fileID: 4790539630352359593, guid: aad3ad02cbb44de479beb597310a168f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: ChangeMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 4790539630352359593, guid: aad3ad02cbb44de479beb597310a168f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: Pditine.MainMenu.MainMenuManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4790539630352359593, guid: aad3ad02cbb44de479beb597310a168f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4790539630352359593, guid: aad3ad02cbb44de479beb597310a168f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4790539630352359593, guid: aad3ad02cbb44de479beb597310a168f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_StringArgument
+      value: SelectGameModleMenu_Multiplayer
+      objectReference: {fileID: 0}
     - target: {fileID: 5773775924981438940, guid: aad3ad02cbb44de479beb597310a168f, type: 3}
       propertyPath: m_Name
       value: Mid
@@ -597,7 +629,7 @@ PrefabInstance:
     - target: {fileID: 6818979843471750706, guid: aad3ad02cbb44de479beb597310a168f, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 541501090}
     - target: {fileID: 6818979843471750706, guid: aad3ad02cbb44de479beb597310a168f, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: OnConfirm

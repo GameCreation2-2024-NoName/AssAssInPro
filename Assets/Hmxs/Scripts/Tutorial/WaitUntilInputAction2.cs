@@ -27,12 +27,7 @@ namespace Hmxs.Scripts.Tutorial
         {
             while (_operationTime < operationTime || _securedOperationTime < securedOperationTime)
             {
-                if (Tutorial1GameManager.Instance.Player1Controller.InputHandler.IsKeyboard)
-                {
-                    if (inputAction.action.WasPerformedThisFrame())
-                        _operationTime += Time.unscaledDeltaTime;
-                }
-                else if (inputAction.action.inProgress)
+                if (inputAction.action.inProgress)
                         _operationTime += Time.unscaledDeltaTime;
                 _securedOperationTime += Time.unscaledDeltaTime;
                 yield return null;

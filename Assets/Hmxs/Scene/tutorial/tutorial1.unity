@@ -107283,8 +107283,9 @@ MonoBehaviour:
     width: 1114
     height: 859
   selectedBlocks:
-  - {fileID: 1854651943}
-  selectedCommands: []
+  - {fileID: 1854651912}
+  selectedCommands:
+  - {fileID: 1854651942}
   variables: []
   description: 
   stepPause: 0
@@ -108171,7 +108172,7 @@ MonoBehaviour:
   indentLevel: 0
   inputAction: {fileID: 9220056933017778323, guid: 68aeef5494823ae4c84907284e8be7e5, type: 3}
   operationTime: 1.5
-  securedOperationTime: 5
+  securedOperationTime: 3
 --- !u!114 &1854651943
 MonoBehaviour:
   m_ObjectHideFlags: 2
