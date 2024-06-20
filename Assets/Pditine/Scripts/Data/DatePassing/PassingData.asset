@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b35dfc3d55c4174b5a930258cef14f8, type: 3}
   m_Name: PassingData
   m_EditorClassIdentifier: 
-  player1AssID: 2
+  player1AssID: 0
   player2AssID: 1
-  player1ThornID: 1
+  player1ThornID: 0
   player2ThornID: 1
   currentGameModel: {fileID: 11400000, guid: c7427e56be5abcf479eb3c12598fd9d7, type: 2}
-  mainMenuOpenedMenuIndex: 7
+  mainMenuOpenedMenuIndex: 0
