@@ -13,7 +13,7 @@ namespace Pditine.Player.Ass
         public override void Init(PlayerController parent)
         {
             base.Init(parent);
-            OnBeAttack += AddBuff;
+            //OnBeAttack += AddBuff;
         }
 
         private void AddBuff(ColliderBase theThorn)

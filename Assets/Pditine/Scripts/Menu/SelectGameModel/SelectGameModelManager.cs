@@ -30,7 +30,7 @@ namespace Pditine.SelectGameModel
         
         private void Start()
         {
-            _gameModels = DataManager.Instance.GameModules;
+            _gameModels = DataManager.Instance.MultiplayerGameModules;
             _currentGameModel = _gameModels[0];
             Init();
         }

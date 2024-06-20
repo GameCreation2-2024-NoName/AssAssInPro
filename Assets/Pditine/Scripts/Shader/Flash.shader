@@ -8,9 +8,12 @@ Shader "Pditine/Flash"
     }
     SubShader
     {
-        Tags { "RenderType"="Opaque" }
+        Tags { "Queue"="Transparent" "IgnoreProjector"="True" "RenderType"="Transparent" }
         LOD 100
 
+        Blend SrcAlpha OneMinusSrcAlpha
+        ZWrite Off
+        Cull Off
         Pass
         {
             CGPROGRAM
@@ -52,7 +55,11 @@ Shader "Pditine/Flash"
                 const float time = floor(_Time.y*_Speed);
                 if(time%2==0)
                     return color;
-                return _FlashColor;
+
+                fixed4 flashColor = _FlashColor;
+                flashColor.a = color.a;
+                
+                return flashColor;
             }
             ENDCG
         }

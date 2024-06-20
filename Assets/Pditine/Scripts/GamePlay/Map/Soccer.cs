@@ -7,7 +7,8 @@ namespace Pditine.Map
 {
     public class Soccer : MonoBehaviour
     {
-        private bool _ready;
+        private bool _hasTriggered;
+        public bool HasTriggered => _hasTriggered;
         [SerializeField] private MMF_Player bornFeedback;
         [SerializeField] private MMF_Player eatenFeedback;
         [SerializeField] private GameObject theBall;
@@ -17,14 +18,13 @@ namespace Pditine.Map
         
         public void Init()
         {
-            
             bornFeedback.Initialization();
             eatenFeedback.Initialization();
             theBall.gameObject.SetActive(false);
             halo.Play();
+            _hasTriggered = false;
             DelayUtility.Delay(1f, () =>
             {
-                _ready = true;
                 theBall.gameObject.SetActive(true);
                 bornFeedback.PlayFeedbacks();
                 AAIAudioManager.Instance.PlayEffect(whistlingAudioName);
@@ -33,6 +33,7 @@ namespace Pditine.Map
         }
         public void Destroy()
         {
+            _hasTriggered = true;
             AAIAudioManager.Instance.PlayEffect(cheerAudioName);
             eatenFeedback.PlayFeedbacks();
             theBall.SetActive(false);
