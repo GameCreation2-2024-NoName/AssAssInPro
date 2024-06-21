@@ -20705,7 +20705,9 @@ MonoBehaviour:
   eatenFeedback: {fileID: 1565862337330249168}
   theBall: {fileID: 5866851120054648479}
   halo: {fileID: 5424462660763382925}
-  createPiont: {fileID: 0}
+  cheerAudioName: "\u8FDB\u7403\u65F6\u6B22\u547C\u58F0"
+  whistlingAudioName: "\u8FDB\u7403\u540E\u8DB3\u7403\u5728\u4E2D\u95F4\u751F\u6210\u65F6\u7684\u54E8\u58F0"
+  theCollider: {fileID: 1708437764089391175}
 --- !u!114 &2512013633161348071
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20804,7 +20806,7 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
 --- !u!212 &208799473466436875
 SpriteRenderer:

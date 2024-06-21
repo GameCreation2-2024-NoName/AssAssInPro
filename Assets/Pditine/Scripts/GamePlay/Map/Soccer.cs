@@ -15,12 +15,14 @@ namespace Pditine.Map
         [SerializeField] private ParticleSystem halo;
         [SerializeField] private string cheerAudioName = "进球时欢呼声";
         [SerializeField] private string whistlingAudioName = "进球后足球在中间生成时的哨声";
+        [SerializeField] private CircleCollider2D theCollider;
         
         public void Init()
         {
             bornFeedback.Initialization();
             eatenFeedback.Initialization();
             theBall.gameObject.SetActive(false);
+            theCollider.enabled = false;
             halo.Play();
             _hasTriggered = false;
             DelayUtility.Delay(1f, () =>
@@ -28,6 +30,7 @@ namespace Pditine.Map
                 theBall.gameObject.SetActive(true);
                 bornFeedback.PlayFeedbacks();
                 AAIAudioManager.Instance.PlayEffect(whistlingAudioName);
+                theCollider.enabled = true;
             });
         
         }

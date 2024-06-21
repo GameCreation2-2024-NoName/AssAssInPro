@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Pditine.Collide;
 using Pditine.Collide.CollideEvent;
 using Sirenix.OdinInspector;
