@@ -23,7 +23,8 @@ namespace Pditine.MainMenu
             //PlayerManager.Instance.Init();
             Time.timeScale = 1;
             PlayerManager.Instance.SwitchMap("Selection");
-            
+            PlayerManager.Instance.Reset();
+            Debug.Log("reset");
         }
 
         public void OpenMenu(int menuIndex)

@@ -84,5 +84,15 @@ namespace Hmxs.Scripts
             if (handler1) handler1.SwitchMap(map);
             if (handler2) handler2.SwitchMap(map);
         }
+
+        public void Reset()
+        {
+            if(handler1)
+                Destroy(handler1.gameObject);
+            if(handler2)
+                Destroy(handler2.gameObject);
+            handler1 = null;
+            handler2 = null;
+        }
     }
 }
