@@ -235,6 +235,8 @@ namespace Pditine.Player
             _currentHP += delta;
             if (_currentCD > HP) _currentCD = HP;
             OnChangeHP?.Invoke(_currentHP, ID);
+
+            if (_currentCD > HP) _currentCD = HP;
         }
 
         public void BeDestroy()
