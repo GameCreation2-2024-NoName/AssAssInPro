@@ -16,8 +16,8 @@ namespace Pditine.Map
         public float CalculatingSpeed => calculatingSpeed;
         private void Update()
         {
-            if(Input.GetMouseButtonDown(0))
-                Debug.Log(GetTangent( Camera.main.ScreenToWorldPoint(Input.mousePosition)));
+            // if(Input.GetMouseButtonDown(0))
+            //     Debug.Log(GetTangent( Camera.main.ScreenToWorldPoint(Input.mousePosition)));
             transform.Rotate(0,0,speed*Time.deltaTime);
         }
 

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 2
   moduleName: "\u8DB3\u7403\u6A21\u5F0F"
-  introduction: "\u7387\u5148\u83B7\u5F976\u5206\u8005\u83B7\u80DC"
+  introduction: "\u53D1\u5C04\u51FB\u7403\uFF0C\u52C7\u593A\u516D\u5206\uFF0C\u56FD\u8DB3\u9760\u4F60\u4E86\uFF01"
   preview: {fileID: -1576440250, guid: 4761d41d299d04d47ae32f1b6d8007b6, type: 3}
   gameLevels: 09000000
   done: 1

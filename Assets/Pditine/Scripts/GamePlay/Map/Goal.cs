@@ -28,6 +28,7 @@ namespace Pditine.Map
 
         private void UpdateScore()
         {
+            if (id == 0) return;
             //AAIAudioManager.Instance.PlayEffect(cheerAudioName);
             _score++;
             scoreUI.text = _score.ToString();

@@ -233,10 +233,10 @@ namespace Pditine.Player
 
             OnTryChangeHP?.Invoke(delta);
             _currentHP += delta;
-            if (_currentCD > HP) _currentCD = HP;
+            if (_currentHP > HP) _currentHP = HP;
             OnChangeHP?.Invoke(_currentHP, ID);
-
-            if (_currentCD > HP) _currentCD = HP;
+            //Debug.Log($"{_currentHP},{HP}");
+            //if (_currentCD > HP) _currentCD = HP;
         }
 
         public void BeDestroy()
