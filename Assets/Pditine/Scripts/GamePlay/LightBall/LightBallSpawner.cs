@@ -70,7 +70,7 @@ namespace Pditine.GamePlay.LightBall
             var overlaps = Physics2D.OverlapPointAll(new( posX, posY));
             foreach (var overlay in overlaps)
             {
-                if (overlay.CompareTag("LightBall")) return;
+                if (overlay.CompareTag("LightBall")|| overlay.CompareTag("Wall") || overlay.CompareTag("Ass")|| overlay.CompareTag("Thorn")) return;
             }
             
             var theBall = Instantiate(lightBalls[Random.Range(0, lightBalls.Count)].transform).GetComponent<LightBall>();
