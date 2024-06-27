@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Pditine.Collide.CollideEvent;
 using PurpleFlowerCore;
 using PurpleFlowerCore.Utility;
@@ -32,6 +33,7 @@ namespace Pditine.Collide
             var otherCollider = other.collider.gameObject.GetComponent<ColliderBase>();
             if (!otherCollider) return;
             if (_collidingColliders.Contains(otherCollider)) return;
+            if (otherCollider._collidingColliders.Contains(this)) return;
             AddCollider(otherCollider);
             otherCollider.AddCollider(this);
             CollideHandler.ColliderHandle(new CollideInfo(gameObject.tag,otherCollider.gameObject.tag,this,otherCollider,other));

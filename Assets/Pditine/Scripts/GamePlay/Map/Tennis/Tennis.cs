@@ -28,7 +28,7 @@ namespace Pditine.Map
 
         protected override List<CollidingEventBase> GetCollidingEvents()
         {
-            return new() { new Tennis_ThornEvent(),new Tennis_AssEvent(),new Tennis_DynamicBarrierEvent() };
+            return new() { new Tennis_ThornEvent(),new Tennis_AssEvent(),new Tennis_DynamicBarrierEvent(),new Tennis_WallEvent() };
         }
     }
 }

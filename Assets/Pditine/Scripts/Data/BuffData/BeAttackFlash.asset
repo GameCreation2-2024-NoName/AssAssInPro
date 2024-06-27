@@ -21,7 +21,7 @@ MonoBehaviour:
   tags: []
   showInUI: 0
   willLastForever: 0
-  durationTime: 0.3
+  durationTime: 0.5
   tickTime: 0
   attachType: 0
   lostType: 0
