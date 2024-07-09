@@ -10769,7 +10769,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CurrentSpeed: 0
   atk: 1
-  weight: 10
+  weight: 20
   rotateSpeed: 0.1
   Direction: {x: 0, y: 0}
   collideWithBoundary: {fileID: 7185820544702105388}

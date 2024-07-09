@@ -1172,6 +1172,56 @@ MonoBehaviour:
   m_DeselectOnBackgroundClick: 1
   m_PointerBehavior: 0
   m_CursorLockBehavior: 0
+--- !u!1 &3535637012604748185
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 152969508294163140}
+  - component: {fileID: 8818035229666102973}
+  m_Layer: 5
+  m_Name: PlayerUI
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &152969508294163140
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3535637012604748185}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1663735266642465711}
+  - {fileID: 1114548504690560484}
+  m_Father: {fileID: 6910740265470647995}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!225 &8818035229666102973
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3535637012604748185}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &3696267260957022471
 GameObject:
   m_ObjectHideFlags: 0
@@ -2173,7 +2223,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6910740265470647995}
   - component: {fileID: 1009684290270281588}
-  - component: {fileID: 4623080878215896809}
   m_Layer: 5
   m_Name: UIManager
   m_TagString: Untagged
@@ -2194,8 +2243,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6466327963392570964}
-  - {fileID: 1663735266642465711}
-  - {fileID: 1114548504690560484}
+  - {fileID: 152969508294163140}
   - {fileID: 3143606391106443642}
   - {fileID: 1972039444015165488}
   - {fileID: 2557542495018475483}
@@ -2229,19 +2277,7 @@ MonoBehaviour:
   settlementPanel: {fileID: 6217814276506141551}
   gaussianBlur: {fileID: 7239581844280606042}
   pausePanel: {fileID: 2154002663431941477}
-  canvasGroup: {fileID: 4623080878215896809}
---- !u!225 &4623080878215896809
-CanvasGroup:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8424436831254840655}
-  m_Enabled: 1
-  m_Alpha: 1
-  m_Interactable: 1
-  m_BlocksRaycasts: 1
-  m_IgnoreParentGroups: 0
+  canvasGroup: {fileID: 8818035229666102973}
 --- !u!1 &8838356200554618646
 GameObject:
   m_ObjectHideFlags: 0
@@ -2398,7 +2434,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 6910740265470647995}
+    m_TransformParent: {fileID: 152969508294163140}
     m_Modifications:
     - target: {fileID: 947645513156798761, guid: a3022e4b20d67c54398d15311563c837, type: 3}
       propertyPath: _cdUI
@@ -2595,7 +2631,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 6910740265470647995}
+    m_TransformParent: {fileID: 152969508294163140}
     m_Modifications:
     - target: {fileID: 2863675570100978803, guid: a3022e4b20d67c54398d15311563c837, type: 3}
       propertyPath: m_Pivot.x

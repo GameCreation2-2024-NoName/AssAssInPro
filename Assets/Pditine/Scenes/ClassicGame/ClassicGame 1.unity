@@ -1090,7 +1090,7 @@ MonoBehaviour:
   player1Camera: {fileID: 1901391607}
   player2Camera: {fileID: 1097599560}
   motionTime: 1
-  CollideEffectOn: 1
+  collideEffectOn: 1
   originCameraSize: 250
   speed: 0.13
 --- !u!114 &1525619136 stripped
