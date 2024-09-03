@@ -27,8 +27,7 @@ namespace Pditine.Player
 
         [HideInInspector] public float frictionMulAdjustment = 1;
         [HideInInspector] public float frictionAddAdjustment = 0;
-
-
+        
         private float _friction;
 
         public float Friction => _friction * frictionMulAdjustment +
@@ -51,8 +50,20 @@ namespace Pditine.Player
         [HideInInspector] public float atkMulAdjustment = 1;
         [HideInInspector] public int atkAddAdjustment = 0;
         public int ATK => (int)(_theThorn.Data.ATK * atkMulAdjustment + atkAddAdjustment);
+        
+        //temp
+        private float recoverEnergySpeed = 1f;
+        private float useEnergySpeed = 1.5f;
+        private float _energy = 2;
+        public float Energy => _energy;
+        private float _currentEnergy;
+        public float CurrentEnergy => _currentEnergy;
 
         private int _currentHP;
+
+        private float _power;
+        
+        //temp
         public int CurrentHP => _currentHP;
 
         private float _currentCD;
@@ -75,8 +86,7 @@ namespace Pditine.Player
 
         [ReadOnly] public bool canMove;
         [ReadOnly] public bool isInvincible;
-
-
+        
         #endregion
 
         #region 引用
@@ -156,6 +166,8 @@ namespace Pditine.Player
         {
             if (InputHandler is null) return;
             if (InputHandler.Dash) Dash();
+            if (InputHandler.Charge) Charge();
+            if (!InputHandler.Charge) RecoverEnergy();
             if (InputHandler.Direction.sqrMagnitude != 0) ChangeDirection(InputHandler.Direction);
         }
 
@@ -168,7 +180,7 @@ namespace Pditine.Player
             _currentHP = HP;
             _friction = Weight;
             arrow.Init(id);
-
+            
             OnInit();
         }
 
@@ -191,21 +203,39 @@ namespace Pditine.Player
             arrow.ChangeDirection(InputDirection);
         }
 
+        public void Charge()
+        {
+            if (!canMove) return;
+            if (_isPause) return;
+            if(_currentEnergy <= 0) return;
+            _currentEnergy-= Time.deltaTime*useEnergySpeed;
+            _power+= Time.deltaTime*useEnergySpeed*2;
+            Debug.Log(_power);
+        }
+        
         public void Dash()
         {
             if (!canMove) return;
             if (_isPause) return;
-            if (_currentCD > 0) return;
+            //if (_currentCD > 0) return;
+
             AAIAudioManager.Instance.PlayEffect("加速音效");
             _currentDirection = InputDirection;
-            CurrentSpeed = InitialVelocity;
-            _currentCD = CD;
+            CurrentSpeed = InitialVelocity* _power;
+            //_currentCD = CD;
+            _power = 0;
         }
 
         private void ReduceSpeed()
         {
             CurrentSpeed -= Friction * Time.deltaTime;
             if (CurrentSpeed <= 0) CurrentSpeed = 0;
+        }
+        
+        private void RecoverEnergy()
+        {
+            _currentEnergy += Time.deltaTime*recoverEnergySpeed;
+            if (_currentEnergy > _energy) _currentEnergy = _energy;
         }
 
         private void UpdateTransform()

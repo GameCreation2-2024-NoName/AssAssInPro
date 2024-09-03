@@ -12,6 +12,8 @@ namespace Pditine.GamePlay.UI
     {
         [SerializeField] private PlayerCD cd1;
         [SerializeField] private PlayerCD cd2;
+        [SerializeField] private Energy energy1;
+        [SerializeField] private Energy energy2;
         [SerializeField] private HeadPicture head1;
         [SerializeField] private HeadPicture head2;
         [SerializeField] private PlayerHP hp1;
@@ -66,11 +68,13 @@ namespace Pditine.GamePlay.UI
                 cd1.Init(thePlayer);
                 head1.Init(thePlayer);
                 hp1.Init(thePlayer);
+                energy1.Init(thePlayer);
             }else if (thePlayer.ID == 2)
             {
                 cd2.Init(thePlayer);
                 head2.Init(thePlayer);
                 hp2.Init(thePlayer);
+                energy2.Init(thePlayer);
             }else PFCLog.Error("玩家ID错误");
         }
         
