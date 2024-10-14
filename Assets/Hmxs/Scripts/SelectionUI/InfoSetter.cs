@@ -73,7 +73,8 @@ namespace Hmxs.Scripts
             SetAssName(assInfo.AssName);
 
             SetAssProperty1(DataMapping(assInfo.HP, assProperty1Range));
-            SetAssProperty2(DataMapping(assInfo.InitialVelocity, assProperty2Range));
+            //todo: 数值系统调整
+            //SetAssProperty2(DataMapping(assInfo.InitialVelocity, assProperty2Range));
             SetAssProperty3(DataMapping(assInfo.Weight, assProperty3Range));
 
             SetAssIntroduction(assInfo.AssIntroduction);
@@ -89,9 +90,9 @@ namespace Hmxs.Scripts
 
             SetThornImg(thornInfo.Portrait);
             SetThornName(thornInfo.ThornName);
-
+            //todo: 数值系统调整
             SetThornProperty1(DataMapping(thornInfo.ATK, thornProperty1Range));
-            SetThornProperty2(DataMapping(thornInfo.CD, thornProperty2Range));
+            //SetThornProperty2(DataMapping(thornInfo.CD, thornProperty2Range));
             SetThornProperty3(DataMapping(thornInfo.Weight, thornProperty3Range));
 
             SetThornIntroduction(thornInfo.ThornIntroduction);

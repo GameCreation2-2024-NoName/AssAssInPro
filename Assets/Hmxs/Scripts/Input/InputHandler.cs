@@ -1,4 +1,5 @@
 ﻿using System;
+using Pditine.Player;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -11,7 +12,8 @@ namespace Hmxs.Scripts
     {
         public bool Confirm => _confirmAction.triggered;
         public Vector2 Select => _selectAction.ReadValue<Vector2>();
-        public bool Dash => _dashAction.triggered;
+        public bool Dash => _dashAction.WasReleasedThisFrame();
+        public bool Charge => _dashAction.IsPressed();
         public Vector2 Direction => _directionAction.ReadValue<Vector2>();
         
         private PlayerInput _playerInput;
@@ -44,6 +46,11 @@ namespace Hmxs.Scripts
             _directionAction = _playerInput.actions["Direction"];
         }
 
+        // public void Init(PlayerController player
+        // {
+        //     _dashAction.canceled += player.Dash;
+        // }
+        
         public void SwitchMap(string map) =>
             _playerInput.SwitchCurrentActionMap(map);
     }

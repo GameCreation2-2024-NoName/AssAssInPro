@@ -30260,18 +30260,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: 0
-  initialVelocityMulAdjustment: 1
-  initialVelocityAddAdjustment: 0
+  speedCoefficientMulAdjustment: 1
+  speedCoefficientAddAdjustment: 0
   frictionMulAdjustment: 1
   frictionAddAdjustment: 0
   weightMulAdjustment: 1
   weightAddAdjustment: 0
-  cdMulAdjustment: 1
-  cdAddAdjustment: 0
+  energyMulAdjustment: 1
+  energyAddAdjustment: 0
   hpMulAdjustment: 1
   hpAddAdjustment: 0
   atkMulAdjustment: 1
   atkAddAdjustment: 0
+  energyRecoverSpeed: 25
   CurrentSpeed: 0
   rotateSpeed: 0.4
   canMove: 0

@@ -19,15 +19,21 @@ namespace Pditine.Player
         [SerializeField] private int id;
         public int ID => id;
 
-        [HideInInspector] public float initialVelocityMulAdjustment = 1;
-        [HideInInspector] public float initialVelocityAddAdjustment = 0;
-
-        public float InitialVelocity =>
-            _theAss.Data.InitialVelocity * initialVelocityMulAdjustment + initialVelocityAddAdjustment;
+        //todo: 这数值系统太抽象了,需要重新设计一下
+        // [HideInInspector] public float initialVelocityMulAdjustment = 1;
+        // [HideInInspector] public float initialVelocityAddAdjustment = 0;
+        //
+        // public float InitialVelocity =>
+        //     _theAss.Data.InitialVelocity * initialVelocityMulAdjustment + initialVelocityAddAdjustment;
+        
+        [HideInInspector] public float speedCoefficientMulAdjustment = 1;
+        [HideInInspector] public float speedCoefficientAddAdjustment = 0;
+        
+        public float SpeedCoefficient =>
+            _theThorn.Data.SpeedCoefficient * speedCoefficientMulAdjustment + speedCoefficientAddAdjustment;
 
         [HideInInspector] public float frictionMulAdjustment = 1;
         [HideInInspector] public float frictionAddAdjustment = 0;
-
 
         private float _friction;
 
@@ -40,9 +46,13 @@ namespace Pditine.Player
         public float Weight => (_theAss.Data.Weight + _theThorn.Data.Weight) * weightMulAdjustment +
                                weightAddAdjustment;
 
-        [HideInInspector] public float cdMulAdjustment = 1;
-        [HideInInspector] public float cdAddAdjustment = 0;
-        private float CD => _theThorn.Data.CD * cdMulAdjustment + cdAddAdjustment;
+        // [HideInInspector] public float cdMulAdjustment = 1;
+        // [HideInInspector] public float cdAddAdjustment = 0;
+        // private float CD => _theThorn.Data.CD * cdMulAdjustment + cdAddAdjustment;
+        
+        [HideInInspector] public float energyMulAdjustment = 1;
+        [HideInInspector] public float energyAddAdjustment = 0;
+        private float Energy => _theAss.Data.Energy * energyMulAdjustment + energyAddAdjustment;
 
         [HideInInspector] public float hpMulAdjustment = 1;
         [HideInInspector] public int hpAddAdjustment = 0;
@@ -55,8 +65,13 @@ namespace Pditine.Player
         private int _currentHP;
         public int CurrentHP => _currentHP;
 
-        private float _currentCD;
-        public float CurrentCD => _currentCD;
+        private float _currentEnergy;
+        public float CurrentEnergy => _currentEnergy;
+
+        private float _chargeTime;
+        public float ChargeTime => _chargeTime;
+        
+        [SerializeField] private float energyRecoverSpeed;
 
         [HideInInspector] public float CurrentSpeed;
         [SerializeField] private float rotateSpeed;
@@ -73,10 +88,12 @@ namespace Pditine.Player
             }
         }
 
+        private float _changingTime;
+        
         [ReadOnly] public bool canMove;
         [ReadOnly] public bool isInvincible;
 
-
+        //todo: 这数值系统太抽象了,需要重新设计一下
         #endregion
 
         #region 引用
@@ -109,7 +126,7 @@ namespace Pditine.Player
         public event Action<int, int> OnChangeHP; // 当前血量 玩家id
         public event Action OnDestroyed;
         public event Action<Vector3> OnChangeCurrentDirection;
-
+        
         #endregion
 
         #region 特效
@@ -148,7 +165,7 @@ namespace Pditine.Player
 
         private void Update()
         {
-            UpdateCD();
+            // UpdateCD();
             OnUpdate();
         }
 
@@ -156,6 +173,10 @@ namespace Pditine.Player
         {
             if (InputHandler is null) return;
             if (InputHandler.Dash) Dash();
+            if (InputHandler.Charge) 
+                Charge(); 
+            else 
+                RecoverEnergy();
             if (InputHandler.Direction.sqrMagnitude != 0) ChangeDirection(InputHandler.Direction);
         }
 
@@ -172,9 +193,7 @@ namespace Pditine.Player
             OnInit();
         }
 
-        protected virtual void OnInit()
-        {
-        }
+        protected virtual void OnInit() { }
 
         public virtual void ChangeDirection(Vector3 direction)
         {
@@ -191,15 +210,35 @@ namespace Pditine.Player
             arrow.ChangeDirection(InputDirection);
         }
 
-        public void Dash()
+        protected virtual void Charge()
         {
             if (!canMove) return;
             if (_isPause) return;
-            if (_currentCD > 0) return;
+            Debug.Log("[Charge]"+_currentEnergy);
+            _currentEnergy -= Time.deltaTime * energyRecoverSpeed;
+            _chargeTime += Time.deltaTime;
+            if (_currentEnergy <= 0) _currentEnergy = 0;
+            if (_chargeTime * energyRecoverSpeed >= Energy) _chargeTime = Energy / energyRecoverSpeed;
+        }
+
+        public virtual void Dash()
+        {
+            if (!canMove) return;
+            if (_isPause) return;
+            // if (_currentCD > 0) return;
             AAIAudioManager.Instance.PlayEffect("加速音效");
             _currentDirection = InputDirection;
-            CurrentSpeed = InitialVelocity;
-            _currentCD = CD;
+            // CurrentSpeed = InitialVelocity;
+            CurrentSpeed = CalculateSpeed();
+            _chargeTime = 0;
+            // _currentCD = CD;
+        }
+        
+        private void RecoverEnergy()
+        {
+            Debug.Log("[RecoverEnergy]"+_currentEnergy);
+            _currentEnergy += Time.deltaTime * energyRecoverSpeed;
+            if (_currentEnergy >= Energy) _currentEnergy = Energy;
         }
 
         private void ReduceSpeed()
@@ -210,16 +249,22 @@ namespace Pditine.Player
 
         private void UpdateTransform()
         {
+            Debug.Log("[UpdateTransform]"+CurrentSpeed);
             transform.position += (Vector3)_currentDirection * (CurrentSpeed * Time.deltaTime);
             transform.right = Vector3.Lerp(transform.right, _currentDirection, rotateSpeed);
         }
-
-        private void UpdateCD()
+        
+        protected virtual float CalculateSpeed()
         {
-            _currentCD -= Time.deltaTime;
-            if (_currentCD <= 0) _currentCD = 0;
-            OnChangeCD?.Invoke(_currentCD / CD);
+            return _chargeTime * SpeedCoefficient;
         }
+
+        // private void UpdateCD()
+        // {
+        //     _currentCD -= Time.deltaTime;
+        //     if (_currentCD <= 0) _currentCD = 0;
+        //     OnChangeCD?.Invoke(_currentCD / CD);
+        // }
 
         public void ChangeHP(int delta)
         {
@@ -256,17 +301,24 @@ namespace Pditine.Player
 
         public void ResetProperty()
         {
-            initialVelocityMulAdjustment = 1;
+            //todo:这数值系统太抽象了,需要重新设计一下
+            // initialVelocityMulAdjustment = 1;
+            speedCoefficientMulAdjustment = 1;
             atkMulAdjustment = 1;
-            cdMulAdjustment = 1;
+            //cdMulAdjustment = 1;
+            weightMulAdjustment = 1;
+            energyMulAdjustment = 1;
             frictionMulAdjustment = 1;
             hpMulAdjustment = 1;
 
             atkAddAdjustment = 0;
-            cdAddAdjustment = 0;
+            //cdAddAdjustment = 0;
             frictionAddAdjustment = 0;
             hpAddAdjustment = 0;
-            initialVelocityAddAdjustment = 0;
+            // initialVelocityAddAdjustment = 0;
+            speedCoefficientAddAdjustment = 0;
+            weightAddAdjustment = 0;
+            energyAddAdjustment = 0;
         }
 
         public void HitFeedback() => hitFeedback.PlayFeedbacks();

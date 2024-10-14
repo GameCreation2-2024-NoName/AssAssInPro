@@ -1,9 +1,11 @@
-﻿using Pditine.Player;
+﻿using System;
+using Pditine.Player;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace Pditine.GamePlay.UI
 {
+    [Obsolete("不再使用CD")]
     public class PlayerCD : MonoBehaviour
     {
         [SerializeField]private Image _cdUI;

@@ -10,7 +10,7 @@ namespace Pditine.GamePlay.Buff
         public override void Trigger(BuffInfo buffInfo)
         {
             var thePlayer = buffInfo.target;
-            thePlayer.initialVelocityMulAdjustment *= initialVelocityMulAdjustment;
+            //thePlayer.initialVelocityMulAdjustment *= initialVelocityMulAdjustment;
         }
     }
 }

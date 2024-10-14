@@ -8,8 +8,9 @@ namespace Pditine.Data.Ass
     {
         [SerializeField] private int id;
         [SerializeField] private int hp;
-        [SerializeField] private float initialVelocity;
+        // [SerializeField] private float initialVelocity;
         [SerializeField] private float weight;
+        [SerializeField] private float energy;
         [SerializeField] private GameObject prototype;
         [SerializeField] private Sprite portraitBlue;
         [SerializeField] private Sprite portraitYellow;
@@ -18,8 +19,9 @@ namespace Pditine.Data.Ass
         
         public int ID => id;
         public int HP => hp;
-        public float InitialVelocity => initialVelocity;
+        // public float InitialVelocity => initialVelocity;
         public float Weight=>weight;
+        public float Energy => energy;
         public GameObject Prototype=>prototype;
         public Sprite PortraitBlue => portraitBlue;
         public Sprite PortraitYellow => portraitYellow;
