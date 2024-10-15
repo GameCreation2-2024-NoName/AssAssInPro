@@ -1,5 +1,5 @@
 ﻿using Pditine.Data.Ass;
-using Pditine.Scripts.Data.Ass;
+using Pditine.Data.Thorn;
 using Sirenix.OdinInspector;
 using TMPro;
 using UnityEngine;

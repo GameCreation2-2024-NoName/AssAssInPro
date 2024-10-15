@@ -1,9 +1,11 @@
 using System.Collections.Generic;
 using Pditine.Data.GameLevel;
+using Pditine.Tool;
 using UnityEngine;
 
 namespace Pditine.Data.GameModule
 {
+    [Configurable("游戏模式")]
     [CreateAssetMenu(fileName = "GameModelData",menuName = "AssAssIn/GameModelData")]
     public class GameModelBase : ScriptableObject
     {

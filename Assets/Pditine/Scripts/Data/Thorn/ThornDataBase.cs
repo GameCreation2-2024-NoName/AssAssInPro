@@ -1,9 +1,9 @@
-﻿using System;
+﻿using Pditine.Tool;
 using UnityEngine;
-using UnityEngine.Serialization;
 
-namespace Pditine.Scripts.Data.Ass
+namespace Pditine.Data.Thorn
 {
+    [Configurable("刺")]
     [CreateAssetMenu(fileName = "ThornData",menuName = "AssAssIn/Thorn")]
     public class ThornDataBase : ScriptableObject
     {

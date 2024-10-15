@@ -1,8 +1,10 @@
 ﻿using Pditine.Data.GameModule;
+using Pditine.Tool;
 using UnityEngine;
 
 namespace Pditine.Scripts.Data.DatePassing
 {
+    [Configurable("运行时游戏数据")]
     [CreateAssetMenu(fileName = "PassingData",menuName = "AssAssIn/PassingData")]
     //用于跨场景传递数据
     public class PassingData : ScriptableObject

@@ -1,8 +1,10 @@
-﻿using UnityEngine;
+﻿using Pditine.Tool;
+using UnityEngine;
 using UnityEngine.Serialization;
 
 namespace Pditine.Data.Ass
 {
+    [Configurable("Ass")]
     [CreateAssetMenu(fileName = "AssData",menuName = "AssAssIn/Ass")]
     public class AssDataBase : ScriptableObject
     {

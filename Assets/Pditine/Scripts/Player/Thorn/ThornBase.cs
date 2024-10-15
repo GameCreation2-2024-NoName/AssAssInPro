@@ -2,7 +2,7 @@
 using Pditine.Collide;
 using Pditine.Collide.CollideEvent;
 using Pditine.Component;
-using Pditine.Scripts.Data.Ass;
+using Pditine.Data.Thorn;
 using PurpleFlowerCore.Utility;
 using UnityEngine;
 using UnityEngine.Events;

@@ -47,5 +47,46 @@ namespace PurpleFlowerCore
             Debug.LogError($"[PFC_Error]:<color=#{ColorUtility.ToHtmlStringRGB(color)}>{content}</color>"); 
 #endif
         }
+        
+        public static void Info(string channel, object content)
+        {
+#if PFC_LOG_INFO
+            Debug.Log($"[{channel}]:<color=#ffffff>{content}</color>"); 
+#endif
+        }
+        public static void Info(string channel, object content,Color color)
+        {
+#if PFC_LOG_INFO
+            Debug.Log($"[{channel}]:<color=#{ColorUtility.ToHtmlStringRGB(color)}>{content}</color>"); 
+#endif
+        }
+        
+        public static void Warning(string channel, object content)
+        {
+#if PFC_LOG_WARNING
+            Debug.LogWarning($"[{channel}]:<color=#ffffff>{content}</color>"); 
+#endif
+        }
+        
+        public static void Warning(string channel, object content,Color color)
+        {
+#if PFC_LOG_WARNING
+            Debug.LogWarning($"[{channel}]:<color=#{ColorUtility.ToHtmlStringRGB(color)}>{content}</color>"); 
+#endif
+        }
+        
+        public static void Error(string channel, object content)
+        {
+#if PFC_LOG_ERROR
+            Debug.LogError($"[{channel}]:<color=#ffffff>{content}</color>"); 
+#endif
+        }
+        
+        public static void Error(string channel, object content,Color color)
+        {
+#if PFC_LOG_ERROR
+            Debug.LogError($"[{channel}]:<color=#{ColorUtility.ToHtmlStringRGB(color)}>{content}</color>"); 
+#endif
+        }
     }
 }
