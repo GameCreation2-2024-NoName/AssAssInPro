@@ -15,7 +15,9 @@ namespace Pditine.Tool
 {
     public class DataController : MonoBehaviour
     {
-        [SerializeField] private List<ThornDataBase> 刺 = new();
-        [SerializeField] private List<AssDataBase> Ass = new();
+        // [SerializeField] private List<ThornDataBase> 刺 = new();
+        // [SerializeField] private List<AssDataBase> Ass = new();
+        [SerializeField] private List<ScriptableObject> configData = new();
+        public List<ScriptableObject> ConfigData => configData;
     }
 }

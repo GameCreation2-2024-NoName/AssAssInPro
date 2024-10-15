@@ -121,7 +121,8 @@ namespace Pditine.Player
 
         #region 事件
 
-        public event Action<float> OnChangeCD;
+        // public event Action<float> OnChangeCD;
+        public event Action<float,float> OnChangeEnergy;
         public event Action<int> OnTryChangeHP; // 血量变化量
         public event Action<int, int> OnChangeHP; // 当前血量 玩家id
         public event Action OnDestroyed;
@@ -188,6 +189,7 @@ namespace Pditine.Player
             _theThorn = theThorn;
             _currentHP = HP;
             _friction = Weight;
+            _currentEnergy = Energy;
             arrow.Init(id);
 
             OnInit();
@@ -219,6 +221,7 @@ namespace Pditine.Player
             _chargeTime += Time.deltaTime;
             if (_currentEnergy <= 0) _currentEnergy = 0;
             if (_chargeTime * energyRecoverSpeed >= Energy) _chargeTime = Energy / energyRecoverSpeed;
+            OnChangeEnergy?.Invoke(_currentEnergy, Energy);
         }
 
         public virtual void Dash()
@@ -239,6 +242,7 @@ namespace Pditine.Player
             Debug.Log("[RecoverEnergy]"+_currentEnergy);
             _currentEnergy += Time.deltaTime * energyRecoverSpeed;
             if (_currentEnergy >= Energy) _currentEnergy = Energy;
+            OnChangeEnergy?.Invoke(_currentEnergy, Energy);
         }
 
         private void ReduceSpeed()

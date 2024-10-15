@@ -10,8 +10,10 @@ namespace Pditine.GamePlay.UI
 {
     public class UIManager : MonoBehaviour
     {
-        [SerializeField] private PlayerCD cd1;
-        [SerializeField] private PlayerCD cd2;
+        // [SerializeField] private PlayerCD cd1;
+        // [SerializeField] private PlayerCD cd2;
+        [SerializeField] private EnergySlider energySlider1;
+        [SerializeField] private EnergySlider energySlider2;
         [SerializeField] private HeadPicture head1;
         [SerializeField] private HeadPicture head2;
         [SerializeField] private PlayerHP hp1;
@@ -63,12 +65,14 @@ namespace Pditine.GamePlay.UI
         {
             if (thePlayer.ID == 1)
             {
-                cd1.Init(thePlayer);
+                // cd1.Init(thePlayer);
+                energySlider1.Init(thePlayer);
                 head1.Init(thePlayer);
                 hp1.Init(thePlayer);
             }else if (thePlayer.ID == 2)
             {
-                cd2.Init(thePlayer);
+                // cd2.Init(thePlayer);
+                energySlider2.Init(thePlayer);
                 head2.Init(thePlayer);
                 hp2.Init(thePlayer);
             }else PFCLog.Error("玩家ID错误");

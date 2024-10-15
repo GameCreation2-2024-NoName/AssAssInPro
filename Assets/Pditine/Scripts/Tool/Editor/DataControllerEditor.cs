@@ -4,6 +4,7 @@
 // Date: 2024_10_14
 // -------------------------------------------------
 #if UNITY_EDITOR
+using PurpleFlowerCore;
 using UnityEditor;
 using UnityEngine;
 
@@ -13,11 +14,13 @@ namespace Pditine.Tool
     [CustomEditor(typeof(DataController))]
     public class DataControllerEditor : Editor
     {
+        public DataController DataController => target as DataController;
+        public ScriptableObject ScriptableObject => target as ScriptableObject;
         public override void OnInspectorGUI()
         {
             Head();
             base.OnInspectorGUI();
-            Function();
+            //PFCLog.Info();
         }
 
         private void Head()
@@ -27,24 +30,15 @@ namespace Pditine.Tool
             fontStyle.normal.textColor = Color.green;
             GUILayout.Label("综合数值控制器", fontStyle);
         }
-        
-        private void Function()
+
+        private void ShowData()
         {
-            // GUILayout.Space(20);
-            // GUILayout.Label("功能区", EditorStyles.boldLabel);
-            // GUILayout.Space(10);
-            // GUILayout.BeginHorizontal();
-            // if (GUILayout.Button("保存数据"))
-            // {
-            //     ((DataController) target).SaveData();
-            // }
-            //
-            // if (GUILayout.Button("加载数据"))
-            // {
-            //     ((DataController) target).LoadData();
-            // }
-            //
-            // GUILayout.EndHorizontal();
+            
+        }
+        
+        private void Refresh()
+        {
+
         }
     }
 
