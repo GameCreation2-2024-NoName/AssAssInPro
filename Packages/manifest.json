@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "com.pditine.purpleflowercore": "https://github.com/Pditine/PurpleFlowerCore.git?path=src",
     "com.unity.cinemachine": "2.9.7",
     "com.unity.collab-proxy": "2.0.5",
     "com.unity.feature.2d": "2.0.0",
