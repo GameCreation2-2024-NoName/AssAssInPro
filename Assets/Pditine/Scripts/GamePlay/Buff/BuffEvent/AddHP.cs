@@ -1,7 +1,9 @@
-﻿using UnityEngine;
+﻿using PurpleFlowerCore.Utility;
+using UnityEngine;
 
 namespace Pditine.GamePlay.Buff
 {
+    [Configurable("Buff/BuffEvent")]
     [CreateAssetMenu(fileName = "AddHP",menuName = "AssAssIn/BuffEvent/AddHP")]
     public class AddHP : BuffEvent
     {

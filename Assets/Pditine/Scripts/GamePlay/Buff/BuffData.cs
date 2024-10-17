@@ -1,4 +1,5 @@
 ﻿using Org.BouncyCastle.Pqc.Crypto.Ntru;
+using PurpleFlowerCore.Utility;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
@@ -23,6 +24,7 @@ namespace Pditine.GamePlay.Buff
         Clear       // 全部移除
     }
 
+    [Configurable("Buff/BuffData")]
     [CreateAssetMenu(fileName = "BuffData", menuName = "AssAssIn/BuffData")]
     public class BuffData : ScriptableObject
     {

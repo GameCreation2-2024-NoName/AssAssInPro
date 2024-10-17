@@ -1,8 +1,10 @@
 ﻿using System;
 using UnityEngine;
+using PurpleFlowerCore.Utility;
 
 namespace Pditine.GamePlay.Buff
 {
+    [Configurable("Buff/BuffEvent")]
     [CreateAssetMenu(fileName = "SetIsInvincible",menuName = "AssAssIn/BuffEvent/SetIsInvincible")]
     public class SetIsInvincible : BuffEvent
     {

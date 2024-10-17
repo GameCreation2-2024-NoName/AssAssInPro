@@ -1,8 +1,10 @@
 ﻿using Pditine.Player;
 using UnityEngine;
+using PurpleFlowerCore.Utility;
 
 namespace Pditine.GamePlay.Buff
 {
+    [Configurable("Buff/BuffEvent")]
     [CreateAssetMenu(fileName = "MulInitialVelocity",menuName = "AssAssIn/BuffEvent/MulInitialVelocity")]
     public class MulInitialVelocity : BuffEvent
     {

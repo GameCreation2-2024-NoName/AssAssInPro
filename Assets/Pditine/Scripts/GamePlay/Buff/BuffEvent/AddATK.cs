@@ -1,7 +1,9 @@
-﻿using UnityEngine;
+﻿using PurpleFlowerCore.Utility;
+using UnityEngine;
 
 namespace Pditine.GamePlay.Buff
 {
+    [Configurable("Buff/BuffEvent")]
     [CreateAssetMenu(fileName = "AddATK",menuName = "AssAssIn/BuffEvent/AddATK")]
     public class AddATK : BuffEvent
     {
