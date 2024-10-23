@@ -25,7 +25,7 @@ namespace Pditine.Collide.CollideEvent
                 thePlayer.CurrentDirection = -thePlayer.CurrentDirection;
                 theBarrier.CurrentSpeed = thePlayer.CurrentSpeed/1.5f;
                 thePlayer.CurrentSpeed /= 1.2f;
-                thePlayer.HitFeedback();
+                thePlayer.VFX.Play("Hit");
                 AAIAudioManager.Instance.PlayEffect("碰撞音效1");
         }
     }

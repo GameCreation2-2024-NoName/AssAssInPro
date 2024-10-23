@@ -5,6 +5,7 @@ using Pditine.Audio;
 using Pditine.Component;
 using Pditine.Player.Ass;
 using Pditine.Player.Thorn;
+using Pditine.Player.VFX;
 using PurpleFlowerCore;
 using PurpleFlowerCore.Utility;
 using Sirenix.OdinInspector;
@@ -106,8 +107,6 @@ namespace Pditine.Player
         public InputHandler InputHandler =>
             id == 1 ? PlayerManager.Instance.Handler1 : PlayerManager.Instance.Handler2;
 
-        [SerializeField] private DirectionArrow arrow;
-
         #endregion
 
         #region 其他变量
@@ -132,7 +131,10 @@ namespace Pditine.Player
 
         #region 特效
 
-        [Title("Effect")] [SerializeField] private MMF_Player hitFeedback;
+        [SerializeField] private PlayerVFX vfx;
+        public PlayerVFX VFX => vfx;
+
+        // [Title("Effect")] [SerializeField] private MMF_Player hitFeedback;
         [SerializeField] private MMF_Player loseFeedbackBlue;
 
         [SerializeField] private MMF_Player loseFeedbackYellow;
@@ -190,8 +192,7 @@ namespace Pditine.Player
             _currentHP = HP;
             _friction = Weight;
             _currentEnergy = Energy;
-            arrow.Init(id);
-
+            vfx.Init(this);
             OnInit();
         }
 
@@ -209,7 +210,7 @@ namespace Pditine.Player
             else
                 InputDirection = direction;
 
-            arrow.ChangeDirection(InputDirection);
+            OnChangeCurrentDirection?.Invoke(InputDirection);
         }
 
         protected virtual void Charge()
@@ -297,7 +298,7 @@ namespace Pditine.Player
                 LoseFeedback();
                 _theThorn.gameObject.SetActive(false);
                 _theAss.gameObject.SetActive(false);
-                arrow.gameObject.SetActive(false);
+                //arrow.gameObject.SetActive(false);
             });
 
             OnDestroyed?.Invoke();
@@ -325,7 +326,7 @@ namespace Pditine.Player
             energyAddAdjustment = 0;
         }
 
-        public void HitFeedback() => hitFeedback.PlayFeedbacks();
+        // public void HitFeedback() => hitFeedback.PlayFeedbacks();
 
         public void BeHitAssFeedback()
         {

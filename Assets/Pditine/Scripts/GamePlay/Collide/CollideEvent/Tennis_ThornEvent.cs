@@ -30,7 +30,7 @@ namespace Pditine.Collide.CollideEvent
             theTennis.currentSpeed = res.v1Prime.magnitude;
             thePlayer.CurrentSpeed = res.v2Prime.magnitude;
             
-            thePlayer.HitFeedback();
+            thePlayer.VFX.Play("Hit");
             AAIAudioManager.Instance.PlayEffect("碰撞音效1");
         }
     }

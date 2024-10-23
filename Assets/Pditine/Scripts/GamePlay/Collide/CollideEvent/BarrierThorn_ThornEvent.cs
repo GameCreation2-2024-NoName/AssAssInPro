@@ -30,7 +30,7 @@ namespace Pditine.Collide.CollideEvent
             thePlayer.CurrentSpeed = res.v1Prime.magnitude;
             theBarrier.CurrentSpeed = res.v2Prime.magnitude;
             
-            thePlayer.HitFeedback();
+            thePlayer.VFX.Play("Hit");
             theBarrier.HitFeedback.PlayFeedbacks();
             AAIAudioManager.Instance.PlayEffect("碰撞音效1");
         }

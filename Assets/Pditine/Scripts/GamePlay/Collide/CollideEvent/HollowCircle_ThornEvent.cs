@@ -27,7 +27,7 @@ namespace Pditine.Collide.CollideEvent
             thePlayer.CurrentDirection = res.v1Prime.normalized;
             thePlayer.CurrentSpeed = res.v1Prime.magnitude;
             
-            thePlayer.HitFeedback();
+            thePlayer.VFX.Play("Hit");
             AAIAudioManager.Instance.PlayEffect("碰撞音效1");
         }
     }

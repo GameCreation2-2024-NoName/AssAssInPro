@@ -17,7 +17,7 @@ namespace Pditine.Collide.CollideEvent
             var originDirection = thePlayer.CurrentDirection;
             Vector2 Out_Direction = Vector2.Reflect(originDirection,info.Collision2D.contacts[0].normal);
             thePlayer.CurrentDirection = Out_Direction;
-            thePlayer.HitFeedback();
+            thePlayer.VFX.Play("Hit");
             AAIAudioManager.Instance.PlayEffect("碰撞音效1");
         }
     }
