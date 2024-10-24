@@ -2,6 +2,7 @@
 using Pditine.Player.Thorn;
 using Pditine.Utility;
 using PurpleFlowerCore;
+using UnityEngine;
 
 namespace Pditine.Collide.CollideEvent
 {
@@ -26,13 +27,19 @@ namespace Pditine.Collide.CollideEvent
                 thePlayer2.CurrentDirection * thePlayer2.CurrentSpeed,
                 thePlayer1.Weight, thePlayer2.Weight, thePlayer1.transform.position, thePlayer2.transform.position);
             
+            (Vector3,Vector2) feedBackData1 = (info.Collision2D.contacts[0].point, 
+                PhysicsUtility.SparkDir(thePlayer1.CurrentDirection, thePlayer2.CurrentDirection,thePlayer1.CurrentSpeed * 5));
+            thePlayer1.VFX.Play("Hit",feedBackData1);
+            (Vector3,Vector2) feedBackData2 = (info.Collision2D.contacts[0].point, 
+                PhysicsUtility.SparkDir(thePlayer2.CurrentDirection, thePlayer1.CurrentDirection,thePlayer2.CurrentSpeed * 5));
+            thePlayer2.VFX.Play("Hit",feedBackData2);
+            
             thePlayer1.CurrentDirection = res.v1Prime.normalized;
             thePlayer2.CurrentDirection = res.v2Prime.normalized;
             thePlayer1.CurrentSpeed = res.v1Prime.magnitude;
             thePlayer2.CurrentSpeed = res.v2Prime.magnitude;
             
-            thePlayer1.VFX.Play("Hit");
-            thePlayer2.VFX.Play("Hit");
+
             AAIAudioManager.Instance.PlayEffect("碰撞音效1");
         }
     }

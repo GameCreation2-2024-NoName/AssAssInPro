@@ -1114,7 +1114,7 @@ MonoBehaviour:
   mainCamera: {fileID: 433400335}
   player1Camera: {fileID: 1901391607}
   player2Camera: {fileID: 1097599560}
-  motionTime: 1
+  motionTime: 0.3
   collideEffectOn: 1
   originCameraSize: 250
   speed: 0.13

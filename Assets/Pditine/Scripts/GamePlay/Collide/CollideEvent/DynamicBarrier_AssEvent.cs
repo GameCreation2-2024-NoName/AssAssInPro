@@ -25,12 +25,16 @@ namespace Pditine.Collide.CollideEvent
                     theBarrier.Direction * theBarrier.CurrentSpeed,
                     thePlayer.Weight, theBarrier.Weight, thePlayer.transform.position, theBarrier.transform.position);
             
+            (Vector3,Vector2) feedBackData = (info.Collision2D.contacts[0].point, 
+                PhysicsUtility.SparkDir(thePlayer.CurrentDirection,theBarrier.Direction,thePlayer.CurrentSpeed * 5));
+            thePlayer.VFX.Play("Hit",feedBackData);
+            
             thePlayer.CurrentDirection = res.v1Prime.normalized;
             theBarrier.Direction = res.v2Prime.normalized;
             thePlayer.CurrentSpeed = res.v1Prime.magnitude;
             theBarrier.CurrentSpeed = res.v2Prime.magnitude;
             
-            thePlayer.VFX.Play("Hit");
+
             AAIAudioManager.Instance.PlayEffect("碰撞音效1");
         }
     }
