@@ -3,9 +3,11 @@ using UnityEngine;
 using System.Collections;
 using Pditine.Player;
 using PurpleFlowerCore;
+using PurpleFlowerCore.Utility;
 
 namespace Pditine.GamePlay.Buff
 {
+    [Configurable("Buff/BuffEvent")]
     [CreateAssetMenu(fileName = "AddScale",menuName = "AssAssIn/BuffEvent/AddScale")]
     public class AddScale : BuffEvent
     {

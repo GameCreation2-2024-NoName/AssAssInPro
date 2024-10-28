@@ -24,10 +24,13 @@ namespace Pditine.Collide.CollideEvent
                     theCircle.GetTangent(info.Collision2D.contacts[0].point) * theCircle.CalculatingSpeed,
                     thePlayer.Weight, theCircle.Weight, thePlayer.transform.position, theCircle.transform.position);
             
+            (Vector3,Vector2) feedBackData = (info.Collision2D.contacts[0].point, 
+                PhysicsUtility.SparkDir(thePlayer.CurrentDirection,theCircle.GetTangent(info.Collision2D.contacts[0].point) * theCircle.CalculatingSpeed,thePlayer.CurrentSpeed * 5));
+            thePlayer.VFX.Play("Hit",feedBackData);
+            
             thePlayer.CurrentDirection = res.v1Prime.normalized;
             thePlayer.CurrentSpeed = res.v1Prime.magnitude;
             
-            thePlayer.HitFeedback();
             AAIAudioManager.Instance.PlayEffect("碰撞音效1");
         }
     }

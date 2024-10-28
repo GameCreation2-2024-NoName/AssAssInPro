@@ -1,6 +1,8 @@
 ﻿using Pditine.Audio;
 using Pditine.Map;
 using Pditine.Player.Thorn;
+using Pditine.Utility;
+using PurpleFlowerCore;
 using UnityEngine;
 
 namespace Pditine.Collide.CollideEvent
@@ -17,9 +19,12 @@ namespace Pditine.Collide.CollideEvent
         {
             var thePlayer = (collider2 as ThornBase).ThePlayer;
             var originDirection = thePlayer.CurrentDirection;
-            Vector2 Out_Direction = Vector2.Reflect(originDirection,info.Collision2D.contacts[0].normal);
+            var normal = info.Collision2D.contacts[0].normal;
+            Vector2 Out_Direction = Vector2.Reflect(originDirection,normal);
             thePlayer.CurrentDirection = Out_Direction;
-            thePlayer.HitFeedback();
+            (Vector3,Vector2) feedBackData = (info.Collision2D.contacts[0].point, 
+                PhysicsUtility.SparkDir(originDirection,normal,thePlayer.CurrentSpeed * 5));
+            thePlayer.VFX.Play("Hit",feedBackData);
             AAIAudioManager.Instance.PlayEffect("碰撞音效1");
         }
     }

@@ -1,7 +1,9 @@
 ﻿using UnityEngine;
+using PurpleFlowerCore.Utility;
 
 namespace Pditine.GamePlay.Buff
 {
+    [Configurable("Buff/BuffEvent")]
     [CreateAssetMenu(fileName = "SetFlash",menuName = "AssAssIn/BuffEvent/SetFlash")]
     public class SetFlash : BuffEvent
     {

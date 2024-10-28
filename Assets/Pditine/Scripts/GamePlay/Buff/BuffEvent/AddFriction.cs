@@ -1,7 +1,9 @@
-﻿using UnityEngine;
+﻿using PurpleFlowerCore.Utility;
+using UnityEngine;
 
 namespace Pditine.GamePlay.Buff
 {
+    [Configurable("Buff/BuffEvent")]
     [CreateAssetMenu(fileName = "AddFriction",menuName = "AssAssIn/BuffEvent/AddFriction")]
     public class AddFriction : BuffEvent
     {

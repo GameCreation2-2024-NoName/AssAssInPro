@@ -75,7 +75,7 @@ namespace Pditine.Map
         {
             if (_ready) return;
             if (thePlayer.isInvincible) return;
-            thePlayer.BeHitAssFeedback();
+            thePlayer.VFX[VFXName.AssHit].Play();
             thePlayer.ChangeHP(-atk);
             
             BuffManager.Instance.AttachBuff(new BuffInfo(DataManager.Instance.GetBuffData(9),null,thePlayer));

@@ -25,13 +25,16 @@ namespace Pditine.Collide.CollideEvent
                     thePlayer.CurrentDirection * thePlayer.CurrentSpeed,
                     thePlayer.Weight, theTennis.Weight, thePlayer.transform.position, theTennis.transform.position);
             
+            (Vector3,Vector2) feedBackData = (info.Collision2D.contacts[0].point, 
+                PhysicsUtility.SparkDir(thePlayer.CurrentDirection,theTennis.direction,thePlayer.CurrentSpeed * 5));
+            thePlayer.VFX.Play("Hit",feedBackData);
+            
             theTennis.direction = res.v1Prime.normalized;
             theTennis.direction = new Vector3(0, theTennis.direction.y, 0);
             thePlayer.CurrentDirection = res.v2Prime.normalized;
             theTennis.currentSpeed = res.v1Prime.magnitude;
             thePlayer.CurrentSpeed = res.v2Prime.magnitude;
             
-            thePlayer.HitFeedback();
             AAIAudioManager.Instance.PlayEffect("碰撞音效1");
         }
     }

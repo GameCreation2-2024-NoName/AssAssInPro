@@ -1,11 +1,10 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using Hmxs.Scripts;
 using Pditine.Data;
 using PurpleFlowerCore;
+using PurpleFlowerCore.Utility;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 namespace Pditine.MainMenu
 {

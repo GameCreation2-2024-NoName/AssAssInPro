@@ -2,7 +2,6 @@ using System;
 using Hmxs.Scripts;
 using MoreMountains.Feedbacks;
 using Pditine.Audio;
-using Pditine.Component;
 using Pditine.Player.Ass;
 using Pditine.Player.Thorn;
 using PurpleFlowerCore;
@@ -65,11 +64,14 @@ namespace Pditine.Player
         private int _currentHP;
         public int CurrentHP => _currentHP;
 
-        private float _currentEnergy;
+        [Inspectable]private float _currentEnergy;
         public float CurrentEnergy => _currentEnergy;
 
-        private float _chargeTime;
-        public float ChargeTime => _chargeTime;
+        private float _battery = 25;
+        private bool _chargeDone;
+
+        [Inspectable]private float _currentBattery;
+        public float CurrentBattery => _currentBattery;
         
         [SerializeField] private float energyRecoverSpeed;
 
@@ -106,8 +108,6 @@ namespace Pditine.Player
         public InputHandler InputHandler =>
             id == 1 ? PlayerManager.Instance.Handler1 : PlayerManager.Instance.Handler2;
 
-        [SerializeField] private DirectionArrow arrow;
-
         #endregion
 
         #region 其他变量
@@ -132,7 +132,10 @@ namespace Pditine.Player
 
         #region 特效
 
-        [Title("Effect")] [SerializeField] private MMF_Player hitFeedback;
+        [SerializeField] private PlayerVFX vfx;
+        public PlayerVFX VFX => vfx;
+
+        // [Title("Effect")] [SerializeField] private MMF_Player hitFeedback;
         [SerializeField] private MMF_Player loseFeedbackBlue;
 
         [SerializeField] private MMF_Player loseFeedbackYellow;
@@ -190,8 +193,7 @@ namespace Pditine.Player
             _currentHP = HP;
             _friction = Weight;
             _currentEnergy = Energy;
-            arrow.Init(id);
-
+            vfx.Init(this);
             OnInit();
         }
 
@@ -209,37 +211,48 @@ namespace Pditine.Player
             else
                 InputDirection = direction;
 
-            arrow.ChangeDirection(InputDirection);
+            OnChangeCurrentDirection?.Invoke(InputDirection);
         }
 
         protected virtual void Charge()
         {
             if (!canMove) return;
             if (_isPause) return;
-            Debug.Log("[Charge]"+_currentEnergy);
-            _currentEnergy -= Time.deltaTime * energyRecoverSpeed;
-            _chargeTime += Time.deltaTime;
+            //todo: 消耗速度?
+            if (_chargeDone) return;
             if (_currentEnergy <= 0) _currentEnergy = 0;
-            if (_chargeTime * energyRecoverSpeed >= Energy) _chargeTime = Energy / energyRecoverSpeed;
+            if (_currentBattery >= _battery)
+            {
+                VFX[VFXName.Charging].Stop();
+                VFX[VFXName.ChargeDone].Play();
+                _chargeDone = true;
+                _currentBattery = _battery;
+                
+            }
+            else
+            {
+                VFX[VFXName.Charging].Play();
+                _currentEnergy -= Time.deltaTime * energyRecoverSpeed * 1.5f;
+                _currentBattery += Time.deltaTime * energyRecoverSpeed * 1.5f;
+            }
             OnChangeEnergy?.Invoke(_currentEnergy, Energy);
         }
 
         public virtual void Dash()
         {
+            VFX[VFXName.ChargeDone].Stop();
+            VFX[VFXName.Charging].Stop();
             if (!canMove) return;
             if (_isPause) return;
-            // if (_currentCD > 0) return;
+            _chargeDone = false;
             AAIAudioManager.Instance.PlayEffect("加速音效");
             _currentDirection = InputDirection;
-            // CurrentSpeed = InitialVelocity;
             CurrentSpeed = CalculateSpeed();
-            _chargeTime = 0;
-            // _currentCD = CD;
+            _currentBattery = 0;
         }
         
         private void RecoverEnergy()
         {
-            Debug.Log("[RecoverEnergy]"+_currentEnergy);
             _currentEnergy += Time.deltaTime * energyRecoverSpeed;
             if (_currentEnergy >= Energy) _currentEnergy = Energy;
             OnChangeEnergy?.Invoke(_currentEnergy, Energy);
@@ -253,39 +266,26 @@ namespace Pditine.Player
 
         private void UpdateTransform()
         {
-            Debug.Log("[UpdateTransform]"+CurrentSpeed);
             transform.position += (Vector3)_currentDirection * (CurrentSpeed * Time.deltaTime);
             transform.right = Vector3.Lerp(transform.right, _currentDirection, rotateSpeed);
         }
         
         protected virtual float CalculateSpeed()
         {
-            return _chargeTime * SpeedCoefficient;
+            return _currentBattery * SpeedCoefficient * 0.05f;
         }
-
-        // private void UpdateCD()
-        // {
-        //     _currentCD -= Time.deltaTime;
-        //     if (_currentCD <= 0) _currentCD = 0;
-        //     OnChangeCD?.Invoke(_currentCD / CD);
-        // }
 
         public void ChangeHP(int delta)
         {
-            //Debug.Log("change hp :"+delta);
-
             if (delta < 0 && isInvincible)
             {
                 OnTryChangeHP?.Invoke(delta);
                 return;
             }
-
             OnTryChangeHP?.Invoke(delta);
             _currentHP += delta;
             if (_currentHP > HP) _currentHP = HP;
             OnChangeHP?.Invoke(_currentHP, ID);
-            //Debug.Log($"{_currentHP},{HP}");
-            //if (_currentCD > HP) _currentCD = HP;
         }
 
         public void BeDestroy()
@@ -294,10 +294,9 @@ namespace Pditine.Player
 
             DelayUtility.Delay(0.5f, () =>
             {
-                LoseFeedback();
+                VFX[VFXName.Dead].Play();
                 _theThorn.gameObject.SetActive(false);
                 _theAss.gameObject.SetActive(false);
-                arrow.gameObject.SetActive(false);
             });
 
             OnDestroyed?.Invoke();
@@ -306,37 +305,20 @@ namespace Pditine.Player
         public void ResetProperty()
         {
             //todo:这数值系统太抽象了,需要重新设计一下
-            // initialVelocityMulAdjustment = 1;
             speedCoefficientMulAdjustment = 1;
             atkMulAdjustment = 1;
-            //cdMulAdjustment = 1;
             weightMulAdjustment = 1;
             energyMulAdjustment = 1;
             frictionMulAdjustment = 1;
             hpMulAdjustment = 1;
 
             atkAddAdjustment = 0;
-            //cdAddAdjustment = 0;
             frictionAddAdjustment = 0;
             hpAddAdjustment = 0;
-            // initialVelocityAddAdjustment = 0;
             speedCoefficientAddAdjustment = 0;
             weightAddAdjustment = 0;
             energyAddAdjustment = 0;
         }
-
-        public void HitFeedback() => hitFeedback.PlayFeedbacks();
-
-        public void BeHitAssFeedback()
-        {
-            var mmfPlayer = id == 1 ? beHitAssFeedbackBlue : beHitAssFeedbackYellow;
-            mmfPlayer.PlayFeedbacks();
-        }
-
-        public void LoseFeedback()
-        {
-            var mmfPlayer = id == 1 ? loseFeedbackBlue : loseFeedbackYellow;
-            mmfPlayer.PlayFeedbacks();
-        }
+        
     }
 }

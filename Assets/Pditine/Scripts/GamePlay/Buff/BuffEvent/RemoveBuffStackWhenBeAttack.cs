@@ -1,8 +1,10 @@
 ﻿using PurpleFlowerCore;
 using UnityEngine;
+using PurpleFlowerCore.Utility;
 
 namespace Pditine.GamePlay.Buff
 {
+    [Configurable("Buff/BuffEvent")]
     [CreateAssetMenu(fileName = "RemoveBuffStackWhenBeAttack",menuName = "AssAssIn/BuffEvent/RemoveBuffStackWhenBeAttack")]
     public class RemoveBuffStackWhenBeAttack : BuffEvent
     {

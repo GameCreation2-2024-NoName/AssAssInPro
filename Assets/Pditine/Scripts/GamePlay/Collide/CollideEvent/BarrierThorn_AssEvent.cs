@@ -2,6 +2,7 @@
 using Pditine.Data;
 using Pditine.GamePlay.Buff;
 using Pditine.Map;
+using Pditine.Player;
 using Pditine.Player.Ass;
 using Pditine.Utility;
 using PurpleFlowerCore;
@@ -23,7 +24,7 @@ namespace Pditine.Collide.CollideEvent
             var theBarrier = (collider1 as BarrierThorn).TheBarrier;
 
             theBarrier.HitFeedback.PlayFeedbacks();
-            thePlayer.BeHitAssFeedback();
+            thePlayer.VFX[VFXName.AssHit].Play();
             thePlayer.ChangeHP(-theBarrier.ATK);
             
             BuffManager.Instance.AttachBuff(new BuffInfo(DataManager.Instance.GetBuffData(9),null,thePlayer));

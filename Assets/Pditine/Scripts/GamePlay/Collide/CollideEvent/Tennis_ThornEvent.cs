@@ -19,6 +19,8 @@ namespace Pditine.Collide.CollideEvent
             var theTennis = collider1 as Tennis;
             var thePlayer = (collider2 as ThornBase).ThePlayer;
             
+            Vector3 originDirection = thePlayer.CurrentDirection;
+            
             var res =
                 PhysicsUtility.ElasticCollision(theTennis.direction * theTennis.currentSpeed,
                     thePlayer.CurrentDirection * thePlayer.CurrentSpeed,
@@ -30,7 +32,9 @@ namespace Pditine.Collide.CollideEvent
             theTennis.currentSpeed = res.v1Prime.magnitude;
             thePlayer.CurrentSpeed = res.v2Prime.magnitude;
             
-            thePlayer.HitFeedback();
+            (Vector3,Vector2) feedBackData = (info.Collision2D.contacts[0].point, 
+                PhysicsUtility.SparkDir(originDirection,info.Collision2D.contacts[0].normal,thePlayer.CurrentSpeed * 5));
+            thePlayer.VFX.Play("Hit",feedBackData);
             AAIAudioManager.Instance.PlayEffect("碰撞音效1");
         }
     }

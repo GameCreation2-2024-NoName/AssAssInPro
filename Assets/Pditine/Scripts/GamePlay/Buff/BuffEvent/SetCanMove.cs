@@ -1,7 +1,9 @@
 ﻿using UnityEngine;
+using PurpleFlowerCore.Utility;
 
 namespace Pditine.GamePlay.Buff
 {
+    [Configurable("Buff/BuffEvent")]
     [CreateAssetMenu(fileName = "SetCanMove",menuName = "AssAssIn/BuffEvent/SetCanMove")]
     public class SetCanMove : BuffEvent
     {

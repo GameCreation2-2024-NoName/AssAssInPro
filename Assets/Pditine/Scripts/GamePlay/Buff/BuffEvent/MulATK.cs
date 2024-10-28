@@ -1,8 +1,10 @@
 ﻿using Pditine.Player;
 using UnityEngine;
+using PurpleFlowerCore.Utility;
 
 namespace Pditine.GamePlay.Buff
 {
+    [Configurable("Buff/BuffEvent")]
     [CreateAssetMenu(fileName = "MulATKEvent",menuName = "AssAssIn/BuffEvent/MulATK")]
     public class MulATK : BuffEvent
     {

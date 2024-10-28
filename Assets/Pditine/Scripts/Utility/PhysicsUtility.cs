@@ -62,5 +62,21 @@ namespace Pditine.Utility
             return difference.normalized;
         }
         
+        /// <summary>
+        /// 获得碰撞后，火花特效的方向
+        /// </summary>
+        /// <param name="velocity">入射角方向</param>
+        /// <param name="normal"></param>
+        /// <returns></returns>
+        public static Vector2 SparkDir(Vector2 velocity, Vector2 normal, float sparkSpeed = 30)
+        {
+            var plantDir = new Vector2(-normal.y, normal.x);
+            if(Vector2.Dot(plantDir, -velocity) < 0)
+            {
+                plantDir = -plantDir;
+            }
+            return (-velocity + plantDir) / 2 * sparkSpeed;
+        }
+        
     }
 }
