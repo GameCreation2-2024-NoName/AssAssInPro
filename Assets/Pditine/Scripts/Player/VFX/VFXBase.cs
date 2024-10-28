@@ -5,14 +5,16 @@
 // -------------------------------------------------
 
 using System;
+using MoreMountains.Feedbacks;
 using UnityEngine;
 
 namespace Pditine.Player.VFX
 {
     public abstract class VFXBase : MonoBehaviour
     {
+        protected bool isPlayering;
         public abstract void Init(PlayerController thePlayer);
-        public abstract void Play(object data, Action callback);
-        public abstract void Stop(object data, Action callback);
+        public abstract void Play(object data = null, Action callback = null);
+        public abstract void Stop(object data = null, Action callback = null);
     }
 }

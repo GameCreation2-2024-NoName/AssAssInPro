@@ -3,6 +3,7 @@ using Pditine.Data;
 using Pditine.GamePlay.Buff;
 using Pditine.GamePlay.Camera;
 using Pditine.Map;
+using Pditine.Player;
 using Pditine.Player.Ass;
 using Pditine.Player.Thorn;
 using Pditine.Utility;
@@ -28,7 +29,7 @@ namespace Pditine.Collide.CollideEvent
             
             AAIAudioManager.Instance.PlayEffect("碰撞音效1");
             
-            thePlayer.BeHitAssFeedback();
+            thePlayer.VFX[VFXName.AssHit].Play();
             thePlayer.ChangeHP(-theThorn.ATK);
             
             BuffManager.Instance.AttachBuff(new BuffInfo(DataManager.Instance.GetBuffData(9),null,thePlayer));

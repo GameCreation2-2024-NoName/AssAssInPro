@@ -2,11 +2,10 @@
 using Pditine.Data;
 using Pditine.GamePlay.Buff;
 using Pditine.GamePlay.Camera;
+using Pditine.Player;
 using Pditine.Player.Ass;
 using Pditine.Player.Thorn;
 using Pditine.Utility;
-using PurpleFlowerCore;
-using UnityEngine;
 
 namespace Pditine.Collide.CollideEvent
 {
@@ -36,7 +35,7 @@ namespace Pditine.Collide.CollideEvent
             AAIAudioManager.Instance.PlayEffect("碰撞音效1");
             CameraManagerBase.Instance.OnCollidePLayerAss(thePlayer2.ID);
             
-            thePlayer2.BeHitAssFeedback();
+            thePlayer2.VFX[VFXName.AssHit].Play();
             thePlayer2.ChangeHP(-thePlayer1.ATK);
             
             BuffManager.Instance.AttachBuff(new BuffInfo(DataManager.Instance.GetBuffData(9),null,thePlayer2));

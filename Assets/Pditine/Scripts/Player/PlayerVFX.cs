@@ -7,6 +7,7 @@
 using System;
 using System.Collections.Generic;
 using Pditine.Player.VFX;
+using PurpleFlowerCore;
 using UnityEngine;
 
 namespace Pditine.Player
@@ -17,6 +18,32 @@ namespace Pditine.Player
         [SerializeField]private List<VFXBase> vfxList = new();
         private PlayerController _thePlayer;
         public PlayerController ThePlayer => _thePlayer;
+        
+        public VFXBase this[string vfxName]
+        {
+            get
+            {
+                if (vfxNameList.Contains(vfxName))
+                {
+                    return vfxList[vfxNameList.IndexOf(vfxName)];
+                }
+                PFCLog.Warning("VFX", $"VFX {vfxName} not found");
+                return null;
+            }
+        }
+        
+        public VFXBase this[VFXName vfxName]
+        {
+            get
+            {
+                if (vfxNameList.Contains(vfxName.ToString()))
+                {
+                    return vfxList[vfxNameList.IndexOf(vfxName.ToString())];
+                }
+                Debug.LogWarning("[VFX]" +  $"VFX {vfxName} not found");
+                return null;
+            }
+        }
 
         public void Init(PlayerController thePlayer)
         {
@@ -42,5 +69,15 @@ namespace Pditine.Player
                 vfxList[vfxNameList.IndexOf(vfxName)].Stop(data, callback);
             }
         }
+    }
+
+    public enum VFXName
+    {
+        DirectionArrow,
+        Hit,
+        Dead,
+        AssHit,
+        Charging,
+        ChargeDone
     }
 }
