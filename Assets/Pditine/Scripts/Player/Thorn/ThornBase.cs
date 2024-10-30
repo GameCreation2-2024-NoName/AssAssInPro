@@ -3,6 +3,7 @@ using Pditine.Collide;
 using Pditine.Collide.CollideEvent;
 using Pditine.Component;
 using Pditine.Data.Thorn;
+using Pditine.Player.VFX;
 using PurpleFlowerCore.Utility;
 using UnityEngine;
 using UnityEngine.Events;
@@ -20,8 +21,12 @@ namespace Pditine.Player.Thorn
 
         public UnityAction OnAttack;
         
+        //todo:闪光加入VFX
         [SerializeField] private SpriteEffect_Flash spriteEffectFlash;
         public SpriteEffect_Flash SpriteEffectFlash => spriteEffectFlash;
+        
+        [SerializeField] private List<string> vfxNameList = new();
+        [SerializeField] private List<VFXBase> vfxList = new();
 
         protected override List<CollidingEventBase> GetCollidingEvents()
         {
@@ -34,12 +39,16 @@ namespace Pditine.Player.Thorn
             transform.position = parent.transform.position;
             transform.rotation = parent.transform.rotation;
             transform.parent = parent.transform;
+            
+            parent.VFX.AddVFX(vfxNameList, vfxList);
         }
 
         private void Start()
         {
             OnCollide += HandleVibration;
         }
+        
+        //todo:震动加入VFX
         private void HandleVibration(ColliderBase _,CollideInfo __)
         {
             if (!thePlayer.InputHandler) return;

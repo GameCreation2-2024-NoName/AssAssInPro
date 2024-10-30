@@ -90,9 +90,9 @@ namespace Pditine.GamePlay.GameManager
         {
             AssBase theAss = Instantiate(DataManager.Instance.GetAssData(assID).Prototype).GetComponent<AssBase>();
             ThornBase theThorn = Instantiate(DataManager.Instance.GetThornData(thornID).Prototype).GetComponent<ThornBase>();
+            thePlayer.Init(theThorn,theAss);// 保证先初始化PlayerController
             theAss.Init(thePlayer);
             theThorn.Init(thePlayer);
-            thePlayer.Init(theThorn,theAss);
         }
         
         protected virtual void CheckPlayerDead(int hp,int playerID)
@@ -123,7 +123,7 @@ namespace Pditine.GamePlay.GameManager
             EventSystem.EventTrigger("GameOver");
         }
 
-        public void PlayerCanMove(bool canMove)
+        public virtual void PlayerCanMove(bool canMove)
         {
             player1.canMove = canMove;
             player2.canMove = canMove;

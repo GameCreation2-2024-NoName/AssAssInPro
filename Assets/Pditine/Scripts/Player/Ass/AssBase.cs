@@ -3,6 +3,7 @@ using Pditine.Collide;
 using Pditine.Collide.CollideEvent;
 using Pditine.Component;
 using Pditine.Data.Ass;
+using Pditine.Player.VFX;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -23,10 +24,11 @@ namespace Pditine.Player.Ass
 
         public UnityAction<ColliderBase> OnBeAttackByThorn;
 
-        [SerializeField] private TrailRenderer theTrail;
-
         [SerializeField] private SpriteEffect_Flash spriteEffectFlash;
         public SpriteEffect_Flash SpriteEffectFlash => spriteEffectFlash;
+
+        [SerializeField] private List<string> vfxNameList = new();
+        [SerializeField] private List<VFXBase> vfxList = new();
         
         protected override List<CollidingEventBase> GetCollidingEvents()
         {
@@ -41,9 +43,7 @@ namespace Pditine.Player.Ass
             transform.parent = parent.transform;
 
             theSpriteRenderer.sprite = parent.ID == 1 ? data.PortraitBlue : data.PortraitYellow;
-
-            theTrail.startColor = parent.ID == 1 ? new Color(0, 1, 1) : new Color(1, 0.8f, 0.063f);
-            theTrail.endColor = parent.ID == 1 ? new Color(0, 1, 1,0) : new Color(1, 0.8f, 0.063f,0);
+            parent.VFX.AddVFX(vfxNameList, vfxList);
         }
     }
 }

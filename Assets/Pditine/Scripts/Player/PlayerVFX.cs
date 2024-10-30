@@ -14,6 +14,7 @@ namespace Pditine.Player
 {
     public class PlayerVFX : MonoBehaviour
     {
+        //todo: 数据结构封装
         [SerializeField]private List<string> vfxNameList = new();
         [SerializeField]private List<VFXBase> vfxList = new();
         private PlayerController _thePlayer;
@@ -69,6 +70,21 @@ namespace Pditine.Player
                 vfxList[vfxNameList.IndexOf(vfxName)].Stop(data, callback);
             }
         }
+        
+        public void AddVFX(string vfxName, VFXBase vfx)
+        {
+            vfxNameList.Add(vfxName);
+            vfxList.Add(vfx);
+            vfx.Init(_thePlayer);
+        }
+        
+        public void AddVFX(List<string> vfxName, List<VFXBase> vfx)
+        {
+            for (int i = 0; i < vfxName.Count; i++)
+            {
+                AddVFX(vfxName[i], vfx[i]);
+            }
+        }
     }
 
     public enum VFXName
@@ -78,6 +94,7 @@ namespace Pditine.Player
         Dead,
         AssHit,
         Charging,
-        ChargeDone
+        ChargeDone,
+        Trail,
     }
 }

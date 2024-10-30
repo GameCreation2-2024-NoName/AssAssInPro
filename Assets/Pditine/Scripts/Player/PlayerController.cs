@@ -134,16 +134,7 @@ namespace Pditine.Player
 
         [SerializeField] private PlayerVFX vfx;
         public PlayerVFX VFX => vfx;
-
-        // [Title("Effect")] [SerializeField] private MMF_Player hitFeedback;
-        [SerializeField] private MMF_Player loseFeedbackBlue;
-
-        [SerializeField] private MMF_Player loseFeedbackYellow;
-
-        //[SerializeField] private MMScaleShaker scaleShaker;
-        [SerializeField] private MMF_Player beHitAssFeedbackBlue;
-        [SerializeField] private MMF_Player beHitAssFeedbackYellow;
-
+        
         #endregion
 
         private void OnEnable()
