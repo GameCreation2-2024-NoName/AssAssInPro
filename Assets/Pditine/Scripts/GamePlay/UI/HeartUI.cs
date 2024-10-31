@@ -1,9 +1,11 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace Pditine.GamePlay.UI
 {
+    [Obsolete("不再使用单个心UI")]
     public class HeartUI : MonoBehaviour
     {
         [SerializeField] private Image heartImage;

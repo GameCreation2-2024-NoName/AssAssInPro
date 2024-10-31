@@ -13,6 +13,7 @@ namespace Pditine.Player
         private float _currentCD;
         [SerializeField] private Sprite blue;
         [SerializeField] private Sprite yellow;
+        private Vector3 _initialScale;
 
         private void FixedUpdate()
         {
@@ -36,6 +37,7 @@ namespace Pditine.Player
 
         public override void Init(PlayerController thePlayer)
         {
+            _initialScale = transform.localScale;
             theSpriteRenderer.sprite = thePlayer.ID == 1 ? blue : yellow;
             thePlayer.OnChangeCurrentDirection += ChangeDirection;
         }
@@ -48,6 +50,11 @@ namespace Pditine.Player
         public override void Stop(object data, Action callback)
         {
             
+        }
+
+        public void LateUpdate()
+        {
+            // if()
         }
     }
 }

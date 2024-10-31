@@ -2452,6 +2452,22 @@ PrefabInstance:
       propertyPath: m_LocalScale.x
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2476675727073348065, guid: a3022e4b20d67c54398d15311563c837, type: 3}
+      propertyPath: m_Value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2476675727073348065, guid: a3022e4b20d67c54398d15311563c837, type: 3}
+      propertyPath: m_FillRect
+      value: 
+      objectReference: {fileID: 4643028990579780231}
+    - target: {fileID: 2476675727073348065, guid: a3022e4b20d67c54398d15311563c837, type: 3}
+      propertyPath: m_HandleRect
+      value: 
+      objectReference: {fileID: 3766796108718870570}
+    - target: {fileID: 2512972173679618374, guid: a3022e4b20d67c54398d15311563c837, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2863675570100978803, guid: a3022e4b20d67c54398d15311563c837, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -2540,14 +2556,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: RightUI
       objectReference: {fileID: 0}
-    - target: {fileID: 4307947677189968156, guid: a3022e4b20d67c54398d15311563c837, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 698762436, guid: db440530849dac5468185f9a4f6ab61c, type: 3}
-    - target: {fileID: 4307947677189968156, guid: a3022e4b20d67c54398d15311563c837, type: 3}
-      propertyPath: m_FillAmount
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6698184039921003073, guid: a3022e4b20d67c54398d15311563c837, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -2587,6 +2595,16 @@ MonoBehaviour:
 --- !u!224 &1114548504690560484 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2863675570100978803, guid: a3022e4b20d67c54398d15311563c837, type: 3}
+  m_PrefabInstance: {fileID: 2939296085750008215}
+  m_PrefabAsset: {fileID: 0}
+--- !u!224 &3766796108718870570 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 2057057806138235325, guid: a3022e4b20d67c54398d15311563c837, type: 3}
+  m_PrefabInstance: {fileID: 2939296085750008215}
+  m_PrefabAsset: {fileID: 0}
+--- !u!224 &4643028990579780231 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 7540468833313252112, guid: a3022e4b20d67c54398d15311563c837, type: 3}
   m_PrefabInstance: {fileID: 2939296085750008215}
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &4945386773244501327 stripped
@@ -2641,6 +2659,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 152969508294163140}
     m_Modifications:
+    - target: {fileID: 2476675727073348065, guid: a3022e4b20d67c54398d15311563c837, type: 3}
+      propertyPath: m_Value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2476675727073348065, guid: a3022e4b20d67c54398d15311563c837, type: 3}
+      propertyPath: m_HandleRect
+      value: 
+      objectReference: {fileID: 5955462259620091273}
+    - target: {fileID: 2512972173679618374, guid: a3022e4b20d67c54398d15311563c837, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2863675570100978803, guid: a3022e4b20d67c54398d15311563c837, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -2725,6 +2755,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: LeftUI
       objectReference: {fileID: 0}
+    - target: {fileID: 4444781014914118540, guid: a3022e4b20d67c54398d15311563c837, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 227.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4444781014914118540, guid: a3022e4b20d67c54398d15311563c837, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 237.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6698184039921003073, guid: a3022e4b20d67c54398d15311563c837, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -1238289384, guid: 401086655da4e1a4d8c918a75eab75e0, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2768,6 +2810,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7eab57fb0a264419894a194aa29b056f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!224 &5955462259620091273 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 7065333026136277589, guid: a3022e4b20d67c54398d15311563c837, type: 3}
+  m_PrefabInstance: {fileID: 3506922758906238940}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &6683595341148898052 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7812603124131304664, guid: a3022e4b20d67c54398d15311563c837, type: 3}

@@ -55,14 +55,14 @@ namespace Pditine.Player
 
         [HideInInspector] public float hpMulAdjustment = 1;
         [HideInInspector] public int hpAddAdjustment = 0;
-        public int HP => (int)(_theAss.Data.HP * hpMulAdjustment + hpAddAdjustment);
+        public float HP => (int)(_theAss.Data.HP * hpMulAdjustment + hpAddAdjustment);
 
         [HideInInspector] public float atkMulAdjustment = 1;
         [HideInInspector] public int atkAddAdjustment = 0;
         public int ATK => (int)(_theThorn.Data.ATK * atkMulAdjustment + atkAddAdjustment);
 
-        private int _currentHP;
-        public int CurrentHP => _currentHP;
+        private float _currentHP;
+        public float CurrentHP => _currentHP;
 
         [Inspectable]private float _currentEnergy;
         public float CurrentEnergy => _currentEnergy;
@@ -115,6 +115,7 @@ namespace Pditine.Player
         private bool _isPause;
         public bool IsPause => _isPause;
 
+        //todo:重构对scale的操作
         [HideInInspector] public float targetScale;
 
         #endregion
@@ -124,7 +125,7 @@ namespace Pditine.Player
         // public event Action<float> OnChangeCD;
         public event Action<float,float> OnChangeEnergy;
         public event Action<int> OnTryChangeHP; // 血量变化量
-        public event Action<int, int> OnChangeHP; // 当前血量 玩家id
+        public event Action<float, int> OnChangeHP; // 当前血量 玩家id
         public event Action OnDestroyed;
         public event Action<Vector3> OnChangeCurrentDirection;
         

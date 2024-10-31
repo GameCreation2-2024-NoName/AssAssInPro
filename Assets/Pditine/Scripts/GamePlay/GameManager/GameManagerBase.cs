@@ -95,7 +95,7 @@ namespace Pditine.GamePlay.GameManager
             theThorn.Init(thePlayer);
         }
         
-        protected virtual void CheckPlayerDead(int hp,int playerID)
+        protected virtual void CheckPlayerDead(float hp,int playerID)
         {
             if(IsGameOver)return;
             if (hp > 0) return;

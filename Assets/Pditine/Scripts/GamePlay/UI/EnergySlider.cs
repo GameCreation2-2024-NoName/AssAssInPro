@@ -13,6 +13,7 @@ namespace Pditine.GamePlay.UI
     public class EnergySlider : MonoBehaviour
     {
         [SerializeField]private Image fillImage;
+        [SerializeField]private Scrollbar scrollbar;
         public void Init(PlayerController player)
         {
             player.OnChangeEnergy += UpdateEnergy;
