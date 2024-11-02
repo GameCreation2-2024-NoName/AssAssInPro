@@ -1,10 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Pditine.Player;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace Pditine.GamePlay.UI
 {
+    [Obsolete]
     public class PlayerHP : MonoBehaviour
     {
         // private List<HeartUI> hearts = new();

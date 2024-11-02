@@ -5,6 +5,8 @@
 // -------------------------------------------------
 
 using Pditine.Player;
+using PurpleFlowerCore;
+using PurpleFlowerCore.Component;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,8 +14,8 @@ namespace Pditine.GamePlay.UI
 {
     public class EnergySlider : MonoBehaviour
     {
-        [SerializeField]private Image fillImage;
-        [SerializeField]private Scrollbar scrollbar;
+        //[SerializeField]private Image fillImage;
+        [SerializeField]private PropertyBar propertyBar;
         public void Init(PlayerController player)
         {
             player.OnChangeEnergy += UpdateEnergy;
@@ -21,7 +23,7 @@ namespace Pditine.GamePlay.UI
         
         private void UpdateEnergy(float currentEnergy, float maxEnergy)
         {
-            fillImage.fillAmount = currentEnergy / maxEnergy;
+            propertyBar.Value = currentEnergy / maxEnergy;
         }
     }
 }
