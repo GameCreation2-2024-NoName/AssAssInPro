@@ -2659,6 +2659,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 152969508294163140}
     m_Modifications:
+    - target: {fileID: 1418308062447250457, guid: a3022e4b20d67c54398d15311563c837, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1991851866712309363, guid: a3022e4b20d67c54398d15311563c837, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 464
+      objectReference: {fileID: 0}
+    - target: {fileID: 1991851866712309363, guid: a3022e4b20d67c54398d15311563c837, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 2476675727073348065, guid: a3022e4b20d67c54398d15311563c837, type: 3}
       propertyPath: m_Value
       value: 1
@@ -2767,6 +2779,22 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: -1238289384, guid: 401086655da4e1a4d8c918a75eab75e0, type: 3}
+    - target: {fileID: 6923529063051678614, guid: a3022e4b20d67c54398d15311563c837, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 655
+      objectReference: {fileID: 0}
+    - target: {fileID: 6923529063051678614, guid: a3022e4b20d67c54398d15311563c837, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -43
+      objectReference: {fileID: 0}
+    - target: {fileID: 8508650972058543849, guid: a3022e4b20d67c54398d15311563c837, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8646202883943141153, guid: a3022e4b20d67c54398d15311563c837, type: 3}
+      propertyPath: edgeOffset
+      value: -49.29
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

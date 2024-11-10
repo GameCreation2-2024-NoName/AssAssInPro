@@ -1,34 +1,46 @@
 ﻿using System;
 using System.Collections.Generic;
+using MoreMountains.Feedbacks;
 using Pditine.Player;
+using PurpleFlowerCore.Component;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace Pditine.GamePlay.UI
 {
-    [Obsolete]
     public class PlayerHP : MonoBehaviour
     {
         // private List<HeartUI> hearts = new();
         // [SerializeField] private HeartUI heartPrototype;
-        private float hp;
-        
-        [SerializeField]private Image hpBar0;
-        [SerializeField]private Image hpBar1;
-        [SerializeField]private Image hpBar2;
-        
-        public void Init(PlayerController thePlayer)
+        [SerializeField]private PropertyBar Bar1;
+        [SerializeField]private PropertyBar Bar2;
+        [SerializeField] private Image edge;
+        [SerializeField]private MMF_Player player1;
+        [SerializeField]private MMF_Player player2;
+        [SerializeField]private float edgeOffset;
+        private MMF_Player thePlayer;
+        private float _maxHP;
+
+        private void Update()
         {
-            thePlayer.OnChangeHP += ChangeHp;
-            hp = thePlayer.HP;
+            edge.transform.position = Bar1.EdgePosition + Bar1.transform.right * edgeOffset;
+        }
+
+        public void Init(PlayerController player)
+        {
+            thePlayer = player.ID == 1? player1 : player2;
+            _maxHP = player.HP;
+            player.OnChangeHP += (hp, _) =>
+            {
+                // CreateHearts(hp);
+                // ChangeHp(hp,_);
+                thePlayer.PlayFeedbacks();
+                Bar1.Value = 1 - hp / _maxHP;
+
+                //Bar2.Value = hp / _maxHP;
+            };
         }
         
-        
-        
-        private void ChangeHp(float currentHP, int _)
-        {
-            hpBar2.fillAmount = currentHP / hp;
-        }
         
         // public void CreateHearts(int hp)
         // {

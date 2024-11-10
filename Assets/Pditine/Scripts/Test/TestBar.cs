@@ -20,7 +20,7 @@ namespace Pditine.Utility
             }
         
             propertyBar.Value = Mathf.Lerp(propertyBar.Value, current / value, Time.deltaTime);
-            edge.transform.position = propertyBar.EdgePosition + new Vector3(offset,0,0);
+            //edge.transform.position = propertyBar._ + new Vector3(offset,0,0);
         }
     }
 }

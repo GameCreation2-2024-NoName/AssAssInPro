@@ -12,8 +12,8 @@ namespace Pditine.GamePlay.UI
     {
         // [SerializeField] private PlayerCD cd1;
         // [SerializeField] private PlayerCD cd2;
-        [SerializeField] private EnergySlider energySlider1;
-        [SerializeField] private EnergySlider energySlider2;
+        [SerializeField] private Energy energySlider1;
+        [SerializeField] private Energy energySlider2;
         [SerializeField] private HeadPicture head1;
         [SerializeField] private HeadPicture head2;
         [SerializeField] private PlayerHP hp1;

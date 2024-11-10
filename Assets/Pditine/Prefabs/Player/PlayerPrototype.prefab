@@ -230,6 +230,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5760245589747033977}
     m_Modifications:
+    - target: {fileID: 693811450669779974, guid: bd8bfa13db19e7945930d7ecb3b62a77, type: 3}
+      propertyPath: managedReferences[9075230742379495430].TargetShaker
+      value: 
+      objectReference: {fileID: 6860474217648598647}
+    - target: {fileID: 2529562663752296343, guid: bd8bfa13db19e7945930d7ecb3b62a77, type: 3}
+      propertyPath: managedReferences[9075230742379495430].TargetShaker
+      value: 
+      objectReference: {fileID: 6860474217648598647}
     - target: {fileID: 2584728098158204653, guid: bd8bfa13db19e7945930d7ecb3b62a77, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

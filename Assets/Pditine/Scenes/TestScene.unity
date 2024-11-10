@@ -2207,10 +2207,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1540915172}
     m_Modifications:
+    - target: {fileID: 1583596548495407987, guid: a3022e4b20d67c54398d15311563c837, type: 3}
+      propertyPath: renderType
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1599204447534522078, guid: a3022e4b20d67c54398d15311563c837, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -325570128, guid: 1bf07dc39dab28f418fde655dbb6ff7a, type: 3}
+      objectReference: {fileID: 331229690, guid: 340902f9383a3c54f83db84373e7e2ff, type: 3}
+    - target: {fileID: 2023862296726924621, guid: a3022e4b20d67c54398d15311563c837, type: 3}
+      propertyPath: renderType
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2057057806138235325, guid: a3022e4b20d67c54398d15311563c837, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0.74
@@ -2331,17 +2339,29 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3133856250637457127, guid: a3022e4b20d67c54398d15311563c837, type: 3}
+      propertyPath: LightBar
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3133856250637457127, guid: a3022e4b20d67c54398d15311563c837, type: 3}
+      propertyPath: EnergyBar
+      value: 
+      objectReference: {fileID: 1990558504}
     - target: {fileID: 3399682066288100729, guid: a3022e4b20d67c54398d15311563c837, type: 3}
       propertyPath: m_Name
       value: PlayerUI
       objectReference: {fileID: 0}
+    - target: {fileID: 4618281839265164918, guid: a3022e4b20d67c54398d15311563c837, type: 3}
+      propertyPath: m_Name
+      value: EnergyBar
+      objectReference: {fileID: 0}
     - target: {fileID: 7771395620526673815, guid: a3022e4b20d67c54398d15311563c837, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 525
+      value: 462.5
       objectReference: {fileID: 0}
     - target: {fileID: 7771395620526673815, guid: a3022e4b20d67c54398d15311563c837, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 55
+      value: 25
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 4075815478655016969, guid: a3022e4b20d67c54398d15311563c837, type: 3}
