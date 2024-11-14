@@ -12,6 +12,7 @@ using PurpleFlowerCore.Utility;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Serialization;
+using Time = UnityEngine.Time;
 
 namespace Pditine.GamePlay.GameManager
 {

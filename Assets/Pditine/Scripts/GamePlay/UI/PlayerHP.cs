@@ -1,8 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using MoreMountains.Feedbacks;
+﻿using MoreMountains.Feedbacks;
 using Pditine.Player;
 using PurpleFlowerCore.Component;
+using PurpleFlowerCore.Utility;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,18 +11,21 @@ namespace Pditine.GamePlay.UI
     {
         // private List<HeartUI> hearts = new();
         // [SerializeField] private HeartUI heartPrototype;
-        [SerializeField]private PropertyBar Bar1;
-        [SerializeField]private PropertyBar Bar2;
+        [SerializeField]private PropertyBar bar1;
+        [SerializeField]private PropertyBar bar2;
         [SerializeField] private Image edge;
         [SerializeField]private MMF_Player player1;
         [SerializeField]private MMF_Player player2;
         [SerializeField]private float edgeOffset;
         private MMF_Player thePlayer;
         private float _maxHP;
+        private float _bar2Target;
+        [SerializeField]private float bar2Speed = 1;
 
         private void Update()
         {
-            edge.transform.position = Bar1.EdgePosition + Bar1.transform.right * edgeOffset;
+            edge.transform.position = bar1.EdgePosition + bar1.transform.right * edgeOffset;
+            UpdateBar2();
         }
 
         public void Init(PlayerController player)
@@ -35,10 +37,15 @@ namespace Pditine.GamePlay.UI
                 // CreateHearts(hp);
                 // ChangeHp(hp,_);
                 thePlayer.PlayFeedbacks();
-                Bar1.Value = 1 - hp / _maxHP;
-
-                //Bar2.Value = hp / _maxHP;
+                bar1.Value = 1 - hp / _maxHP;
+                DelayUtility.Delay(1,()=>_bar2Target = bar1.Value);
             };
+        }
+
+        private void UpdateBar2()
+        {
+            if(_bar2Target.Equals(bar2.Value))return;
+            bar2.Value = Mathf.MoveTowards(bar2.Value, _bar2Target, UnityEngine.Time.deltaTime * bar2Speed);
         }
         
         

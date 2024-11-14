@@ -118,6 +118,10 @@ namespace Pditine.Player
         //todo:重构对scale的操作
         [HideInInspector] public float targetScale;
 
+        //todo:临时添加的标记
+        [SerializeField] private bool isAI;
+        public bool IsAI => isAI;
+
         #endregion
 
         #region 事件
