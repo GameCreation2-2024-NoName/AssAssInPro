@@ -67,7 +67,7 @@ namespace Pditine.Player
         [Inspectable]private float _currentEnergy;
         public float CurrentEnergy => _currentEnergy;
 
-        private float _battery = 25;
+        private float _battery = 25; //todo:这个数值应该是固定的
         private bool _chargeDone;
 
         [Inspectable]private float _currentBattery;
@@ -127,7 +127,13 @@ namespace Pditine.Player
         #region 事件
 
         // public event Action<float> OnChangeCD;
-        public event Action<float,float> OnChangeEnergy;
+        
+        /// <summary>
+        /// 当前剩余能量 最大能量 电池能量
+        /// </summary>
+        public event Action<float,float,float> OnChangeEnergy;
+        public event Action<float> OnChanging;
+        public event Action OnEndChanging;
         public event Action<int> OnTryChangeHP; // 血量变化量
         public event Action<float, int> OnChangeHP; // 当前血量 玩家id
         public event Action OnDestroyed;
@@ -222,6 +228,7 @@ namespace Pditine.Player
                 VFX[VFXName.Charging].Stop();
                 VFX[VFXName.ChargeDone].Play();
                 _chargeDone = true;
+                OnEndChanging?.Invoke();
                 _currentBattery = _battery;
                 
             }
@@ -230,8 +237,9 @@ namespace Pditine.Player
                 VFX[VFXName.Charging].Play();
                 _currentEnergy -= Time.deltaTime * energyRecoverSpeed * 1.5f;
                 _currentBattery += Time.deltaTime * energyRecoverSpeed * 1.5f;
+                OnChanging?.Invoke(_currentBattery);
             }
-            OnChangeEnergy?.Invoke(_currentEnergy, Energy);
+            OnChangeEnergy?.Invoke(_currentEnergy, Energy, _currentBattery);
         }
 
         public virtual void Dash()
@@ -251,7 +259,7 @@ namespace Pditine.Player
         {
             _currentEnergy += Time.deltaTime * energyRecoverSpeed;
             if (_currentEnergy >= Energy) _currentEnergy = Energy;
-            OnChangeEnergy?.Invoke(_currentEnergy, Energy);
+            OnChangeEnergy?.Invoke(_currentEnergy, Energy, _currentBattery);
         }
 
         private void ReduceSpeed()

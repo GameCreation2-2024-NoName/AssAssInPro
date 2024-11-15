@@ -36,7 +36,7 @@ namespace Pditine.GamePlay.UI
         //     UpdateBar2();
         // }
 
-        private void UpdateEnergy(float currentEnergy, float maxEnergy)
+        private void UpdateEnergy(float currentEnergy, float maxEnergy, float _)
         {
             PFCLog.Info("EnergySlider", $"currentEnergy: {currentEnergy}, maxEnergy: {maxEnergy}");
             float num = currentEnergy / maxEnergy;
