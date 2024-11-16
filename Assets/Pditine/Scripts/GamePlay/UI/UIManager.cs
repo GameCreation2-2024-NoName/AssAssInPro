@@ -28,6 +28,8 @@ namespace Pditine.GamePlay.UI
         [SerializeField] protected CanvasGroup canvasGroup;
         [SerializeField] protected Mark mark1;
         [SerializeField] protected Mark mark2;
+        [SerializeField] protected ChargingBar chargingBar1;
+        [SerializeField] protected ChargingBar chargingBar2;
         protected const float GaussianBlurAlpha = (float)83 / 255;
         public CanvasGroup CanvasGroup => canvasGroup;
         
@@ -76,6 +78,7 @@ namespace Pditine.GamePlay.UI
                 head1.Init(thePlayer);
                 hp1.Init(thePlayer);
                 mark1.Init(thePlayer);
+                chargingBar1.Init(thePlayer);
             }else if (thePlayer.ID == 2)
             {
                 // cd2.Init(thePlayer);
@@ -83,6 +86,7 @@ namespace Pditine.GamePlay.UI
                 head2.Init(thePlayer);
                 hp2.Init(thePlayer);
                 mark2.Init(thePlayer);
+                chargingBar2.Init(thePlayer);
             }else PFCLog.Error("玩家ID错误");
         }
         

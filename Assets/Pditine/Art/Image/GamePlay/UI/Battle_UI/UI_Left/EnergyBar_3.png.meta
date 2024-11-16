@@ -113,12 +113,12 @@ TextureImporter:
       name: EnergyBar_3_0
       rect:
         serializedVersion: 2
-        x: 511
-        y: 939
-        width: 394
-        height: 44
+        x: 523
+        y: 951
+        width: 370
+        height: 20
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []

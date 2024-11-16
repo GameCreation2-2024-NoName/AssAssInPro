@@ -207,7 +207,9 @@ MonoBehaviour:
   bar2: {fileID: 1583596548495407987}
   edge: {fileID: 4696216669816503515}
   edgeOffset: 0.23
-  bar2Speed: 1
+  bar2Speed: 0.3
+  bar2CD: 1
+  bar2Threshold: 10
 --- !u!1 &1104935086600217135
 GameObject:
   m_ObjectHideFlags: 0
@@ -886,6 +888,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1571968136038834694}
+  - component: {fileID: 2483394746038916073}
+  - component: {fileID: 5016463777382623659}
   m_Layer: 0
   m_Name: ChargingBar
   m_TagString: Untagged
@@ -912,6 +916,36 @@ Transform:
   - {fileID: 1954781929837148357}
   m_Father: {fileID: 2863675570100978803}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2483394746038916073
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2814365572159569946}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14f43bbbf9be4ec08f6b211617d4a831, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  blueBar: {fileID: 3989358504407437671}
+  yellowBar: {fileID: 5481344993958129271}
+  offset: 50
+  canvasGroup: {fileID: 5016463777382623659}
+  CD: 1
+  parentRectTransform: {fileID: 2863675570100978803}
+--- !u!225 &5016463777382623659
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2814365572159569946}
+  m_Enabled: 1
+  m_Alpha: 0
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &3184658183636491579
 GameObject:
   m_ObjectHideFlags: 0
@@ -1452,7 +1486,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -0.000019073486}
-  m_SizeDelta: {x: 394, y: 44}
+  m_SizeDelta: {x: 370, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7241661814143882866
 CanvasRenderer:
@@ -11159,7 +11193,7 @@ MonoBehaviour:
   player1: {fileID: 2208217375242317039}
   player2: {fileID: 4789144944419491080}
   edgeOffset: 0
-  bar2Speed: 0.5
+  bar2Speed: 0.3
 --- !u!1 &6945157867752713776
 GameObject:
   m_ObjectHideFlags: 0
@@ -11895,7 +11929,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &101407088267242369
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11930,7 +11964,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8302047972957380612}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 

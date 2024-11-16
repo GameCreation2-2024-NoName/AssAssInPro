@@ -51,10 +51,5 @@ namespace Pditine.Player
         {
             
         }
-
-        public void LateUpdate()
-        {
-            // if()
-        }
     }
 }
