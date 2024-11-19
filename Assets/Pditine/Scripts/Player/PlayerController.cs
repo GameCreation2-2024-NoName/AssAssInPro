@@ -8,6 +8,7 @@ using PurpleFlowerCore;
 using PurpleFlowerCore.Utility;
 using Sirenix.OdinInspector;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Pditine.Player
 {
@@ -55,19 +56,20 @@ namespace Pditine.Player
 
         [HideInInspector] public float hpMulAdjustment = 1;
         [HideInInspector] public int hpAddAdjustment = 0;
-        public int HP => (int)(_theAss.Data.HP * hpMulAdjustment + hpAddAdjustment);
+        public float HP => (int)(_theAss.Data.HP * hpMulAdjustment + hpAddAdjustment);
 
         [HideInInspector] public float atkMulAdjustment = 1;
         [HideInInspector] public int atkAddAdjustment = 0;
         public int ATK => (int)(_theThorn.Data.ATK * atkMulAdjustment + atkAddAdjustment);
 
-        private int _currentHP;
-        public int CurrentHP => _currentHP;
+        [Inspectable]private float _currentHP;
+        public float CurrentHP => _currentHP;
 
         [Inspectable]private float _currentEnergy;
         public float CurrentEnergy => _currentEnergy;
 
-        private float _battery = 25;
+        private float _battery = 25; //todo:这个数值应该是固定的
+        
         private bool _chargeDone;
 
         [Inspectable]private float _currentBattery;
@@ -115,16 +117,30 @@ namespace Pditine.Player
         private bool _isPause;
         public bool IsPause => _isPause;
 
+        //todo:重构对scale的操作
         [HideInInspector] public float targetScale;
 
+        //todo:临时添加的标记
+        [SerializeField] private bool isAI;
+        public bool IsAI => isAI;
+        
+        [SerializeField]private float recoverCD = 1;
+
+        private float _currentRecoverCD;
         #endregion
 
         #region 事件
 
         // public event Action<float> OnChangeCD;
-        public event Action<float,float> OnChangeEnergy;
-        public event Action<int> OnTryChangeHP; // 血量变化量
-        public event Action<int, int> OnChangeHP; // 当前血量 玩家id
+        
+        /// <summary>
+        /// 当前剩余能量 最大能量 电池能量
+        /// </summary>
+        public event Action<float,float,float> OnChangeEnergy;
+        public event Action<float> OnChanging;
+        public event Action OnEndChanging;
+        public event Action<float> OnTryChangeHP; // 血量变化量
+        public event Action<float, int> OnChangeHP; // 当前血量 玩家id
         public event Action OnDestroyed;
         public event Action<Vector3> OnChangeCurrentDirection;
         
@@ -134,16 +150,7 @@ namespace Pditine.Player
 
         [SerializeField] private PlayerVFX vfx;
         public PlayerVFX VFX => vfx;
-
-        // [Title("Effect")] [SerializeField] private MMF_Player hitFeedback;
-        [SerializeField] private MMF_Player loseFeedbackBlue;
-
-        [SerializeField] private MMF_Player loseFeedbackYellow;
-
-        //[SerializeField] private MMScaleShaker scaleShaker;
-        [SerializeField] private MMF_Player beHitAssFeedbackBlue;
-        [SerializeField] private MMF_Player beHitAssFeedbackYellow;
-
+        
         #endregion
 
         private void OnEnable()
@@ -226,16 +233,21 @@ namespace Pditine.Player
                 VFX[VFXName.Charging].Stop();
                 VFX[VFXName.ChargeDone].Play();
                 _chargeDone = true;
-                _currentBattery = _battery;
+                OnEndChanging?.Invoke();
+                _currentBattery = Mathf.Min(_battery, _currentBattery);
                 
             }
             else
             {
                 VFX[VFXName.Charging].Play();
                 _currentEnergy -= Time.deltaTime * energyRecoverSpeed * 1.5f;
-                _currentBattery += Time.deltaTime * energyRecoverSpeed * 1.5f;
+                if(_currentEnergy < 0) 
+                    _currentEnergy = 0;
+                else
+                    _currentBattery += Time.deltaTime * energyRecoverSpeed * 1.5f;
+                OnChanging?.Invoke(_currentBattery);
             }
-            OnChangeEnergy?.Invoke(_currentEnergy, Energy);
+            OnChangeEnergy?.Invoke(_currentEnergy, Energy, _currentBattery);
         }
 
         public virtual void Dash()
@@ -249,13 +261,16 @@ namespace Pditine.Player
             _currentDirection = InputDirection;
             CurrentSpeed = CalculateSpeed();
             _currentBattery = 0;
+            _currentRecoverCD = recoverCD;
         }
         
         private void RecoverEnergy()
         {
+            _currentRecoverCD -= Time.deltaTime;
+            if (_currentRecoverCD > 0) return;
             _currentEnergy += Time.deltaTime * energyRecoverSpeed;
             if (_currentEnergy >= Energy) _currentEnergy = Energy;
-            OnChangeEnergy?.Invoke(_currentEnergy, Energy);
+            OnChangeEnergy?.Invoke(_currentEnergy, Energy, _currentBattery);
         }
 
         private void ReduceSpeed()
@@ -275,7 +290,7 @@ namespace Pditine.Player
             return _currentBattery * SpeedCoefficient * 0.05f;
         }
 
-        public void ChangeHP(int delta)
+        public void ChangeHP(float delta)
         {
             if (delta < 0 && isInvincible)
             {

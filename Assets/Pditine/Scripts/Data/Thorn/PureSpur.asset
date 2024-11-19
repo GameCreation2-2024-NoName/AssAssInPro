@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: PureSpur
   m_EditorClassIdentifier: 
   id: 4
-  atk: 3
-  cd: 0.8
-  weight: 20
+  atk: 10
+  speedCoefficient: 30
+  weight: 10
   prototype: {fileID: 3527323057261180279, guid: 99352242265e4c64aa89703f3335e104, type: 3}
   portrait: {fileID: 1077729716, guid: 22b5deefd12eeeb4a8dfed8c6ac0977a, type: 3}
   thornName: "\u7EAF\u7CB9\u9AA8\u523A"

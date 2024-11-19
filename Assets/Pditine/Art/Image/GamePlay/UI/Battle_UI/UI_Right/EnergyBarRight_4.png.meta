@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: cb60258530cc6b74b80d1324f45b176c
+guid: 8fb4e295c4efa8a4ab387793ddaa8841
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -43,7 +43,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -108,7 +108,28 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: EnergyBarRight_4_0
+      rect:
+        serializedVersion: 2
+        x: 1016
+        y: 944
+        width: 387
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 29c227eaf51b1cb41aeeb320e3bfa6fd
+      internalID: -229046930
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -119,7 +140,10 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      EnergyBarRight_4_0: -229046930
+      EnergyBarRight_4_1: 643077164
+      EnergyBarRight_4_2: -848384132
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

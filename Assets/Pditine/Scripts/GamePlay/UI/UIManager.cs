@@ -10,26 +10,32 @@ namespace Pditine.GamePlay.UI
 {
     public class UIManager : MonoBehaviour
     {
-        // [SerializeField] private PlayerCD cd1;
-        // [SerializeField] private PlayerCD cd2;
-        [SerializeField] private EnergySlider energySlider1;
-        [SerializeField] private EnergySlider energySlider2;
-        [SerializeField] private HeadPicture head1;
-        [SerializeField] private HeadPicture head2;
-        [SerializeField] private PlayerHP hp1;
-        [SerializeField] private PlayerHP hp2;
-        [SerializeField] private BuffList buffList1;
-        [SerializeField] private BuffList buffList2;
-        [SerializeField] private SettlementPanel settlementPanel;
-        [SerializeField] private Image gaussianBlur;
-        [SerializeField] private GameObject pausePanel;
-        [SerializeField]private CanvasGroup canvasGroup;
-        private const float GaussianBlurAlpha = (float)83 / 255;
+        //todo:UI框架
+        // [SerializeField] protected PlayerCD cd1;
+        // [SerializeField] protected PlayerCD cd2;
+        [SerializeField] protected Timer timer;
+        [SerializeField] protected Energy energySlider1;
+        [SerializeField] protected Energy energySlider2;
+        [SerializeField] protected HeadPicture head1;
+        [SerializeField] protected HeadPicture head2;
+        [SerializeField] protected PlayerHP hp1;
+        [SerializeField] protected PlayerHP hp2;
+        [SerializeField] protected BuffList buffList1;
+        [SerializeField] protected BuffList buffList2;
+        [SerializeField] protected SettlementPanel settlementPanel;
+        [SerializeField] protected Image gaussianBlur;
+        [SerializeField] protected GameObject pausePanel;
+        [SerializeField] protected CanvasGroup canvasGroup;
+        [SerializeField] protected Mark mark1;
+        [SerializeField] protected Mark mark2;
+        [SerializeField] protected ChargingBar chargingBar1;
+        [SerializeField] protected ChargingBar chargingBar2;
+        protected const float GaussianBlurAlpha = (float)83 / 255;
         public CanvasGroup CanvasGroup => canvasGroup;
         
-        public static UIManager Instance { get; private set; }
+        public static UIManager Instance { get; protected set; }
 
-        private void Awake()
+        protected void Awake()
         {
             if (Instance == null)
                 Instance = this;
@@ -40,13 +46,13 @@ namespace Pditine.GamePlay.UI
             }
         }
         
-        private void OnEnable()
+        protected void OnEnable()
         {
             EventSystem.AddEventListener("Pause",SetPausePanelOpen);
             EventSystem.AddEventListener("UnPause",SetPausePanelUnOpen);
         }
 
-        private void OnDisable()
+        protected void OnDisable()
         {
             EventSystem.RemoveEventListener("Pause",SetPausePanelOpen);
             EventSystem.RemoveEventListener("UnPause",SetPausePanelUnOpen);
@@ -56,12 +62,14 @@ namespace Pditine.GamePlay.UI
         {
             BindPlayer(player1);
             BindPlayer(player2);
+            //todo:限时游戏
+            timer.Init(true);
 
             BuffManager.Instance.OnAttachBuff += AddBuffUI;
             BuffManager.Instance.OnLostBuff += RemoveBuffUI;
         }
 
-        private void BindPlayer(PlayerController thePlayer)
+        protected void BindPlayer(PlayerController thePlayer)
         {
             if (thePlayer.ID == 1)
             {
@@ -69,23 +77,27 @@ namespace Pditine.GamePlay.UI
                 energySlider1.Init(thePlayer);
                 head1.Init(thePlayer);
                 hp1.Init(thePlayer);
+                mark1.Init(thePlayer);
+                chargingBar1.Init(thePlayer);
             }else if (thePlayer.ID == 2)
             {
                 // cd2.Init(thePlayer);
                 energySlider2.Init(thePlayer);
                 head2.Init(thePlayer);
                 hp2.Init(thePlayer);
+                mark2.Init(thePlayer);
+                chargingBar2.Init(thePlayer);
             }else PFCLog.Error("玩家ID错误");
         }
         
-        private void SetPausePanelOpen()
+        protected void SetPausePanelOpen()
         {
             pausePanel.SetActive(true);
             var color = gaussianBlur.color;
             gaussianBlur.color = new Color(color.r, color.g, color.b, GaussianBlurAlpha);
         }
         
-        private void SetPausePanelUnOpen()
+        protected void SetPausePanelUnOpen()
         {
             pausePanel.SetActive(false);
             var color = gaussianBlur.color;
@@ -102,7 +114,7 @@ namespace Pditine.GamePlay.UI
             });
         }
         
-        private void AddBuffUI(BuffInfo buffInfo)
+        protected void AddBuffUI(BuffInfo buffInfo)
         {
             if (buffInfo.durationCounter <= 0) return;
             if (!buffInfo.buffData.showInUI) return;
@@ -114,7 +126,7 @@ namespace Pditine.GamePlay.UI
                 Debug.LogError("玩家ID错误");
         }
         
-        private void RemoveBuffUI(BuffInfo buffInfo)
+        protected void RemoveBuffUI(BuffInfo buffInfo)
         {
             if (!buffInfo.buffData.showInUI) return;
             if(buffInfo.target.ID == 1)

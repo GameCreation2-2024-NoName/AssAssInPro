@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: ClassicAss
   m_EditorClassIdentifier: 
   id: 0
-  hp: 6
+  hp: 100
   weight: 15
   energy: 150
   prototype: {fileID: 5879413710637086575, guid: 3054868f3927c544b941dc102145c0bb, type: 3}

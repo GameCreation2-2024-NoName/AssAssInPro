@@ -12,6 +12,7 @@ using PurpleFlowerCore.Utility;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Serialization;
+using Time = UnityEngine.Time;
 
 namespace Pditine.GamePlay.GameManager
 {
@@ -46,8 +47,9 @@ namespace Pditine.GamePlay.GameManager
             player1.OnChangeHP += CheckPlayerDead;
             player2.OnChangeHP += CheckPlayerDead;
             Init();
+            DebugSystem.AddCommand("Player/AddHP", AddHP);
         }
-
+        
         protected virtual void Update()
         {
             if (Input.GetKeyDown(KeyCode.Escape)) SetPause();
@@ -90,12 +92,12 @@ namespace Pditine.GamePlay.GameManager
         {
             AssBase theAss = Instantiate(DataManager.Instance.GetAssData(assID).Prototype).GetComponent<AssBase>();
             ThornBase theThorn = Instantiate(DataManager.Instance.GetThornData(thornID).Prototype).GetComponent<ThornBase>();
+            thePlayer.Init(theThorn,theAss);// 保证先初始化PlayerController
             theAss.Init(thePlayer);
             theThorn.Init(thePlayer);
-            thePlayer.Init(theThorn,theAss);
         }
         
-        protected virtual void CheckPlayerDead(int hp,int playerID)
+        protected virtual void CheckPlayerDead(float hp,int playerID)
         {
             if(IsGameOver)return;
             if (hp > 0) return;
@@ -123,10 +125,20 @@ namespace Pditine.GamePlay.GameManager
             EventSystem.EventTrigger("GameOver");
         }
 
-        public void PlayerCanMove(bool canMove)
+        public virtual void PlayerCanMove(bool canMove)
         {
             player1.canMove = canMove;
             player2.canMove = canMove;
         }
+
+        #region 指令
+
+        private void AddHP()
+        {
+            player1.ChangeHP(100);
+            player2.ChangeHP(100);
+        }
+
+        #endregion
     }
 }

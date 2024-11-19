@@ -22,6 +22,8 @@ namespace Pditine.Collide.CollideEvent
             var thePlayer1 = (collider1 as ThornBase).ThePlayer;
             var thePlayer2 = (collider2 as AssBase).ThePlayer;
 
+            //todo: 伤害计算放在这里不合适
+            thePlayer2.ChangeHP(-thePlayer1.ATK * thePlayer1.CurrentSpeed / thePlayer1.SpeedCoefficient);
             //thePlayer1.HitFeedback();
             var res =
                 PhysicsUtility.ElasticCollision(thePlayer1.CurrentDirection * thePlayer1.CurrentSpeed,
@@ -36,7 +38,6 @@ namespace Pditine.Collide.CollideEvent
             CameraManagerBase.Instance.OnCollidePLayerAss(thePlayer2.ID);
             
             thePlayer2.VFX[VFXName.AssHit].Play();
-            thePlayer2.ChangeHP(-thePlayer1.ATK);
             
             BuffManager.Instance.AttachBuff(new BuffInfo(DataManager.Instance.GetBuffData(9),null,thePlayer2));
             

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: ClassicThorn
   m_EditorClassIdentifier: 
   id: 0
-  atk: 2
+  atk: 10
   speedCoefficient: 30
   weight: 10
   prototype: {fileID: 3527323057261180279, guid: 0b32d0318cf54e0419a09af4ca8406db, type: 3}
