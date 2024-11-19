@@ -47,8 +47,9 @@ namespace Pditine.GamePlay.GameManager
             player1.OnChangeHP += CheckPlayerDead;
             player2.OnChangeHP += CheckPlayerDead;
             Init();
+            DebugSystem.AddCommand("Player/AddHP", AddHP);
         }
-
+        
         protected virtual void Update()
         {
             if (Input.GetKeyDown(KeyCode.Escape)) SetPause();
@@ -129,5 +130,15 @@ namespace Pditine.GamePlay.GameManager
             player1.canMove = canMove;
             player2.canMove = canMove;
         }
+
+        #region 指令
+
+        private void AddHP()
+        {
+            player1.ChangeHP(100);
+            player2.ChangeHP(100);
+        }
+
+        #endregion
     }
 }

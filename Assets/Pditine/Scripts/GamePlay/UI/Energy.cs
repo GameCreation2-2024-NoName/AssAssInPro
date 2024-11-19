@@ -56,9 +56,7 @@ namespace Pditine.GamePlay.UI
         
         private void UpdateEnergy(float currentEnergy, float maxEnergy, float _)
         {
-            PFCLog.Info("EnergySlider", $"currentEnergy: {currentEnergy}, maxEnergy: {maxEnergy}");
             float num = currentEnergy / maxEnergy;
-            PFCLog.Info("EnergySlider", $"num: {num}");
 
             bar1.Value = 1-currentEnergy / maxEnergy;
             edge.transform.position = bar1.EdgePosition + bar1.transform.right * edgeOffset;

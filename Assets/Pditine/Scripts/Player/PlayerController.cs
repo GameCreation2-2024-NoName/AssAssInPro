@@ -62,7 +62,7 @@ namespace Pditine.Player
         [HideInInspector] public int atkAddAdjustment = 0;
         public int ATK => (int)(_theThorn.Data.ATK * atkMulAdjustment + atkAddAdjustment);
 
-        private float _currentHP;
+        [Inspectable]private float _currentHP;
         public float CurrentHP => _currentHP;
 
         [Inspectable]private float _currentEnergy;
