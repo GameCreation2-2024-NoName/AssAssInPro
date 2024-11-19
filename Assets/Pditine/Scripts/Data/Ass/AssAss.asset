@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: AssAss
   m_EditorClassIdentifier: 
   id: 3
-  hp: 6
-  weight: 21
+  hp: 100
+  weight: 15
   energy: 150
   prototype: {fileID: 5879413710637086575, guid: 505578b467eec7e438c399d0bdaf2b43, type: 3}
   portraitBlue: {fileID: 543358383, guid: 724128b1a2ce3824f9a91c59c988f532, type: 3}

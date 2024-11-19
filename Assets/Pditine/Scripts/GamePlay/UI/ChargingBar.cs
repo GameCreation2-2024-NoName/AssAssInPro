@@ -46,7 +46,7 @@ namespace Pditine.GamePlay.UI
             //由于Canvas渲染模式是Screen Space - Camera,所以需要特殊处理
             RectTransformUtility.ScreenPointToLocalPointInRectangle(parentRectTransform,
                 UnityEngine.Camera.main.WorldToScreenPoint(_target.position), UnityEngine.Camera.main, out screenPoint); 
-            transform.right = _target.right;
+            // transform.right = _target.right;
             transform.localPosition = screenPoint - (Vector2)(transform.up * offset);
             
             if (_currentCD < 0)
