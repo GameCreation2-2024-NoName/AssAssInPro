@@ -130,7 +130,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -7.04, y: 0, z: 0}
-  m_LocalScale: {x: 0.6, y: 0.6, z: 0.6}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2025381214227649765}
@@ -203,6 +203,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   data: {fileID: 11400000, guid: ddf7d0a9288489a4497077db793db7ef, type: 2}
   spriteEffectFlash: {fileID: 8091273901224485562}
+  vfxNameList: []
+  vfxList: []
   doublePeakBuffData: {fileID: 11400000, guid: d4df81eb3ed3c6c4f848ff9eb9ecdb19, type: 2}
 --- !u!60 &-4995252924172821272
 PolygonCollider2D:

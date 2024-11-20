@@ -50,6 +50,7 @@ namespace Pditine.Data
             return gameModules[gameModuleID];
         }
 
+        //todo:枚举或string查找
         public BuffData GetBuffData(int buffId)
         {
             return buffData.Find((b) => b.id == buffId);

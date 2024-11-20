@@ -23,7 +23,8 @@ namespace Pditine.Collide.CollideEvent
             var thePlayer2 = (collider2 as AssBase).ThePlayer;
 
             //todo: 伤害计算放在这里不合适
-            thePlayer2.ChangeHP(-thePlayer1.ATK * thePlayer1.CurrentSpeed / thePlayer1.SpeedCoefficient);
+            float demage = thePlayer1.ATK * thePlayer1.CurrentSpeed / thePlayer1.SpeedCoefficient;
+            thePlayer2.ChangeHP(-demage);
             //thePlayer1.HitFeedback();
             var res =
                 PhysicsUtility.ElasticCollision(thePlayer1.CurrentDirection * thePlayer1.CurrentSpeed,
@@ -35,7 +36,8 @@ namespace Pditine.Collide.CollideEvent
             thePlayer2.CurrentSpeed = res.v2Prime.magnitude;
             
             AAIAudioManager.Instance.PlayEffect("碰撞音效1");
-            CameraManagerBase.Instance.OnCollidePLayerAss(thePlayer2.ID);
+            if(demage>10)
+                CameraManagerBase.Instance.OnCollidePLayerAss(thePlayer2.ID);
             
             thePlayer2.VFX[VFXName.AssHit].Play();
             

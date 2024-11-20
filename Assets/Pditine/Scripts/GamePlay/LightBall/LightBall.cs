@@ -12,10 +12,14 @@ namespace Pditine.GamePlay.LightBall
     {
         [SerializeField] private BuffData buffData;
         private bool _ready;
-        [SerializeField] private MMF_Player bornFeedback;
-        [SerializeField] private MMF_Player eatenFeedback;
-        [SerializeField] private GameObject theBall;
-        [SerializeField] private ParticleSystem halo;
+        // [SerializeField] private MMF_Player bornFeedback => lightBallRef.;
+        private MMF_Player EatenFeedback => lightBallRef.Eaten;
+        private MMF_Player AppearFeedback =>lightBallRef.Appear;
+        private ParticleSystem Halo => lightBallRef.Halo;
+        private GameObject TheBall => lightBallRef.TheBall;
+        private ParticleSystem Spark => lightBallRef.Spark;
+        //[SerializeField] private ParticleSystem halo;
+        [SerializeField] private LightBallRef lightBallRef;
         private SpriteRenderer SpriteRenderer => GetComponent<SpriteRenderer>();
 
         private void OnTriggerEnter2D(Collider2D other)
@@ -34,23 +38,26 @@ namespace Pditine.GamePlay.LightBall
         public void Init()
         {
             
-            bornFeedback.Initialization();
-            eatenFeedback.Initialization();
-            theBall.gameObject.SetActive(false);
-            halo.Play();
+            // bornFeedback.Initialization();
+            AppearFeedback.Initialization();
+            EatenFeedback.Initialization();
+            TheBall.gameObject.SetActive(false);
+            Halo.Play();
             DelayUtility.Delay(1f, () =>
             {
                 _ready = true;
-                theBall.gameObject.SetActive(true);
-                bornFeedback.PlayFeedbacks();
+                TheBall.gameObject.SetActive(true);
+                //bornFeedback.PlayFeedbacks();
+                AppearFeedback.PlayFeedbacks();
+                Spark.Play();
             });
 
         }
         private void BeDestroy()
         {
-            eatenFeedback.PlayFeedbacks();
-            
-            DelayUtility.Delay(0.2f, () =>
+            EatenFeedback.PlayFeedbacks();
+            TheBall.SetActive(false);
+            DelayUtility.Delay(0.5f, () =>
             {
                 Destroy(gameObject);// todo:对象池
             });

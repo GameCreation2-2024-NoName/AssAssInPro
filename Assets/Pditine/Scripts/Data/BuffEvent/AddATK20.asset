@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0729e055f4fc44a38097a9e7eb7a3daf, type: 3}
-  m_Name: AddHP2
+  m_Script: {fileID: 11500000, guid: 840db6499963419583c769ddb65a882d, type: 3}
+  m_Name: AddATK20
   m_EditorClassIdentifier: 
-  hpAddAdjustment: 2
+  atkAddAdjustment: 20

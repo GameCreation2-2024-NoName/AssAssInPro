@@ -638,6 +638,30 @@ PrefabInstance:
       propertyPath: m_Name
       value: Temp
       objectReference: {fileID: 0}
+    - target: {fileID: 3121869169219576987, guid: e4f560b38aa578344aeff3a96f76da95, type: 3}
+      propertyPath: lightBalls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3121869169219576987, guid: e4f560b38aa578344aeff3a96f76da95, type: 3}
+      propertyPath: lightBalls.Array.data[0]
+      value: 
+      objectReference: {fileID: 3550005666127261084, guid: 414b4a77ccef1f443b8d3c5487be1db2, type: 3}
+    - target: {fileID: 3121869169219576987, guid: e4f560b38aa578344aeff3a96f76da95, type: 3}
+      propertyPath: lightBalls.Array.data[1]
+      value: 
+      objectReference: {fileID: 3550005666127261084, guid: 414b4a77ccef1f443b8d3c5487be1db2, type: 3}
+    - target: {fileID: 3121869169219576987, guid: e4f560b38aa578344aeff3a96f76da95, type: 3}
+      propertyPath: lightBalls.Array.data[2]
+      value: 
+      objectReference: {fileID: 3550005666127261084, guid: 414b4a77ccef1f443b8d3c5487be1db2, type: 3}
+    - target: {fileID: 3121869169219576987, guid: e4f560b38aa578344aeff3a96f76da95, type: 3}
+      propertyPath: lightBalls.Array.data[3]
+      value: 
+      objectReference: {fileID: 3550005666127261084, guid: 414b4a77ccef1f443b8d3c5487be1db2, type: 3}
+    - target: {fileID: 3121869169219576987, guid: e4f560b38aa578344aeff3a96f76da95, type: 3}
+      propertyPath: lightBalls.Array.data[4]
+      value: 
+      objectReference: {fileID: 3550005666127261084, guid: 414b4a77ccef1f443b8d3c5487be1db2, type: 3}
     - target: {fileID: 9165131936526234268, guid: e4f560b38aa578344aeff3a96f76da95, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.3605692
