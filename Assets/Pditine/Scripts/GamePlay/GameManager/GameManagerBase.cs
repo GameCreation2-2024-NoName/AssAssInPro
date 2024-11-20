@@ -92,7 +92,7 @@ namespace Pditine.GamePlay.GameManager
         {
             AssBase theAss = Instantiate(DataManager.Instance.GetAssData(assID).Prototype).GetComponent<AssBase>();
             ThornBase theThorn = Instantiate(DataManager.Instance.GetThornData(thornID).Prototype).GetComponent<ThornBase>();
-            thePlayer.Init(theThorn,theAss);// 保证先初始化PlayerController
+            thePlayer.Init(theThorn,theAss); // 保证先初始化PlayerController
             theAss.Init(thePlayer);
             theThorn.Init(thePlayer);
         }

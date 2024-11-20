@@ -110,6 +110,12 @@ namespace Pditine.Player
         public InputHandler InputHandler =>
             id == 1 ? PlayerManager.Instance.Handler1 : PlayerManager.Instance.Handler2;
 
+        /// <summary>
+        /// 用于操作表现上的玩家Scale和Rotation等变化,考虑封装
+        /// </summary>
+        [SerializeField]private Transform entity;
+        public Transform Entity => entity;
+
         #endregion
 
         #region 其他变量

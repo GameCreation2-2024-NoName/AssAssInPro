@@ -38,7 +38,7 @@ namespace Pditine.Player.Thorn
             thePlayer = parent;
             transform.position = parent.transform.position;
             transform.rotation = parent.transform.rotation;
-            transform.parent = parent.transform;
+            transform.parent = parent.Entity;
             
             parent.VFX.AddVFX(vfxNameList, vfxList);
         }

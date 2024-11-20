@@ -40,8 +40,7 @@ namespace Pditine.Player.Ass
             thePlayer = parent;
             transform.position = parent.transform.position;
             transform.rotation = parent.transform.rotation;
-            transform.parent = parent.transform;
-
+            transform.parent = parent.Entity;
             theSpriteRenderer.sprite = parent.ID == 1 ? data.PortraitBlue : data.PortraitYellow;
             parent.VFX.AddVFX(vfxNameList, vfxList);
         }
