@@ -15,14 +15,14 @@ namespace Pditine.Map
         [SerializeField] private LayerMask layerMask;
         [SerializeField] private GameObject theParticle;
         
-        [SerializeField][Range(0,1)] private float rotateSpeed;
+        [SerializeField][Range(-1,1)] private float rotateSpeed;
 
         [SerializeField] private int atk;
         private int ATK => atk;
         private bool _ready = true;
 
         private Vector3 CurrentDirection => theLaser.transform.rotation*Vector3.down;
-        private float _angleZTarget = 90;
+        private float _angleZTarget = 270;
 
         private void Start()
         {
@@ -66,8 +66,8 @@ namespace Pditine.Map
             theLaser.enabled = true;
             theParticle.SetActive(true);
             rotateSpeed = -rotateSpeed;
-            if (rotateSpeed > 0) _angleZTarget = 90;
-            else _angleZTarget = 270;
+            if (rotateSpeed > 0) _angleZTarget = 270;
+            else _angleZTarget = 90;
         }
         
 
