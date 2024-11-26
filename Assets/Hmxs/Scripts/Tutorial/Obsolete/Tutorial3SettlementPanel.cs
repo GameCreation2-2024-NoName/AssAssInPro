@@ -1,4 +1,5 @@
-﻿using Pditine.Data;
+﻿using System;
+using Pditine.Data;
 using Pditine.GamePlay.UI;
 using Pditine.Player;
 using PurpleFlowerCore;
@@ -7,7 +8,8 @@ using UnityEngine.UI;
 
 namespace Hmxs.Scripts.Tutorial
 {
-    public class Tutorial2SettlementPanel : SettlementPanel
+    [Obsolete]
+    public class Tutorial3SettlementPanel : SettlementPanel
     {
         [SerializeField] protected Text titleText;
         [SerializeField] protected GameObject nextLevel;
@@ -35,12 +37,12 @@ namespace Hmxs.Scripts.Tutorial
         public void TryAgain()
         {
             DataManager.Instance.PassingData.mainMenuOpenedMenuIndex = 0;
-            SceneSystem.LoadScene(7);
+            SceneSystem.LoadScene(8);
         }
 
         public void NextLevel()
         {
-            DataManager.Instance.PassingData.mainMenuOpenedMenuIndex = 7;
+            DataManager.Instance.PassingData.mainMenuOpenedMenuIndex = 0;
             SceneSystem.LoadScene(0);
         }
     }

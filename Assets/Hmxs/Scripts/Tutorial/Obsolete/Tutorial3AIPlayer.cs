@@ -6,7 +6,8 @@ using Random = UnityEngine.Random;
 
 namespace Hmxs.Scripts.Tutorial
 {
-    public class Tutorial2AIPlayer : PlayerController
+    [Obsolete]
+    public class Tutorial3AIPlayer : PlayerController
     {
         [Title("IdleState")]
         [SerializeField] private float idleTime = 2f;
@@ -17,13 +18,13 @@ namespace Hmxs.Scripts.Tutorial
         [SerializeField] [Range(0f, 1f)] private float directAttackProbability = 0.5f;
         [SerializeField] private bool playerMovementPrediction;
 
-        private enum Tutorial2AIPlayerState
+        private enum Tutorial3AIPlayerState
         {
             Idle,
             Attack
         }
 
-        private Tutorial2AIPlayerState _currentState;
+        private Tutorial3AIPlayerState _currentState;
         private Vector2 _leftPoint;
         private Vector2 _rightPoint;
         private Vector2 _topPoint;
@@ -32,7 +33,7 @@ namespace Hmxs.Scripts.Tutorial
 
         private void Start()
         {
-            _currentState = Tutorial2AIPlayerState.Idle;
+            _currentState = Tutorial3AIPlayerState.Idle;
             _counter = 0f;
         }
 
@@ -50,10 +51,10 @@ namespace Hmxs.Scripts.Tutorial
 
             switch (_currentState)
             {
-                case Tutorial2AIPlayerState.Idle:
+                case Tutorial3AIPlayerState.Idle:
                     OnIdle();
                     break;
-                case Tutorial2AIPlayerState.Attack:
+                case Tutorial3AIPlayerState.Attack:
                     OnAttack();
                     break;
                 default:
@@ -66,19 +67,19 @@ namespace Hmxs.Scripts.Tutorial
             _counter += Time.deltaTime;
             if (!(_counter >= idleTime)) return;
             _counter = 0f;
-            _currentState = Tutorial2AIPlayerState.Attack;
+            _currentState = Tutorial3AIPlayerState.Attack;
         }
 
         private void OnAttack()
         {
             Vector2 dashDirection;
-            var player1 = (Vector2)Tutorial2GameManager.Instance.Player1.position;
+            var player1 = (Vector2)Tutorial3GameManager.Instance.Player1.position;
             var position = (Vector2)transform.position;
 
             if (playerMovementPrediction)
             {
-                var player1Velocity = Tutorial2GameManager.Instance.Player1.GetComponent<PlayerController>().CurrentSpeed;
-                var player1Direction = Tutorial2GameManager.Instance.Player1.GetComponent<PlayerController>().CurrentDirection;
+                var player1Velocity = Tutorial3GameManager.Instance.Player1.GetComponent<PlayerController>().CurrentSpeed;
+                var player1Direction = Tutorial3GameManager.Instance.Player1.GetComponent<PlayerController>().CurrentDirection;
                 player1 += player1Direction * player1Velocity;
             }
 
@@ -136,7 +137,7 @@ namespace Hmxs.Scripts.Tutorial
         {
             ChangeDirection(direction.normalized);
             Dash();
-            _currentState = Tutorial2AIPlayerState.Idle;
+            _currentState = Tutorial3AIPlayerState.Idle;
         }
 
         private void CheckWallPoint()

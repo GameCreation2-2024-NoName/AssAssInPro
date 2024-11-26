@@ -3,18 +3,17 @@ using Hmxs.Toolkit.Plugins.Fungus.FungusTools;
 using Pditine.Data;
 using Pditine.GamePlay.Buff;
 using Pditine.GamePlay.GameManager;
-using Pditine.GamePlay.LightBall;
 using Pditine.GamePlay.UI;
 using Pditine.Player;
 using Pditine.Player.Ass;
 using Pditine.Player.Thorn;
 using Sirenix.OdinInspector;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
 namespace Hmxs.Scripts.Tutorial
 {
-    public class Tutorial2GameManager : GameManagerBase<Tutorial2GameManager>
+    [Obsolete]
+    public class Tutorial1GameManager : GameManagerBase<Tutorial1GameManager>
     {
         public Transform Player1 => player1.transform;
         public PlayerController Player1Controller => player1;
@@ -23,15 +22,6 @@ namespace Hmxs.Scripts.Tutorial
         [Required] [SerializeField] private GameObject player1Ass;
         [Required] [SerializeField] private GameObject player2Thorn;
         [Required] [SerializeField] private GameObject player2Ass;
-
-        [Required] [SerializeField] private Canvas aiHeartCanvas;
-        [Required] [SerializeField] private Canvas playerBuffCanvas;
-
-        [Title("LightBall")]
-        [Required] [SerializeField] private GameObject lightBall;
-        [Required] [SerializeField] private DetectPoint detectPoint;
-
-        private SpriteRenderer _lightBallSprite;
 
         private SpriteRenderer _player1ThornSprite;
         private SpriteRenderer _player1AssSprite;
@@ -55,8 +45,6 @@ namespace Hmxs.Scripts.Tutorial
             _player2AssSprite = player2Ass.GetComponent<SpriteRenderer>();
             _player2ThornSprite = player2Thorn.GetComponent<SpriteRenderer>();
 
-            _lightBallSprite = lightBall.GetComponentInChildren<SpriteRenderer>();
-
             var thorn1 = player1Thorn.GetComponent<ThornBase>();
             var ass1 = player1Ass.GetComponent<AssBase>();
             var thorn2 = player2Thorn.GetComponent<ThornBase>();
@@ -76,53 +64,45 @@ namespace Hmxs.Scripts.Tutorial
             BuffManager.Instance.Init(player1,player2);
             UIManager.Instance.Init(player1,player2);
 
-            FlowchartManager.ExecuteBlock("Tutorial2Start");
+            FlowchartManager.ExecuteBlock("Tutorial1Start");
         }
 
         public void EnablePlayerInput()
         {
             PlayerManager.Instance.SwitchMap("GamePlay");
-            player1.canMove = true;
-            player2.canMove = true;
-        }
-
-        public void BanPlayerInput()
-        {
-            player1.canMove = false;
-            player2.canMove = false;
-        }
-
-        public void PlayStartFeedback() => startEffect.PlayFeedbacks();
-
-        public void SetHighlight(SpriteRenderer sprite) => sprite.sortingOrder = 999;
-        public void SetHighlight(Canvas canvas) => canvas.sortingOrder = 999;
-
-        public void ExecuteBlock(string blockName) => FlowchartManager.ExecuteBlock(blockName);
-
-        public void ResetHighlight()
-        {
-            if (lightBall) _lightBallSprite.sortingOrder = 0;
-            _player1AssSprite.sortingOrder = 1;
-            _player2AssSprite.sortingOrder = 1;
-            _player1ThornSprite.sortingOrder = 1;
-            _player2ThornSprite.sortingOrder = 1;
-            aiHeartCanvas.sortingOrder = aiHeartCanvas.rootCanvas.sortingOrder;
-            playerBuffCanvas.sortingOrder = playerBuffCanvas.rootCanvas.sortingOrder;
         }
 
         public void SetPlayer1Movable(bool movable) => player1.canMove = movable;
         public void SetPlayer2Movable(bool movable) => player2.canMove = movable;
 
-        public void SpawnLightBall()
+        public void SetDashInput(bool state)
         {
-            lightBall.SetActive(true);
-            while (detectPoint.HasObjectAround())
-            {
-                lightBall.transform.position += new Vector3(Random.value, Random.value, 0);
-            }
-            lightBall.GetComponent<LightBall>().Init();
+            if (state)
+                PlayerManager.Instance.Handler1.DashAction.Enable();
+            else
+                PlayerManager.Instance.Handler1.DashAction.Disable();
         }
 
-        public void SetBuffPause(bool isPause) => BuffManager.Instance.SetPause(isPause);
+        public void SetDirectionInput(bool state)
+        {
+            if (state)
+                PlayerManager.Instance.Handler1.DirectionAction.Enable();
+            else
+                PlayerManager.Instance.Handler1.DirectionAction.Disable();
+        }
+
+        public void PlayStartFeedback() => startEffect.PlayFeedbacks();
+
+        public void SetHighlight(SpriteRenderer sprite) => sprite.sortingOrder = 99;
+
+        public void ExecuteBlock(string blockName) => FlowchartManager.ExecuteBlock(blockName);
+
+        public void ResetHighlight()
+        {
+            _player1AssSprite.sortingOrder = 1;
+            _player2AssSprite.sortingOrder = 1;
+            _player1ThornSprite.sortingOrder = 1;
+            _player2ThornSprite.sortingOrder = 1;
+        }
     }
 }

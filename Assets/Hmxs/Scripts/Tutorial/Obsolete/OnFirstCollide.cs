@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Pditine.Collide;
 using Sirenix.OdinInspector;
@@ -7,6 +8,7 @@ using UnityEngine.Events;
 
 namespace Hmxs.Scripts.Tutorial
 {
+    [Obsolete]
     public class OnFirstCollide : MonoBehaviour
     {
         [SerializeField] private UnityEvent onFirstCollide;

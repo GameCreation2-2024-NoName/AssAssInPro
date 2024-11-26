@@ -8,6 +8,7 @@ using UnityEngine.Events;
 
 namespace Hmxs.Scripts.Tutorial
 {
+    [Obsolete]
     public class OnFirstTrigger : MonoBehaviour
     {
         [SerializeField] private UnityEvent onFirstCollide;

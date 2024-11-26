@@ -3,6 +3,7 @@ using UnityEngine;
 
 namespace Hmxs.Scripts.Tutorial
 {
+    [Obsolete]
     public class DetectPoint : MonoBehaviour
     {
         [SerializeField] private float detectRadius = 0.5f;

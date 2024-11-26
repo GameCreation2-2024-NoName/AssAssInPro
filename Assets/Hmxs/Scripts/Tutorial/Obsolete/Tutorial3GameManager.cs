@@ -1,4 +1,5 @@
-﻿using Hmxs.Toolkit.Plugins.Fungus.FungusTools;
+﻿using System;
+using Hmxs.Toolkit.Plugins.Fungus.FungusTools;
 using Pditine.Data;
 using Pditine.GamePlay.Buff;
 using Pditine.GamePlay.GameManager;
@@ -11,6 +12,7 @@ using UnityEngine;
 
 namespace Hmxs.Scripts.Tutorial
 {
+    [Obsolete]
     public class Tutorial3GameManager : GameManagerBase<Tutorial3GameManager>
     {
         public Transform Player1 => player1.transform;
