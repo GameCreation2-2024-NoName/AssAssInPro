@@ -7,6 +7,7 @@ namespace Pditine.Map
 {
     public class StaticThorn : ColliderBase
     {
+        public override string ColliderTag => "StaticThorn";
         [SerializeField] private float pushForce;
         [SerializeField] private int atk;
         public float PushForce => pushForce;

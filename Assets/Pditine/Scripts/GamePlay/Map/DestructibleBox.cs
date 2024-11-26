@@ -8,6 +8,7 @@ namespace Pditine.Map
 {
     public class DestructibleBox : ColliderBase
     {
+        public override string ColliderTag => "DestructibleBox";
         [SerializeField]private int hp;
         private int _currentHP;
         [SerializeField] private List<Sprite> sprites;

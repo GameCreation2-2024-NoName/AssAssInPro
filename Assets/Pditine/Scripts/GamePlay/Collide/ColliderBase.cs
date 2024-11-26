@@ -12,14 +12,13 @@ namespace Pditine.Collide
     public abstract class ColliderBase : MonoBehaviour
     {
         private readonly HashSet<ColliderBase> _collidingColliders = new();
-        // protected UnityAction collisionEvent;
-        // public UnityAction CollisionEvent => collisionEvent;
-        
-        //protected static List<CollidingEventBase> _events;
+
         protected List<CollidingEventBase> _events;
         public List<CollidingEventBase> Events => _events;
 
         public UnityAction<ColliderBase,CollideInfo> OnCollide;
+        
+        public abstract string ColliderTag { get; }
 
         protected virtual void Awake()
         {
@@ -36,7 +35,7 @@ namespace Pditine.Collide
             if (otherCollider._collidingColliders.Contains(this)) return;
             AddCollider(otherCollider);
             otherCollider.AddCollider(this);
-            CollideHandler.ColliderHandle(new CollideInfo(gameObject.tag,otherCollider.gameObject.tag,this,otherCollider,other));
+            CollideHandler.ColliderHandle(new CollideInfo(this,otherCollider,other));
         }
         
         public void AddCollider(ColliderBase theCollider)

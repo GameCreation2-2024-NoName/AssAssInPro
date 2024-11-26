@@ -8,6 +8,7 @@ namespace Pditine.Map
 {
     public class Tennis : ColliderBase
     {
+        public override string ColliderTag => "Tennis";
         [SerializeField] private float targetSpeed;
         [SerializeField] private float weight;
         public float Weight => weight;

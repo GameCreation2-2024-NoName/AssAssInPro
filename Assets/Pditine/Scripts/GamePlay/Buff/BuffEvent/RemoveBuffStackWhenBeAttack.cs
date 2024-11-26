@@ -11,7 +11,7 @@ namespace Pditine.GamePlay.Buff
         public override void Trigger(BuffInfo buffInfo)
         {
             var thePlayer = buffInfo.target;
-            thePlayer.OnTryChangeHP += (hp) =>
+            thePlayer.OnTryChangeHP += _ =>
             {
                 BuffManager.Instance.LostBuff(buffInfo);
                 //Debug.Log("lost shield buff");

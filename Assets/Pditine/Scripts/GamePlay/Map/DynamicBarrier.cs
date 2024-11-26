@@ -8,6 +8,7 @@ namespace Pditine.Map
 {
     public class DynamicBarrier : ColliderBase
     {
+        public override string ColliderTag => "DynamicBarrier";
         [HideInInspector]public float CurrentSpeed;
         [SerializeField] private float weight;
         [SerializeField] private float friction;

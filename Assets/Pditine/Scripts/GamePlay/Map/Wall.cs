@@ -7,6 +7,7 @@ namespace Pditine.Map
 {
     public class Wall : ColliderBase
     {
+        public override string ColliderTag => "Wall";
         //[SerializeField] private float offset;
         //[SerializeField] private Vector2 normalDirection;
 

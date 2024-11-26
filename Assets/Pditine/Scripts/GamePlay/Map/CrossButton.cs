@@ -8,6 +8,7 @@ namespace Pditine.Map
 {
     public class CrossButton : ColliderBase
     {
+        public override string ColliderTag => "CrossButton";
         [SerializeField] private float CD = 5f;
         [SerializeField] private Cross theCross;
         [SerializeField] private Sprite readySprite;

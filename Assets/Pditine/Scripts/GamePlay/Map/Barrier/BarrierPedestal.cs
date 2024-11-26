@@ -7,8 +7,10 @@ namespace Pditine.Map
 {
     public class BarrierPedestal : ColliderBase
     {
+        
         [SerializeField] private Barrier theBarrier;
         public Barrier TheBarrier=>theBarrier;
+        public override string ColliderTag => "BarrierPedestal";
         protected override List<CollidingEventBase> GetCollidingEvents()
         {
             return new List<CollidingEventBase>

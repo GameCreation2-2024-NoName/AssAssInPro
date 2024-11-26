@@ -2,6 +2,6 @@
 {
     public class LittleAss : AssBase
     {
-        
+        public override string ColliderTag => "Ass";
     }
 }

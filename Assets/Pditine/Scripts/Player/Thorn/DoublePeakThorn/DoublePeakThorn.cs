@@ -11,6 +11,7 @@ namespace Pditine.Player.Thorn.DoublePeakThorn
         [ReadOnly]private PlayerController _rightPeakTarget;
 
         [SerializeField] private BuffData doublePeakBuffData;
+        public override string ColliderTag => "Thorn";
         private BuffInfo _doublePeakBuffInfo;
         private bool _canTriggerSkill;
 

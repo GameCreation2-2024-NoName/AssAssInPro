@@ -40,6 +40,7 @@ namespace Pditine.Map
             AAIAudioManager.Instance.PlayEffect(cheerAudioName);
             eatenFeedback.PlayFeedbacks();
             theBall.SetActive(false);
+            theCollider.enabled = false;
             DelayUtility.Delay(0.7f, () =>
             {
                 Destroy(gameObject);// todo:对象池

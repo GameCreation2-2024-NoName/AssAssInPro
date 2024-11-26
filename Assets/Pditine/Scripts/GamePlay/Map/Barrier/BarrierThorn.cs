@@ -7,6 +7,7 @@ namespace Pditine.Map
 {
     public class BarrierThorn : ColliderBase
     {
+        public override string ColliderTag => "BarrierThorn";
         [SerializeField] private Barrier theBarrier;
         public Barrier TheBarrier=>theBarrier;
 

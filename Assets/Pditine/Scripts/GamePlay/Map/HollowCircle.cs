@@ -8,6 +8,7 @@ namespace Pditine.Map
 {
     public class HollowCircle : ColliderBase
     {
+        public override string ColliderTag => "HollowCircle";
         [SerializeField] private float speed;
         [SerializeField] private float weight;
         public float Weight => weight;

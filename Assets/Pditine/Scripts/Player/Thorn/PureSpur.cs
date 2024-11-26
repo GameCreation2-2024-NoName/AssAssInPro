@@ -8,6 +8,7 @@ namespace Pditine.Player.Thorn
     {
         [SerializeField] private BuffData pureSpurBuffData;
         private BuffInfo _pureSpurBuffInfo;
+        public override string ColliderTag => "Thorn";
 
         public override void Init(PlayerController parent)
         {
