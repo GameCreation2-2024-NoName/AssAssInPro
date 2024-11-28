@@ -71,6 +71,7 @@ namespace Pditine.Player
         private float _battery = 25; //todo:这个数值应该是固定的
         
         private bool _chargeDone;
+        protected bool ChargeDone => _chargeDone;
 
         [Inspectable]private float _currentBattery;
         public float CurrentBattery => _currentBattery;
@@ -148,7 +149,7 @@ namespace Pditine.Player
         public event Action<float> OnTryChangeHP; // 血量变化量
         public event Action<float, int> OnChangeHP; // 当前血量 玩家id
         public event Action OnDestroyed;
-        public event Action<Vector3> OnChangeCurrentDirection;
+        public Action<Vector3> OnChangeCurrentDirection;
         
         #endregion
 
