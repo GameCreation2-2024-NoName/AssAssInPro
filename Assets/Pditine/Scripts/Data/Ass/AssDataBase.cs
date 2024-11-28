@@ -9,7 +9,7 @@ namespace Pditine.Data.Ass
     public class AssDataBase : ScriptableObject
     {
         [SerializeField] private int id;
-        [SerializeField] private int hp;
+        [SerializeField] private float hp;
         // [SerializeField] private float initialVelocity;
         [SerializeField] private float weight;
         [SerializeField] private float energy;
@@ -20,7 +20,7 @@ namespace Pditine.Data.Ass
         [SerializeField] private string assIntroduction;
         
         public int ID => id;
-        public int HP => hp;
+        public float HP => hp;
         // public float InitialVelocity => initialVelocity;
         public float Weight=>weight;
         public float Energy => energy;

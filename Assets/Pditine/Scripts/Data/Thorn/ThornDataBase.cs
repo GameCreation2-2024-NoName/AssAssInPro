@@ -8,7 +8,7 @@ namespace Pditine.Data.Thorn
     public class ThornDataBase : ScriptableObject
     {
         [SerializeField] private int id;
-        [SerializeField] private int atk;
+        [SerializeField] private float atk;
         // [SerializeField] private float cd;
         [SerializeField] private float speedCoefficient;
         [SerializeField] private float weight;
@@ -18,7 +18,7 @@ namespace Pditine.Data.Thorn
         [SerializeField] private string thornIntroduction;
 
         public int ID => id;
-        public int ATK => atk;
+        public float ATK => atk;
         // public float CD => cd;
         public float SpeedCoefficient => speedCoefficient;
         public float Weight=>weight;

@@ -1,4 +1,5 @@
-﻿using Pditine.Data.Ass;
+﻿using Pditine.Data;
+using Pditine.Data.Ass;
 using Pditine.Data.Thorn;
 using Sirenix.OdinInspector;
 using TMPro;
@@ -17,9 +18,9 @@ namespace Hmxs.Scripts
         [SerializeField] private InfoUI assProperty2;
         [SerializeField] private InfoUI assProperty3;
         [SerializeField] private TMP_Text assIntroduction;
-        [SerializeField] [MinMaxSlider(0, 20, true)] private Vector2 assProperty1Range;
-        [SerializeField] [MinMaxSlider(0, 40, true)] private Vector2 assProperty2Range;
-        [SerializeField] [MinMaxSlider(0, 60, true)] private Vector2 assProperty3Range;
+        // [SerializeField] [MinMaxSlider(0, , true)] private Vector2 assProperty1Range;
+        // [SerializeField] [MinMaxSlider(0, 55, true)] private Vector2 assProperty2Range;
+        // [SerializeField] [MinMaxSlider(0, 200, true)] private Vector2 assProperty3Range;
 
         [Title("Thorn Info")]
         [SerializeField] private EquipUI thornImg;
@@ -28,9 +29,9 @@ namespace Hmxs.Scripts
         [SerializeField] private InfoUI thornProperty2;
         [SerializeField] private InfoUI thornProperty3;
         [SerializeField] private TMP_Text thornIntroduction;
-        [SerializeField] [MinMaxSlider(0, 20, true)] private Vector2 thornProperty1Range;
-        [SerializeField] [MinMaxSlider(0, 20, true)] private Vector2 thornProperty2Range;
-        [SerializeField] [MinMaxSlider(0, 20, true)] private Vector2 thornProperty3Range;
+        // [SerializeField] [MinMaxSlider(0, 20, true)] private Vector2 thornProperty1Range;
+        // [SerializeField] [MinMaxSlider(0, 20, true)] private Vector2 thornProperty2Range;
+        // [SerializeField] [MinMaxSlider(0, 20, true)] private Vector2 thornProperty3Range;
 
         private void SetAssImg(Sprite sprite)
         {
@@ -72,10 +73,10 @@ namespace Hmxs.Scripts
             SetAssImg(assSprite);
             SetAssName(assInfo.AssName);
 
-            SetAssProperty1(DataMapping(assInfo.HP, assProperty1Range));
-            //todo: 数值系统调整
-            //SetAssProperty2(DataMapping(assInfo.InitialVelocity, assProperty2Range));
-            SetAssProperty3(DataMapping(assInfo.Weight, assProperty3Range));
+            SetAssProperty1(DataMapping(assInfo.HP,new Vector2(0,DataManager.Instance.MaxHP)));
+
+            SetAssProperty2(DataMapping(assInfo.Energy, new Vector2(0,DataManager.Instance.MaxEnergy)));
+            SetAssProperty3(DataMapping(assInfo.Weight, new Vector2(0,DataManager.Instance.MaxAssWeight)));
 
             SetAssIntroduction(assInfo.AssIntroduction);
         }
@@ -90,10 +91,10 @@ namespace Hmxs.Scripts
 
             SetThornImg(thornInfo.Portrait);
             SetThornName(thornInfo.ThornName);
-            //todo: 数值系统调整
-            SetThornProperty1(DataMapping(thornInfo.ATK, thornProperty1Range));
-            //SetThornProperty2(DataMapping(thornInfo.CD, thornProperty2Range));
-            SetThornProperty3(DataMapping(thornInfo.Weight, thornProperty3Range));
+
+            SetThornProperty1(DataMapping(thornInfo.ATK, new Vector2(0,DataManager.Instance.MaxATK)));
+            SetThornProperty2(DataMapping(thornInfo.SpeedCoefficient, new Vector2(0,DataManager.Instance.MaxSpeedCoefficient)));
+            SetThornProperty3(DataMapping(thornInfo.Weight, new Vector2(0,DataManager.Instance.MaxThornWeight)));
 
             SetThornIntroduction(thornInfo.ThornIntroduction);
         }

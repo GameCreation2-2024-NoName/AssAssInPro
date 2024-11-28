@@ -21,6 +21,15 @@ namespace Pditine.Data
         [SerializeField] private List<GameObject> lightBalls = new();
         [SerializeField] private List<BuffData> buffData;
         [SerializeField] private PassingData passingData;
+
+        public float MaxHP => asses.Select(ass => ass.HP).Prepend(0).Max();
+        public float MaxEnergy => asses.Select(ass => ass.Energy).Prepend(0).Max();
+        public float MaxAssWeight => asses.Select(ass => ass.Weight).Prepend(0).Max();
+        
+        public float MaxATK => thorns.Select(thorn => thorn.ATK).Prepend(0).Max();
+        public float MaxSpeedCoefficient => thorns.Select(thorn => thorn.SpeedCoefficient).Prepend(0).Max();
+        public float MaxThornWeight => thorns.Select(thorn => thorn.Weight).Prepend(0).Max();
+
         public List<AssDataBase> Asses => asses;
         public List<ThornDataBase> Thorns => thorns;
         public List<GameModelBase> GameModules => gameModules;
