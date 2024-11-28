@@ -66,7 +66,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -24009582, guid: f92b35676e3a77b469ae5b36e96a8ac4, type: 3}
+  m_Sprite: {fileID: 1747814020, guid: 72def37ceab1c1b41b8a03564dfb7ac4, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -89,5 +89,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreLight: {fileID: 8445209820658234359}
-  scoreLightOn: {fileID: -24009582, guid: f92b35676e3a77b469ae5b36e96a8ac4, type: 3}
-  scoreLightOff: {fileID: -991407175, guid: f92b35676e3a77b469ae5b36e96a8ac4, type: 3}
+  scoreLightOn: {fileID: 1747814020, guid: 72def37ceab1c1b41b8a03564dfb7ac4, type: 3}
+  scoreLightOff: {fileID: 660493513, guid: de29cf4239a4f894eaf5f2a26fd4bcf1, type: 3}
