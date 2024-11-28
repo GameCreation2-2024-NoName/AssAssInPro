@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: WaningMoon
   m_EditorClassIdentifier: 
   id: 3
-  atk: 10
-  speedCoefficient: 30
-  weight: 10
+  atk: 15
+  speedCoefficient: 23
+  weight: 8
   prototype: {fileID: 3527323057261180279, guid: 290db97a4df8c414da0b76760c0c8403, type: 3}
   portrait: {fileID: 144403380, guid: 22b5deefd12eeeb4a8dfed8c6ac0977a, type: 3}
   thornName: "\u7F3A\u6708"
