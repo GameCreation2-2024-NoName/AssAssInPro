@@ -25,8 +25,6 @@ namespace Pditine.GamePlay.UI
             }
             else
             {
-                // timerText.text = time.ToString();
-                // timerImage.fillAmount = 1;
                 throw new System.NotImplementedException();
             }
         }

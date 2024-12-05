@@ -2,6 +2,7 @@
 using System.Linq;
 using Pditine.Data.Ass;
 using Pditine.Data.GameModule;
+using Pditine.Data.Player;
 using Pditine.Data.Thorn;
 using Pditine.GamePlay.Buff;
 using Pditine.Scripts.Data.DatePassing;
@@ -21,6 +22,8 @@ namespace Pditine.Data
         [SerializeField] private List<GameObject> lightBalls = new();
         [SerializeField] private List<BuffData> buffData;
         [SerializeField] private PassingData passingData;
+        [SerializeField] private PlayerData defaultPlayerData;
+        public PlayerData DefaultPlayerData => defaultPlayerData;
 
         public float MaxHP => asses.Select(ass => ass.HP).Prepend(0).Max();
         public float MaxEnergy => asses.Select(ass => ass.Energy).Prepend(0).Max();

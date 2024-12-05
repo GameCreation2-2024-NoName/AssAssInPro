@@ -2,6 +2,8 @@ using System;
 using Hmxs.Scripts;
 using MoreMountains.Feedbacks;
 using Pditine.Audio;
+using Pditine.Data;
+using Pditine.Data.Player;
 using Pditine.Player.Ass;
 using Pditine.Player.Thorn;
 using PurpleFlowerCore;
@@ -20,11 +22,6 @@ namespace Pditine.Player
         public int ID => id;
 
         //todo: 这数值系统太抽象了,需要重新设计一下
-        // [HideInInspector] public float initialVelocityMulAdjustment = 1;
-        // [HideInInspector] public float initialVelocityAddAdjustment = 0;
-        //
-        // public float InitialVelocity =>
-        //     _theAss.Data.InitialVelocity * initialVelocityMulAdjustment + initialVelocityAddAdjustment;
         
         [HideInInspector] public float speedCoefficientMulAdjustment = 1;
         [HideInInspector] public float speedCoefficientAddAdjustment = 0;
@@ -45,10 +42,6 @@ namespace Pditine.Player
 
         public float Weight => (_theAss.Data.Weight + _theThorn.Data.Weight) * weightMulAdjustment +
                                weightAddAdjustment;
-
-        // [HideInInspector] public float cdMulAdjustment = 1;
-        // [HideInInspector] public float cdAddAdjustment = 0;
-        // private float CD => _theThorn.Data.CD * cdMulAdjustment + cdAddAdjustment;
         
         [HideInInspector] public float energyMulAdjustment = 1;
         [HideInInspector] public float energyAddAdjustment = 0;
@@ -67,8 +60,6 @@ namespace Pditine.Player
 
         [Inspectable]private float _currentEnergy;
         public float CurrentEnergy => _currentEnergy;
-
-        private float _battery = 25; //todo:这个数值应该是固定的
         
         private bool _chargeDone;
         protected bool ChargeDone => _chargeDone;
@@ -76,10 +67,11 @@ namespace Pditine.Player
         [Inspectable]private float _currentBattery;
         public float CurrentBattery => _currentBattery;
         
-        [SerializeField] private float energyRecoverSpeed;
-
+        private float EnergyRecoverSpeed => Data.energyRecoverSpeed;
+        private float Battery => Data.battery;
+        private float RotateSpeed => Data.rotateSpeed;
+        
         [HideInInspector] public float CurrentSpeed;
-        [SerializeField] private float rotateSpeed;
         protected Vector2 InputDirection;
         [ReadOnly] private Vector2 _currentDirection;
 
@@ -94,9 +86,6 @@ namespace Pditine.Player
         }
 
         private float _changingTime;
-        
-        [ReadOnly] public bool canMove;
-        [ReadOnly] public bool isInvincible;
 
         //todo: 这数值系统太抽象了,需要重新设计一下
         #endregion
@@ -116,11 +105,26 @@ namespace Pditine.Player
         /// </summary>
         [SerializeField]private Transform entity;
         public Transform Entity => entity;
+        
+        // 运行时不会改变的玩家数据，为空时使用默认数据
+        [SerializeField]private PlayerData data;
+
+        public PlayerData Data
+        {
+            get
+            {
+                if (data == null)
+                    data = DataManager.Instance.DefaultPlayerData;
+                return data;
+            }
+        }
 
         #endregion
 
         #region 其他变量
-
+        
+        [ReadOnly] public bool canMove;
+        [ReadOnly] public bool isInvincible;
         private bool _isPause;
         public bool IsPause => _isPause;
 
@@ -131,9 +135,10 @@ namespace Pditine.Player
         [SerializeField] private bool isAI;
         public bool IsAI => isAI;
         
-        [SerializeField]private float recoverCD = 1;
+        private float RecoverCD => Data.recoverCD;
 
         private float _currentRecoverCD;
+        
         #endregion
 
         #region 事件
@@ -198,8 +203,12 @@ namespace Pditine.Player
             if (InputHandler.Direction.sqrMagnitude != 0) ChangeDirection(InputHandler.Direction);
         }
 
-        public void Init(ThornBase theThorn, AssBase theAss)
+        public void Init(ThornBase theThorn, AssBase theAss, PlayerData playerData = null)
         {
+            if (playerData != null)
+            {
+                data = playerData;
+            }
             _currentDirection = transform.right;
             targetScale = transform.localScale.x;
             _theAss = theAss;
@@ -235,23 +244,23 @@ namespace Pditine.Player
             //todo: 消耗速度?
             if (_chargeDone) return;
             if (_currentEnergy <= 0) _currentEnergy = 0;
-            if (_currentBattery >= _battery)
+            if (_currentBattery >= Battery)
             {
                 VFX[VFXName.Charging].Stop();
                 VFX[VFXName.ChargeDone].Play();
                 _chargeDone = true;
                 OnEndChanging?.Invoke();
-                _currentBattery = Mathf.Min(_battery, _currentBattery);
+                _currentBattery = Mathf.Min(Battery, _currentBattery);
                 
             }
             else
             {
                 VFX[VFXName.Charging].Play();
-                _currentEnergy -= Time.deltaTime * energyRecoverSpeed * 1.5f;
+                _currentEnergy -= Time.deltaTime * EnergyRecoverSpeed * 1.5f;
                 if(_currentEnergy < 0) 
                     _currentEnergy = 0;
                 else
-                    _currentBattery += Time.deltaTime * energyRecoverSpeed * 1.5f;
+                    _currentBattery += Time.deltaTime * EnergyRecoverSpeed * 1.5f;
                 OnChanging?.Invoke(_currentBattery);
             }
             OnChangeEnergy?.Invoke(_currentEnergy, Energy, _currentBattery);
@@ -268,14 +277,14 @@ namespace Pditine.Player
             _currentDirection = InputDirection;
             CurrentSpeed = CalculateSpeed();
             _currentBattery = 0;
-            _currentRecoverCD = recoverCD;
+            _currentRecoverCD = RecoverCD;
         }
         
         private void RecoverEnergy()
         {
             _currentRecoverCD -= Time.deltaTime;
             if (_currentRecoverCD > 0) return;
-            _currentEnergy += Time.deltaTime * energyRecoverSpeed;
+            _currentEnergy += Time.deltaTime * EnergyRecoverSpeed;
             if (_currentEnergy >= Energy) _currentEnergy = Energy;
             OnChangeEnergy?.Invoke(_currentEnergy, Energy, _currentBattery);
         }
@@ -289,7 +298,7 @@ namespace Pditine.Player
         private void UpdateTransform()
         {
             transform.position += (Vector3)_currentDirection * (CurrentSpeed * Time.deltaTime);
-            transform.right = Vector3.Lerp(transform.right, _currentDirection, rotateSpeed);
+            transform.right = Vector3.Lerp(transform.right, _currentDirection, RotateSpeed);
         }
         
         protected virtual float CalculateSpeed()

@@ -12,3 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aeab44e86cf6464d9a09bc3c63ffe951, type: 3}
   m_Name: DefaultPlayerData
   m_EditorClassIdentifier: 
+  battery: 25
+  energyRecoverSpeed: 25
+  recoverCD: 1
+  rotateSpeed: 0.4

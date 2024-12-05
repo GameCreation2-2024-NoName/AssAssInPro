@@ -95,6 +95,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 30398b7e647dfbc44bf9865437d0b4f3, type: 2}
   - {fileID: 11400000, guid: 710370f237f5aec4daa2bbc7bcc66e2c, type: 2}
   - {fileID: 11400000, guid: 2585d4249c9a32c459fbfcb86ee2ca8b, type: 2}
+  multiplayerGameModules: []
   lightBalls:
   - {fileID: 6006876733962089475, guid: 572f7edc9964e1a40aceb06543995f02, type: 3}
   - {fileID: 3550005666127261084, guid: 548ff30556d4e64488a8105517924057, type: 3}
@@ -114,6 +115,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 1491c6a918547f1478728abc5b31c2af, type: 2}
   - {fileID: 11400000, guid: 1485e6051c5604e41abc89682074c17e, type: 2}
   passingData: {fileID: 11400000, guid: 7418c051347f2e848add978cad8a72bf, type: 2}
+  defaultPlayerData: {fileID: 11400000, guid: b4b117c34ffcbd54992a72ae0201a4d4, type: 2}
 --- !u!1 &7317271625278231463
 GameObject:
   m_ObjectHideFlags: 0

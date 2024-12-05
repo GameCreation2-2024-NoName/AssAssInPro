@@ -2427,6 +2427,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 1491c6a918547f1478728abc5b31c2af, type: 2}
   - {fileID: 11400000, guid: 1485e6051c5604e41abc89682074c17e, type: 2}
   passingData: {fileID: 11400000, guid: 7418c051347f2e848add978cad8a72bf, type: 2}
+  defaultPlayerData: {fileID: 11400000, guid: b4b117c34ffcbd54992a72ae0201a4d4, type: 2}
 --- !u!4 &1722872106
 Transform:
   m_ObjectHideFlags: 0

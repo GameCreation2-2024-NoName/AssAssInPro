@@ -16,7 +16,7 @@ namespace Pditine.GamePlay.UI
         [SerializeField]private Image blueBar;
         [SerializeField]private Image yellowBar;
         private Image _currentBar;
-        private float _max = 25; // 先写死,跟PlayerController中相同
+        private float _max;
         private Transform _target;
         [SerializeField]private float offset;
         private bool _isCharging;
@@ -25,10 +25,10 @@ namespace Pditine.GamePlay.UI
         private float _currentCD;
         [SerializeField] private RectTransform parentRectTransform;
         
-
         public void Init(PlayerController thePlayer)
         {
             thePlayer.OnChanging += Charge;
+            _max = thePlayer.Data.battery;
             _currentBar = thePlayer.ID == 1? blueBar: yellowBar;
             _currentBar.enabled = true;
             _target = thePlayer.transform;

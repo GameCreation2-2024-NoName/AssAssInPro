@@ -15,7 +15,7 @@ namespace Pditine.GamePlay.UI
     {
         [SerializeField]private List<Sprite> playerMark;
         [SerializeField]private Image image;
-
+        
         public void Init(PlayerController playerController)
         {
             image.sprite = playerController.IsAI ? playerMark[0] : playerMark[playerController.ID];

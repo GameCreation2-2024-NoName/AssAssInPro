@@ -1,6 +1,7 @@
 ﻿using Hmxs.Scripts;
 using MoreMountains.Feedbacks;
 using Pditine.Data;
+using Pditine.Data.Player;
 using Pditine.GamePlay.Buff;
 using Pditine.GamePlay.UI;
 using Pditine.Player;
@@ -24,6 +25,7 @@ namespace Pditine.GamePlay.GameManager
         [Header("玩家")]
         [SerializeField] protected PlayerController player1;
         [SerializeField] protected PlayerController player2;
+        [SerializeField] protected PlayerData playerData;
         
         protected PassingData PassingData;
         protected bool IsPause;
