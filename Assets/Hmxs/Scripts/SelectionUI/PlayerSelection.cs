@@ -203,9 +203,9 @@ namespace Hmxs.Scripts
             mask.SetActive(false);
             DelayUtility.DelayFrame(2, () =>
             {
-                if(InputHandler.IsGamepad)
-                    deviceIcon.ChangeDevice(DeviceType.Gamepad);
-                else deviceIcon.ChangeDevice(DeviceType.Mouse);
+                if(InputHandler.Device == Device.Gamepad)
+                    deviceIcon.ChangeDevice(Device.Gamepad);
+                else deviceIcon.ChangeDevice(Device.Mouse);
             });
         }
 
@@ -214,7 +214,7 @@ namespace Hmxs.Scripts
             if (InputHandler != null) return;
             //if (InputHandler.PlayerInput != theInput) return;
             mask.SetActive(true);
-            deviceIcon.ChangeDevice(DeviceType.Null);
+            deviceIcon.ChangeDevice(Device.Null);
         }
     }
 }

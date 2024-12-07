@@ -1,6 +1,9 @@
-﻿using System;
-using Pditine.Player;
-using Sirenix.OdinInspector;
+// -------------------------------------------------
+// Copyright@ The Most Devout Followers of McDonald
+// Author : lijianhao
+// Date: 2024_12_07
+// -------------------------------------------------
+
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Utilities;
@@ -8,20 +11,23 @@ using UnityEngine.InputSystem.Utilities;
 namespace Hmxs.Scripts
 {
     [RequireComponent(typeof(PlayerInput))]
-    public class InputHandler : MonoBehaviour
+    public class GamepadInputHandler : InputHandler
     {
-        public bool Confirm => _confirmAction.triggered;
-        public Vector2 Select => _selectAction.ReadValue<Vector2>();
-        public bool Dash => _dashAction.WasReleasedThisFrame();
-        public bool Charge => _dashAction.IsPressed();
-        public Vector2 Direction => _directionAction.ReadValue<Vector2>();
+        public override  bool Confirm => _confirmAction.triggered;
+        public override Vector2 Select => _selectAction.ReadValue<Vector2>();
+        public override bool Dash => _dashAction.WasReleasedThisFrame();
+        public override bool Charge => _dashAction.IsPressed();
+        public override Vector2 Direction => _directionAction.ReadValue<Vector2>();
         
+        public override Device Device => Device.Gamepad;
+
         private PlayerInput _playerInput;
         public PlayerInput PlayerInput => _playerInput;
         public ReadOnlyArray<InputDevice> Devices => _playerInput.devices;
         public ReadOnlyArray<InputDevice> PairedDevices => _playerInput.user.pairedDevices;
-        public bool IsKeyboard => _playerInput.currentControlScheme == InputScheme.KeyboardMouse;
-        public bool IsGamepad => _playerInput.currentControlScheme == InputScheme.GamePad;
+        
+        // public bool IsKeyboard => _playerInput.currentControlScheme == InputScheme.KeyboardMouse;
+        // public bool IsGamepad => _playerInput.currentControlScheme == InputScheme.GamePad;
         public string ControlScheme => _playerInput.currentControlScheme;
 
         // Map: Selection
@@ -45,13 +51,8 @@ namespace Hmxs.Scripts
             _dashAction = _playerInput.actions["Dash"];
             _directionAction = _playerInput.actions["Direction"];
         }
-
-        // public void Init(PlayerController player
-        // {
-        //     _dashAction.canceled += player.Dash;
-        // }
         
-        public void SwitchMap(string map) =>
+        public override void SwitchMap(string map) =>
             _playerInput.SwitchCurrentActionMap(map);
     }
 }

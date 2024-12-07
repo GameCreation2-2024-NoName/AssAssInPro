@@ -4,7 +4,6 @@ using UnityEngine.InputSystem;
 
 namespace Hmxs.Scripts
 {
-    [RequireComponent(typeof(PlayerInputManager))]
     public class PlayerManager : MonoBehaviour
     {
         public InputHandler Handler1 => handler1;
@@ -25,16 +24,16 @@ namespace Hmxs.Scripts
                 Destroy(gameObject);
             DontDestroyOnLoad(gameObject);
         }
-
+        
         private void Start()
         {
             _playerInputManager = GetComponent<PlayerInputManager>();
 
-            _playerInputManager.onPlayerJoined += OnPlayerJoined;
-            _playerInputManager.onPlayerLeft += OnPlayerLeft;
+            _playerInputManager.onPlayerJoined += RegisterPlayer;
+            _playerInputManager.onPlayerLeft += UnRegisterPlayer;
         }
 
-        private void OnPlayerJoined(PlayerInput playerInput)
+        private void RegisterPlayer(PlayerInput playerInput)
         {
             var handler = playerInput.GetComponent<InputHandler>();
             if (handler == null) return;
@@ -61,7 +60,7 @@ namespace Hmxs.Scripts
             }
         }
 
-        private void OnPlayerLeft(PlayerInput playerInput)
+        private void UnRegisterPlayer(PlayerInput playerInput)
         {
             var handler = playerInput.GetComponent<InputHandler>();
             
