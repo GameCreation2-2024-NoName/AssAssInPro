@@ -84,6 +84,7 @@ namespace Hmxs.Scripts
                 Destroy(handler2.gameObject);
             handler1 = null;
             handler2 = null;
+            joinProxy.canJoin = true;
         }
     }
 }
