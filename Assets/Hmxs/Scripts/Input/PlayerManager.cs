@@ -1,19 +1,21 @@
-﻿using Sirenix.OdinInspector;
+﻿using PurpleFlowerCore;
+using Sirenix.OdinInspector;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 namespace Hmxs.Scripts
 {
     public class PlayerManager : MonoBehaviour
     {
+        // todo:支持更多玩家?
+        // List<InputHandler>
         public InputHandler Handler1 => handler1;
         public InputHandler Handler2 => handler2;
-
+        
         [SerializeField] [ReadOnly] private InputHandler handler1;
         [SerializeField] [ReadOnly] private InputHandler handler2;
 
-        private PlayerInputManager _playerInputManager;
-
+        [SerializeField] private PlayerJoinProxy joinProxy;
+        
         public static PlayerManager Instance { get; private set; }
 
         private void Awake()
@@ -24,51 +26,41 @@ namespace Hmxs.Scripts
                 Destroy(gameObject);
             DontDestroyOnLoad(gameObject);
         }
-        
-        private void Start()
+
+        public bool RegisterPlayer(InputHandler inputHandler)
         {
-            _playerInputManager = GetComponent<PlayerInputManager>();
+            if(!inputHandler)return false;
 
-            _playerInputManager.onPlayerJoined += RegisterPlayer;
-            _playerInputManager.onPlayerLeft += UnRegisterPlayer;
-        }
-
-        private void RegisterPlayer(PlayerInput playerInput)
-        {
-            var handler = playerInput.GetComponent<InputHandler>();
-            if (handler == null) return;
-
-            playerInput.transform.SetParent(transform);
-
-            if (playerInput.GetDevice<Mouse>() != null && playerInput.GetDevice<Keyboard>() != null)
-                playerInput.SwitchCurrentControlScheme("Keyboard&Mouse", Keyboard.current, Mouse.current);
+            inputHandler.transform.SetParent(transform);
 
             if (handler1 == null)
             {
-                handler1 = handler;
+                handler1 = inputHandler;
                 Debug.Log("Player1 - Joined");
+                return true;
             }
-            else if (handler2 == null)
+
+            if (handler2 == null)
             {
-                handler2 = handler;
+                handler2 = inputHandler;
+                joinProxy.canJoin = false;
                 Debug.Log("Player2 - Joined");
+                return true;
             }
-            else
-            {
-                playerInput.DeactivateInput();
-                Debug.Log("Player Connection Full - Deactivated Input");
-            }
+            Debug.LogError("Player Connection Full - Deactivated Input");
+            return false;
         }
 
-        private void UnRegisterPlayer(PlayerInput playerInput)
+        public void UnRegisterPlayer(InputHandler inputHandler)
         {
-            var handler = playerInput.GetComponent<InputHandler>();
+            var handler = inputHandler.GetComponent<InputHandler>();
             
             if (handler == null) return;
 
             if (handler1 == handler)
             {
                 handler1 = null;
+                joinProxy.canJoin = true;
                 Debug.Log("Player1 - Left");
             }
             else if (handler2 == handler)

@@ -71,7 +71,7 @@ namespace Pditine.Player
         private float Battery => Data.battery;
         private float RotateSpeed => Data.rotateSpeed;
         
-        [HideInInspector] public float CurrentSpeed;
+        [HideInInspector][Inspectable] public float CurrentSpeed;
         protected Vector2 InputDirection;
         [ReadOnly] private Vector2 _currentDirection;
 
@@ -232,7 +232,7 @@ namespace Pditine.Player
                 InputDirection = InputDirection.normalized; // LJH:奇怪的bug
             }
             else
-                InputDirection = direction;
+                InputDirection = direction.normalized;
 
             OnChangeCurrentDirection?.Invoke(InputDirection);
         }

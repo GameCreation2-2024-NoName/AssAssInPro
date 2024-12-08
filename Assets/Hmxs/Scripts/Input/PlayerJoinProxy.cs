@@ -4,6 +4,7 @@
 // Date: 2024_12_07
 // -------------------------------------------------
 
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -12,27 +13,79 @@ namespace Hmxs.Scripts
     [RequireComponent(typeof(PlayerInputManager))]
     public class PlayerJoinProxy : MonoBehaviour
     {
-        private PlayerInputManager _playerInputManager;
+        [SerializeField]private PlayerInputManager playerInputManager;
+        public bool canJoin;
 
         private void Awake()
         {
-            _playerInputManager = GetComponent<PlayerInputManager>();
+            playerInputManager = GetComponent<PlayerInputManager>();
         }
 
         private void OnEnable()
         {
-            _playerInputManager.onPlayerJoined += OnPlayerJoin;
-            _playerInputManager.onPlayerLeft += OnPlayerLeft;
+            playerInputManager.onPlayerJoined += OnGamePadPlayerJoin;
+            playerInputManager.onPlayerLeft += OnGamePadPlayerLeft;
         }
 
         private void OnDisable()
         {
-            _playerInputManager.onPlayerJoined -= OnPlayerJoin;
-            _playerInputManager.onPlayerLeft -= OnPlayerLeft;
+            playerInputManager.onPlayerJoined -= OnGamePadPlayerJoin;
+            playerInputManager.onPlayerLeft -= OnGamePadPlayerLeft;
         }
 
-        private void OnPlayerJoin(PlayerInput playerInput)
+        private void Update()
         {
+            CheckPlayerJoin();
+        }
+
+        private void CheckPlayerJoin()
+        {
+            if (!canJoin) return;
+            InputHandler inputHandler = null;
+            if (Input.GetKeyDown(KeyCode.F))
+            {
+                inputHandler = CreatePlayerInput(Device.LeftKeyboard);
+            }
+
+            if (Input.GetKeyDown(KeyCode.Slash))
+            {
+                inputHandler = CreatePlayerInput(Device.RightKeyboard);
+            }
+
+            if (inputHandler) PlayerManager.Instance.RegisterPlayer(inputHandler);
+        }
+        
+        private InputHandler CreatePlayerInput(Device device)
+        {
+            var obj = new GameObject();
+            InputHandler inputHandler = null;
+            switch (device)
+            {
+                case Device.LeftKeyboard:
+                    obj.name = "LeftKeyBoardInputHandler";
+                    inputHandler = obj.AddComponent<LeftKeyboardInputHandler>();
+                    break;
+                case Device.RightKeyboard:
+                    obj.name = "RightKeyBoardInputHandler";
+                    inputHandler = obj.AddComponent<RightKeyboardInputHandler>();
+                    break;
+                case Device.Mouse:
+                    break;
+                case Device.TouchScreen:
+                    break;
+                case Device.Null:
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(device), device, null);
+            }
+
+            return inputHandler;
+        }
+
+        // 手柄玩家的加入走不同的逻辑
+        private void OnGamePadPlayerJoin(PlayerInput playerInput)
+        {
+            if (!canJoin) return;
             var handler = playerInput.GetComponent<InputHandler>();
             if (handler == null) return;
 
@@ -41,21 +94,21 @@ namespace Hmxs.Scripts
             if (playerInput.GetDevice<Mouse>() != null && playerInput.GetDevice<Keyboard>() != null)
                 playerInput.SwitchCurrentControlScheme("Keyboard&Mouse", Keyboard.current, Mouse.current);
 
-            if (handler is GamepadInputHandler gamepadInputHandler)
+            var ok = PlayerManager.Instance.RegisterPlayer(handler);
+            if(!ok)
             {
-                gamepadInputHandler.SwitchMap("Selection");
+                //playerInput.DeactivateInput();
+                Destroy(playerInput.gameObject);
             }
         }
 
-        private void OnPlayerLeft(PlayerInput playerInput)
+        private void OnGamePadPlayerLeft(PlayerInput playerInput)
         {
             var handler = playerInput.GetComponent<InputHandler>();
+            
             if (handler == null) return;
-
-            if (handler is GamepadInputHandler gamepadInputHandler)
-            {
-                gamepadInputHandler.SwitchMap("Gameplay");
-            }
+            
+            PlayerManager.Instance.UnRegisterPlayer(handler);
         }
     }
 }
