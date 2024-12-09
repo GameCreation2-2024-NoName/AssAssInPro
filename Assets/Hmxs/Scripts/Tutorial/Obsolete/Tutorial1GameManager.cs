@@ -77,18 +77,20 @@ namespace Hmxs.Scripts.Tutorial
 
         public void SetDashInput(bool state)
         {
-            if (state)
-                PlayerManager.Instance.Handler1.DashAction.Enable();
-            else
-                PlayerManager.Instance.Handler1.DashAction.Disable();
+            // LJH: 由于Input相关的重构，这里先注掉
+            // if (state)
+            //     PlayerManager.Instance.Handler1.DashAction.Enable();
+            // else
+            //     PlayerManager.Instance.Handler1.DashAction.Disable();
         }
 
         public void SetDirectionInput(bool state)
         {
-            if (state)
-                PlayerManager.Instance.Handler1.DirectionAction.Enable();
-            else
-                PlayerManager.Instance.Handler1.DirectionAction.Disable();
+            // LJH: 由于Input相关的重构，这里先注掉
+            // if (state)
+            //     PlayerManager.Instance.Handler1.DirectionAction.Enable();
+            // else
+            //     PlayerManager.Instance.Handler1.DirectionAction.Disable();
         }
 
         public void PlayStartFeedback() => startEffect.PlayFeedbacks();

@@ -37,7 +37,6 @@ namespace Pditine.GamePlay.LightBall
 
         public void Init()
         {
-            
             // bornFeedback.Initialization();
             AppearFeedback.Initialization();
             EatenFeedback.Initialization();

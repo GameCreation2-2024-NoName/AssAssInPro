@@ -22,7 +22,7 @@ namespace Pditine.MainMenu
             //PlayerManager.Instance.Init();
             Time.timeScale = 1;
             PlayerManager.Instance.SwitchMap("Selection");
-            PlayerManager.Instance.Reset();
+            //PlayerManager.Instance.Reset();
             Debug.Log("reset");
         }
 

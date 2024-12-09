@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Hmxs.Scripts;
 using Pditine.Collide;
 using Pditine.Collide.CollideEvent;
 using Pditine.Component;
@@ -53,8 +54,10 @@ namespace Pditine.Player.Thorn
         {
             if (!thePlayer.InputHandler) return;
             Gamepad theGamepad = null;
-            if (thePlayer.InputHandler.IsGamepad)
-                theGamepad = thePlayer.InputHandler.Devices[0] as Gamepad;
+            if (thePlayer.InputHandler.Device == Device.Gamepad)
+            {
+                theGamepad = (thePlayer.InputHandler as GamepadInputHandler).Devices[0] as Gamepad;
+            }
             if (theGamepad==null) return;
             theGamepad.SetMotorSpeeds(0.5f,0.5f);
             DelayUtility.Delay(0.3f,() =>

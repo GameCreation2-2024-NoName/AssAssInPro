@@ -5,10 +5,6 @@ using UnityEngine.UI;
 
 namespace Hmxs.Scripts
 {
-    public enum DeviceType
-    {
-        Null,Gamepad,Mouse
-    }
     public class DeviceIcon : MonoBehaviour
     {
         [SerializeField] private Sprite nullNothing;
@@ -16,17 +12,17 @@ namespace Hmxs.Scripts
         [SerializeField] private Sprite mouse;
         [SerializeField] private Image theImage;
         
-        public void ChangeDevice(DeviceType deviceType)
+        public void ChangeDevice(Device deviceType)
         {
             switch (deviceType)
             {
-                case DeviceType.Null:
+                case Device.Null:
                     theImage.sprite = nullNothing;
                     break;
-                case DeviceType.Gamepad:
+                case Device.Gamepad:
                     theImage.sprite = gamepad;
                     break;
-                case DeviceType.Mouse:
+                case Device.Mouse:
                     theImage.sprite = mouse;
                     break;
             }

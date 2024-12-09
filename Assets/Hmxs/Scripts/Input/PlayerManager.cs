@@ -1,20 +1,26 @@
-﻿using Sirenix.OdinInspector;
+﻿using System;
+using PurpleFlowerCore;
+using Sirenix.OdinInspector;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 namespace Hmxs.Scripts
 {
-    [RequireComponent(typeof(PlayerInputManager))]
     public class PlayerManager : MonoBehaviour
     {
+        // todo:支持更多玩家?
+        // List<InputHandler>
         public InputHandler Handler1 => handler1;
         public InputHandler Handler2 => handler2;
-
+        
         [SerializeField] [ReadOnly] private InputHandler handler1;
         [SerializeField] [ReadOnly] private InputHandler handler2;
+        
+        public event Action<InputHandler> OnPlayerRegister;
+        public event Action<InputHandler> OnPlayerUnRegister;
 
-        private PlayerInputManager _playerInputManager;
-
+        // 当未来出现走不同逻辑玩家加入的情况时,考虑放弃持有引用,改为事件通知
+        [SerializeField] private PlayerJoinProxy joinProxy;
+        
         public static PlayerManager Instance { get; private set; }
 
         private void Awake()
@@ -26,55 +32,55 @@ namespace Hmxs.Scripts
             DontDestroyOnLoad(gameObject);
         }
 
-        private void Start()
+        public bool RegisterPlayer(InputHandler inputHandler)
         {
-            _playerInputManager = GetComponent<PlayerInputManager>();
+            if(!inputHandler)return false;
+            
+            if(inputHandler.Device != Device.Gamepad &&
+               (inputHandler.Device ==  handler1?.Device || inputHandler.Device == handler2?.Device))
+                return false;
 
-            _playerInputManager.onPlayerJoined += OnPlayerJoined;
-            _playerInputManager.onPlayerLeft += OnPlayerLeft;
-        }
-
-        private void OnPlayerJoined(PlayerInput playerInput)
-        {
-            var handler = playerInput.GetComponent<InputHandler>();
-            if (handler == null) return;
-
-            playerInput.transform.SetParent(transform);
-
-            if (playerInput.GetDevice<Mouse>() != null && playerInput.GetDevice<Keyboard>() != null)
-                playerInput.SwitchCurrentControlScheme("Keyboard&Mouse", Keyboard.current, Mouse.current);
-
+            inputHandler.transform.SetParent(transform);
+            
             if (handler1 == null)
             {
-                handler1 = handler;
+                handler1 = inputHandler;
+                OnPlayerRegister?.Invoke(inputHandler);
                 Debug.Log("Player1 - Joined");
+                return true;
             }
-            else if (handler2 == null)
+
+            if (handler2 == null)
             {
-                handler2 = handler;
+                handler2 = inputHandler;
+                OnPlayerRegister?.Invoke(inputHandler);
                 Debug.Log("Player2 - Joined");
+                return true;
             }
-            else
-            {
-                playerInput.DeactivateInput();
-                Debug.Log("Player Connection Full - Deactivated Input");
-            }
+            
+            joinProxy.canJoin = false;
+            Debug.LogError("Player Connection Full - Deactivated Input");
+            return false;
         }
 
-        private void OnPlayerLeft(PlayerInput playerInput)
+        public void UnRegisterPlayer(InputHandler inputHandler)
         {
-            var handler = playerInput.GetComponent<InputHandler>();
+            var handler = inputHandler.GetComponent<InputHandler>();
             
             if (handler == null) return;
 
             if (handler1 == handler)
             {
                 handler1 = null;
+                joinProxy.canJoin = true;
+                OnPlayerUnRegister?.Invoke(handler);
                 Debug.Log("Player1 - Left");
             }
             else if (handler2 == handler)
             {
                 handler2 = null;
+                joinProxy.canJoin = true;
+                OnPlayerUnRegister?.Invoke(handler);
                 Debug.Log("Player2 - Left");
             }
         }
@@ -93,6 +99,7 @@ namespace Hmxs.Scripts
                 Destroy(handler2.gameObject);
             handler1 = null;
             handler2 = null;
+            joinProxy.canJoin = true;
         }
     }
 }

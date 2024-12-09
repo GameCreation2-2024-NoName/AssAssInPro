@@ -71,7 +71,7 @@ namespace Pditine.Player
         private float Battery => Data.battery;
         private float RotateSpeed => Data.rotateSpeed;
         
-        [HideInInspector] public float CurrentSpeed;
+        [HideInInspector][Inspectable] public float CurrentSpeed;
         protected Vector2 InputDirection;
         [ReadOnly] private Vector2 _currentDirection;
 
@@ -226,13 +226,13 @@ namespace Pditine.Player
         {
             if (!canMove) return;
             if (_isPause) return;
-            if (InputHandler.IsKeyboard)
+            if (InputHandler.Device == Device.Mouse)
             {
                 InputDirection = (Camera.main.ScreenToWorldPoint(direction) - transform.position).normalized;
                 InputDirection = InputDirection.normalized; // LJH:奇怪的bug
             }
             else
-                InputDirection = direction;
+                InputDirection = direction.normalized;
 
             OnChangeCurrentDirection?.Invoke(InputDirection);
         }

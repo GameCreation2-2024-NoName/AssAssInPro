@@ -21,5 +21,7 @@ namespace Pditine.Data.Player
         public float recoverCD = 1;
         [Header("玩家的转向速度")]
         public float rotateSpeed = 0.4f;
+        [Header("键盘输入时,当前方向向目标方向转向的速度")]
+        public float keyboardRotateSpeed = 0.05f;
     }
 }

@@ -46,20 +46,22 @@ namespace Hmxs.Scripts
 
             infoSetter.SetAssInfo(DataManager.Instance.GetAssData(assId.Value));
             infoSetter.SetThornInfo(DataManager.Instance.GetThornData(thornId.Value));
-
-            OnPlayerJoin(null);
         }
 
         private void OnEnable()
         {
-            PlayerInputManager.instance.onPlayerJoined += OnPlayerJoin;
-            PlayerInputManager.instance.onPlayerLeft += OnPlayerLeft;
+            // PlayerInputManager.instance.onPlayerJoined += OnPlayerJoin;
+            // PlayerInputManager.instance.onPlayerLeft += OnPlayerLeft;
+            PlayerManager.Instance.OnPlayerRegister += OnPlayerRegister;
+            PlayerManager.Instance.OnPlayerUnRegister += OnPlayerUnRegister;
         }
 
         private void OnDisable()
         {
-            PlayerInputManager.instance.onPlayerJoined -= OnPlayerJoin;
-            PlayerInputManager.instance.onPlayerLeft -= OnPlayerLeft;
+            // PlayerInputManager.instance.onPlayerJoined -= OnPlayerRegister;
+            // PlayerInputManager.instance.onPlayerLeft -= OnPlayerUnRegister;
+            PlayerManager.Instance.OnPlayerUnRegister -= OnPlayerUnRegister;
+            PlayerManager.Instance.OnPlayerRegister -= OnPlayerRegister;
         }
 
         private void OnDestroy()
@@ -196,25 +198,24 @@ namespace Hmxs.Scripts
             SetOutline();
         }
 
-        private void OnPlayerJoin(PlayerInput theInput)
+        private void OnPlayerRegister(InputHandler inputHandler)
         {
-            if (InputHandler == null) return;
-            //if (InputHandler.PlayerInput != theInput) return;
+            if (InputHandler != inputHandler) return;
             mask.SetActive(false);
+            //todo: 不同设备显示不同图标
             DelayUtility.DelayFrame(2, () =>
             {
-                if(InputHandler.IsGamepad)
-                    deviceIcon.ChangeDevice(DeviceType.Gamepad);
-                else deviceIcon.ChangeDevice(DeviceType.Mouse);
+                if(InputHandler.Device == Device.Gamepad)
+                    deviceIcon.ChangeDevice(Device.Gamepad);
+                else deviceIcon.ChangeDevice(Device.Mouse);
             });
         }
 
-        private void OnPlayerLeft(PlayerInput theInput)
+        private void OnPlayerUnRegister(InputHandler inputHandler)
         {
-            if (InputHandler != null) return;
-            //if (InputHandler.PlayerInput != theInput) return;
+            if (InputHandler != inputHandler) return;
             mask.SetActive(true);
-            deviceIcon.ChangeDevice(DeviceType.Null);
+            deviceIcon.ChangeDevice(Device.Null);
         }
     }
 }
