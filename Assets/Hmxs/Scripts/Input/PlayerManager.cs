@@ -1,4 +1,5 @@
-﻿using PurpleFlowerCore;
+﻿using System;
+using PurpleFlowerCore;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
@@ -13,7 +14,11 @@ namespace Hmxs.Scripts
         
         [SerializeField] [ReadOnly] private InputHandler handler1;
         [SerializeField] [ReadOnly] private InputHandler handler2;
+        
+        public event Action<InputHandler> OnPlayerRegister;
+        public event Action<InputHandler> OnPlayerUnRegister;
 
+        // 当未来出现走不同逻辑玩家加入的情况时,考虑放弃持有引用,改为事件通知
         [SerializeField] private PlayerJoinProxy joinProxy;
         
         public static PlayerManager Instance { get; private set; }
@@ -30,12 +35,17 @@ namespace Hmxs.Scripts
         public bool RegisterPlayer(InputHandler inputHandler)
         {
             if(!inputHandler)return false;
+            
+            if(inputHandler.Device != Device.Gamepad &&
+               (inputHandler.Device ==  handler1?.Device || inputHandler.Device == handler2?.Device))
+                return false;
 
             inputHandler.transform.SetParent(transform);
-
+            
             if (handler1 == null)
             {
                 handler1 = inputHandler;
+                OnPlayerRegister?.Invoke(inputHandler);
                 Debug.Log("Player1 - Joined");
                 return true;
             }
@@ -43,10 +53,12 @@ namespace Hmxs.Scripts
             if (handler2 == null)
             {
                 handler2 = inputHandler;
-                joinProxy.canJoin = false;
+                OnPlayerRegister?.Invoke(inputHandler);
                 Debug.Log("Player2 - Joined");
                 return true;
             }
+            
+            joinProxy.canJoin = false;
             Debug.LogError("Player Connection Full - Deactivated Input");
             return false;
         }
@@ -61,11 +73,14 @@ namespace Hmxs.Scripts
             {
                 handler1 = null;
                 joinProxy.canJoin = true;
+                OnPlayerUnRegister?.Invoke(handler);
                 Debug.Log("Player1 - Left");
             }
             else if (handler2 == handler)
             {
                 handler2 = null;
+                joinProxy.canJoin = true;
+                OnPlayerUnRegister?.Invoke(handler);
                 Debug.Log("Player2 - Left");
             }
         }

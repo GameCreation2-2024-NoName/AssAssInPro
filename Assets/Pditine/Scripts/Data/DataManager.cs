@@ -2,6 +2,7 @@
 using System.Linq;
 using Pditine.Data.Ass;
 using Pditine.Data.GameModule;
+using Pditine.Data.Other;
 using Pditine.Data.Player;
 using Pditine.Data.Thorn;
 using Pditine.GamePlay.Buff;
@@ -23,6 +24,9 @@ namespace Pditine.Data
         [SerializeField] private List<BuffData> buffData;
         [SerializeField] private PassingData passingData;
         [SerializeField] private PlayerData defaultPlayerData;
+        [SerializeField] private OtherGameData otherGameData;
+        
+        public OtherGameData OtherGameData => otherGameData;
         public PlayerData DefaultPlayerData => defaultPlayerData;
 
         public float MaxHP => asses.Select(ass => ass.HP).Prepend(0).Max();

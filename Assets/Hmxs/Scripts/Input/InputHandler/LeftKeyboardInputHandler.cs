@@ -4,6 +4,7 @@
 // Date: 2024_12_07
 // -------------------------------------------------
 
+using Pditine.Data;
 using UnityEngine;
 
 namespace Hmxs.Scripts
@@ -35,7 +36,7 @@ namespace Hmxs.Scripts
         private void FixedUpdate()
         {
             if(_isGamePlay)
-                _currentDirection = Vector2.Lerp(_currentDirection, _targetDirection, 0.05f);
+                _currentDirection = Vector2.Lerp(_currentDirection, _targetDirection, DataManager.Instance.OtherGameData.keyBoardRotateSpeed);
         }
     }
 }

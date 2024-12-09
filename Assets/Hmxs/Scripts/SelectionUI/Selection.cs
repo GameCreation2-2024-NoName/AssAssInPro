@@ -12,6 +12,7 @@ namespace Hmxs.Scripts
 
         private void Start()
         {
+            PlayerManager.Instance.Reset();
             if (player1 == null)
             {
                 Debug.LogError("Player1 is null");

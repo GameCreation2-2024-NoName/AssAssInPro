@@ -40,6 +40,7 @@ namespace Hmxs.Scripts
 
         private void CheckPlayerJoin()
         {
+            // 对于不同设备玩家加入的查询逻辑，先写在业务侧
             if (!canJoin) return;
             InputHandler inputHandler = null;
             if (Input.GetKeyDown(KeyCode.F))
@@ -52,7 +53,19 @@ namespace Hmxs.Scripts
                 inputHandler = CreatePlayerInput(Device.RightKeyboard);
             }
 
-            if (inputHandler) PlayerManager.Instance.RegisterPlayer(inputHandler);
+            if (Input.GetMouseButtonDown(0))
+            {
+                inputHandler = CreatePlayerInput(Device.Mouse);
+            }
+
+            if (inputHandler)
+            { 
+                var ok = PlayerManager.Instance.RegisterPlayer(inputHandler);
+                if(!ok)
+                {
+                    Destroy(inputHandler.gameObject);
+                }
+            }
         }
         
         private InputHandler CreatePlayerInput(Device device)
@@ -70,6 +83,8 @@ namespace Hmxs.Scripts
                     inputHandler = obj.AddComponent<RightKeyboardInputHandler>();
                     break;
                 case Device.Mouse:
+                    obj.name = "MouseInputHandler";
+                    inputHandler = obj.AddComponent<MouseInputHandler>();
                     break;
                 case Device.TouchScreen:
                     break;
@@ -87,12 +102,14 @@ namespace Hmxs.Scripts
         {
             if (!canJoin) return;
             var handler = playerInput.GetComponent<InputHandler>();
-            if (handler == null) return;
+            if (handler == null)
+            {
+                Debug.LogError("PlayerInput没有InputHandler组件");
+                return;
+            }
 
-            playerInput.transform.SetParent(transform);
-
-            if (playerInput.GetDevice<Mouse>() != null && playerInput.GetDevice<Keyboard>() != null)
-                playerInput.SwitchCurrentControlScheme("Keyboard&Mouse", Keyboard.current, Mouse.current);
+            // if (playerInput.GetDevice<Mouse>() != null && playerInput.GetDevice<Keyboard>() != null)
+            //     playerInput.SwitchCurrentControlScheme("Keyboard&Mouse", Keyboard.current, Mouse.current);
 
             var ok = PlayerManager.Instance.RegisterPlayer(handler);
             if(!ok)

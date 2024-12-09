@@ -28,7 +28,7 @@ namespace Hmxs.Scripts
         /// 玩家设备
         public abstract Device Device { get; }
 
-        // /// 玩家本体，战斗开始时初始化
+        // 考虑InputHandler是否应该持有PlayerController
         // protected PlayerController player;
         // public PlayerController Player => player;
         
