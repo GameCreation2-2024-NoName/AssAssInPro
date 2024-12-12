@@ -280,7 +280,7 @@ namespace Pditine.Player
             _currentRecoverCD = RecoverCD;
         }
         
-        private void RecoverEnergy()
+        protected void RecoverEnergy()
         {
             _currentRecoverCD -= Time.deltaTime;
             if (_currentRecoverCD > 0) return;

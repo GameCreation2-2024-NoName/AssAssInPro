@@ -42,6 +42,7 @@ namespace Hmxs.Scripts.Tutorial
         {
             if (!canMove) return;
             if (IsPause) return;
+            direction = direction.normalized;
             InputDirection = direction;
             OnChangeCurrentDirection?.Invoke(InputDirection);
         }
@@ -70,6 +71,7 @@ namespace Hmxs.Scripts.Tutorial
         private void OnIdle()
         {
             _counter += Time.deltaTime;
+            RecoverEnergy();
             if (_counter >= _idleTime) ChangeState(NpcState.Charging);
         }
 
