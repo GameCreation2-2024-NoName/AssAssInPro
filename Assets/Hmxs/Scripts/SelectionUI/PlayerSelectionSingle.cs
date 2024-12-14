@@ -33,33 +33,36 @@ namespace Hmxs.Scripts
         private InputHandler InputHandler =>
             id == 1 ? PlayerManager.Instance.Handler1 : PlayerManager.Instance.Handler2;
 
-        private void Start()
-        {
-            // assId.onValueChanged += value =>
-            // {
-            //     infoSetter.SetAssInfo(DataManager.Instance.GetAssData(value));
-            // };
-            // thornId.onValueChanged += value =>
-            // {
-            //     infoSetter.SetThornInfo(DataManager.Instance.GetThornData(value));
-            // };
-            //
-            // infoSetter.SetAssInfo(DataManager.Instance.GetAssData(assId.Value));
-            // infoSetter.SetThornInfo(DataManager.Instance.GetThornData(thornId.Value));
-
-            OnPlayerJoin(null);
-        }
+        // private void Start()
+        // {
+        //     // assId.onValueChanged += value =>
+        //     // {
+        //     //     infoSetter.SetAssInfo(DataManager.Instance.GetAssData(value));
+        //     // };
+        //     // thornId.onValueChanged += value =>
+        //     // {
+        //     //     infoSetter.SetThornInfo(DataManager.Instance.GetThornData(value));
+        //     // };
+        //     //
+        //     // infoSetter.SetAssInfo(DataManager.Instance.GetAssData(assId.Value));
+        //     // infoSetter.SetThornInfo(DataManager.Instance.GetThornData(thornId.Value));
+        //
+        //     //OnPlayerJoin(null);
+        // }
 
         private void OnEnable()
         {
-            PlayerInputManager.instance.onPlayerJoined += OnPlayerJoin;
-            PlayerInputManager.instance.onPlayerLeft += OnPlayerLeft;
+            // 用于重置UI
+            OnPlayerUnRegister(null);
+            
+            PlayerManager.Instance.OnPlayerRegister += OnPlayerRegister;
+            PlayerManager.Instance.OnPlayerUnRegister += OnPlayerUnRegister;
         }
-
+        
         private void OnDisable()
         {
-            PlayerInputManager.instance.onPlayerJoined -= OnPlayerJoin;
-            PlayerInputManager.instance.onPlayerLeft -= OnPlayerLeft;
+            PlayerManager.Instance.OnPlayerRegister -= OnPlayerRegister;
+            PlayerManager.Instance.OnPlayerUnRegister -= OnPlayerUnRegister;
         }
 
         // private void OnDestroy()
@@ -196,10 +199,9 @@ namespace Hmxs.Scripts
         //     SetOutline();
         // }
 
-        private void OnPlayerJoin(PlayerInput theInput)
+        private void OnPlayerRegister(InputHandler inputHandler)
         {
-            if (InputHandler == null) return;
-            //if (InputHandler.PlayerInput != theInput) return;
+            if (InputHandler != inputHandler) return;
             mask.SetActive(false);
             DelayUtility.DelayFrame(2, () =>
             {
@@ -209,10 +211,9 @@ namespace Hmxs.Scripts
             });
         }
 
-        private void OnPlayerLeft(PlayerInput theInput)
+        private void OnPlayerUnRegister(InputHandler inputHandler)
         {
-            if (InputHandler != null) return;
-            //if (InputHandler.PlayerInput != theInput) return;
+            if (InputHandler != inputHandler) return;
             mask.SetActive(true);
             deviceIcon.ChangeDevice(Device.Null);
         }

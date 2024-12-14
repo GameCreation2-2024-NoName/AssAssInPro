@@ -1,4 +1,5 @@
-﻿using Pditine.Data;
+﻿using System;
+using Pditine.Data;
 using Pditine.Scripts.Data;
 using PurpleFlowerCore;
 using UnityEngine;
@@ -12,7 +13,6 @@ namespace Hmxs.Scripts
 
         private void Start()
         {
-            PlayerManager.Instance.Reset();
             if (player1 == null)
             {
                 Debug.LogError("Player1 is null");
@@ -34,6 +34,11 @@ namespace Hmxs.Scripts
                 Debug.Log("Player2 Confirm");
                 if (player1.IsReady && player2.IsReady) StartGame();
             };
+        }
+
+        private void OnEnable()
+        {
+            PlayerManager.Instance.Reset();
         }
 
         private void StartGame()

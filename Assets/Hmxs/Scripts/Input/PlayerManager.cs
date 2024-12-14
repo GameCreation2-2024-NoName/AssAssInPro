@@ -7,7 +7,7 @@ namespace Hmxs.Scripts
 {
     public class PlayerManager : MonoBehaviour
     {
-        // todo:支持更多玩家?
+        // todo:支持动态数量玩家
         // List<InputHandler>
         public InputHandler Handler1 => handler1;
         public InputHandler Handler2 => handler2;

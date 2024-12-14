@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: PassingData
   m_EditorClassIdentifier: 
   player1AssID: 0
-  player2AssID: 2
+  player2AssID: 0
   player1ThornID: 0
   player2ThornID: 0
-  currentGameModel: {fileID: 11400000, guid: ccc96942cf67a6f4890220f959c9eb30, type: 2}
-  mainMenuOpenedMenuIndex: 3
+  currentGameModel: {fileID: 11400000, guid: c7427e56be5abcf479eb3c12598fd9d7, type: 2}
+  mainMenuOpenedMenuIndex: 0

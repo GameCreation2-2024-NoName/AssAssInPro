@@ -1,4 +1,5 @@
-﻿using Pditine.Data;
+﻿using System;
+using Pditine.Data;
 using PurpleFlowerCore;
 using Sirenix.OdinInspector;
 using UnityEngine;
@@ -15,6 +16,11 @@ namespace Hmxs.Scripts.SinglePlayer
             {
                 if (player1.IsReady) StartGame();
             };
+        }
+
+        private void OnEnable()
+        {
+            PlayerManager.Instance.Reset();
         }
 
         private void StartGame()

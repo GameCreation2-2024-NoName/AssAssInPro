@@ -52,6 +52,10 @@ namespace Hmxs.Scripts
         {
             // PlayerInputManager.instance.onPlayerJoined += OnPlayerJoin;
             // PlayerInputManager.instance.onPlayerLeft += OnPlayerLeft;
+            
+            // 用于重置UI
+            OnPlayerUnRegister(null);
+            
             PlayerManager.Instance.OnPlayerRegister += OnPlayerRegister;
             PlayerManager.Instance.OnPlayerUnRegister += OnPlayerUnRegister;
         }
