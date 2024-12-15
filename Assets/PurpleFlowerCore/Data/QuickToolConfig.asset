@@ -14,7 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   quickToolButtonData:
   - name: "\u6253\u5F00\u7ECF\u5178\u5730\u56FE"
+    commandType: 0
+    color: {r: 0.73861265, g: 0, b: 1, a: 1}
     lineBreak: 0
+    commandParam: Assets/Pditine/Scenes/ClassicGame/ClassicGame 1.unity
     command:
       m_PersistentCalls:
         m_Calls:
@@ -32,7 +35,10 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 1
   - name: "\u6253\u5F00\u4E3B\u573A\u666F"
+    commandType: 0
+    color: {r: 0.7446065, g: 0, b: 1, a: 1}
     lineBreak: 0
+    commandParam: Assets/Pditine/Scenes/MainMenu.unity
     command:
       m_PersistentCalls:
         m_Calls:
@@ -50,7 +56,10 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 1
   - name: "\u6253\u5F00\u6D4B\u8BD5\u573A\u666F"
+    commandType: 0
+    color: {r: 1, g: 0, b: 0.9957261, a: 1}
     lineBreak: 1
+    commandParam: Assets/Pditine/Scenes/TestScene.unity
     command:
       m_PersistentCalls:
         m_Calls:
@@ -67,8 +76,11 @@ MonoBehaviour:
             m_StringArgument: Assets/Pditine/Scenes/TestScene.unity
             m_BoolArgument: 0
           m_CallState: 1
-  - name: "\u6253\u5F00C#\u9879\u76EE"
+  - name: "\u6253\u5F00 Player Prefab"
+    commandType: 1
+    color: {r: 0.07456994, g: 1, b: 0, a: 1}
     lineBreak: 0
+    commandParam: Assets/Pditine/Prefabs/Player/PlayerPrototype.prefab
     command:
       m_PersistentCalls:
         m_Calls:
@@ -85,3 +97,11 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 1
+  - name: "\u6253\u5F00 Art \u6587\u4EF6\u5939"
+    commandType: 0
+    color: {r: 1, g: 0, b: 0, a: 1}
+    lineBreak: 0
+    commandParam: Assets/Pditine/Art/Image
+    command:
+      m_PersistentCalls:
+        m_Calls: []
