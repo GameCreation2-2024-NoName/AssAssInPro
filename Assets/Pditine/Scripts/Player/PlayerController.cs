@@ -226,7 +226,7 @@ namespace Pditine.Player
         {
             if (!canMove) return;
             if (_isPause) return;
-            if (InputHandler.Device == Device.Mouse)
+            if (InputHandler.Device == Device.Mouse || InputHandler.Device == Device.TouchScreen)
             {
                 InputDirection = (Camera.main.ScreenToWorldPoint(direction) - transform.position).normalized;
                 InputDirection = InputDirection.normalized; // LJH:奇怪的bug
