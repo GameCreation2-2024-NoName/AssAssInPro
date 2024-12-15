@@ -1131,18 +1131,12 @@ MonoBehaviour:
   assProperty2: {fileID: 3046204442241007470}
   assProperty3: {fileID: 3086723029001700913}
   assIntroduction: {fileID: 5256356037101728452}
-  assProperty1Range: {x: 0, y: 10}
-  assProperty2Range: {x: 0, y: 34}
-  assProperty3Range: {x: 0, y: 55}
   thornImg: {fileID: 7249760614541034417}
   thornName: {fileID: 5539938521092690648}
   thornProperty1: {fileID: 3272575713158158218}
   thornProperty2: {fileID: 1018495775271360465}
   thornProperty3: {fileID: 7179406234079506096}
   thornIntroduction: {fileID: 5584768411010698876}
-  thornProperty1Range: {x: 0, y: 3}
-  thornProperty2Range: {x: 0, y: 1}
-  thornProperty3Range: {x: 0, y: 20}
 --- !u!1 &2805978779896338358
 GameObject:
   m_ObjectHideFlags: 0
@@ -3672,18 +3666,12 @@ MonoBehaviour:
   assProperty2: {fileID: 2733238369358906015}
   assProperty3: {fileID: 1846659576463394705}
   assIntroduction: {fileID: 4418634755642787682}
-  assProperty1Range: {x: 0, y: 10}
-  assProperty2Range: {x: 0, y: 34}
-  assProperty3Range: {x: 0, y: 55}
   thornImg: {fileID: 1893599248796924694}
   thornName: {fileID: 5799423743635921654}
   thornProperty1: {fileID: 5253192274689498382}
   thornProperty2: {fileID: 4442161687090682799}
   thornProperty3: {fileID: 3172476704185933501}
   thornIntroduction: {fileID: 3600273635057700971}
-  thornProperty1Range: {x: 0, y: 3}
-  thornProperty2Range: {x: 0, y: 1}
-  thornProperty3Range: {x: 0, y: 20}
 --- !u!1 &8859081964642229305
 GameObject:
   m_ObjectHideFlags: 0

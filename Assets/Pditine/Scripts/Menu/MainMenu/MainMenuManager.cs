@@ -18,6 +18,7 @@ namespace Pditine.MainMenu
 
         private void Start()
         {
+            Application.targetFrameRate = 280;
             OpenMenu(DataManager.Instance.PassingData.mainMenuOpenedMenuIndex);
             //PlayerManager.Instance.Init();
             Time.timeScale = 1;

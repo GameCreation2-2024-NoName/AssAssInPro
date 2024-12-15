@@ -58,7 +58,7 @@ MonoBehaviour:
   - name: "\u6253\u5F00\u6D4B\u8BD5\u573A\u666F"
     commandType: 0
     color: {r: 1, g: 0, b: 0.9957261, a: 1}
-    lineBreak: 1
+    lineBreak: 0
     commandParam: Assets/Pditine/Scenes/TestScene.unity
     command:
       m_PersistentCalls:
@@ -79,7 +79,7 @@ MonoBehaviour:
   - name: "\u6253\u5F00 Player Prefab"
     commandType: 1
     color: {r: 0.07456994, g: 1, b: 0, a: 1}
-    lineBreak: 0
+    lineBreak: 1
     commandParam: Assets/Pditine/Prefabs/Player/PlayerPrototype.prefab
     command:
       m_PersistentCalls:
@@ -98,10 +98,18 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 1
   - name: "\u6253\u5F00 Art \u6587\u4EF6\u5939"
-    commandType: 0
+    commandType: 3
     color: {r: 1, g: 0, b: 0, a: 1}
     lineBreak: 0
     commandParam: Assets/Pditine/Art/Image
+    command:
+      m_PersistentCalls:
+        m_Calls: []
+  - name: "\u6253\u5F00UI Prefab"
+    commandType: 1
+    color: {r: 0, g: 1, b: 0.1808362, a: 1}
+    lineBreak: 0
+    commandParam: Assets/Pditine/Prefabs/UI/UI.prefab
     command:
       m_PersistentCalls:
         m_Calls: []

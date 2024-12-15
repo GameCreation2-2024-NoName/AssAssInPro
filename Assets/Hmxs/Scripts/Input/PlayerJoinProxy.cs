@@ -57,6 +57,11 @@ namespace Hmxs.Scripts
             {
                 inputHandler = CreatePlayerInput(Device.Mouse);
             }
+            
+            if (Input.touchCount > 0)
+            {
+                inputHandler = CreatePlayerInput(Device.TouchScreen);
+            }
 
             if (inputHandler)
             { 
@@ -87,6 +92,8 @@ namespace Hmxs.Scripts
                     inputHandler = obj.AddComponent<MouseInputHandler>();
                     break;
                 case Device.TouchScreen:
+                    obj.name = "TouchScreenInputHandler";
+                    inputHandler = obj.AddComponent<TouchScreenInputHandler>();
                     break;
                 case Device.Null:
                     break;
