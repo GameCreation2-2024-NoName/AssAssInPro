@@ -4,9 +4,7 @@ namespace Pditine.StartMenu
 {
     public class InterLinkage : MonoBehaviour
     {
-        [SerializeField] private string url;
-
-        public void OpenURL()
+        public void OpenURL(string url)
         {
             Application.OpenURL(url);
         }

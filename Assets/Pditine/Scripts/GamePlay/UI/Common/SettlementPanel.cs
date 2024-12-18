@@ -33,9 +33,16 @@ namespace Pditine.GamePlay.UI
             ass.SetNativeSize();
         }
         
+        // todo: 不要硬编码
         public void AnotherGame()
         {
             DataManager.Instance.PassingData.mainMenuOpenedMenuIndex = 3;
+            SceneSystem.LoadScene(0);
+        }
+        
+        public void AnotherSinglePlayerGame()
+        {
+            DataManager.Instance.PassingData.mainMenuOpenedMenuIndex = 6;
             SceneSystem.LoadScene(0);
         }
         
