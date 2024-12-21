@@ -20,6 +20,7 @@ namespace Hmxs.Scripts
         [SerializeField] private DeviceIcon deviceIcon;
 
         [SerializeField] [ReadOnly] private bool isReady;
+        [SerializeField] [ReadOnly] private bool hasEnter; // 防止玩家在进入时按下确认键
         [SerializeField] [ReadOnly] private bool canSelect = true;
 
         [SerializeField] [ReadOnly] private BindableProperty<int> assId = new() { Value = 0 };
@@ -82,9 +83,13 @@ namespace Hmxs.Scripts
 
         private void Update()
         {
-            if (InputHandler == null) return;
+            if (InputHandler == null)
+            {
+                hasEnter = false;
+                return;
+            }
             
-            if (InputHandler.Confirm)
+            if (InputHandler.Confirm && hasEnter)
                 OnConfirm();
 
             if (InputHandler.Select != Vector2.zero && !isReady && canSelect)
@@ -93,6 +98,8 @@ namespace Hmxs.Scripts
             }
             else if (InputHandler.Select == Vector2.zero)
                 canSelect = true;
+
+            hasEnter = true;
         }
 
         private void OnSelect(Vector2 select)
