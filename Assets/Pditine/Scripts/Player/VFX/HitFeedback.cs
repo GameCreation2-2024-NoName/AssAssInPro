@@ -6,6 +6,7 @@
 
 using System;
 using MoreMountains.Feedbacks;
+using PurpleFlowerCore;
 using UnityEngine;
 
 namespace Pditine.Player.VFX
@@ -29,6 +30,7 @@ namespace Pditine.Player.VFX
             velocityOverLifeTime.x = new ParticleSystem.MinMaxCurve(0, posAndDir.Item2.x);
             velocityOverLifeTime.y = new ParticleSystem.MinMaxCurve(0, posAndDir.Item2.y);
             feedback.PlayFeedbacks();
+            PFCLog.Debug("VFX",$"Player{_thePlayer.ID} Hit");
         }
 
         public override void Stop(object data, Action callback)

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 9210223020117334536}
   - component: {fileID: 7424665695233815860}
   m_Layer: 0
-  m_Name: PlayerInput
+  m_Name: GamepadInputHandler
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -58,8 +58,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_ActionEvents: []
-  m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
+  m_NeverAutoSwitchControlSchemes: 1
+  m_DefaultControlScheme: GamePad
   m_DefaultActionMap: Selection
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
