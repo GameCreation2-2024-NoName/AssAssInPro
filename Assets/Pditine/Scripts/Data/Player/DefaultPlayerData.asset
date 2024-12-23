@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: DefaultPlayerData
   m_EditorClassIdentifier: 
   battery: 25
-  energyRecoverSpeed: 40
-  recoverCD: 0.5
+  energyRecoverSpeed: 50
+  recoverCD: 0.25
   rotateSpeed: 0.4
+  keyboardRotateSpeed: 0.05
